@@ -7,9 +7,9 @@ namespace AH
     
     public class InputHandler : MonoBehaviour
     {
-        public float Horizontal;
-        public float Vertical;
-        public float movetAmount;
+        public float horizontal;
+        public float vertical;
+        public float moveAmount;
         public float mouseX;
         public float mouseY;
 
@@ -36,14 +36,14 @@ namespace AH
 
         public void TickInput(float delta)
         {
-
+            MoveInput(delta);
         }
 
         private void MoveInput(float delta)
         {
-            Horizontal = movementInput.x;
-            Vertical = movementInput.y;
-            movetAmount = Mathf.Clamp01(Mathf.Abs(Horizontal) + Mathf.Abs(Vertical));
+            horizontal = movementInput.x;
+            vertical = movementInput.y;
+            moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
             mouseX = cameraInput.x;
             mouseY = cameraInput.y;
             
