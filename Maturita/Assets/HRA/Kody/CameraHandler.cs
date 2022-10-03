@@ -76,14 +76,12 @@ namespace AH
             if(Physics.SphereCast(cameraPivotTransform.position, cameraSphereRadius, direction , out hit, Mathf.Abs(targetPosition), ignoreLayers))
             {
                 float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
-                Debug.Log("narazil som");
                 targetPosition = -(dis - cameraCollisionOffSet);
             }
 
             if(Mathf.Abs(targetPosition) < minimumCollisionOffset)
             {
                 targetPosition = -minimumCollisionOffset;
-                Debug.Log(" NE narazil som");
 
             }
 

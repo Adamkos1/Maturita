@@ -12,7 +12,9 @@ namespace AH
         public float moveAmount;
         public float mouseX;
         public float mouseY;
+        public float rollInputTimer;
 
+        public bool sprintFlag;
         public bool b_Input;
         public bool rollFlag;
         public bool isInteracting;
@@ -73,11 +75,22 @@ namespace AH
 
         private void HandleRollInput(float delta)
         {
-            b_Input = inputActions.PlayerActions.Roll.triggered;
+            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
 
             if(b_Input)
             {
-                rollFlag = true;
+                rollInputTimer += delta;
+                sprintFlag = true;
+            }
+            else
+            {
+                if (rollInputTimer > 0 && rollInputTimer < 0.8f)
+                {
+                    sprintFlag = false;
+                    rollFlag = true;
+                }
+
+                rollInputTimer = 0;
             }
         }
         
