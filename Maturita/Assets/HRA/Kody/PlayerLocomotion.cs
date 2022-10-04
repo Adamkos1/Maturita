@@ -9,6 +9,7 @@ namespace AH
     {
         Transform cameraObject;
         InputHandler inputHandler;
+        PlayerManager playerManager;
         Vector3 moveDirection;
 
         [HideInInspector]
@@ -20,7 +21,7 @@ namespace AH
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
-        [Header("Stats")]
+        [Header("Movement Stats")]
         [SerializeField]
             float movementSpeed = 5;
         [SerializeField]
@@ -28,28 +29,16 @@ namespace AH
         [SerializeField]
             float rotationSpeed = 10;
 
-        public bool isSprinting;
-
 
         void Start()
         {
+            playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
-        }
-
-        public void Update()
-        {
-            float delta = Time.deltaTime;
-
-            isSprinting = inputHandler.b_Input;
-            inputHandler.TickInput(delta);
-            HandleMovement(delta);
-            HandleRollingAndSprinting(delta);
-
         }
 
         #region Movement
@@ -95,7 +84,7 @@ namespace AH
             if(inputHandler.sprintFlag)
             {
                 speed = sprintSpeed;
-                isSprinting = true;
+                playerManager.isSprinting = true;
                 moveDirection *= speed;
             }
             else
@@ -106,7 +95,7 @@ namespace AH
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
 
-            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, isSprinting);
+            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
             if (animatorHandler.canRotate)
             {
