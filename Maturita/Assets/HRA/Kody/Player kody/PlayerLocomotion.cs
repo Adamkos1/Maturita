@@ -39,7 +39,7 @@ namespace AH
         [SerializeField]
             float rotationSpeed = 10;
         [SerializeField]
-        float fallingSpeed = 40;
+        float fallingSpeed = 50;
 
 
         void Start()
