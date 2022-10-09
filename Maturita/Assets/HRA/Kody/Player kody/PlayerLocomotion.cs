@@ -22,11 +22,11 @@ namespace AH
         public GameObject normalCamera;
 
         [Header("Ground & Air Detection Stats")]
-        [SerializeField]
-        float groundDetectionRayStartPiont = 0.5f;
-        [SerializeField]
-        float minimumDistanceNeededToBeginFall = 1f;
-        [SerializeField]
+        [HideInInspector]
+        float groundDetectionRayStartPiont = 0.6f;
+        [HideInInspector]
+        float minimumDistanceNeededToBeginFall = 0.75f;
+        [HideInInspector]
         float groundDirectionRayDistance = 0.2f;
         LayerMask ignoreForGroundCheck;
         public float inAirTimer;
@@ -38,8 +38,8 @@ namespace AH
             float sprintSpeed = 7;
         [SerializeField]
             float rotationSpeed = 10;
-        [SerializeField]
-        float fallingSpeed = 50;
+        [HideInInspector]
+        float fallingSpeed = 40;
 
 
         void Start()
@@ -162,7 +162,8 @@ namespace AH
             if(playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
+                rigidbody.AddForce(moveDirection * fallingSpeed / 6f);
+
             }
 
             Vector3 dir = moveDirection;
@@ -182,7 +183,7 @@ namespace AH
 
                 if (playerManager.isInAir)
                 {
-                    if (inAirTimer > 0.5f)
+                    if (inAirTimer > 0.3f)
                     {
                         Debug.Log("You were in the air for " + inAirTimer);
                         animatorHandler.PlayTargetAnimation("Land", true);
@@ -190,7 +191,7 @@ namespace AH
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Locomotion", false);
+                        animatorHandler.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
