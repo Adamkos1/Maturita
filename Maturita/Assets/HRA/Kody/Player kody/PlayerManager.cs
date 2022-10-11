@@ -17,6 +17,7 @@ namespace AH
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
+        public bool canDoCombo;
 
 
         void Start()
@@ -32,6 +33,7 @@ namespace AH
             float delta = Time.deltaTime;
 
             isInteracting = anim.GetBool("isInteracting");
+            canDoCombo = anim.GetBool("canDoCombo");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);

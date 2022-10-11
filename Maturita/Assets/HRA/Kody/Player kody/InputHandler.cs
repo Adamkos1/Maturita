@@ -16,6 +16,7 @@ namespace AH
 
         public bool rollFlag;
         public bool sprintFlag;
+        public bool comboFlag;
 
         public bool b_Input;
         public bool rb_Input;
@@ -25,6 +26,7 @@ namespace AH
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
+        PlayerManager playerManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -33,6 +35,7 @@ namespace AH
         {
             playerAttacker = GetComponent<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
 
         }
 
@@ -97,11 +100,27 @@ namespace AH
 
             if(rb_Input)
             {
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                if(playerManager.canDoCombo)
+                {
+                    comboFlag = true;
+                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                    comboFlag = false;
+                }
+                else
+                {
+                    if (playerManager.isInteracting)
+                        return;
+                    if (playerManager.canDoCombo)
+                        return;
+                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+
+                }
             }
 
             if (rt_Input)
             {
+                if (playerManager.isInteracting)
+                    return;
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
         }
