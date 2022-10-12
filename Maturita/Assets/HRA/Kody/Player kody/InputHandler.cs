@@ -36,7 +36,6 @@ namespace AH
             playerAttacker = GetComponent<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
-
         }
 
         private void OnEnable() 
@@ -98,31 +97,31 @@ namespace AH
             inputActions.PlayerActions.RB.performed += i => rb_Input = true;
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
 
-            if(rb_Input)
-            {
-                if(playerManager.canDoCombo)
+                if (rb_Input)
                 {
-                    comboFlag = true;
-                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
-                    comboFlag = false;
+                    if (playerManager.canDoCombo)
+                    {
+                        comboFlag = true;
+                        playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                        comboFlag = false;
+                    }
+                    else
+                    {
+                        if (playerManager.isInteracting)
+                            return;
+                        if (playerManager.canDoCombo)
+                            return;
+                        playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+
+                    }
                 }
-                else
+
+                if (rt_Input)
                 {
                     if (playerManager.isInteracting)
                         return;
-                    if (playerManager.canDoCombo)
-                        return;
-                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
-
+                    playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
                 }
-            }
-
-            if (rt_Input)
-            {
-                if (playerManager.isInteracting)
-                    return;
-                playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
-            }
         }
         
     }

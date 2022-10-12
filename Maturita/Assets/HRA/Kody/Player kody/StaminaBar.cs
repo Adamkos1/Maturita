@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 namespace AH
 {
-
-    public class HealthBar : MonoBehaviour
+    public class StaminaBar : MonoBehaviour
     {
         public Slider slider;
 
@@ -15,15 +14,15 @@ namespace AH
             slider = GetComponent<Slider>();
         }
 
-        public void SetMaxHealth(int maxHealth)
+        public void SetMaxStamina(int maxStamina)
         {
-            slider.maxValue = maxHealth;
-            slider.value = maxHealth;
+            slider.maxValue = maxStamina;
+            slider.value = maxStamina;
         }
 
-        public void SetCurrentHealth(int currentHealth)
+        public void SetCurrentStamina(int currentStamina)
         {
-            slider.value = currentHealth;
+            slider.value = currentStamina;
         }
 
     }
