@@ -21,6 +21,10 @@ namespace AH
         public bool b_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool d_Pad_Up;
+        public bool d_Pad_Down;
+        public bool d_Pad_Left;
+        public bool d_Pad_Right;
 
 
         PlayerControls inputActions;
@@ -59,6 +63,7 @@ namespace AH
             MoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
+            HandleQuickSlotInput();
         }
 
         private void MoveInput(float delta)
@@ -124,6 +129,20 @@ namespace AH
                 }
         }
         
+        private void HandleQuickSlotInput()
+        {
+            inputActions.PlayerInventory.DPadRight.performed += i => d_Pad_Right = true;
+            inputActions.PlayerInventory.DPadLeft.performed += i => d_Pad_Left = true;
+            if (d_Pad_Right)
+            {
+                playerInventory.ChangeRightWeapon();
+            }
+            else if (d_Pad_Left)
+            {
+                playerInventory.ChangeLeftWeapon();
+            }
+        }
+
     }
 
 
