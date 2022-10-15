@@ -19,10 +19,13 @@ namespace AH
 
         PlayerStats playerStats;
 
+        QuickSlotsUI quickSlotsUI;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
             playerStats = GetComponentInParent<PlayerStats>();
+            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
 
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
 
@@ -46,6 +49,7 @@ namespace AH
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamgeCollider();
+                quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
 
                 #region Handle Left Weapon idle Animations
                 if (weaponItem != null)
@@ -62,6 +66,7 @@ namespace AH
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamgeCollider();
+                quickSlotsUI.UpdateWeaponQuickSlotUI(false, weaponItem);
 
                 #region Handle Right Weapon idle Animations
                 if (weaponItem != null)

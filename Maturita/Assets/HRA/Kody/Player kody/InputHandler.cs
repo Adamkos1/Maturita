@@ -18,6 +18,7 @@ namespace AH
         public bool sprintFlag;
         public bool comboFlag;
 
+        public bool a_Input;
         public bool b_Input;
         public bool rb_Input;
         public bool rt_Input;
@@ -64,6 +65,7 @@ namespace AH
             HandleRollInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotInput();
+            HandleInteractingButtonInput();
         }
 
         private void MoveInput(float delta)
@@ -141,6 +143,11 @@ namespace AH
             {
                 playerInventory.ChangeLeftWeapon();
             }
+        }
+
+        private void HandleInteractingButtonInput()
+        {
+            inputActions.PlayerActions.A.performed += i => a_Input = true;
         }
 
     }

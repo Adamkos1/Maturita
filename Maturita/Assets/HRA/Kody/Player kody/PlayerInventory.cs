@@ -20,6 +20,8 @@ namespace AH
         public int currentRightWeaponIndex = -1;
         public int currentLeftWeaponIndex = -1;
 
+        public List<WeaponItem> weaponsInventory;
+
 
         private void Awake()
         {

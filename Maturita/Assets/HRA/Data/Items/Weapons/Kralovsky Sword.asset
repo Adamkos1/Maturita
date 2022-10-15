@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
   m_Name: Kralovsky Sword
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d979bd7f52a1d1045839ae571280b21e, type: 3}
   itemName: Sword 1
   modelPrefab: {fileID: 7090337672483868319, guid: 0e2a82a3b22aab0469c3041a01f4eafc, type: 3}
   isUnarmed: 0

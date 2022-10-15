@@ -12,7 +12,7 @@ namespace AH
         public Transform cameraPivotTransform;
         public Transform myTransform;
         private Vector3 cameraTransformPosition;
-        private LayerMask ignoreLayers;
+        public LayerMask ignoreLayers;
         private Vector3 cameraFollowVelocity = Vector3.zero;
 
 
