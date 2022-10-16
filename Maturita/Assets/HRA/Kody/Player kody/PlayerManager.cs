@@ -12,6 +12,10 @@ namespace AH
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
 
+        InteractableUI interactableUI;
+        public GameObject interactableUIGameObject;
+        public GameObject itemInteractableUIGameObject;
+
         public bool isInteracting;
         [Header("Player Flags")]
         public bool isSprinting;
@@ -26,6 +30,7 @@ namespace AH
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            interactableUI = FindObjectOfType<InteractableUI>();
         }
 
         void Update()
@@ -86,12 +91,25 @@ namespace AH
                     if(interactableObject != null)
                     {
                         string interactableText = interactableObject.interactableText;
+                        interactableUI.interactableText.text = interactableText;
+                        interactableUIGameObject.SetActive(true);
 
                         if(inputHandler.a_Input)
                         {
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
+                }
+            }
+            else
+            {
+                if(interactableUIGameObject != null)
+                {
+                    interactableUIGameObject.SetActive(false);
+                }
+                if(itemInteractableUIGameObject != null && inputHandler.a_Input)
+                {
+                    itemInteractableUIGameObject.SetActive(false);
                 }
             }
         }
