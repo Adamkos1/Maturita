@@ -8,6 +8,7 @@ namespace AH
 
     public class PlayerStats : MonoBehaviour
     {
+        private const int V = 10;
         public int healthlevel = 10;
         public int maxHealth;
         public int currentHealth;
@@ -40,7 +41,7 @@ namespace AH
 
         private int SetMaxHealthFromHealthLevel()
         {
-            maxHealth = healthlevel * 10;
+            maxHealth = healthlevel * V;
             return maxHealth;
         }
 

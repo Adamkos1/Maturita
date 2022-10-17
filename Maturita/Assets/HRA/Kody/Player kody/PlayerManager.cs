@@ -39,11 +39,13 @@ namespace AH
 
             isInteracting = anim.GetBool("isInteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleRollingAndSprinting(delta);
+            playerLocomotion.HandleRollingAndSprinting();
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
         }
@@ -66,6 +68,7 @@ namespace AH
             isSprinting = inputHandler.b_Input;
             inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
+            inputHandler.jump_input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Right = false;

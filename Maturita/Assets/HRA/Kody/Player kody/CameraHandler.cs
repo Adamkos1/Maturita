@@ -18,9 +18,9 @@ namespace AH
 
         public static CameraHandler singleton;
 
-        public float lookSpeed = 0.1f;
+        public float lookSpeed = 250;
         public float followSpeed = 0.1f;
-        public float pivotSpeed = 0.03f;
+        public float pivotSpeed = 100;
 
         private float targetPosition;
         private float defaultPosition;
@@ -51,8 +51,8 @@ namespace AH
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
         {
-            lookAngle += (mouseXInput * lookSpeed) / delta;
-            pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+            lookAngle += mouseXInput * lookSpeed * delta;
+            pivotAngle -= mouseYInput * pivotSpeed * delta;
             pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot, maximumPivot);
 
             Vector3 rotation = Vector3.zero;
