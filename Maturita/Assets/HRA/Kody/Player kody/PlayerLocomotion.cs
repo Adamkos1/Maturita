@@ -238,7 +238,7 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
-            if(inputHandler.jump_input)
+            if(inputHandler.jump_Input)
             {
                 if(inputHandler.moveAmount > 0)
                 {

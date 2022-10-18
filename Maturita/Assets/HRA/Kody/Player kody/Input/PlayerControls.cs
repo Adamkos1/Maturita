@@ -174,6 +174,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a49dd84-3b1a-4efa-ac53-b9de4f8bcef6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -242,11 +251,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3dd52d6-e842-44c2-9b65-0e3bb61ebdb6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb825341-c2d6-419d-8d03-1ae85b634c7a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""Player Inventory"",
+            ""name"": ""Player Quick Slots"",
             ""id"": ""4fedbb15-f146-4387-8035-77d2eb5e6b6f"",
             ""actions"": [
                 {
@@ -391,12 +422,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
         m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
-        // Player Inventory
-        m_PlayerInventory = asset.FindActionMap("Player Inventory", throwIfNotFound: true);
-        m_PlayerInventory_DPadUp = m_PlayerInventory.FindAction("D-Pad Up", throwIfNotFound: true);
-        m_PlayerInventory_DPadDown = m_PlayerInventory.FindAction("D-Pad Down", throwIfNotFound: true);
-        m_PlayerInventory_DPadLeft = m_PlayerInventory.FindAction("D-Pad Left", throwIfNotFound: true);
-        m_PlayerInventory_DPadRight = m_PlayerInventory.FindAction("D-Pad Right", throwIfNotFound: true);
+        m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
+        // Player Quick Slots
+        m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
+        m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
+        m_PlayerQuickSlots_DPadDown = m_PlayerQuickSlots.FindAction("D-Pad Down", throwIfNotFound: true);
+        m_PlayerQuickSlots_DPadLeft = m_PlayerQuickSlots.FindAction("D-Pad Left", throwIfNotFound: true);
+        m_PlayerQuickSlots_DPadRight = m_PlayerQuickSlots.FindAction("D-Pad Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -502,6 +534,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_A;
     private readonly InputAction m_PlayerActions_Jump;
+    private readonly InputAction m_PlayerActions_Inventory;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -511,6 +544,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @A => m_Wrapper.m_PlayerActions_A;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
+        public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -535,6 +569,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
+                @Inventory.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -554,49 +591,52 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
 
-    // Player Inventory
-    private readonly InputActionMap m_PlayerInventory;
-    private IPlayerInventoryActions m_PlayerInventoryActionsCallbackInterface;
-    private readonly InputAction m_PlayerInventory_DPadUp;
-    private readonly InputAction m_PlayerInventory_DPadDown;
-    private readonly InputAction m_PlayerInventory_DPadLeft;
-    private readonly InputAction m_PlayerInventory_DPadRight;
-    public struct PlayerInventoryActions
+    // Player Quick Slots
+    private readonly InputActionMap m_PlayerQuickSlots;
+    private IPlayerQuickSlotsActions m_PlayerQuickSlotsActionsCallbackInterface;
+    private readonly InputAction m_PlayerQuickSlots_DPadUp;
+    private readonly InputAction m_PlayerQuickSlots_DPadDown;
+    private readonly InputAction m_PlayerQuickSlots_DPadLeft;
+    private readonly InputAction m_PlayerQuickSlots_DPadRight;
+    public struct PlayerQuickSlotsActions
     {
         private @PlayerControls m_Wrapper;
-        public PlayerInventoryActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @DPadUp => m_Wrapper.m_PlayerInventory_DPadUp;
-        public InputAction @DPadDown => m_Wrapper.m_PlayerInventory_DPadDown;
-        public InputAction @DPadLeft => m_Wrapper.m_PlayerInventory_DPadLeft;
-        public InputAction @DPadRight => m_Wrapper.m_PlayerInventory_DPadRight;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerInventory; }
+        public PlayerQuickSlotsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @DPadUp => m_Wrapper.m_PlayerQuickSlots_DPadUp;
+        public InputAction @DPadDown => m_Wrapper.m_PlayerQuickSlots_DPadDown;
+        public InputAction @DPadLeft => m_Wrapper.m_PlayerQuickSlots_DPadLeft;
+        public InputAction @DPadRight => m_Wrapper.m_PlayerQuickSlots_DPadRight;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerQuickSlots; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerInventoryActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerInventoryActions instance)
+        public static implicit operator InputActionMap(PlayerQuickSlotsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerQuickSlotsActions instance)
         {
-            if (m_Wrapper.m_PlayerInventoryActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface != null)
             {
-                @DPadUp.started -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadUp;
-                @DPadUp.performed -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadUp;
-                @DPadUp.canceled -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadUp;
-                @DPadDown.started -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadDown;
-                @DPadDown.performed -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadDown;
-                @DPadDown.canceled -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadDown;
-                @DPadLeft.started -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadLeft;
-                @DPadLeft.performed -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadLeft;
-                @DPadLeft.canceled -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadLeft;
-                @DPadRight.started -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadRight;
-                @DPadRight.performed -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadRight;
-                @DPadRight.canceled -= m_Wrapper.m_PlayerInventoryActionsCallbackInterface.OnDPadRight;
+                @DPadUp.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadUp;
+                @DPadUp.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadUp;
+                @DPadUp.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadUp;
+                @DPadDown.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadDown;
+                @DPadDown.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadDown;
+                @DPadDown.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadDown;
+                @DPadLeft.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadLeft;
+                @DPadLeft.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadLeft;
+                @DPadLeft.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadLeft;
+                @DPadRight.started -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
+                @DPadRight.performed -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
+                @DPadRight.canceled -= m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface.OnDPadRight;
             }
-            m_Wrapper.m_PlayerInventoryActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @DPadUp.started += instance.OnDPadUp;
@@ -614,7 +654,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             }
         }
     }
-    public PlayerInventoryActions @PlayerInventory => new PlayerInventoryActions(this);
+    public PlayerQuickSlotsActions @PlayerQuickSlots => new PlayerQuickSlotsActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -627,8 +667,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRT(InputAction.CallbackContext context);
         void OnA(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
-    public interface IPlayerInventoryActions
+    public interface IPlayerQuickSlotsActions
     {
         void OnDPadUp(InputAction.CallbackContext context);
         void OnDPadDown(InputAction.CallbackContext context);
