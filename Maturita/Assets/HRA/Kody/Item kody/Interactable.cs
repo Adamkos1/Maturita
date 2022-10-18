@@ -18,7 +18,7 @@ namespace AH
 
         public virtual void Interact(PlayerManager playerManager)
         {
-            Debug.Log("You inteactted with object ty kokot");
+            Debug.Log("You inteactted with object");
         }
     }
 
