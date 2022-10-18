@@ -39,6 +39,8 @@ namespace AH
 
         List<CharacterManager> availableTargets = new List<CharacterManager>();
         public Transform nearestLockOnTarget;
+        public Transform leftLockTarget;
+        public Transform rightLockTarget;
         public float maximumLockOnDistance = 30;
 
         private void Awake()
@@ -124,6 +126,9 @@ namespace AH
         public void HandleLockOn()
         {
             float shortestDistance = Mathf.Infinity;
+            float shortestDistanceLeftTarget = Mathf.Infinity;
+            float shortestDistanceRightTarget = Mathf.Infinity;
+
 
             Collider[] colliders = Physics.OverlapSphere(targetTransform.position, 26);
 
@@ -144,17 +149,35 @@ namespace AH
                 }
             }
 
-            for(int j = 0; j < availableTargets.Count; j++)
+            for (int j = 0; j < availableTargets.Count; j++)
             {
                 float distanceFromTarget = Vector3.Distance(targetTransform.position, availableTargets[j].transform.position);
 
-                if(distanceFromTarget < shortestDistance)
+                if (distanceFromTarget < shortestDistance)
                 {
                     shortestDistance = distanceFromTarget;
                     nearestLockOnTarget = availableTargets[j].lockOnTransform;
                 }
-            }
 
+                if (inputHandler.lockOnFlag)
+                {
+                    Vector3 relativeEnemyPosition = currentLockOnTarget.InverseTransformPoint(availableTargets[j].transform.position);
+                    var distanceFromLeftTarget = currentLockOnTarget.transform.position.x - availableTargets[j].transform.position.x;
+                    var distanceFromRightTarget = currentLockOnTarget.transform.position.x - availableTargets[j].transform.position.x;
+
+                    if(relativeEnemyPosition.x > 0.00 && distanceFromLeftTarget < shortestDistanceLeftTarget)
+                    {
+                        shortestDistanceLeftTarget = distanceFromLeftTarget;
+                        leftLockTarget = availableTargets[j].lockOnTransform;
+                    }
+
+                    if(relativeEnemyPosition.x < 0.00 && distanceFromRightTarget < shortestDistanceRightTarget)
+                    {
+                        shortestDistanceRightTarget = distanceFromRightTarget;
+                        rightLockTarget = availableTargets[j].lockOnTransform;
+                    }
+                }
+            }
         }
 
         public void ClearLockOnTargets()
