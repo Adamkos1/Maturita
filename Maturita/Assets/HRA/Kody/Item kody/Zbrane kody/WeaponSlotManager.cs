@@ -43,9 +43,9 @@ namespace AH
             }
         }
 
-        public void LoadWeaponOnSlot (WeaponItem weaponItem, bool isLfet)
+        public void LoadWeaponOnSlot (WeaponItem weaponItem, bool isLeft)
         {
-            if(isLfet)
+            if(isLeft)
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamgeCollider();
