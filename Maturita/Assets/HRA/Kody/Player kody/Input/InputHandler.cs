@@ -83,7 +83,7 @@ namespace AH
 
         public void TickInput(float delta)
         {
-            MoveInput(delta);
+            HandleMoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotInput();
@@ -91,7 +91,7 @@ namespace AH
             HandleLockOnInput();
         }
 
-        private void MoveInput(float delta)
+        private void HandleMoveInput(float delta)
         {
             horizontal = movementInput.x;
             vertical = movementInput.y;
@@ -214,7 +214,7 @@ namespace AH
                 }
             }
 
-            else if(lockOnFlag && right_Stick_Right_Input)
+            if(lockOnFlag && right_Stick_Right_Input)
             {
                 right_Stick_Right_Input = false;
                 cameraHandler.HandleLockOn();
@@ -223,6 +223,8 @@ namespace AH
                     cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
                 }
             }
+
+            cameraHandler.SetCameraHeight();
         }
 
     }
