@@ -9,6 +9,7 @@ namespace AH
 
     public class HandEquipmentSlotUI : MonoBehaviour
     {
+        UIManager uIManager;
         public Image icon;
         WeaponItem weapon;
 
@@ -17,6 +18,10 @@ namespace AH
         public bool leftHandSlot01;
         public bool leftHandSlot02;
 
+        private void Awake()
+        {
+            uIManager = FindObjectOfType<UIManager>();
+        }
 
         public void AddItem(WeaponItem newWeapon)
         {
@@ -32,6 +37,29 @@ namespace AH
             icon.sprite = null;
             icon.enabled = false;
             gameObject.SetActive(false);
+        }
+
+        public void SelectThisSlot()
+        {
+            if(rightHandSlot01)
+            {
+                uIManager.rightHandSlot01Selected = true;
+            }
+            else if(rightHandSlot02)
+            {
+                uIManager.rightHandSlot02Selected = true;
+
+            }
+            else if(leftHandSlot01)
+            {
+                uIManager.leftHandSlot01Selected = true;
+
+            }
+            else
+            {
+                uIManager.leftHandSlot02Selected = true;
+
+            }
         }
     }
 

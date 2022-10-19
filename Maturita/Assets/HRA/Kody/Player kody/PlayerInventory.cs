@@ -14,8 +14,8 @@ namespace AH
 
         public WeaponItem unarmedWeapon;
 
-        public WeaponItem[] weaponInRightHandSlots = new WeaponItem[1];
-        public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[1];
+        public WeaponItem[] weaponInRightHandSlots = new WeaponItem[0];
+        public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[0];
 
         public int currentRightWeaponIndex = -1;
         public int currentLeftWeaponIndex = -1;
@@ -30,8 +30,10 @@ namespace AH
 
         private void Start()
         {
-            rightWeapon = unarmedWeapon;
-            leftWeapon = unarmedWeapon;
+            rightWeapon = weaponInRightHandSlots[0];
+            leftWeapon = weaponInLeftHandSlots[0];
+            weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false);
+            weaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
         }
 
         public void ChangeRightWeapon()
