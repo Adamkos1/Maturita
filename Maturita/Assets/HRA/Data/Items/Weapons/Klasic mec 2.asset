@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
-  m_Name: Kralovsky Sword
+  m_Name: Klasic mec 2
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: d979bd7f52a1d1045839ae571280b21e, type: 3}
-  itemName: Kralovsky mec
-  modelPrefab: {fileID: 7090337672483868319, guid: 3abc6ba6a392e32438f6ae7ace2b5786, type: 3}
+  itemIcon: {fileID: 21300000, guid: c81c14f62c2d3d24e96d3f3493c7f394, type: 3}
+  itemName: Klasicky mec
+  modelPrefab: {fileID: 7090337672483868319, guid: b377f8619327c6c4a9fb7e705e665d7e, type: 3}
   isUnarmed: 0
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
@@ -24,7 +24,7 @@ MonoBehaviour:
   OH_Heavy_Attack_1: Oh_Heavy_Attack_01
   TH_Light_Attack_1: Th_Light_Attack_01
   TH_Light_Attack_2: Th_Light_Attack_02
-  TH_Heavy_Attack_1: 
+  TH_Heavy_Attack_1: Th_Heavy_Attack_01
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2

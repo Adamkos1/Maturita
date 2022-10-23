@@ -45,7 +45,7 @@ namespace AH
                     if(weaponInventorySlots.Length < playerInventory.weaponsInventory.Count)
                     {
                         Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
-                        weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+                        weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(true);
                     }
                     Debug.Log(i);
                     weaponInventorySlots[i].AddItem(playerInventory.weaponsInventory[i]);
