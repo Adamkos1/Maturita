@@ -201,6 +201,7 @@ namespace AH
             playerManager.isGrounded = false;
             RaycastHit hit;
             Vector3 origin = myTransform.position;
+            Vector3 targetPosition;
             origin.y += groundDetectionRayStartPiont;
 
             if(Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
@@ -271,6 +272,8 @@ namespace AH
                 }
             }
 
+            if (playerManager.isGrounded)
+            {
                 if (playerManager.isInteracting || inputHandler.moveAmount > 0)
                 {
                     myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
@@ -280,6 +283,7 @@ namespace AH
                 {
                     myTransform.position = targetPosition;
                 }
+            }
         }
 
         public void HandleJumping()

@@ -6,14 +6,10 @@ using UnityEngine;
 namespace AH
 {
 
-    public class EnemyStats : MonoBehaviour
+    public class EnemyStats : CharacterStats
     {
-        public int healthlevel = 10;
-        public int maxHealth;
-        public int currentHealth;
 
         public HealthBar healthBar;
-
         Animator animator;
 
         private void Awake()

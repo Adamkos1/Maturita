@@ -6,19 +6,10 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerStats : MonoBehaviour
+    public class PlayerStats : CharacterStats
     {
-        private const int V = 10;
-        public int healthlevel = 10;
-        public int maxHealth;
-        public int currentHealth;
-        HealthBar healthBar;
-
-        public int staminalevel = 10;
-        public int maxStamina;
-        public int currentStamina;
         StaminaBar staminaBar;
-
+        HealthBar healthBar;
         AnimatorHandler animatorHandler;
 
         private void Awake()
@@ -41,7 +32,7 @@ namespace AH
 
         private int SetMaxHealthFromHealthLevel()
         {
-            maxHealth = healthlevel * V;
+            maxHealth = healthlevel * 10;
             return maxHealth;
         }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
   m_Name: Dvojruky mec
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: d979bd7f52a1d1045839ae571280b21e, type: 3}
+  itemIcon: {fileID: 21300000, guid: b82c60686cea0c141a1c020e428c75f7, type: 3}
   itemName: Dvojruky mec
   modelPrefab: {fileID: 7090337672483868319, guid: 0e2a82a3b22aab0469c3041a01f4eafc, type: 3}
   isUnarmed: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   OH_Heavy_Attack_1: Oh_Heavy_Attack_01
   TH_Light_Attack_1: Th_Light_Attack_01
   TH_Light_Attack_2: Th_Light_Attack_02
-  TH_Heavy_Attack_1: 
+  TH_Heavy_Attack_1: Th_Heavy_Attack_01
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
