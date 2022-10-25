@@ -9,7 +9,7 @@ namespace AH
     {
         EnemyLocomotionManager enemyLocomotionManager;
 
-        bool isPerformingAction;
+        public bool isPerformingAction;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -23,7 +23,7 @@ namespace AH
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             HandleCurrentAction();
         }
@@ -34,6 +34,10 @@ namespace AH
             if(enemyLocomotionManager.currentTarget == null)
             {
                 enemyLocomotionManager.HandleDetection();
+            }
+            else
+            {
+                enemyLocomotionManager.HandleMoveToTarget();
             }
         }
 
