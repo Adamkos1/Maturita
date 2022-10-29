@@ -21,7 +21,7 @@ namespace AH
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
+            //healthBar.SetMaxHealth(maxHealth);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -33,7 +33,7 @@ namespace AH
         public void TakeDamage(int damage)
         {
             currentHealth = currentHealth - damage;
-            healthBar.SetCurrentHealth(currentHealth);
+            //healthBar.SetCurrentHealth(currentHealth);
             animator.Play("Damage_01");
 
             if (currentHealth <= 0)

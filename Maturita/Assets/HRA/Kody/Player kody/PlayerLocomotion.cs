@@ -12,6 +12,7 @@ namespace AH
         InputHandler inputHandler;
         PlayerManager playerManager;
         public Vector3 moveDirection;
+        public LayerMask groundLayer;
 
         [HideInInspector]
         public Transform myTransform;
@@ -212,7 +213,7 @@ namespace AH
             if(playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 6f);
+                rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
 
             }
 
@@ -224,7 +225,7 @@ namespace AH
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
 
-            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
+            if (Physics.SphereCast(origin, 0.2f, -Vector3.up, out hit, groundLayer))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
