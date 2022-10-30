@@ -41,7 +41,7 @@ namespace AH
         [SerializeField]
             float rotationSpeed = 10;
         [HideInInspector]
-        float fallingSpeed = 300;
+        float fallingSpeed = 400;
 
         private void Awake()
         {

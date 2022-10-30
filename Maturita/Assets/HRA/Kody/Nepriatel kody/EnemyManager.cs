@@ -19,7 +19,7 @@ namespace AH
 
 
         public bool isPerformingAction;
-
+        public bool isInteracting;
         public float distanceFromTarget;
 
         public float rotationSpeed = 15;
@@ -52,6 +52,7 @@ namespace AH
         private void Update()
         {
             HandleRecoveryTimer();
+            isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
         }
 
         private void FixedUpdate()
