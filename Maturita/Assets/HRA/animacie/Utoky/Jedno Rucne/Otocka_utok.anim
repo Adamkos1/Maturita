@@ -103523,14 +103523,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.0666667
-    functionName: OpenRightDamageCollider
+    functionName: OpenDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
-    functionName: CloseRightDamageCollider
+    functionName: CloseDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

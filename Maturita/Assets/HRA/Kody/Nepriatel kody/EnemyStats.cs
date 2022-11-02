@@ -32,6 +32,9 @@ namespace AH
 
         public void TakeDamage(int damage)
         {
+            if (isDead)
+                return;
+
             currentHealth = currentHealth - damage;
             //healthBar.SetCurrentHealth(currentHealth);
             animator.Play("Damage_01");
@@ -40,6 +43,7 @@ namespace AH
             {
                 currentHealth = 0;
                 animator.Play("Death_01");
+                isDead = true;
             }
         }
 

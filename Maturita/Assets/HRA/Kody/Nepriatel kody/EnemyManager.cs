@@ -20,7 +20,6 @@ namespace AH
 
         public bool isPerformingAction;
         public bool isInteracting;
-        public float distanceFromTarget;
 
         public float rotationSpeed = 15;
 
@@ -31,7 +30,6 @@ namespace AH
         public float minimumDetectionAngle = -50;
         public float maximumAttackRange = 2f;
         public float currentRecoveryTime = 0;
-        public float viewableAngle;
 
 
         private void Awake()

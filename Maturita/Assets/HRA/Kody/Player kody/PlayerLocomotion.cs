@@ -43,6 +43,9 @@ namespace AH
         [HideInInspector]
         float fallingSpeed = 400;
 
+        public CapsuleCollider characterCollider;
+        public CapsuleCollider characterCollisionBlockerCollider;
+
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -60,6 +63,8 @@ namespace AH
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+
+            Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
         }
 
 

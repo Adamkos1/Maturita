@@ -16,6 +16,8 @@ namespace AH
         public int maxStamina;
         public int currentStamina;
         StaminaBar staminaBar;
+
+        public bool isDead;
     }
 
 }

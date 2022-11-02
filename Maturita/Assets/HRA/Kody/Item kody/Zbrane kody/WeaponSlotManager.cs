@@ -14,6 +14,7 @@ namespace AH
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
 
+        public PlayerManager playerManager;
         public WeaponItem attackingWeapon;
 
         Animator animator;
@@ -25,6 +26,7 @@ namespace AH
 
         private void Awake()
         {
+            playerManager = GetComponentInParent<PlayerManager>();
             animator = GetComponent<Animator>();
             playerStats = GetComponentInParent<PlayerStats>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
@@ -116,24 +118,22 @@ namespace AH
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }
 
-        public void OpenRightDamageCollider()
+        public void OpenDamageCollider()
         {
-            rightHandDamageCollider.EnableDamageCollider();
+            if(playerManager.isUsingRightHand)
+            {
+                rightHandDamageCollider.EnableDamageCollider();
+            }
+            else
+            {
+                leftHandDamageCollider.EnableDamageCollider();
+            }
         }
 
-        public void OpenLeftDamageCollider()
-        {
-            leftHandDamageCollider.EnableDamageCollider();
-        }
-
-        public void CloseRightDamageCollider()
-        {
-            rightHandDamageCollider.DissableDamageCollider();
-        }
-
-        public void CloseLeftDamageCollider()
-        {
-            leftHandDamageCollider.DissableDamageCollider();
+        public void CloseDamageCollider()
+        { 
+                rightHandDamageCollider.DissableDamageCollider();
+                leftHandDamageCollider.DissableDamageCollider();
         }
 
         #endregion

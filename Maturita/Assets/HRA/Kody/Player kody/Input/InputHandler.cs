@@ -44,6 +44,7 @@ namespace AH
         PlayerManager playerManager;
         WeaponSlotManager weaponSlotManager;
         UIManager uIManager;
+        AnimatorHandler animatorHandler;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -56,6 +57,7 @@ namespace AH
             uIManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            animatorHandler = GetComponentInChildren<AnimatorHandler>();
         }
 
         private void OnEnable() 
@@ -144,6 +146,8 @@ namespace AH
                             return;
                         if (playerManager.canDoCombo)
                             return;
+
+                        animatorHandler.anim.SetBool("isUsingRightHand", true);
                         playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
 
                     }
