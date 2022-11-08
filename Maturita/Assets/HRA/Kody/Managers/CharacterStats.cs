@@ -13,8 +13,8 @@ namespace AH
         HealthBar healthBar;
 
         public int staminalevel = 10;
-        public int maxStamina;
-        public int currentStamina;
+        public float maxStamina;
+        public float currentStamina;
         StaminaBar staminaBar;
 
         public bool isDead;

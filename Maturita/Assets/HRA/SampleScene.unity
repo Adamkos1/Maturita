@@ -6941,6 +6941,7 @@ MonoBehaviour:
   staminalevel: 10
   maxStamina: 0
   currentStamina: 0
+  isDead: 0
   healthBar: {fileID: 0}
 --- !u!4 &1637551779
 Transform:
@@ -8318,6 +8319,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 278167847535956464, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 278187441529447134, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -8741,7 +8746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7152544121004209026, guid: f2ee25375e0e74743a703d9458550812, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.220001
+      value: -18.21997
       objectReference: {fileID: 0}
     - target: {fileID: 7152544121049141854, guid: f2ee25375e0e74743a703d9458550812, type: 3}
       propertyPath: m_AnchorMax.x

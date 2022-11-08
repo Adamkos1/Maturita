@@ -187,18 +187,18 @@ namespace AH
                 moveDirection = cameraObject.forward * inputHandler.vertical;
                 moveDirection += cameraObject.right * inputHandler.horizontal;
 
-                if (inputHandler.moveAmount > 0)
-                {
+                //if (inputHandler.moveAmount > 0)
+                //{
                     animatorHandler.PlayTargetAnimation("Rolling", true);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
-                }
+               // }
 
-                else
-               {
-                   animatorHandler.PlayTargetAnimation("Backstep", true);
-               }
+               // else
+              // {
+               //    animatorHandler.PlayTargetAnimation("Backstep", true);
+               //}
             }
         }
 

@@ -11,6 +11,7 @@ namespace AH
         Animator anim;
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
+        PlayerStats playerStats;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -24,6 +25,7 @@ namespace AH
         public bool canDoCombo;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
+        public bool isInvulnerable;
 
 
         void Start()
@@ -33,6 +35,7 @@ namespace AH
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
+            playerStats = GetComponent<PlayerStats>();
         }
 
         void Update()
@@ -43,11 +46,13 @@ namespace AH
             canDoCombo = anim.GetBool("canDoCombo");
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
+            isInvulnerable = anim.GetBool("isInvulnerable");
             anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleRollingAndSprinting();
             playerLocomotion.HandleJumping();
+            playerStats.RegenerateStamina();
 
             CheckForInteractableObject();
         }

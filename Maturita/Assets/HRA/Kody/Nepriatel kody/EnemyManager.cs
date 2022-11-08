@@ -60,11 +60,14 @@ namespace AH
 
         private void HandleStateMachine()
         {
-            if(currentState != null)
+            if (enemyStats.isDead)
+                return;
+
+            else if (currentState != null)
             {
                 State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
 
-                if(nextState != null)
+                if (nextState != null)
                 {
                     SwitchToNextState(nextState);
                 }
