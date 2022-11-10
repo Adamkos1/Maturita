@@ -6736,6 +6736,24 @@ MonoBehaviour:
   rightHandSlot02: 1
   leftHandSlot01: 0
   leftHandSlot02: 0
+--- !u!1 &1613356386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 278167847535956464, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+  m_PrefabInstance: {fileID: 277547546984077313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1613356388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613356386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd56e6a3232675448077b37dd3cf342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastAttack: 
 --- !u!1 &1623017139
 GameObject:
   m_ObjectHideFlags: 0
@@ -8551,7 +8569,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 277547547895783472, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
 --- !u!1001 &7152544120105047178
 PrefabInstance:

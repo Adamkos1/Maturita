@@ -9,6 +9,8 @@ namespace AH
     {
         WeaponSlotManager weaponSlotManager;
 
+        public SpellItem currentSpell;
+
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
 
