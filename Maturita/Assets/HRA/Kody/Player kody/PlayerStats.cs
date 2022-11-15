@@ -10,6 +10,7 @@ namespace AH
     {
         StaminaBar staminaBar;
         HealthBar healthBar;
+        ManaBar manaBar;
         AnimatorHandler animatorHandler;
         PlayerManager playerManager;
 
@@ -21,6 +22,7 @@ namespace AH
         {
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
+            manaBar = FindObjectOfType<ManaBar>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
             playerManager = GetComponent<PlayerManager>();
         }
@@ -34,6 +36,10 @@ namespace AH
             maxStamina = SetMaxStaminaFromStaminaLevel();
             currentStamina = maxStamina;
             staminaBar.SetMaxStamina(maxStamina);
+
+            maxMana = SetMaxManaFromHealthLevel();
+            currentMana = maxMana;
+            manaBar.SetMaxMana(maxMana);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -46,6 +52,12 @@ namespace AH
         {
             maxStamina = staminalevel * 10;
             return maxStamina;
+        }
+
+        private float SetMaxManaFromHealthLevel()
+        {
+            maxMana = manaLevel * 10;
+            return maxMana;
         }
 
         public void TakeDamage(int damage)
@@ -75,6 +87,18 @@ namespace AH
             currentStamina = currentStamina - damage;
 
             staminaBar.SetCurrentStamina(currentStamina);
+        }
+
+        public void SpendMana(int mana)
+        {
+            currentMana = currentMana - mana;
+
+            if(currentMana < 0)
+            {
+                currentMana = 0;
+            }
+
+            manaBar.SetCurrentMana(currentMana);
         }
 
         public void RegenerateStamina()

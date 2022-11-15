@@ -17,6 +17,10 @@ namespace AH
         public float currentStamina;
         StaminaBar staminaBar;
 
+        public int manaLevel = 10;
+        public float maxMana;
+        public float currentMana;
+
         public bool isDead;
     }
 
