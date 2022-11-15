@@ -8294,6 +8294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: currentSpell
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ab9d108bb09a334493ac44a00dddce3, type: 2}
+    - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: weaponInLeftHandSlots.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -8305,6 +8309,10 @@ PrefabInstance:
       propertyPath: weaponInLeftHandSlots.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 05458dd104fbb294db5866a8ad3cd134, type: 2}
+    - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: weaponInRightHandSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
     - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: weaponInRightHandSlots.Array.data[1]
       value: 

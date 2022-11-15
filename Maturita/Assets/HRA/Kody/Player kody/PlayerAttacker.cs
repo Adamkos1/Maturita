@@ -10,6 +10,7 @@ namespace AH
         PlayerManager playerManager;
         AnimatorHandler animatorHandler;
         PlayerInventory playerInventory;
+        PlayerStats playerStats;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
@@ -17,6 +18,7 @@ namespace AH
 
         private void Awake()
         {
+            playerStats = GetComponentInParent<PlayerStats>();
             playerManager = GetComponentInParent<PlayerManager>();
             animatorHandler = GetComponent<AnimatorHandler>();
             weaponSlotManager = GetComponent<WeaponSlotManager>();
@@ -120,9 +122,14 @@ namespace AH
             {
                 if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
-                    
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
                 }    
             }
+        }
+
+        private void SuccessfullyCastSpell()
+        {
+            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
         }
 
         #endregion

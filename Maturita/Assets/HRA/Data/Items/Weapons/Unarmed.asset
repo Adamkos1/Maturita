@@ -29,6 +29,6 @@ MonoBehaviour:
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
   isSpellCaster: 0
-  isFaithCaster: 0
+  isFaithCaster: 1
   isPyroCaster: 0
-  isMeleeWeapon: 1
+  isMeleeWeapon: 0

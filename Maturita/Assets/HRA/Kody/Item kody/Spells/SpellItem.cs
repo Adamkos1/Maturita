@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class SpellItem : MonoBehaviour
+    public class SpellItem : Item
     {
         public GameObject spellWarmUpFX;
         public GameObject spellCastFX;
@@ -21,12 +21,12 @@ namespace AH
         [TextArea]
         public string spellDescription;
 
-        public virtual void AttemptToCastSpell()
+        public virtual void AttemptToCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
         {
             Debug.Log("skusil si spell");
         }
 
-        public virtual void SuccessfullyCastSpell()
+        public virtual void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
         {
             Debug.Log("dal si spell");
         }
