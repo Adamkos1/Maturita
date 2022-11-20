@@ -189,6 +189,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Critical Attack",
+                    "type": "Button",
+                    "id": "7b2b37d5-f4a4-4590-ae0f-8a6fa798ead5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "RT",
                     "type": "Button",
                     "id": "66909c36-4409-496e-844b-a83340fbad93",
@@ -270,7 +279,18 @@
                     "name": "",
                     "id": "9922c648-20c9-475d-b241-28699e06532f",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f4070ef-40e7-4082-8794-ffc0dd209258",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -373,6 +393,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Two_Handed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d5edb4b-c98d-4aae-8db1-d4e4bb3715d3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Critical Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4d246cb-f4c8-4265-bc3c-e15f303be888",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Critical Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

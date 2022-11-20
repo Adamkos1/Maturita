@@ -15,6 +15,8 @@ namespace AH
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
 
+        LayerMask backStabLayer = 1 << 11;
+
 
         private void Awake()
         {
@@ -90,6 +92,7 @@ namespace AH
             }
         }
 
+
         #endregion
 
         #region Attack Action
@@ -143,6 +146,32 @@ namespace AH
         }
 
         #endregion
+
+        public void AttemptBackStabOrRiposte()
+        {
+            RaycastHit hit;
+
+            if(Physics.Raycast(inputHandler.criticalAttackRaycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f, backStabLayer))
+            {
+                CharacterManager enemyChracterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+
+                if(enemyChracterManager != null)
+                {
+                    playerManager.transform.position = enemyChracterManager.backStabCollider.backStabberStandPoint.position;
+
+                    Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+                    rotationDirection = hit.transform.position - playerManager.transform.position;
+                    rotationDirection.y = 0;
+                    rotationDirection.Normalize();
+                    Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                    Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                    playerManager.transform.rotation = targetRotation;
+
+                    animatorHandler.PlayTargetAnimation("Back Stab", true);
+                    enemyChracterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                }
+            }
+        }
     }
 
 }

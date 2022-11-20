@@ -26,6 +26,7 @@ namespace AH
         public bool y_input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool critical_Attack_Input;
         public bool jump_Input;
         public bool inventory_Input;
         public bool lockOn_Input;
@@ -36,6 +37,8 @@ namespace AH
         public bool d_Pad_Down;
         public bool d_Pad_Left;
         public bool d_Pad_Right;
+
+        public Transform criticalAttackRaycastStartPoint;
 
         CameraHandler cameraHandler;
         PlayerControls inputActions;
@@ -78,6 +81,7 @@ namespace AH
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
                 inputActions.PlayerActions.Two_Handed.performed += i => y_input = true;
+                inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
 
             }
             inputActions.Enable();
@@ -97,6 +101,7 @@ namespace AH
             HandleInventoryInput();
             HandleLockOnInput();
             HandleTwoHandInput();
+            HandleCriticalAttackInput();
         }
 
         private void HandleMoveInput(float delta)
@@ -238,6 +243,15 @@ namespace AH
                     weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
                 }
 
+            }
+        }
+
+        private void HandleCriticalAttackInput()
+        {
+            if(critical_Attack_Input)
+            {
+                critical_Attack_Input = false;
+                playerAttacker.AttemptBackStabOrRiposte();
             }
         }
 

@@ -36,6 +36,7 @@ namespace AH
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerStats = GetComponent<PlayerStats>();
+            backStabCollider = GetComponentInChildren<BackStabCollider>();
         }
 
         void Update()
