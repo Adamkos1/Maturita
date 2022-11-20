@@ -47,6 +47,17 @@ namespace AH
             }
         }
 
+        public void TakeDamgeNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
+        }
+
     }
 
 }

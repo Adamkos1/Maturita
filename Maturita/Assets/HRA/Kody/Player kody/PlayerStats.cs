@@ -11,7 +11,7 @@ namespace AH
         StaminaBar staminaBar;
         HealthBar healthBar;
         ManaBar manaBar;
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
         PlayerManager playerManager;
 
         public float staminaRegenerationAmount = 30;
@@ -23,7 +23,7 @@ namespace AH
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
             playerManager = GetComponent<PlayerManager>();
         }
 
@@ -78,6 +78,17 @@ namespace AH
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("Death_01", true);
+                isDead = true;
+            }
+        }
+
+        public void TakeDamgeNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
                 isDead = true;
             }
         }

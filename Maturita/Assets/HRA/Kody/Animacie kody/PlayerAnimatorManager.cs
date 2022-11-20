@@ -5,9 +5,10 @@ using UnityEngine;
 namespace AH
 {
 
-    public class AnimatorHandler : AnimatorManager
+    public class PlayerAnimatorManager : AnimatorManager
     {
         InputHandler inputHandler;
+        PlayerStats playerStats;
         PlayerLocomotion playerLocomotion;
         PlayerManager playerManager;
         int vertical;
@@ -17,6 +18,7 @@ namespace AH
         public void Initialize()
         {
             playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
@@ -114,6 +116,12 @@ namespace AH
         public void DisableIsInvulnerable()
         {
             anim.SetBool("isInvulnerable", false);
+        }
+
+        public override void TakeCriticalDamgeAnimationEvent()
+        {
+            playerStats.TakeDamgeNoAnimation(playerManager.pendingCriticalDamage);
+            playerManager.pendingCriticalDamage = 0;
         }
 
         private void OnAnimatorMove()

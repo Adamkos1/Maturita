@@ -16,6 +16,11 @@ namespace AH
             anim.CrossFade(targetAnim, 0.2f);
 
         }
+
+        public virtual void TakeCriticalDamgeAnimationEvent()
+        {
+
+        }
     }
 
 }
