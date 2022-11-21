@@ -13,7 +13,6 @@ namespace AH
         PlayerManager playerManager;
         int vertical;
         int horizontal;
-        public bool canRotate;
 
         public void Initialize()
         {
@@ -90,12 +89,12 @@ namespace AH
 
         public void CanRotate()
         {
-            canRotate = true;
+            anim.SetBool("canRotate", true);
         }
 
         public void StopRotation()
         {
-            canRotate = false;
+            anim.SetBool("canRotate", false);
         }
 
         public void EnableCombo()

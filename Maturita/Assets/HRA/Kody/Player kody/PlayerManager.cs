@@ -12,6 +12,7 @@ namespace AH
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
         PlayerStats playerStats;
+        PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -27,13 +28,13 @@ namespace AH
         public bool isUsingLeftHand;
         public bool isInvulnerable;
 
-
-        void Start()
+        private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerStats = GetComponent<PlayerStats>();
             backStabCollider = GetComponentInChildren<BackStabCollider>();
@@ -50,6 +51,7 @@ namespace AH
             isInvulnerable = anim.GetBool("isInvulnerable");
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isDead", playerStats.isDead);
+            playerAnimatorManager.canRotate = anim.GetBool("canRotate");     
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleRollingAndSprinting();
@@ -64,6 +66,7 @@ namespace AH
             float delta = Time.fixedDeltaTime;
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleRotation(delta);
         }
 
         private void LateUpdate()

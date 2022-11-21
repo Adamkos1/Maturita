@@ -3518,8 +3518,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.54414034, y: 1, z: 0.02}
-  m_Center: {x: -0.011573076, y: 0, z: 0}
+  m_Size: {x: 0.4294362, y: 1, z: -0.01}
+  m_Center: {x: -0.007138014, y: 0, z: 0}
 --- !u!1 &1461930365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1435801747628538, guid: ba9c26430e0c94148a27eaf1b7a5039e, type: 3}
@@ -3548,6 +3548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  canRotate: 0
 --- !u!114 &1583587085
 MonoBehaviour:
   m_ObjectHideFlags: 0
