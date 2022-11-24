@@ -97,6 +97,11 @@ namespace AH
         {
             currentStamina = currentStamina - damage;
 
+            if(currentStamina <= 0)
+            {
+                currentStamina = 0;
+            }
+
             staminaBar.SetCurrentStamina(currentStamina);
         }
 

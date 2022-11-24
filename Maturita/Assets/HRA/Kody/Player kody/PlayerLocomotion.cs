@@ -11,6 +11,7 @@ namespace AH
         Transform cameraObject;
         InputHandler inputHandler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         public Vector3 moveDirection;
         public LayerMask groundLayer;
 
@@ -43,20 +44,28 @@ namespace AH
         [HideInInspector]
         float fallingSpeed = 400;
 
+        [Header("Stamina Costs")]
+        [SerializeField]
+        int rollStaminaCost = 15;
+        int backtepStaminaCost = 12;
+        int sprintStaminaCost = 1;
+        int jumpStaminaCost = 15;
+
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
 
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
-        }
-
-        void Start()
-        {
             playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+            playerStats = GetComponent<PlayerStats>();
+        }
+
+        void Start()
+        {
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
@@ -149,11 +158,12 @@ namespace AH
 
             float speed = movementSpeed;
 
-            if(inputHandler.sprintFlag)
+            if(inputHandler.sprintFlag && inputHandler.moveAmount > 0.5)
             {
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
+                playerStats.TakeStaminaDamage(sprintStaminaCost);
             }
             else
             {
@@ -175,9 +185,12 @@ namespace AH
             }
         }
 
-        public void HandleRollingAndSprinting()
+        public void HandleRolling()
         {
             if (animatorHandler.anim.GetBool("isInteracting"))
+                return;
+
+            if (playerStats.currentStamina <= 15)
                 return;
             
             if (inputHandler.rollFlag)
@@ -191,12 +204,14 @@ namespace AH
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
-               // }
+                    playerStats.TakeStaminaDamage(rollStaminaCost);
+                // }
 
-               // else
-              // {
-               //    animatorHandler.PlayTargetAnimation("Backstep", true);
-               //}
+                // else
+                // {
+                //    animatorHandler.PlayTargetAnimation("Backstep", true);
+                //    playerStats.TakeStaminaDamage(backtepStaminaCost); ;
+                //}
             }
         }
 
@@ -295,7 +310,10 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
-            if(inputHandler.jump_Input)
+            if (playerStats.currentStamina <= 15)
+                return;
+
+            if (inputHandler.jump_Input)
             {
                 if(inputHandler.moveAmount > 0)
                 {
@@ -305,6 +323,7 @@ namespace AH
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
+                    playerStats.TakeStaminaDamage(jumpStaminaCost);
                 }
             }
         }

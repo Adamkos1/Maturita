@@ -54,7 +54,7 @@ namespace AH
             playerAnimatorManager.canRotate = anim.GetBool("canRotate");     
 
             inputHandler.TickInput(delta);
-            playerLocomotion.HandleRollingAndSprinting();
+            playerLocomotion.HandleRolling();
             playerLocomotion.HandleJumping();
             playerStats.RegenerateStamina();
 
