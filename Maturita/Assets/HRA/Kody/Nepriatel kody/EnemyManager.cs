@@ -16,6 +16,7 @@ namespace AH
         public State currentState;
         public CharacterStats currentTarget;
         public Rigidbody enemyRigidBody;
+        public Collider backStabboxCollider;
 
 
         public bool isPerformingAction;
@@ -53,6 +54,9 @@ namespace AH
             HandleRecoveryTimer();
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
+
+            if (enemyStats.isDead)
+                Destroy(backStabboxCollider);
         }
 
         private void FixedUpdate()

@@ -97,6 +97,8 @@ namespace AH
             }
         }
 
+        #region Player Interaction
+
         public void CheckForInteractableObject()
         {
             RaycastHit hit;
@@ -132,5 +134,14 @@ namespace AH
                 }
             }
         }
+
+        public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero; //zastavi hraca aby sa neklzal
+            transform.position = playerStandsHereWhenOpeningChest.transform.position;
+            playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
+        }
+
+        #endregion
     }
 }
