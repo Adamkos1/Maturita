@@ -37,7 +37,7 @@ namespace AH
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerStats = GetComponent<PlayerStats>();
-            backStabCollider = GetComponentInChildren<BackStabCollider>();
+            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 
         void Update()

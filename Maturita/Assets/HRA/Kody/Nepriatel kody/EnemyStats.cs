@@ -10,11 +10,13 @@ namespace AH
     {
 
         public HealthBar healthBar;
-        Animator animator;
+        EnemyAnimatorManager enemyAnimatorManager;
+
+        public int soulsAwardedOnDeath = 50;
 
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
 
         private void Start()
@@ -37,13 +39,11 @@ namespace AH
 
             currentHealth = currentHealth - damage;
             //healthBar.SetCurrentHealth(currentHealth);
-            animator.Play("Damage_01");
+            enemyAnimatorManager.PlayTargetAnimation("Damage_01", true);
 
             if (currentHealth <= 0)
             {
-                currentHealth = 0;
-                animator.Play("Death_01");
-                isDead = true;
+                HandleDeath();
             }
         }
 
@@ -56,6 +56,13 @@ namespace AH
                 currentHealth = 0;
                 isDead = true;
             }
+        }
+
+        private void HandleDeath()
+        {
+            currentHealth = 0;
+            enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+            isDead = true;
         }
 
     }
