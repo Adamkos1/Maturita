@@ -27,6 +27,9 @@ namespace AH
         public string TH_Light_Attack_2;
         public string TH_Heavy_Attack_1;
 
+        [Header("Weapon Art")]
+        public string weapon_Art;
+
         [Header("Stamina Cost")]
         public int baseStamina = 0;
         public float lightAttackMultiplier;
@@ -37,6 +40,7 @@ namespace AH
         public bool isFaithCaster;
         public bool isPyroCaster;
         public bool isMeleeWeapon;
+        public bool isShieldWeapon;
 
     }
 

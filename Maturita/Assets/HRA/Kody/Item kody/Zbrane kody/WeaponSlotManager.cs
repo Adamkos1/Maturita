@@ -10,6 +10,7 @@ namespace AH
         WeaponHolderSlot leftHandSlot;
         WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot backSlot;
+        WeaponHolderSlot backSlotForShield;
 
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
@@ -51,6 +52,10 @@ namespace AH
                 {
                     backSlot = weaponSlot;
                 }
+                else if(weaponSlot.isShieldBackSlot)
+                {
+                    backSlotForShield = weaponSlot;
+                }
             }
         }
 
@@ -78,7 +83,15 @@ namespace AH
             { 
                 if (inputHandler.twoHandFlag)
                 {
-                    backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
+                    if(leftHandSlot.currentWeapon.isMeleeWeapon)
+                    {
+                        backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
+                    }
+                    else if(leftHandSlot.currentWeapon.isShieldWeapon)
+                    {
+                        backSlotForShield.LoadWeaponModel(leftHandSlot.currentWeapon);
+                    }
+
                     leftHandSlot.UnloadWeaponAndDestroy();
                     animator.CrossFade(weaponItem.two_hand_idle, 0.2f);
 
@@ -88,6 +101,7 @@ namespace AH
                     animator.CrossFade("Both Arms Empty", 0.2f);
 
                     backSlot.UnloadWeaponAndDestroy();
+                    backSlotForShield.UnloadWeaponAndDestroy();
 
                     #region Handle Right Weapon idle Animations
                     if (weaponItem != null)

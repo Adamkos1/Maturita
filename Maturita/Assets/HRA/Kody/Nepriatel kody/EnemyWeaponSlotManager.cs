@@ -72,10 +72,12 @@ namespace AH
             if(isLeft)
             {
                 leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+                leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+                rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
         }
 

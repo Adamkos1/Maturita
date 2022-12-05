@@ -102,6 +102,18 @@ namespace AH
             }
         }
 
+        public void HandleLTAction()
+        {
+            if (playerInventory.leftWeapon.isShieldWeapon)
+            {
+                PerformLTWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if (playerInventory.leftWeapon.isMeleeWeapon)
+            {
+
+            }
+        }
+
 
         #endregion
 
@@ -148,6 +160,22 @@ namespace AH
                     }
                 }    
             }
+        }
+
+        private void PerformLTWeaponArt(bool isTwoHanding)
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if(isTwoHanding)
+            {
+
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.weapon_Art, true);
+            }
+
         }
 
         private void SuccessfullyCastSpell()

@@ -7,6 +7,7 @@ namespace AH
 
     public class DamageCollider : MonoBehaviour
     {
+        public CharacterManager characterManager;
         Collider damgeCollider;
 
         public int currentWeaponDamage = 25;
@@ -34,6 +35,16 @@ namespace AH
             if(collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+
+                if(enemyCharacterManager != null)
+                {
+                    if(enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if(playerStats != null)
                 {
@@ -44,8 +55,18 @@ namespace AH
             if(collision.tag == "Enemy")
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
 
-                if(enemyStats != null)
+                if (enemyCharacterManager != null)
+                {
+                    if (enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
+
+                if (enemyStats != null)
                 {
                     enemyStats.TakeDamage(currentWeaponDamage);
                 }

@@ -117,6 +117,26 @@ namespace AH
             anim.SetBool("isInvulnerable", false);
         }
 
+        public void EnableIsParrying()
+        {
+            playerManager.isParrying = true;
+        }
+
+        public void DisableIsParrying()
+        {
+            playerManager.isParrying = false;
+        }
+
+        public void EnableCanBeRiposted()
+        {
+            playerManager.canBeRiposted = true;
+        }
+
+        public void DisableCanBeRiposted()
+        {
+            playerManager.canBeRiposted = false;
+        }
+
         public override void TakeCriticalDamgeAnimationEvent()
         {
             playerStats.TakeDamgeNoAnimation(playerManager.pendingCriticalDamage);

@@ -100,6 +100,17 @@
                 },
                 {
                     "name": "",
+                    "id": "84774d0d-ffe4-4dba-81fd-7d9aec80f66c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c2dd4281-5ac7-458c-95ca-1b9278e06334",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
@@ -201,6 +212,15 @@
                     "name": "RT",
                     "type": "Button",
                     "id": "66909c36-4409-496e-844b-a83340fbad93",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LT",
+                    "type": "Button",
+                    "id": "39a9426e-861b-4157-84f3-8ed73cfe967a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -310,6 +330,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d00ca66c-502f-4ac7-9669-618bc70f86e1",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "baf0ebf1-1740-4e1d-9de6-e006db7a537f",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -321,8 +352,30 @@
                 },
                 {
                     "name": "",
+                    "id": "19f57745-ec33-40a1-8b46-7a2caf984c4d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f7d8de8e-9987-4843-9384-a635c0e0729f",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07cb5e0c-7787-4c55-8caa-cdf516d612b4",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -415,6 +468,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Critical Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0630d3fc-7a7a-4b5e-b164-37de9d4a9d7f",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c58042f-9bf4-4c47-ad1d-7901bf6f838b",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 687e395721e4ecf48b7d889fe99a7169, type: 3}
+  itemName: Shield
+  modelPrefab: {fileID: 7090337672483868319, guid: a4775bfeff66da64f9902c2b66fd302d, type: 3}
+  isUnarmed: 0
+  baseDamage: 25
+  criticalDamageMultiplier: 4
+  right_hand_idle: Right_Arm_Idle_01
+  left_hand_idle: Left_Arm_Idle_01
+  two_hand_idle: Two_Arms_Idle_01
+  OH_Light_Attack_1: Oh_Light_Attack_01
+  OH_Light_Attack_2: Oh_Light_Attack_02
+  OH_Heavy_Attack_1: Oh_Heavy_Attack_01
+  TH_Light_Attack_1: Th_Light_Attack_01
+  TH_Light_Attack_2: Th_Light_Attack_02
+  TH_Heavy_Attack_1: Th_Heavy_Attack_01
+  weapon_Art: Parry
+  baseStamina: 20
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2
+  isSpellCaster: 0
+  isFaithCaster: 0
+  isPyroCaster: 0
+  isMeleeWeapon: 0
+  isShieldWeapon: 1

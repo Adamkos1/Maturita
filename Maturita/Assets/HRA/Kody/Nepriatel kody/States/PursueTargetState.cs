@@ -12,6 +12,8 @@ namespace AH
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
+            if (enemyManager.isInteracting)
+                return this;
 
             if (enemyManager.isPerformingAction)
             {

@@ -9,10 +9,13 @@ namespace AH
     public class WeaponHolderSlot : MonoBehaviour
     {
         public Transform parentOverride;
+        public Transform shieldParentOverride;
         public WeaponItem currentWeapon;
         public bool isLeftHandSlot;
         public bool isRightHandSlot;
         public bool isBackSlot;
+        public bool isShieldBackSlot;
+
 
         public GameObject currentWeaponModel;
 
@@ -45,9 +48,16 @@ namespace AH
             GameObject model = Instantiate(weaponItem.modelPrefab) as GameObject;
             if(model != null)
             {
-                if(parentOverride != null)
+                if(parentOverride != null && shieldParentOverride != null)
                 {
-                    model.transform.parent = parentOverride;
+                    if(currentWeapon.isMeleeWeapon)
+                    {
+                        model.transform.parent = parentOverride;
+                    }
+                    else if (currentWeapon.isShieldWeapon)
+                    {
+                        model.transform.parent = shieldParentOverride;
+                    }
                 }
 
                 else
