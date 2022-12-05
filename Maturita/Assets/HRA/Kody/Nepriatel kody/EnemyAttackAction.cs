@@ -8,6 +8,10 @@ namespace AH
     [CreateAssetMenu(menuName ="A.I/Enemy Actions/Attack Action")]
     public class EnemyAttackAction : EnemyAction
     {
+        public bool canCombo;
+
+        public EnemyAttackAction comoboAction;
+
         public int attackScore = 3;
         public float recoveryTime = 2;
 

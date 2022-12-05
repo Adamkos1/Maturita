@@ -17,12 +17,16 @@ namespace AH
         public CharacterStats currentTarget;
         public Rigidbody enemyRigidBody;
         public Collider backStabboxCollider;
+        public Collider parryCollider;
 
 
         public bool isPerformingAction;
         public bool isInteracting;
 
         public float rotationSpeed = 15;
+
+        [Header("Combat Flags")]
+        public bool canDoCombo;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -51,16 +55,27 @@ namespace AH
         private void Update()
         {
             HandleRecoveryTimer();
+            HandleStateMachine();
+
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
+            canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
 
+
+
+
             if (enemyStats.isDead)
+            {
                 Destroy(backStabboxCollider);
+                Destroy(parryCollider);
+            }
+
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            HandleStateMachine();
+            navMeshAgent.transform.localPosition = Vector3.zero;
+            navMeshAgent.transform.localRotation = Quaternion.identity;
         }
 
         private void HandleStateMachine()
