@@ -8,6 +8,7 @@ namespace AH
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerManager playerManager;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerAnimatorManager animatorHandler;
         PlayerInventory playerInventory;
         PlayerStats playerStats;
@@ -21,6 +22,7 @@ namespace AH
 
         private void Awake()
         {
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerManager = GetComponentInParent<PlayerManager>();
             animatorHandler = GetComponent<PlayerAnimatorManager>();
@@ -114,6 +116,11 @@ namespace AH
             }
         }
 
+        public void HandleLBAction()
+        {
+            PerFormLBBlockingAction();
+        }
+
 
         #endregion
 
@@ -181,6 +188,23 @@ namespace AH
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+        }
+
+        #endregion
+
+        #region Defense Actions
+
+        private void PerFormLBBlockingAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (playerManager.isBlocking)
+                return;
+
+            animatorHandler.PlayTargetAnimation("Block Start", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
+            playerManager.isBlocking = true;
         }
 
         #endregion

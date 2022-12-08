@@ -18,6 +18,7 @@ namespace AH
         public bool canBeRiposted;
         public bool canBeParried;
         public bool isParrying;
+        public bool isBlocking;
 
         public int pendingCriticalDamage;
     }

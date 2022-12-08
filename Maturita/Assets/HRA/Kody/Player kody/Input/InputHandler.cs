@@ -25,6 +25,7 @@ namespace AH
         public bool b_Input;
         public bool y_input;
         public bool rb_Input;
+        public bool lb_Input;
         public bool rt_Input;
         public bool lt_Input;
         public bool critical_Attack_Input;
@@ -50,6 +51,7 @@ namespace AH
         WeaponSlotManager weaponSlotManager;
         UIManager uIManager;
         PlayerAnimatorManager animatorHandler;
+        BlockingCollider blockingCollider;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -64,6 +66,7 @@ namespace AH
             cameraHandler = FindObjectOfType<CameraHandler>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
         private void OnEnable() 
@@ -76,6 +79,8 @@ namespace AH
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
                 inputActions.PlayerActions.LT.performed += i => lt_Input = true;
+                inputActions.PlayerActions.LB.performed += i => lb_Input = true;
+                inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
@@ -102,7 +107,7 @@ namespace AH
         {
             HandleMoveInput(delta);
             HandleRollInput(delta);
-            HandleAttackInput(delta);
+            HandleCombatInput(delta);
             HandleQuickSlotInput();
             HandleInventoryInput();
             HandleLockOnInput();
@@ -150,7 +155,7 @@ namespace AH
             }
         }
 
-        private void HandleAttackInput(float delta)
+        private void HandleCombatInput(float delta)
         {
                 if (rb_Input)
                 {
@@ -162,6 +167,20 @@ namespace AH
                     if (playerManager.isInteracting)
                         return;
                     playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+                }
+
+                if(lb_Input)
+                {
+                    playerAttacker.HandleLBAction();
+                }
+                else
+                {
+                    playerManager.isBlocking = false;
+
+                    if(blockingCollider.blockingCollider.enabled)
+                {
+                    blockingCollider.DisableBlockingCollider();
+                }
                 }
 
                 if(lt_Input)
