@@ -12,7 +12,7 @@ namespace AH
         public EnemyAttackAction[] enemyAttacks;
         public EnemyAttackAction currentAttack;
 
-        bool isComboing = false;
+        bool willDoComboOnnextAttack = false;
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
@@ -22,10 +22,10 @@ namespace AH
             }
             else if (enemyManager.isInteracting && enemyManager.canDoCombo)
             {
-                if (isComboing)
+                if (willDoComboOnnextAttack)
                 {
+                    willDoComboOnnextAttack = false;
                     enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                    isComboing = false;
                 }
             }
 
@@ -59,8 +59,9 @@ namespace AH
                                 enemyAnimatorManager.anim.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
                                 enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
                                 enemyManager.isPerformingAction = true;
+                                RollForComboChance(enemyManager);
 
-                                if(currentAttack.canCombo)
+                                if(currentAttack.canCombo && willDoComboOnnextAttack)
                                 {
                                     currentAttack = currentAttack.comoboAction;
                                     return this;
@@ -154,6 +155,18 @@ namespace AH
                 enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
                 enemyManager.enemyRigidBody.velocity = targetVelocity;
                 enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
+            }
+        }
+
+        private void RollForComboChance(EnemyManager enemyManager)
+        {
+            float comboChance = Random.Range(0, 100);
+
+            Debug.Log(comboChance);
+
+            if(enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
+            {
+                willDoComboOnnextAttack = true;
             }
         }
     }

@@ -36,6 +36,11 @@ namespace AH
         public float maximumAttackRange = 2f;
         public float currentRecoveryTime = 0;
 
+        [Header("AI Combat Settings")]
+        public bool allowAIToPerformCombos;
+        public float comboLikelyHood;
+        
+
 
         private void Awake()
         {
