@@ -22,6 +22,8 @@ namespace AH
 
         public bool isPerformingAction;
         public bool isInteracting;
+        public bool isGrounded;
+        public bool isInAir;
 
         public float rotationSpeed = 15;
 
@@ -65,9 +67,6 @@ namespace AH
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
             canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
-
-
-
 
             if (enemyStats.isDead)
             {

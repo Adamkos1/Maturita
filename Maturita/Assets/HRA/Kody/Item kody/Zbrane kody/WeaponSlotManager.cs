@@ -126,12 +126,18 @@ namespace AH
 
         private void LoadLeftWeaponDamgeCollider()
         {
+            if (playerInventory.leftWeapon.isUnarmed)
+                return;
+
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
         }
 
         private void LoadRightWeaponDamgeCollider()
         {
+            if (playerInventory.rightWeapon.isUnarmed)
+                return;
+
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
         }

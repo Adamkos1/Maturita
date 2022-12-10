@@ -8,8 +8,7 @@ namespace AH
 
     public class EnemyStats : CharacterStats
     {
-
-        public HealthBar healthBar;
+        public UIEnemyHealthBar enemyHealthBar;
         EnemyAnimatorManager enemyAnimatorManager;
 
         public int soulsAwardedOnDeath = 50;
@@ -23,7 +22,7 @@ namespace AH
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
-            //healthBar.SetMaxHealth(maxHealth);
+            enemyHealthBar.SetMaxHealth(maxHealth);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -38,7 +37,8 @@ namespace AH
                 return;
 
             currentHealth = currentHealth - damage;
-            //healthBar.SetCurrentHealth(currentHealth);
+            enemyHealthBar.SetHealth(currentHealth);
+
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)

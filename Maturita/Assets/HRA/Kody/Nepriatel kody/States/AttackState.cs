@@ -162,8 +162,6 @@ namespace AH
         {
             float comboChance = Random.Range(0, 100);
 
-            Debug.Log(comboChance);
-
             if(enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
             {
                 willDoComboOnnextAttack = true;
