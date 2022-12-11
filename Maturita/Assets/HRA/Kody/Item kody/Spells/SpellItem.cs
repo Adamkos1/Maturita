@@ -24,12 +24,12 @@ namespace AH
         [TextArea]
         public string spellDescription;
 
-        public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
+        public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
         {
             Debug.Log("skusil si spell");
         }
 
-        public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
+        public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager, CameraHandler cameraHandler)
         {
             Debug.Log("dal si spell");
             playerStats.SpendMana(manaCost);

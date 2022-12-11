@@ -14,6 +14,8 @@ namespace AH
         PlayerStats playerStats;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
+        CameraHandler cameraHandler;
+
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 11;
@@ -29,6 +31,7 @@ namespace AH
             weaponSlotManager = GetComponent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerInventory = GetComponentInParent<PlayerInventory>();
+            cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
         public void HandleWeaponCombo(WeaponItem weapon)
@@ -159,13 +162,28 @@ namespace AH
                 {
                     if(playerStats.currentMana >= playerInventory.currentSpell.manaCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
                     }
                     else
                     {
                         animatorHandler.PlayTargetAnimation("Shrug", true);
                     }
                 }    
+            }
+
+            else if(weapon.isPyroCaster)
+            {
+                if (playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+                {
+                    if (playerStats.currentMana >= playerInventory.currentSpell.manaCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("Shrug", true);
+                    }
+                }
             }
         }
 
@@ -187,7 +205,8 @@ namespace AH
 
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
+            animatorHandler.anim.SetBool("isFiringSpell", true);
         }
 
         #endregion

@@ -7,8 +7,8 @@ namespace AH
 
     public class WeaponSlotManager : MonoBehaviour
     {
-        WeaponHolderSlot leftHandSlot;
-        WeaponHolderSlot rightHandSlot;
+        public WeaponHolderSlot leftHandSlot;
+        public WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot backSlot;
         WeaponHolderSlot backSlotForShield;
 

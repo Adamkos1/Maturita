@@ -2634,6 +2634,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: currentSpell
+      value: 
+      objectReference: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
+    - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: weaponInLeftHandSlots.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
@@ -2641,6 +2645,22 @@ PrefabInstance:
       propertyPath: weaponInLeftHandSlots.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+    - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: weaponInRightHandSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: manaLevel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: healthlevel
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: staminalevel
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
 --- !u!1 &1952557209571214497 stripped

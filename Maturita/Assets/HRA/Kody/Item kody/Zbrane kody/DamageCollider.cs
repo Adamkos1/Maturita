@@ -8,16 +8,20 @@ namespace AH
     public class DamageCollider : MonoBehaviour
     {
         public CharacterManager characterManager;
+        public CharacterStats characterStats;
         Collider damgeCollider;
+        public bool enabledDamageColliderOnStartUp = false;
 
         public int currentWeaponDamage = 25;
 
         private void Awake()
         {
+            characterStats = GetComponentInParent<CharacterStats>();
             damgeCollider = GetComponent<Collider>();
             damgeCollider.gameObject.SetActive(true);
             damgeCollider.isTrigger = true;
             damgeCollider.enabled = false;
+            damgeCollider.enabled = enabledDamageColliderOnStartUp;
         }
 
         public void EnableDamageCollider()

@@ -20,6 +20,9 @@ namespace AH
         public bool isParrying;
         public bool isBlocking;
 
+        [Header("Spells")]
+        public bool isFiringSpell;
+
         public int pendingCriticalDamage;
     }
 
