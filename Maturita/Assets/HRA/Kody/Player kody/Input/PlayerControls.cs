@@ -258,7 +258,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""A"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""4dec43b5-455a-456d-8739-1c6f699685bf"",
                     ""expectedControlType"": ""Button"",
@@ -297,6 +297,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Two_Handed"",
                     ""type"": ""Button"",
                     ""id"": ""1233da4a-6b94-4609-8411-e2c6c392ecc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Consume"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f3978a9-3c78-43bf-b4bc-efaefaa64f30"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -377,7 +386,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""A"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -388,7 +397,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""A"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -545,6 +554,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""LB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e90556d8-13ec-4c5f-9650-954bfa18e82d"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""216ee7bf-0c88-4107-86c1-c89dd182b886"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -697,11 +728,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("Critical Attack", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
         m_PlayerActions_LT = m_PlayerActions.FindAction("LT", throwIfNotFound: true);
-        m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
+        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("Lock On", throwIfNotFound: true);
         m_PlayerActions_Two_Handed = m_PlayerActions.FindAction("Two_Handed", throwIfNotFound: true);
+        m_PlayerActions_Consume = m_PlayerActions.FindAction("Consume", throwIfNotFound: true);
         // Player Quick Slots
         m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
@@ -830,11 +862,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_LT;
-    private readonly InputAction m_PlayerActions_A;
+    private readonly InputAction m_PlayerActions_Interact;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Inventory;
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_Two_Handed;
+    private readonly InputAction m_PlayerActions_Consume;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -845,11 +878,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @LT => m_Wrapper.m_PlayerActions_LT;
-        public InputAction @A => m_Wrapper.m_PlayerActions_A;
+        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @Two_Handed => m_Wrapper.m_PlayerActions_Two_Handed;
+        public InputAction @Consume => m_Wrapper.m_PlayerActions_Consume;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -877,9 +911,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LT.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
                 @LT.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
                 @LT.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLT;
-                @A.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
-                @A.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
-                @A.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
+                @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Jump.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
@@ -892,6 +926,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Two_Handed.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwo_Handed;
                 @Two_Handed.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwo_Handed;
                 @Two_Handed.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwo_Handed;
+                @Consume.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
+                @Consume.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
+                @Consume.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -914,9 +951,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LT.started += instance.OnLT;
                 @LT.performed += instance.OnLT;
                 @LT.canceled += instance.OnLT;
-                @A.started += instance.OnA;
-                @A.performed += instance.OnA;
-                @A.canceled += instance.OnA;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -929,6 +966,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Two_Handed.started += instance.OnTwo_Handed;
                 @Two_Handed.performed += instance.OnTwo_Handed;
                 @Two_Handed.canceled += instance.OnTwo_Handed;
+                @Consume.started += instance.OnConsume;
+                @Consume.performed += instance.OnConsume;
+                @Consume.canceled += instance.OnConsume;
             }
         }
     }
@@ -1005,11 +1045,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCriticalAttack(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
-        void OnA(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnTwo_Handed(InputAction.CallbackContext context);
+        void OnConsume(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {

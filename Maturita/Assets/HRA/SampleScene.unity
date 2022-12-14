@@ -352,6 +352,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockingCollider: {fileID: 1234727786}
+--- !u!114 &344848810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344848803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4436ea98f260f674a98f1fa8be0c6b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentParticleFX: {fileID: 0}
+  instantiatedFXModel: {fileID: 0}
+  amountTobeHealed: 0
 --- !u!1 &372041131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
@@ -2638,6 +2653,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
     - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: currentConsumableItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
+    - target: {fileID: 277547547895783473, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: weaponInLeftHandSlots.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
@@ -2651,7 +2670,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
     - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: manaLevel
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: healthlevel

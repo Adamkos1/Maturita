@@ -23,9 +23,10 @@ namespace AH
         public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager, CameraHandler cameraHandler)
         {
             base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
-            //GameObject instantiatedSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
+            GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
             playerStats.HealPlayer(healAmount);
             Debug.Log("dal si spell");
+            Destroy(instantiatedSpellFX, 1.5f);
         }
 
     }

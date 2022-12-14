@@ -15,7 +15,7 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemName: Heal Player
   spellWarmUpFX: {fileID: 139124, guid: 13fae004755aad240a8f9b767fd845f7, type: 3}
-  spellCastFX: {fileID: 0}
+  spellCastFX: {fileID: 1592372973558972, guid: dda23a85d63b4d34c8daef46e88f2ddc, type: 3}
   spellAnimation: Spell_Heal_Start
   manaCost: 35
   isFaithSpell: 1

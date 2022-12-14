@@ -236,7 +236,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "A",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "4dec43b5-455a-456d-8739-1c6f699685bf",
                     "expectedControlType": "Button",
@@ -275,6 +275,15 @@
                     "name": "Two_Handed",
                     "type": "Button",
                     "id": "1233da4a-6b94-4609-8411-e2c6c392ecc9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Consume",
+                    "type": "Button",
+                    "id": "6f3978a9-3c78-43bf-b4bc-efaefaa64f30",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -355,7 +364,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "A",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -366,7 +375,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "A",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -521,6 +530,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "LB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e90556d8-13ec-4c5f-9650-954bfa18e82d",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Consume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "216ee7bf-0c88-4107-86c1-c89dd182b886",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Consume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
