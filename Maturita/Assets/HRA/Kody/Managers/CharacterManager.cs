@@ -20,6 +20,9 @@ namespace AH
         public bool isParrying;
         public bool isBlocking;
 
+        [Header("Movement Flags")]
+        public bool isRotatingWithRootMotion;
+
         [Header("Spells")]
         public bool isFiringSpell;
 
