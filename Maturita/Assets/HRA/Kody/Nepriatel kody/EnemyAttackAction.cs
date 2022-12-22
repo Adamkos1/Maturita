@@ -13,7 +13,7 @@ namespace AH
         public EnemyAttackAction comoboAction;
 
         public int attackScore = 3;
-        public float recoveryTime = 2;
+        public float recoveryTime = 3;
 
         public float maximumAttackAngle = 80;
         public float minimumAttackAngle = -80;

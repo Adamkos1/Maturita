@@ -22,6 +22,7 @@ namespace AH
 
         [Header("Movement Flags")]
         public bool isRotatingWithRootMotion;
+        public bool canRotate;
 
         [Header("Spells")]
         public bool isFiringSpell;

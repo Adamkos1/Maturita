@@ -35,7 +35,7 @@ namespace AH
         //proste cim vysi rozsah tym viac vidia a opacne
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
-        public float maximumAttackRange = 2f;
+        public float maximumAggroRadius = 2.5f;
         public float currentRecoveryTime = 0;
 
         [Header("AI Combat Settings")]
@@ -67,6 +67,7 @@ namespace AH
             isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool("isRotatingWithRootMotion");
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
             canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
+            canRotate = enemyAnimatorManager.anim.GetBool("canRotate");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
 
             if (enemyStats.isDead)
