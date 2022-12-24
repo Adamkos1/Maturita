@@ -72,7 +72,7 @@ namespace AH
                 }
 
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
             else
             {
@@ -93,9 +93,9 @@ namespace AH
 
         private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
         {
-            verticalMovementValue = 0.5f;
+            verticalMovementValue = 0f;
 
-            horizontalMovementValue = Random.Range(-1, 1);
+            horizontalMovementValue = Random.Range(-1f, 1f);
 
             if(horizontalMovementValue <= 1 && horizontalMovementValue >= 0)
             {

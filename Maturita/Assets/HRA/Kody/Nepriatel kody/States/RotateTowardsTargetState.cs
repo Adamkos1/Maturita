@@ -33,12 +33,12 @@ namespace AH
                 enemyAnimatorManager.PlayTargetAnimationWithRootRotation("Turn Behind", true);
                 return combatStanceState;
             }
-            else if (viewableAngle <= -55 && viewableAngle >= -100 && !enemyManager.isInteracting)
+            else if (viewableAngle <= -45 && viewableAngle >= -100 && !enemyManager.isInteracting)
             {
                 enemyAnimatorManager.PlayTargetAnimationWithRootRotation("Turn Right", true);
                 return combatStanceState;
             }
-            else if (viewableAngle >= 55 && viewableAngle <= 100 && !enemyManager.isInteracting)
+            else if (viewableAngle >= 45 && viewableAngle <= 100 && !enemyManager.isInteracting)
             {
                 enemyAnimatorManager.PlayTargetAnimationWithRootRotation("Turn Left", true);
                 return combatStanceState;

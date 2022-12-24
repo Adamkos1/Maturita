@@ -18,11 +18,6 @@ namespace AH
 
             HandleRotateTowardsTarget(enemyManager);
 
-            if(viewableAngle > 55 || viewableAngle < -55)
-            {
-                return rotateTowardsTargetState;
-            }
-
             if (enemyManager.isInteracting)
                 return this;
 
