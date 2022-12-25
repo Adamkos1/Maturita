@@ -141,8 +141,23 @@ namespace AH
         public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
         {
             playerLocomotion.rigidbody.velocity = Vector3.zero; //zastavi hraca aby sa neklzal
+            Vector3 rotationDirection = playerStandsHereWhenOpeningChest.transform.forward;
+            Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
+            transform.rotation = turnRotation;
             transform.position = playerStandsHereWhenOpeningChest.transform.position;
             playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
+        }
+
+        public void PassThroughFogWallInteraction(Transform fogWallEntrance)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero;
+
+            Vector3 rotationDirection = fogWallEntrance.transform.forward;
+            Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
+            transform.rotation = turnRotation;
+
+            playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
+
         }
 
         #endregion

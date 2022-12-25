@@ -9,12 +9,16 @@ namespace AH
     public class EnemyStats : CharacterStats
     {
         public UIEnemyHealthBar enemyHealthBar;
+        EnemyBossManager enemyBossManager;
         EnemyAnimatorManager enemyAnimatorManager;
 
         public int soulsAwardedOnDeath = 50;
 
+        public bool isBoss;
+
         private void Awake()
         {
+            enemyBossManager = GetComponent<EnemyBossManager>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -22,7 +26,11 @@ namespace AH
 
         private void Start()
         {
-            enemyHealthBar.SetMaxHealth(maxHealth);
+            if(!isBoss)
+            {
+                enemyHealthBar.SetMaxHealth(maxHealth);
+            }
+
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -33,11 +41,21 @@ namespace AH
 
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
+            base.TakeDamage(damage, damageAnimation = "Damage_01");
+
             if (isDead)
                 return;
 
-            currentHealth = currentHealth - damage;
-            enemyHealthBar.SetHealth(currentHealth);
+            if(!isBoss)
+            {
+                currentHealth = currentHealth - damage;
+                enemyHealthBar.SetHealth(currentHealth);
+            }
+            else if(isBoss && enemyBossManager != null)
+            {
+                currentHealth = currentHealth - damage;
+                enemyBossManager.UpdateBossHealthBar(currentHealth);
+            }
 
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 

@@ -143,6 +143,18 @@ namespace AH
             playerManager.pendingCriticalDamage = 0;
         }
 
+        public void DissableCollision()
+        {
+            playerLocomotion.characterCollider.enabled = false;
+            playerLocomotion.characterCollisionBlockerCollider.enabled = false;
+        }
+
+        public void EnableCollision()
+        {
+            playerLocomotion.characterCollider.enabled = true;
+            playerLocomotion.characterCollisionBlockerCollider.enabled = true;
+        }
+
         private void OnAnimatorMove()
         {
             if (playerManager.isInteracting == false)

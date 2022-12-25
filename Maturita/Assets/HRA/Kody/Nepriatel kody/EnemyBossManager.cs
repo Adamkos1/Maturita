@@ -24,6 +24,11 @@ namespace AH
             bossHealthBar.SetBossName(bossName);
             bossHealthBar.SetBossMaxHealth(enemyStats.maxHealth);
         }
+
+        public void UpdateBossHealthBar(int currentHealth)
+        {
+            bossHealthBar.SetBossCurrentHealth(currentHealth);
+        }
     }
 
 }
