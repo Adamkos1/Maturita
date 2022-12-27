@@ -1117,6 +1117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: KOKOT
+  particleFx: {fileID: 7773298333339980583, guid: 811eba2d0be7ced4f9c8f0ad7780839c, type: 3}
 --- !u!1 &625564243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044c32f8089ef6549a27a55adcdb3d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 7668757346173021827}
+  combatStanceState: {fileID: 7668757346173021838}
 --- !u!4 &1860175218
 Transform:
   m_ObjectHideFlags: 0
@@ -9215,7 +9216,7 @@ Animator:
   m_GameObject: {fileID: 2816251560902805485}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 9100000, guid: 65fb5c95f5816494a9a4165108a6c4eb, type: 2}
+  m_Controller: {fileID: 9100000, guid: c33499bcf414f5b4db30c090db806178, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11966,6 +11967,7 @@ MonoBehaviour:
   canBeParried: 0
   isParrying: 0
   isBlocking: 0
+  isInvulnerable: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isFiringSpell: 0
@@ -11989,6 +11991,7 @@ MonoBehaviour:
   currentRecoveryTime: 0
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
+  isPhaseShifting: 0
 --- !u!114 &2814908501531123099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18164,7 +18167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f87390c8432c3949a96c803ae971ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandWeapon: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  rightHandWeapon: {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
   leftHandWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
 --- !u!1 &7668757344782363232
 GameObject:
@@ -18268,7 +18271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a894a137d5f84d42bd30d157f3dcd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthlevel: 20
+  healthlevel: 30
   maxHealth: 0
   currentHealth: 0
   staminalevel: 10
@@ -18280,7 +18283,7 @@ MonoBehaviour:
   soulCount: 0
   isDead: 0
   enemyHealthBar: {fileID: 0}
-  soulsAwardedOnDeath: 50
+  soulsAwardedOnDeath: 1000
   isBoss: 1
 --- !u!4 &7668757345060508425
 Transform:
@@ -18353,6 +18356,7 @@ MonoBehaviour:
   canBeParried: 0
   isParrying: 0
   isBlocking: 0
+  isInvulnerable: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isFiringSpell: 0
@@ -18372,10 +18376,11 @@ MonoBehaviour:
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
-  maximumAggroRadius: 3
+  maximumAggroRadius: 3.5
   currentRecoveryTime: 0
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
+  isPhaseShifting: 0
 --- !u!114 &7668757345060508431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18490,7 +18495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95d80a18aeeea1419ecaad049a78c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 7668757346173021827}
+  combatStanceState: {fileID: 7668757346173021838}
   rotateTowardsTargetState: {fileID: 1860175217}
 --- !u!114 &7668757345357784151
 MonoBehaviour:
@@ -18627,7 +18632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTowardsTargetState: {fileID: 1860175217}
-  combatStanceState: {fileID: 7668757346173021827}
+  combatStanceState: {fileID: 7668757346173021838}
   currentAttack: {fileID: 0}
   pursueTargetState: {fileID: 7668757345210964963}
   hasPerformedAttack: 0
@@ -18814,26 +18819,6 @@ Transform:
   m_Father: {fileID: 7668757344446030199}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7668757346173021827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7668757346173021837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cf7b5ffeb76d10489aae5235f5b80f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackState: {fileID: 7668757345956855851}
-  pursueTargetState: {fileID: 7668757345210964963}
-  enemyAttacks:
-  - {fileID: 11400000, guid: 194b05d82d2abf840944caa9d3da81d6, type: 2}
-  - {fileID: 11400000, guid: 481fe7d14ed8cc447b82db9ac3bee85b, type: 2}
-  - {fileID: 11400000, guid: a494f156a153d4f44a4f998806fcb212, type: 2}
-  - {fileID: 11400000, guid: 6e459758daa30a7428b07d292f315f94, type: 2}
-  - {fileID: 11400000, guid: a227cbb2cef9d9b4bb30b6eef6076e41, type: 2}
 --- !u!1 &7668757346173021837
 GameObject:
   m_ObjectHideFlags: 0
@@ -18843,7 +18828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7668757346173021826}
-  - component: {fileID: 7668757346173021827}
+  - component: {fileID: 7668757346173021838}
   m_Layer: 7
   m_Name: Combat Stance State
   m_TagString: Untagged
@@ -18851,6 +18836,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7668757346173021838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668757346173021837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcd6a26736363b48a0104b72eceab98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackState: {fileID: 7668757345956855851}
+  pursueTargetState: {fileID: 7668757345210964963}
+  enemyAttacks:
+  - {fileID: 11400000, guid: 194b05d82d2abf840944caa9d3da81d6, type: 2}
+  - {fileID: 11400000, guid: 481fe7d14ed8cc447b82db9ac3bee85b, type: 2}
+  - {fileID: 11400000, guid: a494f156a153d4f44a4f998806fcb212, type: 2}
+  hasPhaseShifted: 0
+  secondPhaseAttacks:
+  - {fileID: 11400000, guid: 6e459758daa30a7428b07d292f315f94, type: 2}
+  - {fileID: 11400000, guid: a227cbb2cef9d9b4bb30b6eef6076e41, type: 2}
+  - {fileID: 11400000, guid: a494f156a153d4f44a4f998806fcb212, type: 2}
 --- !u!4 &7668757346405571952
 Transform:
   m_ObjectHideFlags: 0
@@ -19744,7 +19752,7 @@ Animator:
   m_GameObject: {fileID: 7667699066742163833}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 9100000, guid: 65fb5c95f5816494a9a4165108a6c4eb, type: 2}
+  m_Controller: {fileID: 9100000, guid: c33499bcf414f5b4db30c090db806178, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

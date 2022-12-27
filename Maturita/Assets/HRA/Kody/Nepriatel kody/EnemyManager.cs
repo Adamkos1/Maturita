@@ -41,6 +41,7 @@ namespace AH
         [Header("AI Combat Settings")]
         public bool allowAIToPerformCombos;
         public float comboLikelyHood;
+        public bool isPhaseShifting;
         
 
 
@@ -66,6 +67,8 @@ namespace AH
 
             isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool("isRotatingWithRootMotion");
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
+            isPhaseShifting = enemyAnimatorManager.anim.GetBool("isPhaseShifting");
+            isInvulnerable = enemyAnimatorManager.anim.GetBool("isInvulnerable");
             canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
             canRotate = enemyAnimatorManager.anim.GetBool("canRotate");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
@@ -87,7 +90,10 @@ namespace AH
         private void HandleStateMachine()
         {
             if (enemyStats.isDead)
-                return;
+            {
+                SwitchToNextState(null);
+                currentTarget = null;
+            }
 
             else if (currentState != null)
             {

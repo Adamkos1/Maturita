@@ -21,7 +21,7 @@ namespace AH
         public void SetHealth(int health)
         {
             slider.value = health;
-            timeUntilIsHidden = 3;
+            timeUntilIsHidden = 5;
         }
 
         public void SetMaxHealth(int maxHealth)

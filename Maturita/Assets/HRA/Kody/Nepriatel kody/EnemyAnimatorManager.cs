@@ -9,12 +9,15 @@ namespace AH
     {
         EnemyManager enemyManager;
         EnemyStats enemyStats;
+        EnemyBossManager enemyBossManager;
+
 
         private void Awake()
         {
             anim = GetComponent<Animator>();
             enemyManager = GetComponentInParent<EnemyManager>();
             enemyStats = GetComponentInParent<EnemyStats>();
+            enemyBossManager = GetComponentInParent<EnemyBossManager>();
         }
 
         public override void TakeCriticalDamgeAnimationEvent()
@@ -75,7 +78,6 @@ namespace AH
             enemyManager.canBeRiposted = false;
         }
 
-
         public void AwardSoulsOnDeath()
         {
             PlayerStats playerStats = FindObjectOfType<PlayerStats>();
@@ -92,6 +94,13 @@ namespace AH
                 }
             }
 
+        }
+
+        public void InstantiateBossParticleFX()
+        {
+            BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
+
+            GameObject phaseFX = Instantiate(enemyBossManager.particleFx, bossFXTransform.transform);
         }
 
         private void OnAnimatorMove()

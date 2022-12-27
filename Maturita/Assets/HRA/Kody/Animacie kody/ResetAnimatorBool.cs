@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetAnimatorBool : StateMachineBehaviour
-{ 
+{
+    public string isInvulnerable = "isInvulnerable";
+    public bool isInvulnerableStatus = false;
+
     public string isInteractingBool = "isInteracting";
     public bool isInteractingStatus = false;
 
@@ -22,6 +25,7 @@ public class ResetAnimatorBool : StateMachineBehaviour
         animator.SetBool(isFiringSpellBool, isFiringSpellStatus);
         animator.SetBool(isRotatingWithRootMotion, isRotatingWithRootMotionStatus);
         animator.SetBool(canRotateBool, canRotateStatus);
+        animator.SetBool(isInvulnerable, isInvulnerableStatus);
 
     }
 
