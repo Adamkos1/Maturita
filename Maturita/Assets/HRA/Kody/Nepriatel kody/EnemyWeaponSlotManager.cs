@@ -16,12 +16,20 @@ namespace AH
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
 
+        EnemyStats enemyStats;
+
+        private void Awake()
+        {
+            enemyStats = GetComponentInParent<EnemyStats>();
+            LoadWeaponHolderSlots();
+        }
+
         private void Start()
         {
             LoadWeaponOnBothHands();
         }
 
-        private void Awake()
+        private void LoadWeaponHolderSlots()
         {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
 
@@ -101,7 +109,6 @@ namespace AH
            // anim.SetBool("canDoCombo", false);
         }
 
-
         #region Handle Weapon Stamina Drainage
         public void DrainStaminaLightAttack()
         {
@@ -112,6 +119,20 @@ namespace AH
         {
 
         }
+        #endregion
+
+        #region Handle Weapon's Poise Bonus
+
+        public void GrantWeaponAttackPoiseBonus()
+        {
+            enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence + enemyStats.offensivePoiseBonus;
+        }
+
+        public void ResetWeaponAttackingPoiseBonus()
+        {
+            enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
+        }
+
         #endregion
     }
 

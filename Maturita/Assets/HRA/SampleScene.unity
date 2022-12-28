@@ -1150,7 +1150,7 @@ MonoBehaviour:
   fogWalls:
   - {fileID: 2097597449}
   bossHealthBar: {fileID: 0}
-  enemyBossManager: {fileID: 0}
+  enemyBossManager: {fileID: 586273635}
   bossFightIsActive: 0
   bossHasBeenAwakened: 0
   bossHasBeenDefeated: 0
@@ -9098,6 +9098,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.14434
       objectReference: {fileID: 0}
+    - target: {fileID: 1245399408, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.384
+      objectReference: {fileID: 0}
     - target: {fileID: 1490788862, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9188,11 +9192,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: healthlevel
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
       propertyPath: staminalevel
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: armorPoiseBonus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: totalPoiseDefence
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 277547547895783475, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
+      propertyPath: offensivePoiseBonus
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4092af3d6e440f1429b0d4afad014860, type: 3}
@@ -12028,6 +12044,11 @@ MonoBehaviour:
   maxMana: 0
   currentMana: 0
   soulCount: 0
+  totalPoiseDefence: 0
+  offensivePoiseBonus: 0
+  armorPoiseBonus: 0
+  totalPoiseResetTime: 15
+  poiseResetTimer: 0
   isDead: 0
   enemyHealthBar: {fileID: 1514201836}
   soulsAwardedOnDeath: 50
@@ -18106,8 +18127,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6816516, y: 1.1881232, z: 0.01}
-  m_Center: {x: 0.01610446, y: -0.14332795, z: 0}
+  m_Size: {x: 0.7335179, y: 1.1881232, z: 0.01}
+  m_Center: {x: 0.019370152, y: -0.14332792, z: 0}
 --- !u!1 &7668757344449949270
 GameObject:
   m_ObjectHideFlags: 0
@@ -18134,7 +18155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668757344449949270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.678, z: 0.147}
+  m_LocalPosition: {x: 0, y: -0.678, z: 0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18271,7 +18292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a894a137d5f84d42bd30d157f3dcd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthlevel: 30
+  healthlevel: 100
   maxHealth: 0
   currentHealth: 0
   staminalevel: 10
@@ -18281,6 +18302,11 @@ MonoBehaviour:
   maxMana: 0
   currentMana: 0
   soulCount: 0
+  totalPoiseDefence: 0
+  offensivePoiseBonus: 0
+  armorPoiseBonus: 700
+  totalPoiseResetTime: 10
+  poiseResetTimer: 0
   isDead: 0
   enemyHealthBar: {fileID: 0}
   soulsAwardedOnDeath: 1000

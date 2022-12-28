@@ -11,6 +11,8 @@ namespace AH
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyStats enemyStats;
+        EnemyBossManager enemyBossManager;
+        BossCombatStanceState bossCombatStanceState;
 
         public NavMeshAgent navMeshAgent;
         public State currentState;
@@ -53,6 +55,8 @@ namespace AH
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
             enemyRigidBody = GetComponent<Rigidbody>();
+            enemyBossManager = GetComponent<EnemyBossManager>();
+            bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 
         private void Start()
@@ -78,7 +82,6 @@ namespace AH
                 Destroy(backStabboxCollider);
                 Destroy(parryCollider);
             }
-
         }
 
         private void LateUpdate()

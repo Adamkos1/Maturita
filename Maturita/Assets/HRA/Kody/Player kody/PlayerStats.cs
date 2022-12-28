@@ -42,6 +42,18 @@ namespace AH
             manaBar.SetMaxMana(maxMana);
         }
 
+        public override void HandlePoiseResetTimer()
+        {
+            if(poiseResetTimer > 0)
+            {
+                poiseResetTimer = poiseResetTimer - Time.deltaTime;
+            }
+            else if(poiseResetTimer <= 0 && !playerManager.isInteracting)
+            {
+                totalPoiseDefence = armorPoiseBonus;
+            }
+        }
+
         private int SetMaxHealthFromHealthLevel()
         {
             maxHealth = healthlevel * 10;
@@ -74,21 +86,25 @@ namespace AH
 
             animatorHandler.PlayTargetAnimation(damageAnimation , true);
 
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                animatorHandler.PlayTargetAnimation("Death_01", true);
-                isDead = true;
-            }
+
         }
 
         public void TakeDamgeNoAnimation(int damage)
         {
+            if (playerManager.isInvulnerable)
+                return;
+
+            if (isDead)
+                return;
+
             currentHealth = currentHealth - damage;
+
+            healthBar.SetCurrentHealth(currentHealth);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                animatorHandler.PlayTargetAnimation("Death_01", true);
                 isDead = true;
             }
         }

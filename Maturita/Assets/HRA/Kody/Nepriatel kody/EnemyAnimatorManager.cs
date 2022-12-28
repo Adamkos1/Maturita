@@ -26,7 +26,6 @@ namespace AH
             enemyManager.pendingCriticalDamage = 0;
         }
 
-
         public void CanRotate()
         {
             anim.SetBool("canRotate", true);
@@ -56,7 +55,6 @@ namespace AH
         {
             anim.SetBool("isInvulnerable", false);
         }
-
 
         public void EnableIsParrying()
         {

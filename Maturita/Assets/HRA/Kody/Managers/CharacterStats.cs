@@ -23,11 +23,40 @@ namespace AH
 
         public int soulCount = 0;
 
+        [Header("Poise")]
+        public float totalPoiseDefence;
+        public float offensivePoiseBonus;
+        public float armorPoiseBonus;
+        public float totalPoiseResetTime = 15;
+        public float poiseResetTimer = 0;
+
         public bool isDead;
+
+        private void Update()
+        {
+            HandlePoiseResetTimer();
+        }
+
+        private void Start()
+        {
+            totalPoiseDefence = armorPoiseBonus;
+        }
 
         public virtual void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
 
+        }
+
+        public virtual void HandlePoiseResetTimer()
+        {
+            if(poiseResetTimer > 0)
+            {
+                poiseResetTimer = poiseResetTimer - Time.deltaTime;
+            }
+            else
+            {
+                totalPoiseDefence = armorPoiseBonus;
+            }
         }
     }
 

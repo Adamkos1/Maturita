@@ -35,6 +35,18 @@ namespace AH
 
         }
 
+        public override void HandlePoiseResetTimer()
+        {
+            if (poiseResetTimer > 0)
+            {
+                poiseResetTimer = poiseResetTimer - Time.deltaTime;
+            }
+            else if (poiseResetTimer <= 0 && !enemyManager.isInteracting)
+            {
+                totalPoiseDefence = armorPoiseBonus;
+            }
+        }
+
         private int SetMaxHealthFromHealthLevel()
         {
             maxHealth = healthlevel * 10;
@@ -115,6 +127,11 @@ namespace AH
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
             isDead = true;
+        }
+
+        public void BreakGuard()
+        {
+            enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
     }
