@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8694446323188681174}
   - component: {fileID: 5990412852045895902}
+  - component: {fileID: 5362562149607503100}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -45,6 +46,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5362562149607503100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563109684974258119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5374be0dbfc2e7941986dd630b2a3eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  characterStats: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  poiseBreak: 0
+  offfensivePoiseBonus: 0
+  currentWeaponDamage: 25
 --- !u!1 &6887460158461779603
 GameObject:
   m_ObjectHideFlags: 0

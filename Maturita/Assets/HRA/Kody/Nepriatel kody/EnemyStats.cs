@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class EnemyStats : CharacterStats
+    public class EnemyStats : CharacterStatsManager
     {
         EnemyManager enemyManager;
         public UIEnemyHealthBar enemyHealthBar;

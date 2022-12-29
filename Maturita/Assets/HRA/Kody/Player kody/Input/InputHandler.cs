@@ -45,13 +45,13 @@ namespace AH
 
         CameraHandler cameraHandler;
         PlayerControls inputActions;
-        PlayerAttacker playerAttacker;
-        PlayerStats playerStatsManager;
-        PlayerInventory playerInventoryManager;
+        PlayerCombatManager playerCombatManager;
+        PlayerStatsManager playerStatsManager;
+        PlayerInventoryManager playerInventoryManager;
         PlayerEffectsManager playerEffectsManager;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerManager playerManager;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
         UIManager uIManager;
         BlockingCollider blockingCollider;
 
@@ -60,15 +60,15 @@ namespace AH
 
         private void Awake()
         {
-            playerAttacker = GetComponent<PlayerAttacker>();
-            playerInventoryManager = GetComponent<PlayerInventory>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponent<PlayerManager>();
-            playerStatsManager = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
             uIManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
-            weaponSlotManager = GetComponent<WeaponSlotManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
@@ -164,19 +164,19 @@ namespace AH
         {
                 if (rb_Input)
                 {
-                    playerAttacker.HandleRBAction();
+                    playerCombatManager.HandleRBAction();
                 }
 
                 if (rt_Input)
                 {
                     if (playerManager.isInteracting)
                         return;
-                    playerAttacker.HandleHeavyAttack(playerInventoryManager.rightWeapon);
+                    playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
                 }
 
                 if(lb_Input)
                 {
-                    playerAttacker.HandleLBAction();
+                    playerCombatManager.HandleLBAction();
                 }
                 else
                 {
@@ -196,7 +196,7 @@ namespace AH
                     }
                     else
                     {
-                        playerAttacker.HandleLTAction();
+                        playerCombatManager.HandleLTAction();
                     }
                 }
         }
@@ -286,12 +286,12 @@ namespace AH
 
                 if(twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                 }
                 else
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
                 }
 
             }
@@ -302,7 +302,7 @@ namespace AH
             if(critical_Attack_Input)
             {
                 critical_Attack_Input = false;
-                playerAttacker.AttemptBackStabOrRiposte();
+                playerCombatManager.AttemptBackStabOrRiposte();
             }
         }
 
@@ -311,7 +311,7 @@ namespace AH
             if(x_Input)
             {
                 x_Input = false;
-                playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+                playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, playerWeaponSlotManager, playerEffectsManager);
             }
         }
 

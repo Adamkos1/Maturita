@@ -14,7 +14,7 @@ namespace AH
 
         bool hasCollided = false;
 
-        CharacterStats spellTarget;
+        CharacterStatsManager spellTarget;
         Rigidbody rigidbody;
         Vector3 impactNormal;
 
@@ -35,7 +35,7 @@ namespace AH
         {
             if(!hasCollided)
             {
-                spellTarget = collision.transform.GetComponent<CharacterStats>();
+                spellTarget = collision.transform.GetComponent<CharacterStatsManager>();
 
                 if (spellTarget != null)
                 {

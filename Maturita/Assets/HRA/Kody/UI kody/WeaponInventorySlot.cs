@@ -8,8 +8,8 @@ namespace AH
 
     public class WeaponInventorySlot : MonoBehaviour
     {
-        PlayerInventory playerInventory;
-        WeaponSlotManager weaponSlotManager;
+        PlayerInventoryManager playerInventory;
+        PlayerWeaponSlotManager weaponSlotManager;
         UIManager uIManager;
 
         public Image icon;
@@ -18,8 +18,8 @@ namespace AH
         private void Awake()
         {
             uIManager = FindObjectOfType<UIManager>();
-            playerInventory = FindObjectOfType<PlayerInventory>();
-            weaponSlotManager = FindObjectOfType<WeaponSlotManager>();
+            playerInventory = FindObjectOfType<PlayerInventoryManager>();
+            weaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
         }
 
         public void AddItem(WeaponItem newItem)

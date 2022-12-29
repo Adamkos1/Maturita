@@ -16,7 +16,7 @@ namespace AH
         public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
 
-        public void LoadWeaponsEquipmentScreen(PlayerInventory playerInventory)
+        public void LoadWeaponsEquipmentScreen(PlayerInventoryManager playerInventory)
         {
             for(int i = 0; i < handEquipmentSlotUI.Length; i++)
             {

@@ -5,15 +5,15 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerAttacker : MonoBehaviour
+    public class PlayerCombatManager : MonoBehaviour
     {
         PlayerManager playerManager;
         PlayerEquipmentManager playerEquipmentManager;
         PlayerAnimatorManager playerAnimatorHandler;
-        PlayerInventory playerInventoryManager;
-        PlayerStats playerStatsManager;
+        PlayerInventoryManager playerInventoryManager;
+        PlayerStatsManager playerStatsManager;
         InputHandler inputHandler;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
         CameraHandler cameraHandler;
 
         public string lastAttack;
@@ -25,12 +25,12 @@ namespace AH
         private void Awake()
         {
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
-            playerStatsManager = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
             playerManager = GetComponent<PlayerManager>();
             playerAnimatorHandler = GetComponent<PlayerAnimatorManager>();
-            weaponSlotManager = GetComponent<WeaponSlotManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             inputHandler = GetComponent<InputHandler>();
-            playerInventoryManager = GetComponent<PlayerInventory>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
@@ -60,7 +60,7 @@ namespace AH
             if (playerStatsManager.currentStamina <= 0)
                 return;
 
-            weaponSlotManager.attackingWeapon = weapon;
+            playerWeaponSlotManager.attackingWeapon = weapon;
 
             if (inputHandler.twoHandFlag)
             {
@@ -79,7 +79,7 @@ namespace AH
             if (playerStatsManager.currentStamina <= 0)
                 return;
 
-            weaponSlotManager.attackingWeapon = weapon;
+            playerWeaponSlotManager.attackingWeapon = weapon;
 
             if (inputHandler.twoHandFlag)
             {
@@ -162,7 +162,7 @@ namespace AH
                 {
                     if(playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, weaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager);
                     }
                     else
                     {
@@ -177,7 +177,7 @@ namespace AH
                 {
                     if (playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, weaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager);
                     }
                     else
                     {
@@ -205,7 +205,7 @@ namespace AH
 
         private void SuccessfullyCastSpell()
         {
-            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorHandler, playerStatsManager, weaponSlotManager, cameraHandler);
+            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager, cameraHandler);
             playerAnimatorHandler.animator.SetBool("isFiringSpell", true);
         }
 
@@ -238,7 +238,7 @@ namespace AH
             if(Physics.Raycast(inputHandler.criticalAttackRaycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f, backStabLayer))
             {
                 CharacterManager enemyChracterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
-                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+                DamageCollider rightWeapon = playerWeaponSlotManager.rightHandDamageCollider;
 
                 if(enemyChracterManager != null)
                 {
@@ -264,7 +264,7 @@ namespace AH
             {
 
                 CharacterManager enemyChracterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
-                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+                DamageCollider rightWeapon = playerWeaponSlotManager.rightHandDamageCollider;
 
                 if(enemyChracterManager != null && enemyChracterManager.canBeRiposted)
                 {

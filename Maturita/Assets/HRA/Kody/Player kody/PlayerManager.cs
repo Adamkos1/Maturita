@@ -10,8 +10,8 @@ namespace AH
         InputHandler inputHandler;
         Animator animator;
         CameraHandler cameraHandler;
-        PlayerLocomotion playerLocomotion;
-        PlayerStats playerStatsManager;
+        PlayerLocomotionManager playerLocomotion;
+        PlayerStatsManager playerStatsManager;
         PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
@@ -31,11 +31,11 @@ namespace AH
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
             inputHandler = GetComponent<InputHandler>();
-            animator = GetComponentInChildren<Animator>();
-            playerLocomotion = GetComponent<PlayerLocomotion>();
+            animator = GetComponent<Animator>();
+            playerLocomotion = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
-            playerStatsManager = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 

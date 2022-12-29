@@ -78,7 +78,7 @@ namespace AH
 
         public void AwardSoulsOnDeath()
         {
-            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+            PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
             SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
 
             if (playerStats != null)

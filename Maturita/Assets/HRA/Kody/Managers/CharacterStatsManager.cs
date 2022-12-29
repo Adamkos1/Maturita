@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class CharacterStats : MonoBehaviour
+    public class CharacterStatsManager : MonoBehaviour
     {
         public int healthlevel = 10;
         public int maxHealth;

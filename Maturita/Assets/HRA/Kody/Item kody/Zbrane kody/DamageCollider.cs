@@ -8,7 +8,7 @@ namespace AH
     public class DamageCollider : MonoBehaviour
     {
         public CharacterManager characterManager;
-        public CharacterStats characterStats;
+        public CharacterStatsManager characterStats;
         Collider damgeCollider;
         public bool enabledDamageColliderOnStartUp = false;
 
@@ -21,7 +21,7 @@ namespace AH
 
         private void Awake()
         {
-            characterStats = GetComponentInParent<CharacterStats>();
+            characterStats = GetComponentInParent<CharacterStatsManager>();
             damgeCollider = GetComponent<Collider>();
             damgeCollider.gameObject.SetActive(true);
             damgeCollider.isTrigger = true;
@@ -43,7 +43,7 @@ namespace AH
         {
             if(collision.tag == "Player")
             {
-                PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 

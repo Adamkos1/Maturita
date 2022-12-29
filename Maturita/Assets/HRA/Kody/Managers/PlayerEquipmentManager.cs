@@ -9,14 +9,14 @@ namespace AH
     public class PlayerEquipmentManager : MonoBehaviour
     {
         InputHandler inputHandler;
-        PlayerInventory playerInventoryManager;
+        PlayerInventoryManager playerInventoryManager;
         public BlockingCollider blockingCollider;
 
 
         private void Awake()
         {
             inputHandler = GetComponent<InputHandler>();
-            playerInventoryManager = GetComponent<PlayerInventory>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
         }
 
 

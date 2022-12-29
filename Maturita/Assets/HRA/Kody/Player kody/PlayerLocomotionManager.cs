@@ -5,13 +5,13 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerLocomotion : MonoBehaviour
+    public class PlayerLocomotionManager : MonoBehaviour
     {
         CameraHandler cameraHandler;
         Transform cameraObject;
         InputHandler inputHandler;
         PlayerManager playerManager;
-        PlayerStats playerStatsManager;
+        PlayerStatsManager playerStatsManager;
         public Vector3 moveDirection;
         public LayerMask groundLayer;
 
@@ -25,11 +25,11 @@ namespace AH
         public GameObject normalCamera;
 
         [Header("Ground & Air Detection Stats")]
-        [HideInInspector]
+        [SerializeField]
         float groundDetectionRayStartPiont = 0.6f;
-        [HideInInspector]
+        [SerializeField]
         float minimumDistanceNeededToBeginFall = 0.75f;
-        [HideInInspector]
+        [SerializeField]
         float groundDirectionRayDistance = 0.2f;
         LayerMask ignoreForGroundCheck;
         public float inAirTimer;
@@ -61,7 +61,7 @@ namespace AH
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             playerAnimatorHandler = GetComponent<PlayerAnimatorManager>();
-            playerStatsManager = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
         }
 
         void Start()

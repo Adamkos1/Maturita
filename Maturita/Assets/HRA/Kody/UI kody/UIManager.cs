@@ -7,7 +7,7 @@ namespace AH
 
     public class UIManager : MonoBehaviour
     {
-        public PlayerInventory playerInventory;
+        public PlayerInventoryManager playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
 
         [Header("UI Windows")]

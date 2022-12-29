@@ -16,7 +16,7 @@ namespace AH
 
         public NavMeshAgent navMeshAgent;
         public State currentState;
-        public CharacterStats currentTarget;
+        public CharacterStatsManager currentTarget;
         public Rigidbody enemyRigidBody;
         public Collider backStabboxCollider;
         public Collider parryCollider;

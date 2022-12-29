@@ -8,8 +8,8 @@ namespace AH
 
     public class PlayerEffectsManager : MonoBehaviour
     {
-        PlayerStats playerStats;
-        WeaponSlotManager weaponSlotManager;
+        PlayerStatsManager playerStatsManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
 
         public GameObject currentParticleFX;
         public GameObject instantiatedFXModel;
@@ -17,23 +17,23 @@ namespace AH
 
         private void Awake()
         {
-            playerStats = GetComponent<PlayerStats>();
-            weaponSlotManager = GetComponent<WeaponSlotManager>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
         }
 
         public void HealPlayerFromEffect()
         {
-                playerStats.HealPlayer(amountTobeHealed);
-                GameObject healEffect = Instantiate(currentParticleFX, playerStats.transform);
+                playerStatsManager.HealPlayer(amountTobeHealed);
+                GameObject healEffect = Instantiate(currentParticleFX, playerStatsManager.transform);
                 Destroy(instantiatedFXModel.gameObject);
                 Destroy(healEffect.gameObject, 1);
-                weaponSlotManager.LoadBothWeaponsOnSlots();
+                playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
 
         public void DestroyWhenNone()
         {
             Destroy(instantiatedFXModel.gameObject);
-            weaponSlotManager.LoadBothWeaponsOnSlots();
+            playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
     }
 
