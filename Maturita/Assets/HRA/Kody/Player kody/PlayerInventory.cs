@@ -9,17 +9,16 @@ namespace AH
     {
         WeaponSlotManager weaponSlotManager;
 
+        [Header("Quick Slot Items")]
         public SpellItem currentSpell;
-
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
+        public ConsumableItem currentConsumableItem;
 
         public WeaponItem unarmedWeapon;
 
         public WeaponItem[] weaponInRightHandSlots = new WeaponItem[0];
         public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[0];
-
-        public ConsumableItem currentConsumableItem;
 
         public int currentRightWeaponIndex = -1;
         public int currentLeftWeaponIndex = -1;
@@ -29,7 +28,7 @@ namespace AH
 
         private void Awake()
         {
-            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            weaponSlotManager = GetComponent<WeaponSlotManager>();
         }
 
         private void Start()

@@ -11,14 +11,14 @@ namespace AH
         Transform cameraObject;
         InputHandler inputHandler;
         PlayerManager playerManager;
-        PlayerStats playerStats;
+        PlayerStats playerStatsManager;
         public Vector3 moveDirection;
         public LayerMask groundLayer;
 
         [HideInInspector]
         public Transform myTransform;
         [HideInInspector]
-        public PlayerAnimatorManager animatorHandler;
+        public PlayerAnimatorManager playerAnimatorHandler;
 
 
         public new Rigidbody rigidbody;
@@ -60,15 +60,15 @@ namespace AH
             playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
-            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
-            playerStats = GetComponent<PlayerStats>();
+            playerAnimatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerStatsManager = GetComponent<PlayerStats>();
         }
 
         void Start()
         {
             cameraObject = Camera.main.transform;
             myTransform = transform;
-            animatorHandler.Initialize();
+            playerAnimatorHandler.Initialize();
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
@@ -83,7 +83,7 @@ namespace AH
     
         public void HandleRotation(float delta)
         {
-            if (animatorHandler.canRotate)
+            if (playerAnimatorHandler.canRotate)
             {
                 if (inputHandler.lockOnFlag)
                 {
@@ -163,7 +163,7 @@ namespace AH
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
-                playerStats.TakeStaminaDamage(sprintStaminaCost);
+                playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
             }
             else
             {
@@ -175,22 +175,22 @@ namespace AH
 
             if(inputHandler.lockOnFlag && inputHandler.sprintFlag == false)
             {
-                animatorHandler.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
+                playerAnimatorHandler.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
 
             }
             else
             {
-                animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
+                playerAnimatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
             }
         }
 
         public void HandleRolling()
         {
-            if (animatorHandler.anim.GetBool("isInteracting"))
+            if (playerAnimatorHandler.animator.GetBool("isInteracting"))
                 return;
 
-            if (playerStats.currentStamina <= 15)
+            if (playerStatsManager.currentStamina <= 15)
                 return;
             
             if (inputHandler.rollFlag)
@@ -200,11 +200,11 @@ namespace AH
 
                 //if (inputHandler.moveAmount > 0)
                 //{
-                    animatorHandler.PlayTargetAnimation("Rolling", true);
+                    playerAnimatorHandler.PlayTargetAnimation("Rolling", true);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
-                    playerStats.TakeStaminaDamage(rollStaminaCost);
+                    playerStatsManager.TakeStaminaDamage(rollStaminaCost);
                 // }
 
                 // else
@@ -255,12 +255,12 @@ namespace AH
                     if (inAirTimer > 0.3f)
                     {
                         Debug.Log("You were in the air for " + inAirTimer);
-                        animatorHandler.PlayTargetAnimation("Land", true);
+                        playerAnimatorHandler.PlayTargetAnimation("Land", true);
                         inAirTimer = 0;
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Empty", false);
+                        playerAnimatorHandler.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
@@ -279,7 +279,7 @@ namespace AH
                 {
                     if (playerManager.isInteracting == false)
                     {
-                        animatorHandler.PlayTargetAnimation("Falling", true);
+                        playerAnimatorHandler.PlayTargetAnimation("Falling", true);
                     }
 
                 
@@ -310,7 +310,7 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
-            if (playerStats.currentStamina <= 15)
+            if (playerStatsManager.currentStamina <= 15)
                 return;
 
             if (inputHandler.jump_Input)
@@ -319,11 +319,11 @@ namespace AH
                 {
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    animatorHandler.PlayTargetAnimation("Jump", true);
+                    playerAnimatorHandler.PlayTargetAnimation("Jump", true);
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
-                    playerStats.TakeStaminaDamage(jumpStaminaCost);
+                    playerStatsManager.TakeStaminaDamage(jumpStaminaCost);
                 }
             }
         }

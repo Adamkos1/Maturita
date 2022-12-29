@@ -20,39 +20,43 @@ namespace AH
 
         Animator animator;
 
-        PlayerStats playerStats;
-        PlayerInventory playerInventory;
+        PlayerStats playerStatsManager;
+        PlayerInventory playerInventoryManager;
         InputHandler inputHandler;
 
         QuickSlotsUI quickSlotsUI;
 
         private void Awake()
         {
-            playerManager = GetComponentInParent<PlayerManager>();
-            animator = GetComponent<Animator>();
-            playerStats = GetComponentInParent<PlayerStats>();
-            playerInventory = GetComponentInParent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
+            animator = GetComponentInChildren<Animator>();
+            playerStatsManager = GetComponent<PlayerStats>();
+            playerInventoryManager = GetComponent<PlayerInventory>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
-            inputHandler = GetComponentInParent<InputHandler>();
+            inputHandler = GetComponent<InputHandler>();
+            LoadWeaponHolderSlots();
+        }
 
+        private void LoadWeaponHolderSlots()
+        {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
 
-            foreach(WeaponHolderSlot weaponSlot in weaponHolderSlots)
+            foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
             {
-                if(weaponSlot.isLeftHandSlot)
+                if (weaponSlot.isLeftHandSlot)
                 {
                     leftHandSlot = weaponSlot;
                 }
-                
-                else if(weaponSlot.isRightHandSlot)
+
+                else if (weaponSlot.isRightHandSlot)
                 {
                     rightHandSlot = weaponSlot;
                 }
-                else if(weaponSlot.isBackSlot)
+                else if (weaponSlot.isBackSlot)
                 {
                     backSlot = weaponSlot;
                 }
-                else if(weaponSlot.isShieldBackSlot)
+                else if (weaponSlot.isShieldBackSlot)
                 {
                     backSlotForShield = weaponSlot;
                 }
@@ -61,8 +65,8 @@ namespace AH
 
         public void LoadBothWeaponsOnSlots()
         {
-            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
-            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+            LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+            LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
         }
 
         public void LoadWeaponOnSlot (WeaponItem weaponItem, bool isLeft)
@@ -132,22 +136,22 @@ namespace AH
 
         private void LoadLeftWeaponDamgeCollider()
         {
-            if (playerInventory.leftWeapon.isUnarmed)
+            if (playerInventoryManager.leftWeapon.isUnarmed)
                 return;
 
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
-            leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
+            leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.baseDamage;
+            leftHandDamageCollider.poiseBreak = playerInventoryManager.leftWeapon.poiseBreak;
         }
 
         private void LoadRightWeaponDamgeCollider()
         {
-            if (playerInventory.rightWeapon.isUnarmed)
+            if (playerInventoryManager.rightWeapon.isUnarmed)
                 return;
 
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
-            rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
+            rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
+            rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
 
         }
 
@@ -182,12 +186,12 @@ namespace AH
         #region Handle Weapon Stamina Drainage
         public void DrainStaminaLightAttack()
         {
-            playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
+            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
         }
 
         public void DrainStaminaHeavyAttack()
         {
-            playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
+            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
         }
         #endregion
 
@@ -195,12 +199,12 @@ namespace AH
 
         public void GrantWeaponAttackPoiseBonus()
         {
-            playerStats.totalPoiseDefence = playerStats.totalPoiseDefence + attackingWeapon.offensivePoiseBonus;
+            playerStatsManager.totalPoiseDefence = playerStatsManager.totalPoiseDefence + attackingWeapon.offensivePoiseBonus;
         }
 
         public void ResetWeaponAttackingPoiseBonus()
         {
-            playerStats.totalPoiseDefence = playerStats.armorPoiseBonus;
+            playerStatsManager.totalPoiseDefence = playerStatsManager.armorPoiseBonus;
         }
 
         #endregion

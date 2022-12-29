@@ -8,10 +8,10 @@ namespace AH
     public class PlayerManager : CharacterManager
     {
         InputHandler inputHandler;
-        Animator anim;
+        Animator animator;
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
-        PlayerStats playerStats;
+        PlayerStats playerStatsManager;
         PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
@@ -31,11 +31,11 @@ namespace AH
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
             inputHandler = GetComponent<InputHandler>();
-            anim = GetComponentInChildren<Animator>();
+            animator = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
-            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
-            playerStats = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStats>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 
@@ -43,21 +43,21 @@ namespace AH
         {
             float delta = Time.deltaTime;
 
-            isInteracting = anim.GetBool("isInteracting");
-            canDoCombo = anim.GetBool("canDoCombo");
-            isUsingRightHand = anim.GetBool("isUsingRightHand");
-            isUsingLeftHand = anim.GetBool("isUsingLeftHand");
-            isInvulnerable = anim.GetBool("isInvulnerable");
-            isFiringSpell = anim.GetBool("isFiringSpell");
-            anim.SetBool("isBlocking", isBlocking);
-            anim.SetBool("isInAir", isInAir);
-            anim.SetBool("isDead", playerStats.isDead);
-            playerAnimatorManager.canRotate = anim.GetBool("canRotate");     
+            isInteracting = animator.GetBool("isInteracting");
+            canDoCombo = animator.GetBool("canDoCombo");
+            isUsingRightHand = animator.GetBool("isUsingRightHand");
+            isUsingLeftHand = animator.GetBool("isUsingLeftHand");
+            isInvulnerable = animator.GetBool("isInvulnerable");
+            isFiringSpell = animator.GetBool("isFiringSpell");
+            animator.SetBool("isBlocking", isBlocking);
+            animator.SetBool("isInAir", isInAir);
+            animator.SetBool("isDead", playerStatsManager.isDead);
+            playerAnimatorManager.canRotate = animator.GetBool("canRotate");     
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleRolling();
             playerLocomotion.HandleJumping();
-            playerStats.RegenerateStamina();
+            playerStatsManager.RegenerateStamina();
 
             CheckForInteractableObject();
         }

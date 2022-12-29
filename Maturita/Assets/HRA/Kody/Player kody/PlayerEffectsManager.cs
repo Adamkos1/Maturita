@@ -10,7 +10,6 @@ namespace AH
     {
         PlayerStats playerStats;
         WeaponSlotManager weaponSlotManager;
-        PlayerAnimatorManager animatorManager;
 
         public GameObject currentParticleFX;
         public GameObject instantiatedFXModel;
@@ -18,9 +17,8 @@ namespace AH
 
         private void Awake()
         {
-            playerStats = GetComponentInParent<PlayerStats>();
-            weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
-            animatorManager = GetComponent<PlayerAnimatorManager>();
+            playerStats = GetComponent<PlayerStats>();
+            weaponSlotManager = GetComponent<WeaponSlotManager>();
         }
 
         public void HealPlayerFromEffect()

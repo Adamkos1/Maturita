@@ -46,14 +46,13 @@ namespace AH
         CameraHandler cameraHandler;
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
-        PlayerStats playerStats;
-        PlayerInventory playerInventory;
+        PlayerStats playerStatsManager;
+        PlayerInventory playerInventoryManager;
         PlayerEffectsManager playerEffectsManager;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerManager playerManager;
         WeaponSlotManager weaponSlotManager;
         UIManager uIManager;
-        PlayerAnimatorManager animatorHandler;
         BlockingCollider blockingCollider;
 
         Vector2 movementInput;
@@ -61,16 +60,15 @@ namespace AH
 
         private void Awake()
         {
-            playerAttacker = GetComponentInChildren<PlayerAttacker>();
-            playerInventory = GetComponent<PlayerInventory>();
-            playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
-            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+            playerAttacker = GetComponent<PlayerAttacker>();
+            playerInventoryManager = GetComponent<PlayerInventory>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponent<PlayerManager>();
-            playerStats = GetComponent<PlayerStats>();
+            playerStatsManager = GetComponent<PlayerStats>();
             uIManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
-            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+            weaponSlotManager = GetComponent<WeaponSlotManager>();
             blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
@@ -138,13 +136,13 @@ namespace AH
             {
                 rollInputTimer += delta;
 
-                if(playerStats.currentStamina <= 0)
+                if(playerStatsManager.currentStamina <= 0)
                 {
                     b_Input = false;
                     sprintFlag = false;
                 }
 
-                if(moveAmount > 0.5f && playerStats.currentStamina > 0)
+                if(moveAmount > 0.5f && playerStatsManager.currentStamina > 0)
                 {
                     sprintFlag = true;
                 }
@@ -173,7 +171,7 @@ namespace AH
                 {
                     if (playerManager.isInteracting)
                         return;
-                    playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+                    playerAttacker.HandleHeavyAttack(playerInventoryManager.rightWeapon);
                 }
 
                 if(lb_Input)
@@ -207,11 +205,11 @@ namespace AH
         {
             if (d_Pad_Right)
             {
-                playerInventory.ChangeRightWeapon();
+                playerInventoryManager.ChangeRightWeapon();
             }
             else if (d_Pad_Left)
             {
-                playerInventory.ChangeLeftWeapon();
+                playerInventoryManager.ChangeLeftWeapon();
             }
         }
 
@@ -288,12 +286,12 @@ namespace AH
 
                 if(twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                 }
                 else
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
                 }
 
             }
@@ -313,7 +311,7 @@ namespace AH
             if(x_Input)
             {
                 x_Input = false;
-                playerInventory.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+                playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
             }
         }
 

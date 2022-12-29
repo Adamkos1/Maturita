@@ -9,14 +9,14 @@ namespace AH
     public class PlayerEquipmentManager : MonoBehaviour
     {
         InputHandler inputHandler;
-        PlayerInventory playerInventory;
+        PlayerInventory playerInventoryManager;
         public BlockingCollider blockingCollider;
 
 
         private void Awake()
         {
-            inputHandler = GetComponentInParent<InputHandler>();
-            playerInventory = GetComponentInParent<PlayerInventory>();
+            inputHandler = GetComponent<InputHandler>();
+            playerInventoryManager = GetComponent<PlayerInventory>();
         }
 
 
@@ -24,11 +24,11 @@ namespace AH
         {
             if(inputHandler.twoHandFlag)
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.rightWeapon);
+                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.rightWeapon);
             }
             else
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.leftWeapon);
+                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.leftWeapon);
             }
 
             blockingCollider.EnableBlockingCollider();

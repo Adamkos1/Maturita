@@ -8,7 +8,7 @@ namespace AH
     public class PlayerAnimatorManager : AnimatorManager
     {
         InputHandler inputHandler;
-        PlayerStats playerStats;
+        PlayerStats playerStatsManager;
         PlayerLocomotion playerLocomotion;
         PlayerManager playerManager;
         int vertical;
@@ -17,8 +17,8 @@ namespace AH
         public void Initialize()
         {
             playerManager = GetComponentInParent<PlayerManager>();
-            playerStats = GetComponentInParent<PlayerStats>();
-            anim = GetComponent<Animator>();
+            playerStatsManager = GetComponentInParent<PlayerStats>();
+            animator = GetComponentInChildren<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
             vertical = Animator.StringToHash("Vertical");
@@ -83,38 +83,38 @@ namespace AH
                 h = horizontalMovement;
             }
 
-            anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
-            anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
+            animator.SetFloat(vertical, v, 0.1f, Time.deltaTime);
+            animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
         public void CanRotate()
         {
-            anim.SetBool("canRotate", true);
+            animator.SetBool("canRotate", true);
         }
 
         public void StopRotation()
         {
-            anim.SetBool("canRotate", false);
+            animator.SetBool("canRotate", false);
         }
 
         public void EnableCombo()
         {
-            anim.SetBool("canDoCombo", true);
+            animator.SetBool("canDoCombo", true);
         }
 
         public void DisableCombo()
         {
-            anim.SetBool("canDoCombo", false);
+            animator.SetBool("canDoCombo", false);
         }
 
         public void EnableIsInvulnerable()
         {
-            anim.SetBool("isInvulnerable", true);
+            animator.SetBool("isInvulnerable", true);
         }
 
         public void DisableIsInvulnerable()
         {
-            anim.SetBool("isInvulnerable", false);
+            animator.SetBool("isInvulnerable", false);
         }
 
         public void EnableIsParrying()
@@ -139,7 +139,7 @@ namespace AH
 
         public override void TakeCriticalDamgeAnimationEvent()
         {
-            playerStats.TakeDamgeNoAnimation(playerManager.pendingCriticalDamage);
+            playerStatsManager.TakeDamgeNoAnimation(playerManager.pendingCriticalDamage);
             playerManager.pendingCriticalDamage = 0;
         }
 
@@ -162,7 +162,7 @@ namespace AH
 
             float delta = Time.deltaTime;
             playerLocomotion.rigidbody.drag = 0;
-            Vector3 deltaPosition = anim.deltaPosition;
+            Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
