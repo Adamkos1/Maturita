@@ -68,8 +68,6 @@ namespace AH
         {
             cameraObject = Camera.main.transform;
             myTransform = transform;
-            playerAnimatorHandler.Initialize();
-
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
 

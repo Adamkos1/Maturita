@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerWeaponSlotManager : MonoBehaviour
+    public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     {
         PlayerManager playerManager;
         PlayerStatsManager playerStatsManager;
@@ -14,21 +14,8 @@ namespace AH
         QuickSlotsUI quickSlotsUI;
         Animator animator;
 
-        [Header("Weapon Slots")]
-        public WeaponHolderSlot leftHandSlot;
-        public WeaponHolderSlot rightHandSlot;
-        WeaponHolderSlot backSlot;
-        WeaponHolderSlot backSlotForShield;
-
-        [Header("Damage Colliders")]
-        public DamageCollider leftHandDamageCollider;
-        public DamageCollider rightHandDamageCollider;
-
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
-
-        [Header("Unarmed Weapon")]
-        public WeaponItem unarmedWeapon;
 
         private void Awake()
         {

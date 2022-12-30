@@ -6,14 +6,12 @@ using UnityEngine;
 namespace AH
 {
 
-    public class EnemyStats : CharacterStatsManager
+    public class EnemyStatsManager : CharacterStatsManager
     {
         EnemyManager enemyManager;
         public UIEnemyHealthBar enemyHealthBar;
         EnemyBossManager enemyBossManager;
         EnemyAnimatorManager enemyAnimatorManager;
-
-        public int soulsAwardedOnDeath = 50;
 
         public bool isBoss;
 
@@ -21,7 +19,7 @@ namespace AH
         {
             enemyBossManager = GetComponent<EnemyBossManager>();
             enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
         }
@@ -91,12 +89,15 @@ namespace AH
             }
         }
 
-        public void TakeDamgeNoAnimation(int damage)
+        public override void TakeDamgeNoAnimation(int damage)
         {
             if (enemyManager.isInvulnerable)
                 return;
 
-            currentHealth = currentHealth - damage;
+            if (isDead)
+                return;
+
+            base.TakeDamgeNoAnimation(damage);
 
             if (!isBoss)
             {
@@ -115,10 +116,9 @@ namespace AH
                 }
             }
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !enemyManager.canBeRiposted)
             {
-                currentHealth = 0;
-                isDead = true;
+                HandleDeath();
             }
         }
 

@@ -18,15 +18,6 @@ namespace AH
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableUIGameObject;
 
-        public bool isInteracting;
-        [Header("Player Flags")]
-        public bool isSprinting;
-        public bool isInAir;
-        public bool isGrounded;
-        public bool canDoCombo;
-        public bool isUsingRightHand;
-        public bool isUsingLeftHand;
-
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();

@@ -22,6 +22,7 @@ namespace AH
         public float currentMana;
 
         public int soulCount = 0;
+        public int soulsAwardedOnDeath = 50;
 
         [Header("Poise")]
         public float totalPoiseDefence;
@@ -45,6 +46,17 @@ namespace AH
         public virtual void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
 
+        }
+
+        public virtual void TakeDamgeNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
         }
 
         public virtual void HandlePoiseResetTimer()

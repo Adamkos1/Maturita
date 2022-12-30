@@ -89,7 +89,7 @@ namespace AH
 
         }
 
-        public void TakeDamgeNoAnimation(int damage)
+        public override void TakeDamgeNoAnimation(int damage)
         {
             if (playerManager.isInvulnerable)
                 return;
@@ -97,16 +97,12 @@ namespace AH
             if (isDead)
                 return;
 
-            currentHealth = currentHealth - damage;
-
-            healthBar.SetCurrentHealth(currentHealth);
-
+            base.TakeDamgeNoAnimation(damage);
             if (currentHealth <= 0)
             {
-                currentHealth = 0;
                 playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
-                isDead = true;
             }
+            healthBar.SetCurrentHealth(currentHealth);
         }
 
         public void TakeStaminaDamage(int damage)

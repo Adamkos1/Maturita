@@ -10,7 +10,7 @@ namespace AH
     {
         public string bossName;
         UIBossHealthBar bossHealthBar;
-        EnemyStats enemyStats;
+        EnemyStatsManager enemyStats;
         EnemyAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
 
@@ -20,8 +20,8 @@ namespace AH
         private void Awake()
         {
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
-            enemyStats = GetComponent<EnemyStats>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyStats = GetComponent<EnemyStatsManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 

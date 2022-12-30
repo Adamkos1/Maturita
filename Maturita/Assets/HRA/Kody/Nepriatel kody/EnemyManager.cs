@@ -10,7 +10,7 @@ namespace AH
     {
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
-        EnemyStats enemyStats;
+        EnemyStatsManager enemyStatsManager;
         EnemyBossManager enemyBossManager;
         BossCombatStanceState bossCombatStanceState;
 
@@ -21,23 +21,15 @@ namespace AH
         public Collider backStabboxCollider;
         public Collider parryCollider;
 
-
         public bool isPerformingAction;
-        public bool isInteracting;
-        public bool isGrounded;
-        public bool isInAir;
-
         public float rotationSpeed = 15;
-
-        [Header("Combat Flags")]
-        public bool canDoCombo;
+        public float maximumAggroRadius = 2.5f;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
         //proste cim vysi rozsah tym viac vidia a opacne
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
-        public float maximumAggroRadius = 2.5f;
         public float currentRecoveryTime = 0;
 
         [Header("AI Combat Settings")]
@@ -50,8 +42,8 @@ namespace AH
         private void Awake()
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-            enemyStats = GetComponent<EnemyStats>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+            enemyStatsManager = GetComponent<EnemyStatsManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
             enemyRigidBody = GetComponent<Rigidbody>();
@@ -75,9 +67,9 @@ namespace AH
             isInvulnerable = enemyAnimatorManager.animator.GetBool("isInvulnerable");
             canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
             canRotate = enemyAnimatorManager.animator.GetBool("canRotate");
-            enemyAnimatorManager.animator.SetBool("isDead", enemyStats.isDead);
+            enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
 
-            if (enemyStats.isDead)
+            if (enemyStatsManager.isDead)
             {
                 Destroy(backStabboxCollider);
                 Destroy(parryCollider);
@@ -92,7 +84,7 @@ namespace AH
 
         private void HandleStateMachine()
         {
-            if (enemyStats.isDead)
+            if (enemyStatsManager.isDead)
             {
                 SwitchToNextState(null);
                 currentTarget = null;
@@ -100,7 +92,7 @@ namespace AH
 
             else if (currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
+                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimatorManager);
 
                 if (nextState != null)
                 {

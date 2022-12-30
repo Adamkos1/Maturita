@@ -5,22 +5,16 @@ using UnityEngine;
 namespace AH
 {
 
-    public class EnemyWeaponSlotManager : MonoBehaviour
+    public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
     {
         public WeaponItem rightHandWeapon;
         public WeaponItem leftHandWeapon;
 
-        WeaponHolderSlot rightHandSlot;
-        WeaponHolderSlot leftHandSlot;
-
-        DamageCollider leftHandDamageCollider;
-        DamageCollider rightHandDamageCollider;
-
-        EnemyStats enemyStats;
+        EnemyStatsManager enemyStatsManager;
 
         private void Awake()
         {
-            enemyStats = GetComponentInParent<EnemyStats>();
+            enemyStatsManager = GetComponent<EnemyStatsManager>();
             LoadWeaponHolderSlots();
         }
 
@@ -125,12 +119,12 @@ namespace AH
 
         public void GrantWeaponAttackPoiseBonus()
         {
-            enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence + enemyStats.offensivePoiseBonus;
+            enemyStatsManager.totalPoiseDefence = enemyStatsManager.totalPoiseDefence + enemyStatsManager.offensivePoiseBonus;
         }
 
         public void ResetWeaponAttackingPoiseBonus()
         {
-            enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
+            enemyStatsManager.totalPoiseDefence = enemyStatsManager.armorPoiseBonus;
         }
 
         #endregion

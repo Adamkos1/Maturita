@@ -85,8 +85,8 @@ namespace AH
 
             if(collision.tag == "Enemy")
             {
-                EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
-                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                EnemyStatsManager enemyStats = collision.GetComponentInParent<EnemyStatsManager>();
+                CharacterManager enemyCharacterManager = collision.GetComponentInParent<CharacterManager>();
 
                 if (!enemyStats.isDead)
                 {
