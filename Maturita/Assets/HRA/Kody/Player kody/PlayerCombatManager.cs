@@ -15,6 +15,7 @@ namespace AH
         InputHandler inputHandler;
         PlayerWeaponSlotManager playerWeaponSlotManager;
         CameraHandler cameraHandler;
+        PlayerEffectsManager playerEffectsManager;
 
         public string lastAttack;
 
@@ -31,6 +32,7 @@ namespace AH
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             inputHandler = GetComponent<InputHandler>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
@@ -80,6 +82,7 @@ namespace AH
                 return;
 
             playerWeaponSlotManager.attackingWeapon = weapon;
+            playerAnimatorHandler.animator.SetBool("isUsingRightHand", true);
 
             if (inputHandler.twoHandFlag)
             {

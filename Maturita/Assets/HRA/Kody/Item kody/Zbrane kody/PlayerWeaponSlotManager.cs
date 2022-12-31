@@ -13,6 +13,7 @@ namespace AH
         InputHandler inputHandler;
         QuickSlotsUI quickSlotsUI;
         Animator animator;
+        PlayerEffectsManager playerEffectsManager;
 
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
@@ -23,6 +24,7 @@ namespace AH
             animator = GetComponent<Animator>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             inputHandler = GetComponent<InputHandler>();
             LoadWeaponHolderSlots();
@@ -139,6 +141,7 @@ namespace AH
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.baseDamage;
             leftHandDamageCollider.poiseBreak = playerInventoryManager.leftWeapon.poiseBreak;
+            playerEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
         }
 
         private void LoadRightWeaponDamgeCollider()
@@ -149,6 +152,7 @@ namespace AH
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
             rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
+            playerEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
 
         }
 
@@ -157,10 +161,12 @@ namespace AH
             if(playerManager.isUsingRightHand)
             {
                 rightHandDamageCollider.EnableDamageCollider();
+                playerEffectsManager.PlayWeaponFX(false);
             }
             else
             {
                 leftHandDamageCollider.EnableDamageCollider();
+                playerEffectsManager.PlayWeaponFX(true);
             }
         }
 
@@ -169,11 +175,13 @@ namespace AH
             if(rightHandDamageCollider != null)
             {
                 rightHandDamageCollider.DissableDamageCollider();
+                playerEffectsManager.StopWeaponFX(false);
             }
 
             if(leftHandDamageCollider != null)
             {
                 leftHandDamageCollider.DissableDamageCollider();
+                playerEffectsManager.StopWeaponFX(false);
 
             }
         }

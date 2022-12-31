@@ -11742,6 +11742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4436ea98f260f674a98f1fa8be0c6b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightWeaponFX: {fileID: 0}
+  leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 0}
   instantiatedFXModel: {fileID: 0}
   amountTobeHealed: 0
@@ -16672,6 +16674,7 @@ GameObject:
   - component: {fileID: 2816251560902805488}
   - component: {fileID: 2816251560902805491}
   - component: {fileID: 2816251560902805486}
+  - component: {fileID: 2816251560902805492}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -16795,12 +16798,26 @@ MonoBehaviour:
   soulsAwardedOnDeath: 50
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
-  armorPoiseBonus: 1000
+  armorPoiseBonus: 0
   totalPoiseResetTime: 15
   poiseResetTimer: 0
   isDead: 0
   enemyHealthBar: {fileID: 1514201836}
   isBoss: 0
+--- !u!114 &2816251560902805492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816251560902805485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightWeaponFX: {fileID: 0}
+  leftWeaponFX: {fileID: 0}
 --- !u!1 &2816262587299478005
 GameObject:
   m_ObjectHideFlags: 0
@@ -21002,6 +21019,7 @@ GameObject:
   - component: {fileID: 7727361346120289071}
   - component: {fileID: 7727361346120289070}
   - component: {fileID: 7727361346120289069}
+  - component: {fileID: 7727361346120289074}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Enemy
@@ -23588,6 +23606,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7727361346120289074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667699066742163833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightWeaponFX: {fileID: 0}
+  leftWeaponFX: {fileID: 0}
 --- !u!137 &7747358149611923297
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

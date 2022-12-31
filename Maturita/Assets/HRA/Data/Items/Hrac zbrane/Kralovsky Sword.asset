@@ -16,15 +16,21 @@ MonoBehaviour:
   itemName: Kralovsky mec
   modelPrefab: {fileID: 7090337672483868319, guid: 3abc6ba6a392e32438f6ae7ace2b5786, type: 3}
   isUnarmed: 0
+  baseDamage: 25
+  criticalDamageMultiplier: 4
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  physicalDamageAbsorption: 0
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
   two_hand_idle: Two_Arms_Idle_01
   OH_Light_Attack_1: Oh_Light_Attack_01
   OH_Light_Attack_2: Oh_Light_Attack_02
-  OH_Heavy_Attack_1: Oh_Heavy_Attack_01
+  OH_Heavy_Attack_1: Otocka utok2
   TH_Light_Attack_1: Th_Light_Attack_01
   TH_Light_Attack_2: Th_Light_Attack_02
   TH_Heavy_Attack_1: Th_Heavy_Attack_01
+  weapon_Art: 
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
@@ -32,3 +38,4 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0

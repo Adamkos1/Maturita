@@ -8,6 +8,7 @@ namespace AH
     public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyEffectsManager enemyEffectsManager;
         EnemyBossManager enemyBossManager;
 
 
@@ -17,6 +18,7 @@ namespace AH
             animator = GetComponent<Animator>();
             enemyManager = GetComponent<EnemyManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         }
 
         public void AwardSoulsOnDeath()
@@ -42,6 +44,16 @@ namespace AH
             BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
 
             GameObject phaseFX = Instantiate(enemyBossManager.particleFx, bossFXTransform.transform);
+        }
+
+        public void PlayWeaponTrailFX()
+        {
+            enemyEffectsManager.PlayWeaponFX(false);
+        }
+
+        public void StopWeaponTrailFX()
+        {
+            enemyEffectsManager.StopWeaponFX(false);
         }
 
         private void OnAnimatorMove()
