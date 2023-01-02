@@ -7,6 +7,10 @@ namespace AH
 
     public class CharacterEffectsManager : MonoBehaviour
     {
+        [Header("Damage FX")]
+        public GameObject bloodSplatterFX;
+
+        [Header("Weapon FX")]
         public WeaponFX rightWeaponFX;
         public WeaponFX leftWeaponFX;
 
@@ -45,6 +49,11 @@ namespace AH
                     leftWeaponFX.StopWeaponFX();
                 }
             }
+        }
+
+        public virtual void PlayBloodSplatterFX(Vector3 bloodSplaterLocation)
+        {
+            GameObject blood = Instantiate(bloodSplatterFX, bloodSplaterLocation, Quaternion.identity);
         }
     }
 

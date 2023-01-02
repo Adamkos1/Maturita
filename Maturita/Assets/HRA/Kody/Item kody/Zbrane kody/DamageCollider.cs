@@ -44,17 +44,18 @@ namespace AH
             if(collision.tag == "Player")
             {
                 PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
-                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                CharacterManager playerCharacterManager = collision.GetComponent<CharacterManager>();
+                CharacterEffectsManager playerEffectsManager = collision.GetComponent<CharacterEffectsManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-                if(enemyCharacterManager != null)
+                if(playerCharacterManager != null)
                 {
-                    if(enemyCharacterManager.isParrying)
+                    if(playerCharacterManager.isParrying)
                     {
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
                         return;
                     }
-                    else if(shield != null && enemyCharacterManager.isBlocking)
+                    else if(shield != null && playerCharacterManager.isBlocking)
                     {
                         float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorption) / 100;
 
@@ -70,7 +71,9 @@ namespace AH
                 {
                     playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
                     playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
-                    Debug.Log("hracov poise je =  " + playerStats.totalPoiseDefence);
+
+                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);//toto detekuje kde sa kolajderi stretnu
+                    playerEffectsManager.PlayBloodSplatterFX(contactPoint);
 
                     if (playerStats.totalPoiseDefence > poiseBreak)
                     {
@@ -87,6 +90,7 @@ namespace AH
             {
                 EnemyStatsManager enemyStats = collision.GetComponentInParent<EnemyStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponentInParent<CharacterManager>();
+                CharacterEffectsManager enemyEffectsManager = collision.GetComponent<CharacterEffectsManager>();
 
                 if (!enemyStats.isDead)
                 {
@@ -115,9 +119,11 @@ namespace AH
                     {
                         enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                         enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
-                        Debug.Log("nepriatelov poise je =  " + enemyStats.totalPoiseDefence);
 
-                        if(enemyStats.isBoss)
+                        Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);//toto detekuje kde sa kolajderi stretnu
+                        enemyEffectsManager.PlayBloodSplatterFX(contactPoint);
+
+                        if (enemyStats.isBoss)
                         {
                             if (enemyStats.totalPoiseDefence > poiseBreak)
                             {

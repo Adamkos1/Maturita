@@ -24,6 +24,7 @@ namespace AH
         public bool isPerformingAction;
         public float rotationSpeed = 15;
         public float maximumAggroRadius = 2.5f;
+        public float timeUntilDestroyed = 3;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -73,6 +74,7 @@ namespace AH
             {
                 Destroy(backStabboxCollider);
                 Destroy(parryCollider);
+                Destroy(gameObject, timeUntilDestroyed);
             }
         }
 

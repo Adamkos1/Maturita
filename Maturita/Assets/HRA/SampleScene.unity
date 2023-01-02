@@ -11742,6 +11742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4436ea98f260f674a98f1fa8be0c6b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 0}
@@ -16736,6 +16737,7 @@ MonoBehaviour:
   isPerformingAction: 0
   rotationSpeed: 44
   maximumAggroRadius: 3.5
+  timeUntilDestroyed: 7
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
@@ -16816,6 +16818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
 --- !u!1 &2816262587299478005
@@ -23569,6 +23572,7 @@ MonoBehaviour:
   isPerformingAction: 0
   rotationSpeed: 44
   maximumAggroRadius: 3.5
+  timeUntilDestroyed: 7
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
@@ -23618,6 +23622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
 --- !u!137 &7747358149611923297
