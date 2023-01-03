@@ -20,6 +20,7 @@ namespace AH
         public bool comboFlag;
         public bool inventoryFlag;
         public bool lockOnFlag;
+        public bool drinkFlag;
 
         public bool a_Input;
         public bool b_Input;

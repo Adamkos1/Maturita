@@ -10,6 +10,8 @@ namespace AH
     {
         public Image leftWeaponIcon;
         public Image rightWeaponIcon;
+        public Image consumableIcon;
+        public Image spellIcon;
 
         public void UpdateWeaponQuickSlotUI(bool isLeft, WeaponItem weapon)
         {
@@ -38,6 +40,47 @@ namespace AH
                     leftWeaponIcon.sprite = null;
                     leftWeaponIcon.enabled = false;
                 }
+            }
+        }
+
+        public void UpdateConsumableSlotUI(ConsumableItem consumableItem)
+        {
+            if(consumableItem != null && consumableItem.itemIcon != null)
+            {
+                FlaskItem flask = consumableItem as FlaskItem;
+
+                if(flask != null)
+                {
+                    if(flask.currentItemAmount > 0)
+                    {
+                        consumableIcon.sprite = consumableItem.itemIcon;
+                        consumableIcon.enabled = true;
+                    }
+                    else
+                    {
+                        consumableIcon.sprite = flask.emptyImage;
+                        consumableIcon.enabled = true;
+                    }
+                }
+                else
+                {
+                    consumableIcon.sprite = consumableItem.itemIcon;
+                    consumableIcon.enabled = true;
+                }
+            }
+        }
+
+        public void UpdateSpellIcon(SpellItem spell)
+        {
+            if(spell.itemIcon != null)
+            {
+                spellIcon.sprite = spell.itemIcon;
+                spellIcon.enabled = true;
+            }
+            else
+            {
+                spellIcon.sprite = null;
+                spellIcon.enabled = false;
             }
         }
     }

@@ -20,15 +20,19 @@ namespace AH
         [Header("Recovery FX")]
         public GameObject recoveryFX;
 
+        public Sprite emptyImage;
+
         public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {
-            base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
-            GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
-            playerEffectsManager.currentParticleFX = recoveryFX;
-            playerEffectsManager.amountTobeHealed = healthRecoverAmount;
-            playerEffectsManager.instantiatedFXModel = flask;
-            weaponSlotManager.rightHandSlot.UnloadWeapon();
-
+            if(currentItemAmount > 0)
+            {
+                base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+                GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
+                playerEffectsManager.currentParticleFX = recoveryFX;
+                playerEffectsManager.amountTobeHealed = healthRecoverAmount;
+                playerEffectsManager.instantiatedFXModel = flask;
+                weaponSlotManager.rightHandSlot.UnloadWeapon();
+            }
         }
     }
 

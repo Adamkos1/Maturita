@@ -22,14 +22,15 @@ namespace AH
 
                     if (characterStats != null)
                     {
-
-
-                        Vector3 targetDirection = characterStats.transform.position - transform.position;
-                        float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-
-                        if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                        if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
                         {
-                            enemyManager.currentTarget = characterStats;
+                            Vector3 targetDirection = characterStats.transform.position - transform.position;
+                            float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
+
+                            if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                            {
+                                enemyManager.currentTarget = characterStats;
+                            }
                         }
                     }
                 }

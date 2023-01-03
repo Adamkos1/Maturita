@@ -17,7 +17,7 @@ namespace AH
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Player")
+            if(other.tag == "Character")
             {
                 worldEventManager.ActiveBossFight();
             }

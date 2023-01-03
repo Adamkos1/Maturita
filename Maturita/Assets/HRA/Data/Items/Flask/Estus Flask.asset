@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c679d0d0091814183d742a41229603, type: 3}
   m_Name: Estus Flask
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 647cd2ba677641e4b93a359fdcd1a984, type: 3}
   itemName: Estus Flask
   maxItemAmount: 10
-  currentItemAmount: 8
+  currentItemAmount: 10
   itemModel: {fileID: 6987368444405932532, guid: 411772cb3d82a154c8f063a449935829, type: 3}
   consumeAnimation: Drink
   isInteracting: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   healthRecoverAmount: 250
   focusPointsRecoverAmount: 0
   recoveryFX: {fileID: 1171190231128718, guid: 3c9c7a2f30daeb749bf8a617d9914e7c, type: 3}
+  emptyImage: {fileID: 21300000, guid: a62ba807420d55e4797c999d91146cbd, type: 3}

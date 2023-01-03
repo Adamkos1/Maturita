@@ -84,6 +84,16 @@ namespace AH
             animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
+        private void DrinkStart()
+        {
+            inputHandler.x_Input = false;
+        }
+
+        private void DrinkStop()
+        {
+            inputHandler.x_Input = false;
+        }
+
         public void DissableCollision()
         {
             playerLocomotionManager.characterCollider.enabled = false;

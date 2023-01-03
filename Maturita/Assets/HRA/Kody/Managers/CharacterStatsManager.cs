@@ -7,6 +7,9 @@ namespace AH
 
     public class CharacterStatsManager : MonoBehaviour
     {
+        [Header("Team I.D")]
+        public int teamIDNumber = 0;
+
         public int healthlevel = 10;
         public int maxHealth;
         public int currentHealth;

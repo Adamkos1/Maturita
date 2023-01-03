@@ -9,6 +9,7 @@ namespace AH
     {
         public PlayerInventoryManager playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
+        private QuickSlotsUI quickSlotsUI;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -29,10 +30,16 @@ namespace AH
         WeaponInventorySlot[] weaponInventorySlots;
 
 
+        private void Awake()
+        {
+            quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+        }
+
         private void Start()
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             equipmentWindowUI.LoadWeaponsEquipmentScreen(playerInventory);
+            quickSlotsUI.UpdateSpellIcon(playerInventory.currentSpell);
         }
 
         public void UpdateUI()

@@ -13,6 +13,7 @@ namespace AH
         PlayerLocomotionManager playerLocomotion;
         PlayerStatsManager playerStatsManager;
         PlayerAnimatorManager playerAnimatorManager;
+        PlayerInventoryManager playerInventoryManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -27,6 +28,7 @@ namespace AH
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 
@@ -49,6 +51,7 @@ namespace AH
             playerLocomotion.HandleRolling();
             playerLocomotion.HandleJumping();
             playerStatsManager.RegenerateStamina();
+            playerInventoryManager.ConsumableUI();
 
             CheckForInteractableObject();
         }

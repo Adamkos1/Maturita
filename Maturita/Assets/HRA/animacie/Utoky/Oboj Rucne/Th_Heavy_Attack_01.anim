@@ -79506,6 +79506,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.33333334
+    functionName: EnableIsInvulnerable
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.53333336
     functionName: StopRotation
     data: 
@@ -79529,6 +79536,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.6
     functionName: ResetWeaponAttackingPoiseBonus
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.6333333
+    functionName: DisableIsInvulnerable
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

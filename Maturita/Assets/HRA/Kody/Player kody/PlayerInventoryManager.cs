@@ -8,6 +8,7 @@ namespace AH
     public class PlayerInventoryManager : MonoBehaviour
     {
         PlayerWeaponSlotManager playerWeaponSlotManager;
+        QuickSlotsUI quickSlotsUI;
 
         [Header("Quick Slot Items")]
         public SpellItem currentSpell;
@@ -27,6 +28,7 @@ namespace AH
         private void Awake()
         {
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
         }
 
         private void Start()
@@ -99,6 +101,11 @@ namespace AH
                 leftWeapon = playerWeaponSlotManager.unarmedWeapon;
                 playerWeaponSlotManager.LoadWeaponOnSlot(playerWeaponSlotManager.unarmedWeapon, true);
             }
+        }
+
+        public void ConsumableUI()
+        {
+            quickSlotsUI.UpdateConsumableSlotUI(currentConsumableItem);
         }
     }
 

@@ -24,8 +24,11 @@ namespace AH
         {
             if(currentItemAmount > 0)
             {
-                playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
-                currentItemAmount -= 1;
+                if(!isInteracting)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
+                    currentItemAmount -= 1;
+                }
             }
             else
             {
