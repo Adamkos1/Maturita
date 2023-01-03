@@ -14,6 +14,7 @@ namespace AH
         QuickSlotsUI quickSlotsUI;
         Animator animator;
         PlayerEffectsManager playerEffectsManager;
+        PlayerAnimatorManager playerAnimatorManager;
 
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
@@ -25,6 +26,7 @@ namespace AH
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             inputHandler = GetComponent<InputHandler>();
             LoadWeaponHolderSlots();
@@ -72,37 +74,36 @@ namespace AH
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
-                    animator.CrossFade(weaponItem.left_hand_idle, 0.2f);
+                    playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
                     if (inputHandler.twoHandFlag)
                     {
-                        if (leftHandSlot.currentWeapon.isMeleeWeapon)
+                        if (leftHandSlot.currentWeapon.weaponType == WeaponType.StraightSword)
                         {
                             backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
                         }
-                        else if (leftHandSlot.currentWeapon.isShieldWeapon)
+                        else if (leftHandSlot.currentWeapon.weaponType == WeaponType.Shield)
                         {
                             backSlotForShield.LoadWeaponModel(leftHandSlot.currentWeapon);
                         }
 
                         leftHandSlot.UnloadWeaponAndDestroy();
-                        animator.CrossFade(weaponItem.two_hand_idle, 0.2f);
+                        playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
 
                     }
                     else
                     {
-                        animator.CrossFade("Both Arms Empty", 0.2f);
                         backSlot.UnloadWeaponAndDestroy();
                         backSlotForShield.UnloadWeaponAndDestroy();
-                        animator.CrossFade(weaponItem.right_hand_idle, 0.2f);
                     }
 
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(false, weaponItem);
+                    playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
             else
@@ -111,21 +112,21 @@ namespace AH
 
                 if(isLeft)
                 {
-                    animator.CrossFade("Left Arm Empty", 0.2f);
                     playerInventoryManager.leftWeapon = unarmedWeapon;
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
+                    playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
-                    animator.CrossFade("Right Arm Empty", 0.2f);
                     playerInventoryManager.rightWeapon = unarmedWeapon;
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(false, weaponItem);
+                    playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
 

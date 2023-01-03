@@ -17,6 +17,17 @@ namespace AH
         CameraHandler cameraHandler;
         PlayerEffectsManager playerEffectsManager;
 
+        [Header("Attack Animations")]
+        string oh_Light_Attack_01 = "Oh_Light_Attack_01";
+        string oh_Light_Attack_02 = "Oh_Light_Attack_02";
+        string oh_Heavy_Attack_01 = "Oh_Heavy_Attack_01";
+
+        string th_Light_Attack_01 = "Th_Light_Attack_01";
+        string th_Light_Attack_02 = "Th_Light_Attack_02";
+        string th_Heavy_Attack_01 = "Th_Heavy_Attack_01";
+
+        string weaponArt = "Weapon Art";
+
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 11;
@@ -45,14 +56,14 @@ namespace AH
             {
                 playerAnimatorHandler.animator.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.OH_Light_Attack_1)
+                if (lastAttack == oh_Light_Attack_01)
                 {
-                    playerAnimatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    playerAnimatorHandler.PlayTargetAnimation(oh_Light_Attack_02, true);
                 }
 
-                else if(lastAttack == weapon.TH_Light_Attack_1)
+                else if(lastAttack == th_Light_Attack_01)
                 {
-                    playerAnimatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_2, true);
+                    playerAnimatorHandler.PlayTargetAnimation(th_Light_Attack_02, true);
                 }
             }
         }
@@ -66,13 +77,13 @@ namespace AH
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
-                lastAttack = weapon.TH_Light_Attack_1;
+                playerAnimatorHandler.PlayTargetAnimation(th_Light_Attack_01, true);
+                lastAttack = th_Light_Attack_01;
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-                lastAttack = weapon.OH_Light_Attack_1;
+                playerAnimatorHandler.PlayTargetAnimation(oh_Light_Attack_01, true);
+                lastAttack = oh_Light_Attack_01;
             }
         }
 
@@ -86,13 +97,13 @@ namespace AH
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
-                lastAttack = weapon.TH_Heavy_Attack_1;
+                playerAnimatorHandler.PlayTargetAnimation(th_Heavy_Attack_01, true);
+                lastAttack = th_Heavy_Attack_01;
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
-                lastAttack = weapon.OH_Heavy_Attack_1;
+                playerAnimatorHandler.PlayTargetAnimation(oh_Heavy_Attack_01, true);
+                lastAttack = oh_Heavy_Attack_01;
             }
         }
 
@@ -100,11 +111,13 @@ namespace AH
 
         public void HandleRBAction()
         {
-            if(playerInventoryManager.rightWeapon.isMeleeWeapon)
+            if(playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
             {
                 PerformRBMeleeAction();
             }
-            else if(playerInventoryManager.rightWeapon.isSpellCaster || playerInventoryManager.rightWeapon.isFaithCaster || playerInventoryManager.rightWeapon.isPyroCaster)
+            else if(playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
             {
                 PerformRBMagicAction(playerInventoryManager.rightWeapon);
             }
@@ -112,11 +125,11 @@ namespace AH
 
         public void HandleLTAction()
         {
-            if (playerInventoryManager.leftWeapon.isShieldWeapon)
+            if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
             {
                 PerformLTWeaponArt(inputHandler.twoHandFlag);
             }
-            else if (playerInventoryManager.leftWeapon.isMeleeWeapon)
+            else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
             {
 
             }
@@ -159,7 +172,7 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
-            if(weapon.isFaithCaster)
+            if(weapon.weaponType == WeaponType.FaithCaster)
             {
                 if(playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
                 {
@@ -174,7 +187,7 @@ namespace AH
                 }    
             }
 
-            else if(weapon.isPyroCaster)
+            else if(weapon.weaponType == WeaponType.PyroCaster)
             {
                 if (playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isPyroSpell)
                 {
@@ -201,7 +214,7 @@ namespace AH
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_Art, true);
+                playerAnimatorHandler.PlayTargetAnimation(weaponArt, true);
             }
 
         }

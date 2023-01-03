@@ -86,6 +86,10 @@ namespace AH
 
             playerAnimatorHandler.PlayTargetAnimation(damageAnimation , true);
 
+            if (currentHealth <= 0)
+            {
+                HandleDeath();
+            }
 
         }
 
@@ -98,11 +102,12 @@ namespace AH
                 return;
 
             base.TakeDamgeNoAnimation(damage);
+            healthBar.SetCurrentHealth(currentHealth);
+
             if (currentHealth <= 0)
             {
-                playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
+                HandleDeath();
             }
-            healthBar.SetCurrentHealth(currentHealth);
         }
 
         public void TakeStaminaDamage(int damage)
@@ -162,6 +167,13 @@ namespace AH
         public void AddSouls(int souls)
         {
             soulCount = soulCount + souls;
+        }
+
+        public void HandleDeath()
+        {
+            currentHealth = 0;
+            playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
+            isDead = true;
         }
 
     }

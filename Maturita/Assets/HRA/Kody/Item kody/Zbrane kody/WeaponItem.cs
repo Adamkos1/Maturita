@@ -10,6 +10,14 @@ namespace AH
         public GameObject modelPrefab;
         public bool isUnarmed;
 
+
+        [Header("Animator Replacer")]
+        public AnimatorOverrideController weaponController;
+        public string offHandIdleAnimation = "Left_Arm_Idle_01";
+
+        [Header("Weapon Type")]
+        public WeaponType weaponType;
+
         [Header("Damage")]
         public int baseDamage = 25;
         public int criticalDamageMultiplier = 4;
@@ -21,33 +29,10 @@ namespace AH
         [Header("Absorption")]
         public float physicalDamageAbsorption;
 
-        [Header("Idle Animations")]
-        public string right_hand_idle;
-        public string left_hand_idle;
-        public string two_hand_idle;
-
-        [Header("Attack Animations")]
-        public string OH_Light_Attack_1;
-        public string OH_Light_Attack_2;
-        public string OH_Heavy_Attack_1;
-        public string TH_Light_Attack_1;
-        public string TH_Light_Attack_2;
-        public string TH_Heavy_Attack_1;
-
-        [Header("Weapon Art")]
-        public string weapon_Art;
-
         [Header("Stamina Cost")]
         public int baseStamina = 0;
         public float lightAttackMultiplier;
         public float heavyAttackMultiplier;
-
-        [Header("Weapon Type")]
-        public bool isSpellCaster;
-        public bool isFaithCaster;
-        public bool isPyroCaster;
-        public bool isMeleeWeapon;
-        public bool isShieldWeapon;
 
     }
 

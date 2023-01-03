@@ -289,11 +289,13 @@ namespace AH
                 if(twoHandFlag)
                 {
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerManager.isTwoHandingWeapon = true;
                 }
                 else
                 {
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    playerManager.isTwoHandingWeapon = false;
                 }
 
             }
