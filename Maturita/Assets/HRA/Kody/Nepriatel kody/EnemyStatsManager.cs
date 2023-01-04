@@ -15,8 +15,9 @@ namespace AH
 
         public bool isBoss;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             enemyBossManager = GetComponent<EnemyBossManager>();
             enemyManager = GetComponent<EnemyManager>();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();

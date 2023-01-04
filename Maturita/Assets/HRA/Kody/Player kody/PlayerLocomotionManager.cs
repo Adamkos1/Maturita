@@ -199,6 +199,7 @@ namespace AH
                 //if (inputHandler.moveAmount > 0)
                 //{
                     playerAnimatorHandler.PlayTargetAnimation("Rolling", true);
+                    playerAnimatorHandler.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
@@ -208,6 +209,7 @@ namespace AH
                 // else
                 // {
                 //    animatorHandler.PlayTargetAnimation("Backstep", true);
+                //    playerAnimatorHandler.EraseHandIKForWeapon();
                 //    playerStats.TakeStaminaDamage(backtepStaminaCost); ;
                 //}
             }
@@ -318,6 +320,7 @@ namespace AH
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
                     playerAnimatorHandler.PlayTargetAnimation("Jump", true);
+                    playerAnimatorHandler.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;

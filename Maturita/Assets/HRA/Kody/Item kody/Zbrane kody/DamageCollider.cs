@@ -58,7 +58,7 @@ namespace AH
 
                     if(enemyManager.isParrying)
                     {
-                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        characterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Parried", true);
                         return;
                     }
                     else if(shield != null && enemyManager.isBlocking)

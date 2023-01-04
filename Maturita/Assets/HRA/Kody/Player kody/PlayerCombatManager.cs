@@ -9,7 +9,7 @@ namespace AH
     {
         PlayerManager playerManager;
         PlayerEquipmentManager playerEquipmentManager;
-        PlayerAnimatorManager playerAnimatorHandler;
+        PlayerAnimatorManager playerAnimatorManager;
         PlayerInventoryManager playerInventoryManager;
         PlayerStatsManager playerStatsManager;
         InputHandler inputHandler;
@@ -39,7 +39,7 @@ namespace AH
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerManager = GetComponent<PlayerManager>();
-            playerAnimatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             inputHandler = GetComponent<InputHandler>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
@@ -54,16 +54,16 @@ namespace AH
 
             if (inputHandler.comboFlag)
             {
-                playerAnimatorHandler.animator.SetBool("canDoCombo", false);
+                playerAnimatorManager.animator.SetBool("canDoCombo", false);
 
                 if (lastAttack == oh_Light_Attack_01)
                 {
-                    playerAnimatorHandler.PlayTargetAnimation(oh_Light_Attack_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(oh_Light_Attack_02, true);
                 }
 
                 else if(lastAttack == th_Light_Attack_01)
                 {
-                    playerAnimatorHandler.PlayTargetAnimation(th_Light_Attack_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(th_Light_Attack_02, true);
                 }
             }
         }
@@ -77,12 +77,12 @@ namespace AH
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorHandler.PlayTargetAnimation(th_Light_Attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(th_Light_Attack_01, true);
                 lastAttack = th_Light_Attack_01;
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(oh_Light_Attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(oh_Light_Attack_01, true);
                 lastAttack = oh_Light_Attack_01;
             }
         }
@@ -93,16 +93,16 @@ namespace AH
                 return;
 
             playerWeaponSlotManager.attackingWeapon = weapon;
-            playerAnimatorHandler.animator.SetBool("isUsingRightHand", true);
+            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorHandler.PlayTargetAnimation(th_Heavy_Attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(th_Heavy_Attack_01, true);
                 lastAttack = th_Heavy_Attack_01;
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(oh_Heavy_Attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(oh_Heavy_Attack_01, true);
                 lastAttack = oh_Heavy_Attack_01;
             }
         }
@@ -111,6 +111,8 @@ namespace AH
 
         public void HandleRBAction()
         {
+            //playerAnimatorManager.EraseHandIKForWeapon();
+
             if(playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
             {
                 PerformRBMeleeAction();
@@ -161,7 +163,7 @@ namespace AH
                 if (playerManager.canDoCombo)
                     return;
 
-                playerAnimatorHandler.animator.SetBool("isUsingRightHand", true);
+                playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventoryManager.rightWeapon);
 
             }
@@ -178,11 +180,11 @@ namespace AH
                 {
                     if(playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
                     }
                     else
                     {
-                        playerAnimatorHandler.PlayTargetAnimation("Shrug", true);
+                        playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }    
             }
@@ -193,11 +195,11 @@ namespace AH
                 {
                     if (playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
                     }
                     else
                     {
-                        playerAnimatorHandler.PlayTargetAnimation("Shrug", true);
+                        playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }
             }
@@ -214,15 +216,15 @@ namespace AH
             }
             else
             {
-                playerAnimatorHandler.PlayTargetAnimation(weaponArt, true);
+                playerAnimatorManager.PlayTargetAnimation(weaponArt, true);
             }
 
         }
 
         private void SuccessfullyCastSpell()
         {
-            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorHandler, playerStatsManager, playerWeaponSlotManager, cameraHandler);
-            playerAnimatorHandler.animator.SetBool("isFiringSpell", true);
+            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, cameraHandler);
+            playerAnimatorManager.animator.SetBool("isFiringSpell", true);
         }
 
         #endregion
@@ -237,7 +239,7 @@ namespace AH
             if (playerManager.isBlocking)
                 return;
 
-            playerAnimatorHandler.PlayTargetAnimation("Block Start", false, true);
+            playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
             playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
         }
@@ -271,8 +273,8 @@ namespace AH
                     int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
                     enemyChracterManager.pendingCriticalDamage = criticalDamage;
 
-                    playerAnimatorHandler.PlayTargetAnimation("Back Stab", true);
-                    enemyChracterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                    playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
+                    enemyChracterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
                 }
             }
 
@@ -297,8 +299,8 @@ namespace AH
                     int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
                     enemyChracterManager.pendingCriticalDamage = criticalDamage;
 
-                    playerAnimatorHandler.PlayTargetAnimation("Riposte", true);
-                    enemyChracterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
+                    playerAnimatorManager.PlayTargetAnimation("Riposte", true);
+                    enemyChracterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }

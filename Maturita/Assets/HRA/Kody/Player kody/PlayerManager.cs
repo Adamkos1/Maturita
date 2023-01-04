@@ -19,8 +19,9 @@ namespace AH
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableUIGameObject;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
@@ -57,8 +58,9 @@ namespace AH
             CheckForInteractableObject();
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             float delta = Time.fixedDeltaTime;
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);

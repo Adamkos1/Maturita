@@ -7,6 +7,8 @@ namespace AH
 
     public class CharacterStatsManager : MonoBehaviour
     {
+        CharacterAnimatorManager characterAnimatorManager;
+
         [Header("Team I.D")]
         public int teamIDNumber = 0;
 
@@ -36,6 +38,11 @@ namespace AH
 
         public bool isDead;
 
+        protected virtual void Awake()
+        {
+            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        }
+
         private void Update()
         {
             HandlePoiseResetTimer();
@@ -48,7 +55,10 @@ namespace AH
 
         public virtual void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
+            if (isDead)
+                return;
 
+            characterAnimatorManager.EraseHandIKForWeapon();
         }
 
         public virtual void TakeDamgeNoAnimation(int damage)

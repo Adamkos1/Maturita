@@ -9662,6 +9662,7 @@ GameObject:
   - component: {fileID: 4380244468044152219}
   - component: {fileID: 5306854266513158436}
   - component: {fileID: 8710464187918349800}
+  - component: {fileID: -3821847148321550181}
   m_Layer: 0
   m_Name: Fireball_Object 1
   m_TagString: Untagged
@@ -9729,10 +9730,26 @@ MonoBehaviour:
   characterManager: {fileID: 0}
   characterStats: {fileID: 0}
   enabledDamageColliderOnStartUp: 1
+  teamIDNumber: 0
+  poiseBreak: 0
+  offfensivePoiseBonus: 0
   currentWeaponDamage: 50
   impactParticles: {fileID: 1105777178367904, guid: 20eab421cf33a364b8adde443cbf6f24, type: 3}
   projectileParticles: {fileID: 1418158253269514, guid: 3f29391a39a738c4b836d143ada6b1d0, type: 3}
   muzzleParticles: {fileID: 0}
+--- !u!114 &-3821847148321550181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418158253269514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a7647ba0a820d468c4937e226212ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilDestroyed: 10
 --- !u!1 &1749223788472706
 GameObject:
   m_ObjectHideFlags: 0

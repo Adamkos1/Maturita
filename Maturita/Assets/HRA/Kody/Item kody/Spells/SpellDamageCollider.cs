@@ -15,6 +15,7 @@ namespace AH
         bool hasCollided = false;
 
         CharacterStatsManager spellTarget;
+        IllusionaryWall spelltargetwall;
         Rigidbody rigidbody;
         Vector3 impactNormal;
 
@@ -36,8 +37,15 @@ namespace AH
             if(!hasCollided)
             {
                 spellTarget = collision.transform.GetComponent<CharacterStatsManager>();
+                spelltargetwall = collision.transform.GetComponent<IllusionaryWall>();
 
-                if (spellTarget != null && spellTarget.teamIDNumber == teamIDNumber)
+                if(spelltargetwall != null)
+                {
+                    spelltargetwall.wallHasBeenHit = true;
+                }
+
+
+                if (spellTarget != null && spellTarget.teamIDNumber != teamIDNumber)
                 {
                     spellTarget.TakeDamage(currentWeaponDamage);
                 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerAnimatorManager : AnimatorManager
+    public class PlayerAnimatorManager : CharacterAnimatorManager
     {
         InputHandler inputHandler;
         PlayerLocomotionManager playerLocomotionManager;

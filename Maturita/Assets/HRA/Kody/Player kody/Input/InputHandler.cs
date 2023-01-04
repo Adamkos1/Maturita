@@ -110,6 +110,9 @@ namespace AH
 
         public void TickInput(float delta)
         {
+            if (playerStatsManager.isDead)
+                return;
+
             HandleMoveInput(delta);
             HandleRollInput(delta);
             HandleCombatInput(delta);
@@ -288,14 +291,16 @@ namespace AH
 
                 if(twoHandFlag)
                 {
-                    playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     playerManager.isTwoHandingWeapon = true;
+                    playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerWeaponSlotManager.LoadTwoHandIKTargets(true);
                 }
                 else
                 {
+                    playerManager.isTwoHandingWeapon = false;
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
-                    playerManager.isTwoHandingWeapon = false;
+                    playerWeaponSlotManager.LoadTwoHandIKTargets(false);
                 }
 
             }

@@ -18,8 +18,9 @@ namespace AH
         public float staminaRegenerationTimer = 0;
 
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();

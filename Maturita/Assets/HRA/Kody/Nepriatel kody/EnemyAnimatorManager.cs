@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class EnemyAnimatorManager : AnimatorManager
+    public class EnemyAnimatorManager : CharacterAnimatorManager
     {
         EnemyManager enemyManager;
         EnemyEffectsManager enemyEffectsManager;
