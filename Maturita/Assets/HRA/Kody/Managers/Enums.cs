@@ -15,7 +15,13 @@ namespace AH
         Shield,
         Unarmed,
         Bow,
-}
+    }
+
+    public enum AmmoType
+    {
+        Arrow,
+        Bolt
+    }
 
     public class Enums : MonoBehaviour
     {

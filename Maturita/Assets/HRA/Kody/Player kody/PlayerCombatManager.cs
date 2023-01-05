@@ -47,6 +47,71 @@ namespace AH
             cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
+        public void HandleHoldRBAction()
+        {
+            if(playerManager.isTwoHandingWeapon)
+            {
+                PerformRBRangedAction();
+            }
+            else
+            {
+
+            }
+        }
+
+        public void HandleRBAction()
+        {
+            //playerAnimatorManager.EraseHandIKForWeapon();
+
+            if(playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            {
+                PerformRBMeleeAction();
+            }
+            else if(playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
+            {
+                PerformMagicAction(playerInventoryManager.rightWeapon, false);
+            }
+        }
+
+        public void HandleLTAction()
+        {
+            if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            {
+                PerformLTWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
+            {
+
+            }
+        }
+
+        public void HandleLBAction()
+        {
+            if(playerManager.isTwoHandingWeapon)
+            {
+                if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Bow)
+                {
+                    PerformLBAimingAction();
+                }
+            }
+            else
+            {
+                if(playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield && !playerManager.isTwoHandingWeapon)
+                {
+                    PerFormLBBlockingAction();
+                }
+                else if(playerInventoryManager.leftWeapon.weaponType == WeaponType.FaithCaster ||
+                        playerInventoryManager.leftWeapon.weaponType == WeaponType.PyroCaster)
+                {
+                    PerformMagicAction(playerInventoryManager.leftWeapon, true);
+                    playerAnimatorManager.animator.SetBool("isUsingLeftHand", true);
+                }
+            }
+        }
+
+
         public void HandleWeaponCombo(WeaponItem weapon)
         {
             if (playerStatsManager.currentStamina <= 0)
@@ -61,7 +126,7 @@ namespace AH
                     playerAnimatorManager.PlayTargetAnimation(oh_Light_Attack_02, true);
                 }
 
-                else if(lastAttack == th_Light_Attack_01)
+                else if (lastAttack == th_Light_Attack_01)
                 {
                     playerAnimatorManager.PlayTargetAnimation(th_Light_Attack_02, true);
                 }
@@ -107,57 +172,13 @@ namespace AH
             }
         }
 
-
-        public void HandleRBAction()
+        private void DrawArrowAction()
         {
-            //playerAnimatorManager.EraseHandIKForWeapon();
-
-            if(playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
-            {
-                PerformRBMeleeAction();
-            }
-            else if(playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster ||
-                playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
-                playerInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
-            {
-                PerformMagicAction(playerInventoryManager.rightWeapon, false);
-            }
-        }
-
-        public void HandleLTAction()
-        {
-            if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
-            {
-                PerformLTWeaponArt(inputHandler.twoHandFlag);
-            }
-            else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
-            {
-
-            }
-        }
-
-        public void HandleLBAction()
-        {
-            if(playerManager.isTwoHandingWeapon)
-            {
-                if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Bow)
-                {
-                    PerformLBAimingAction();
-                }
-            }
-            else
-            {
-                if(playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield)
-                {
-                    PerFormLBBlockingAction();
-                }
-                else if(playerInventoryManager.leftWeapon.weaponType == WeaponType.FaithCaster ||
-                        playerInventoryManager.leftWeapon.weaponType == WeaponType.PyroCaster)
-                {
-                    PerformMagicAction(playerInventoryManager.leftWeapon, true);
-                    playerAnimatorManager.animator.SetBool("isUsingLeftHand", true);
-                }
-            }
+            playerAnimatorManager.EraseHandIKForWeapon();
+            playerAnimatorManager.animator.SetBool("isHoldingArrow", true);
+            playerAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01_R", true);
+            GameObject loadedArrow = Instantiate(playerInventoryManager.currentAmmo.loadedItemModel, playerWeaponSlotManager.leftHandSlot.transform);
+            playerEffectsManager.currentRangedFX = loadedArrow;
         }
 
 
@@ -180,6 +201,28 @@ namespace AH
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventoryManager.rightWeapon);
 
+            }
+        }
+
+        private void PerformRBRangedAction()
+        {
+            if (playerStatsManager.currentStamina <= 0)
+                return;
+
+            playerAnimatorManager.EraseHandIKForWeapon();
+
+            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+
+            if(!playerManager.isHoldingArrow)
+            {
+                if(playerInventoryManager.currentAmmo != null)
+                {
+                    DrawArrowAction();
+                }
+                else
+                {
+                    playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                }
             }
         }
 
@@ -248,6 +291,9 @@ namespace AH
             if (playerManager.isTwoHandingWeapon)
                 return;
 
+            if (playerManager.isHoldingArrow)
+                return;
+
             playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
             playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
@@ -256,7 +302,7 @@ namespace AH
         private void PerformLBAimingAction()
         {
             playerAnimatorManager.EraseHandIKForWeapon();
-            playerAnimatorManager.animator.SetBool("isAiming", true);
+            //playerAnimatorManager.animator.SetBool("isAiming", true);
         }
 
 

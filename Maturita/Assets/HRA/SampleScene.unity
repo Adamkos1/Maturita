@@ -16489,6 +16489,7 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   leftWeapon: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
+  currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
@@ -16510,6 +16511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4436ea98f260f674a98f1fa8be0c6b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRangedFX: {fileID: 0}
   bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
@@ -16637,6 +16639,7 @@ MonoBehaviour:
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isTwoHandingWeapon: 0
+  isHoldingArrow: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
@@ -16672,6 +16675,7 @@ MonoBehaviour:
   groundDirectionRayDistance: 0.2
   inAirTimer: 0
   movementSpeed: 5
+  walkingSpeed: 2
   sprintSpeed: 7
   rotationSpeed: 10
   rollStaminaCost: 15
@@ -16702,6 +16706,7 @@ MonoBehaviour:
   inventoryFlag: 0
   lockOnFlag: 0
   drinkFlag: 0
+  fireFlag: 0
   a_Input: 0
   b_Input: 0
   x_Input: 0
@@ -16710,7 +16715,7 @@ MonoBehaviour:
   lb_Input: 0
   rt_Input: 0
   lt_Input: 0
-  critical_Attack_Input: 0
+  hold_rb_Input: 0
   jump_Input: 0
   inventory_Input: 0
   lockOn_Input: 0
@@ -22368,6 +22373,7 @@ MonoBehaviour:
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isTwoHandingWeapon: 0
+  isHoldingArrow: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
@@ -22467,6 +22473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRangedFX: {fileID: 0}
   bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
@@ -22486,6 +22493,7 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 0}
+  currentAmmo: {fileID: 0}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   weaponInLeftHandSlots:
@@ -29072,6 +29080,7 @@ MonoBehaviour:
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isTwoHandingWeapon: 0
+  isHoldingArrow: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
@@ -29139,6 +29148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efceaf3bbb8ff6a44bbed53e5761858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRangedFX: {fileID: 0}
   bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
@@ -29158,6 +29168,7 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
   leftWeapon: {fileID: 0}
   currentConsumableItem: {fileID: 0}
+  currentAmmo: {fileID: 0}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
   weaponInLeftHandSlots: []

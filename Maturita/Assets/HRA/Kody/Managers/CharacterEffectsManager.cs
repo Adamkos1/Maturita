@@ -7,6 +7,9 @@ namespace AH
 
     public class CharacterEffectsManager : MonoBehaviour
     {
+        [Header("Current Ranged FX")]
+        public GameObject currentRangedFX;
+
         [Header("Damage FX")]
         public GameObject bloodSplatterFX;
 

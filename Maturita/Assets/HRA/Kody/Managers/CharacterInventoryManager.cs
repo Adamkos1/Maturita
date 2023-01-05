@@ -15,6 +15,7 @@ namespace AH
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
         public ConsumableItem currentConsumableItem;
+        public RangedAmmoItem currentAmmo;
 
         public WeaponItem[] weaponInRightHandSlots = new WeaponItem[0];
         public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[0];
