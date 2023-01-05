@@ -4,23 +4,19 @@ using UnityEngine;
 
 namespace AH
 {
-
     public class DamagePlayer : MonoBehaviour
     {
-
         public int damage = 25;
+        string damageAnimation = "Damage_01";
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerStatsManager playerStats = other.GetComponent<PlayerStatsManager>();
+            CharacterStatsManager characterStats = other.GetComponent<CharacterStatsManager>();
 
-            if(playerStats != null)
+            if(characterStats != null)
             {
-                playerStats.TakeDamage(damage);
+                characterStats.TakeDamage(damage, damageAnimation);
             }
         }
-
     }
-
-
 }

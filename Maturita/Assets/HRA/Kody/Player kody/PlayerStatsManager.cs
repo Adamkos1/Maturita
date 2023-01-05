@@ -73,7 +73,7 @@ namespace AH
             return maxMana;
         }
 
-        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int damage, string damageAnimation)
         {
             if (playerManager.isInvulnerable)
                 return;
@@ -173,8 +173,8 @@ namespace AH
         public void HandleDeath()
         {
             currentHealth = 0;
-            playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
             isDead = true;
+            playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
         }
 
     }

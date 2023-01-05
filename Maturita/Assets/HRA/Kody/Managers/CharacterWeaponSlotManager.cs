@@ -151,6 +151,7 @@ namespace AH
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = characterInventoryManager.leftWeapon.baseDamage;
 
+            leftHandDamageCollider.characterManager = characterManager;
             leftHandDamageCollider.teamIDNumber = characterStatsManager.teamIDNumber;
 
             leftHandDamageCollider.poiseBreak = characterInventoryManager.leftWeapon.poiseBreak;
@@ -167,6 +168,7 @@ namespace AH
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.currentWeaponDamage = characterInventoryManager.rightWeapon.baseDamage;
 
+            rightHandDamageCollider.characterManager = characterManager;
             rightHandDamageCollider.teamIDNumber = characterStatsManager.teamIDNumber;
 
             rightHandDamageCollider.poiseBreak = characterInventoryManager.rightWeapon.poiseBreak;

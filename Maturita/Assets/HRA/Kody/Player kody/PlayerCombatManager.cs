@@ -174,7 +174,7 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
-            if(weapon.weaponType == WeaponType.FaithCaster)
+            if (weapon.weaponType == WeaponType.FaithCaster)
             {
                 if(playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
                 {
@@ -184,6 +184,7 @@ namespace AH
                     }
                     else
                     {
+                        playerAnimatorManager.EraseHandIKForWeapon();
                         playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }    
@@ -199,6 +200,7 @@ namespace AH
                     }
                     else
                     {
+                        playerAnimatorManager.EraseHandIKForWeapon();
                         playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }
@@ -239,6 +241,9 @@ namespace AH
             if (playerManager.isBlocking)
                 return;
 
+            if (playerManager.isTwoHandingWeapon)
+                return;
+
             playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
             playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
@@ -250,6 +255,8 @@ namespace AH
         {
             if (playerStatsManager.currentStamina <= 0)
                 return;
+
+            playerAnimatorManager.EraseHandIKForWeapon();
 
             RaycastHit hit;
 

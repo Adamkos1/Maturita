@@ -47,7 +47,7 @@ namespace AH
 
                 if (spellTarget != null && spellTarget.teamIDNumber != teamIDNumber)
                 {
-                    spellTarget.TakeDamage(currentWeaponDamage);
+                    spellTarget.TakeDamage(currentWeaponDamage, currentDamageAnimation);
                 }
 
                 hasCollided = true;

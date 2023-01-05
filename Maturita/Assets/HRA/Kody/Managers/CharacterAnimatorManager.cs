@@ -139,7 +139,7 @@ namespace AH
 
                 if (leftHandConstraint.data.target != null)
                 {
-                    leftHandConstraint.data.target = rightHandIK.transform;
+                    leftHandConstraint.data.target = leftHandIK.transform;
                     leftHandConstraint.data.targetPositionWeight = 1;
                     leftHandConstraint.data.targetRotationWeight = 1;
                 }
@@ -148,7 +148,7 @@ namespace AH
 
         public virtual void EraseHandIKForWeapon()
         {
- /*           handIKWeightsReset = true;
+            handIKWeightsReset = true;
 
             if (rightHandConstraint.data.target != null)
             {
@@ -160,7 +160,7 @@ namespace AH
                 leftHandConstraint.data.targetPositionWeight = 0;
                 leftHandConstraint.data.targetRotationWeight = 0;
             }
-*/
+
         }
     }
 
