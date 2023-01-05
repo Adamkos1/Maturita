@@ -10,7 +10,6 @@ public class ResetAnimatorBool : StateMachineBehaviour
     public string isUsingLeftHand = "isUsingLeftHand";
     public bool isUsingLeftHandStatus = false;
 
-
     public string isInvulnerable = "isInvulnerable";
     public bool isInvulnerableStatus = false;
 
@@ -26,6 +25,9 @@ public class ResetAnimatorBool : StateMachineBehaviour
     public string canRotateBool = "canRotate";
     public bool canRotateStatus = true;
 
+    public string isMirroredBool = "isMirrored";
+    public bool isMirroredStatus = false;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(isInteractingBool, isInteractingStatus);
@@ -35,6 +37,7 @@ public class ResetAnimatorBool : StateMachineBehaviour
         animator.SetBool(isInvulnerable, isInvulnerableStatus);
         animator.SetBool(isUsingRightHand, isUsingRightHandStatus);
         animator.SetBool(isUsingLeftHand, isUsingLeftHandStatus);
+        animator.SetBool(isMirroredBool, isMirroredStatus);
 
     }
 

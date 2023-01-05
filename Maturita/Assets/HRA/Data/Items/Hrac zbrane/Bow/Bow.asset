@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 6ec3768e200ce654cacccddfeaa0f2bb, type: 3}
+  itemName: Luk
+  modelPrefab: {fileID: 7090337672483868319, guid: adc4090c897e10f4b95ceb176d8f21b0, type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 3d2717b230b30fb479422445d9275b31, type: 2}
+  offHandIdleAnimation: Left_Arm_Idle_01
+  weaponType: 8
+  baseDamage: 25
+  criticalDamageMultiplier: 4
+  poiseBreak: 100
+  offensivePoiseBonus: 0
+  physicalDamageAbsorption: 0
+  baseStamina: 20
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2

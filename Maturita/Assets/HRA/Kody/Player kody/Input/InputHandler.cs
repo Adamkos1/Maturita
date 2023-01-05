@@ -116,6 +116,7 @@ namespace AH
             HandleMoveInput(delta);
             HandleRollInput(delta);
             HandleCombatInput(delta);
+            HandleLBInput();
             HandleQuickSlotInput();
             HandleInventoryInput();
             HandleLockOnInput();
@@ -126,12 +127,22 @@ namespace AH
 
         private void HandleMoveInput(float delta)
         {
-            horizontal = movementInput.x;
-            vertical = movementInput.y;
-            moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
-            mouseX = cameraInput.x;
-            mouseY = cameraInput.y;
-            
+            if(playerManager.isAiming)
+            {
+                horizontal = movementInput.x;
+                vertical = movementInput.y;
+                moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical)) /2;
+                mouseX = cameraInput.x;
+                mouseY = cameraInput.y;
+            }
+            else
+            {
+                horizontal = movementInput.x;
+                vertical = movementInput.y;
+                moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+                mouseX = cameraInput.x;
+                mouseY = cameraInput.y;
+            }       
         }
 
         private void HandleRollInput(float delta)
@@ -178,21 +189,6 @@ namespace AH
 
                     playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
                 }
-
-                if(lb_Input)
-                {
-                    playerCombatManager.HandleLBAction();
-                }
-                else
-                {
-                    playerManager.isBlocking = false;
-
-                    if(blockingCollider.blockingCollider.enabled)
-                {
-                    blockingCollider.DisableBlockingCollider();
-                }
-                }
-
                 if(lt_Input)
                 {
                     if(twoHandFlag)
@@ -204,6 +200,34 @@ namespace AH
                         playerCombatManager.HandleLTAction();
                     }
                 }
+        }
+
+        private void HandleLBInput()
+        {
+            if(playerManager.isInAir || playerManager.isSprinting || playerManager.isFiringSpell)
+            {
+                lb_Input = false;
+                return;
+            }
+
+            if (lb_Input)
+            {
+                playerCombatManager.HandleLBAction();
+            }
+            else if(lb_Input == false)
+            {
+                playerManager.isBlocking = false;
+
+                if (blockingCollider.blockingCollider.enabled)
+                {
+                    blockingCollider.DisableBlockingCollider();
+                }
+
+                if(playerManager.isAiming)
+                {
+                    playerAnimatorManager.animator.SetBool("isAiming", false);
+                }
+            }
         }
         
         private void HandleQuickSlotInput()

@@ -50,7 +50,7 @@ namespace AH
             {
                 if(parentOverride != null && shieldParentOverride != null)
                 {
-                    if(currentWeapon.weaponType == WeaponType.StraightSword)
+                    if(currentWeapon.weaponType == WeaponType.StraightSword || currentWeapon.weaponType == WeaponType.FaithCaster || currentWeapon.weaponType == WeaponType.PyroCaster || currentWeapon.weaponType == WeaponType.Unarmed)
                     {
                         model.transform.parent = parentOverride;
                     }

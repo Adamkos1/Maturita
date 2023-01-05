@@ -27,11 +27,12 @@ namespace AH
             rigBuilder = GetComponent<RigBuilder>();
         }
 
-        public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false)
+        public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false, bool mirrorAnim = false)
         {
             animator.applyRootMotion = isInteracting;
             animator.SetBool("canRotate", canRotate);
             animator.SetBool("isInteracting", isInteracting);
+            animator.SetBool("isMirrored", mirrorAnim);
             animator.CrossFade(targetAnim, 0.2f);
 
         }
@@ -104,13 +105,19 @@ namespace AH
         {
             if (isTwoHandingWeapon)
             {
-                rightHandConstraint.data.target = rightHandTarget.transform;
-                rightHandConstraint.data.targetPositionWeight = 1;
-                rightHandConstraint.data.targetRotationWeight = 1;
+                if(rightHandTarget != null)
+                {
+                    rightHandConstraint.data.target = rightHandTarget.transform;
+                    rightHandConstraint.data.targetPositionWeight = 1;
+                    rightHandConstraint.data.targetRotationWeight = 1;
+                }
+                if(leftHandTarget != null)
+                {
+                    leftHandConstraint.data.target = leftHandTarget.transform;
+                    leftHandConstraint.data.targetPositionWeight = 1;
+                    leftHandConstraint.data.targetRotationWeight = 1;
+                }
 
-                leftHandConstraint.data.target = leftHandTarget.transform;
-                leftHandConstraint.data.targetPositionWeight = 1;
-                leftHandConstraint.data.targetRotationWeight = 1;
             }
             else
             {

@@ -14,6 +14,7 @@ namespace AH
         Dagger,
         Shield,
         Unarmed,
+        Bow,
 }
 
     public class Enums : MonoBehaviour

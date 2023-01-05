@@ -107,7 +107,6 @@ namespace AH
             }
         }
 
-        #region Input Actions
 
         public void HandleRBAction()
         {
@@ -121,7 +120,7 @@ namespace AH
                 playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
                 playerInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
             {
-                PerformRBMagicAction(playerInventoryManager.rightWeapon);
+                PerformMagicAction(playerInventoryManager.rightWeapon, false);
             }
         }
 
@@ -139,13 +138,28 @@ namespace AH
 
         public void HandleLBAction()
         {
-            PerFormLBBlockingAction();
+            if(playerManager.isTwoHandingWeapon)
+            {
+                if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Bow)
+                {
+                    PerformLBAimingAction();
+                }
+            }
+            else
+            {
+                if(playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield)
+                {
+                    PerFormLBBlockingAction();
+                }
+                else if(playerInventoryManager.leftWeapon.weaponType == WeaponType.FaithCaster ||
+                        playerInventoryManager.leftWeapon.weaponType == WeaponType.PyroCaster)
+                {
+                    PerformMagicAction(playerInventoryManager.leftWeapon, true);
+                    playerAnimatorManager.animator.SetBool("isUsingLeftHand", true);
+                }
+            }
         }
 
-
-        #endregion
-
-        #region Attack Action
 
         private void PerformRBMeleeAction()
         {
@@ -169,7 +183,7 @@ namespace AH
             }
         }
 
-        private void PerformRBMagicAction(WeaponItem weapon)
+        private void PerformMagicAction(WeaponItem weapon, bool isLeftHanded)
         {
             if (playerManager.isInteracting)
                 return;
@@ -180,7 +194,7 @@ namespace AH
                 {
                     if(playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, isLeftHanded);
                     }
                     else
                     {
@@ -196,7 +210,7 @@ namespace AH
                 {
                     if (playerStatsManager.currentMana >= playerInventoryManager.currentSpell.manaCost)
                     {
-                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, isLeftHanded);
                     }
                     else
                     {
@@ -223,16 +237,6 @@ namespace AH
 
         }
 
-        private void SuccessfullyCastSpell()
-        {
-            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, cameraHandler);
-            playerAnimatorManager.animator.SetBool("isFiringSpell", true);
-        }
-
-        #endregion
-
-        #region Defense Actions
-
         private void PerFormLBBlockingAction()
         {
             if (playerManager.isInteracting)
@@ -249,7 +253,18 @@ namespace AH
             playerManager.isBlocking = true;
         }
 
-        #endregion
+        private void PerformLBAimingAction()
+        {
+            playerAnimatorManager.EraseHandIKForWeapon();
+            playerAnimatorManager.animator.SetBool("isAiming", true);
+        }
+
+
+        private void SuccessfullyCastSpell()
+        {
+            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, cameraHandler, playerManager.isUsingLeftHand);
+            playerAnimatorManager.animator.SetBool("isFiringSpell", true);
+        }
 
         public void AttemptBackStabOrRiposte()
         {

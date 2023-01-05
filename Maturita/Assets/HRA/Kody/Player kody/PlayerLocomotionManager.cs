@@ -38,6 +38,8 @@ namespace AH
         [SerializeField]
             float movementSpeed = 5;
         [SerializeField]
+            float walkingSpeed = 2;
+        [SerializeField]
             float sprintSpeed = 7;
         [SerializeField]
             float rotationSpeed = 10;
@@ -165,7 +167,17 @@ namespace AH
             }
             else
             {
-                moveDirection *= speed;
+                if(inputHandler.moveAmount <= 0.5)
+                {
+                    moveDirection *= walkingSpeed;
+                    playerManager.isSprinting = false;
+
+                }
+                else
+                {
+                    moveDirection *= speed;
+                    playerManager.isSprinting = false;
+                }
             }
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);

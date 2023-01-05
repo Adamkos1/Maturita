@@ -27,6 +27,7 @@ namespace AH
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
         public bool isTwoHandingWeapon;
+        public bool isAiming;
 
         [Header("Interacting")]
         public bool isInteracting;

@@ -16486,14 +16486,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
-  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
+  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   weaponInLeftHandSlots:
-  - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
+  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
@@ -22484,11 +22484,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
-  leftWeapon: {fileID: 0}
+  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 0}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
-  weaponInLeftHandSlots: []
+  weaponInLeftHandSlots:
+  - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentRightWeaponIndex: -1
   currentLeftWeaponIndex: -1
 --- !u!114 &2816251560902805494
