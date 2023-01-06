@@ -125,6 +125,7 @@ namespace AH
             HandleTwoHandInput();
             HandleUseConsumableInput();
             HandleHoldRBInput();
+            HandleFireBowInput();
         }
 
         private void HandleMoveInput(float delta)
@@ -342,11 +343,23 @@ namespace AH
                 }
                 else
                 {
+                    playerAnimatorManager.EraseHandIKForWeapon();
                     hold_rb_Input = false;
                     playerCombatManager.AttemptBackStabOrRiposte();
                 }
             }
-            //playerAnimatorManager.EraseHandIKForWeapon();
+        }
+
+        private void HandleFireBowInput()
+        {
+            if(fireFlag)
+            {
+                if(playerManager.isHoldingArrow)
+                {
+                    fireFlag = false;
+                    playerCombatManager.FireArrowAction();
+                }
+            }
         }
 
         private void HandleUseConsumableInput()

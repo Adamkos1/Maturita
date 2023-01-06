@@ -8,8 +8,7 @@ namespace AH
     public class DamageCollider : MonoBehaviour
     {
         public CharacterManager characterManager;
-        public CharacterStatsManager characterStats;
-        Collider damgeCollider;
+        protected Collider damgeCollider;
         public bool enabledDamageColliderOnStartUp = false;
 
         [Header("Team I.D")]
@@ -22,13 +21,12 @@ namespace AH
         [Header("Damage")]
         public int currentWeaponDamage = 25;
 
-        public bool shieldHasBeenHit = false;
-        public bool hasBeenParried = false;
+        protected bool shieldHasBeenHit = false;
+        protected bool hasBeenParried = false;
         protected string currentDamageAnimation;
 
         private void Awake()
         {
-            characterStats = GetComponentInParent<CharacterStatsManager>();
             damgeCollider = GetComponent<Collider>();
             damgeCollider.gameObject.SetActive(true);
             damgeCollider.isTrigger = true;
@@ -46,7 +44,7 @@ namespace AH
             damgeCollider.enabled = false;
         }
 
-        private void OnTriggerEnter(Collider collision)
+        protected virtual void OnTriggerEnter(Collider collision)
         {
             if(collision.tag == "Character")
             {

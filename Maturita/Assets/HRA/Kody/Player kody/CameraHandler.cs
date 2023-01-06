@@ -90,7 +90,7 @@ namespace AH
                 targetRotation = Quaternion.Euler(rotation);
                 cameraPivotTransform.localRotation = targetRotation;
             }
-            else
+            else if(currentLockOnTarget != null && inputHandler.lockOnFlag == true)
             {
                 float velocity = 0;
 

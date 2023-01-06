@@ -13,17 +13,17 @@ namespace AH
         public AmmoType ammoType;
 
         [Header("Ammo Velocity")]
-        public float forwardCelocity = 550;
+        public float forwardCelocity = 250;
         public float upwardVelocity = 0;
         public float ammoMass = 0;
         public bool useGravity = false;
 
         [Header("Ammo Capacity")]
-        public int carryLimit = 99;
-        public int currentAmount = 99;
+        public int carryLimit = 100;
+        public int currentAmount = 50;
 
         [Header("Ammo Base Damage")]
-        public float physicalDamage = 50;
+        public int physicalDamage = 50;
 
         [Header("Item Models")]
         public GameObject loadedItemModel; //model ktory sa ukaze ked natiahneme luk

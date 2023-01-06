@@ -11,9 +11,13 @@ namespace AH
     {
         public WeaponItem weapon;
 
+        public RangedAmmoItem rangedAmmo;
+
         public ConsumableItem estusFlask;
 
         public bool isFlask;
+
+        public bool isAmmo;
 
         public override void Interact(PlayerManager playerManager)
         {
@@ -22,6 +26,10 @@ namespace AH
             if(isFlask)
             {
                 PickUpEstusFlask(playerManager);
+            }
+            else if(isAmmo)
+            {
+                PickAmmo(playerManager);
             }
             else
             {
@@ -65,6 +73,26 @@ namespace AH
             playerInventory.currentConsumableItem.currentItemAmount = playerInventory.currentConsumableItem.currentItemAmount + 5;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<TextMeshProUGUI>().text = estusFlask.itemName;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<RawImage>().texture = estusFlask.itemIcon.texture;
+            playerManager.itemInteractableUIGameObject.SetActive(true);
+            Destroy(gameObject);
+
+        }
+
+        private void PickAmmo(PlayerManager playerManager)
+        {
+            PlayerInventoryManager playerInventory;
+            PlayerLocomotionManager playerLocomotion;
+            PlayerAnimatorManager animatorHandler;
+
+            playerInventory = playerManager.GetComponent<PlayerInventoryManager>();
+            playerLocomotion = playerManager.GetComponent<PlayerLocomotionManager>();
+            animatorHandler = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
+
+            playerLocomotion.rigidbody.velocity = Vector3.zero;
+            animatorHandler.PlayTargetAnimation("Pick Up Item", true);
+            playerInventory.currentAmmo.currentAmount = playerInventory.currentAmmo.currentAmount + 5;
+            playerManager.itemInteractableUIGameObject.GetComponentInChildren<TextMeshProUGUI>().text = rangedAmmo.itemName;
+            playerManager.itemInteractableUIGameObject.GetComponentInChildren<RawImage>().texture = rangedAmmo.itemIcon.texture;
             playerManager.itemInteractableUIGameObject.SetActive(true);
             Destroy(gameObject);
 

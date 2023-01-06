@@ -148,8 +148,10 @@ MonoBehaviour:
   radius: 0.83
   interactableText: Lektvar Zivota
   weapon: {fileID: 0}
+  rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   isFlask: 1
+  isAmmo: 0
 --- !u!135 &9228422
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1353,8 +1355,10 @@ MonoBehaviour:
   radius: 0.83
   interactableText: Pick Up Item
   weapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 0}
   isFlask: 0
+  isAmmo: 0
 --- !u!4 &372041134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
@@ -2274,7 +2278,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: m_Name
-      value: FX_Ring (1)
+      value: Flask
       objectReference: {fileID: 0}
     - target: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: m_TagString
@@ -2298,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.36
+      value: -6.74
       objectReference: {fileID: 0}
     - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3147,6 +3151,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
+--- !u!1 &851883466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+  m_PrefabInstance: {fileID: 1725984500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &851883467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+  m_PrefabInstance: {fileID: 1725984500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &851883468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851883466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc76e047e7e800149997e15328697ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.83
+  interactableText: Sipy
+  weapon: {fileID: 0}
+  rangedAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
+  estusFlask: {fileID: 0}
+  isFlask: 0
+  isAmmo: 1
+--- !u!135 &851883469
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851883466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.58
+  m_Center: {x: 0.0017147063, y: 0.11, z: 0.0068755145}
 --- !u!1 &869738544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5087,8 +5133,10 @@ MonoBehaviour:
   radius: 0.83
   interactableText: Pick Up Item
   weapon: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 0}
   isFlask: 0
+  isAmmo: 0
 --- !u!135 &1220936009
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5250,6 +5298,7 @@ Transform:
   - {fileID: 372041134}
   - {fileID: 2069703941}
   - {fileID: 9228420}
+  - {fileID: 851883467}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7439,6 +7488,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703187493}
   m_CullTransparentMesh: 1
+--- !u!1001 &1725984500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1266713517}
+    m_Modifications:
+    - target: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.41664
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.41664
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.41664
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.9586935
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478326, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 19953136, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
 --- !u!1001 &1734491559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8665,9 +8815,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.83
   interactableText: Pick Up Item
-  weapon: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  weapon: {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
+  rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 0}
   isFlask: 0
+  isAmmo: 0
 --- !u!135 &2069703940
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16491,7 +16643,7 @@ MonoBehaviour:
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
+  - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d204d0664268b634599986bef418529e, type: 3}
   m_Name: Arrow
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 14aa5c25d781fd8459eb611cc1a33ac4, type: 3}
   itemName: Arrow
   ammoType: 0
   forwardCelocity: 550
@@ -20,7 +20,7 @@ MonoBehaviour:
   ammoMass: 0
   useGravity: 0
   carryLimit: 99
-  currentAmount: 99
+  currentAmount: 55
   physicalDamage: 50
   loadedItemModel: {fileID: 7090337672483868319, guid: 3ead2f02598e53d40a3d36796f60de0b, type: 3}
   liveAmmoModel: {fileID: 7090337672483868319, guid: d7732d2c93f5b444e86174ba27e6ff12, type: 3}

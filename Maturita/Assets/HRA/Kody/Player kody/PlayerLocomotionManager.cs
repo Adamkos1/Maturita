@@ -85,7 +85,7 @@ namespace AH
         {
             if (playerAnimatorHandler.canRotate)
             {
-                if (inputHandler.lockOnFlag)
+                if (inputHandler.lockOnFlag && cameraHandler.currentLockOnTarget != null)
                 {
                     if (inputHandler.sprintFlag || inputHandler.rollFlag)
                     {
@@ -117,7 +117,7 @@ namespace AH
                         transform.rotation = targetRotation;
                     }
                 }
-                else
+                else if(cameraHandler.currentLockOnTarget == null)
                 {
                     Vector3 targetDir = Vector3.zero;
                     float moveOverride = inputHandler.moveAmount;

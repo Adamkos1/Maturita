@@ -178,7 +178,53 @@ namespace AH
             playerAnimatorManager.animator.SetBool("isHoldingArrow", true);
             playerAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01_R", true);
             GameObject loadedArrow = Instantiate(playerInventoryManager.currentAmmo.loadedItemModel, playerWeaponSlotManager.leftHandSlot.transform);
+            Animator bowAnimator = playerWeaponSlotManager.rightHandSlot.GetComponentInChildren<Animator>();
+            bowAnimator.SetBool("isDrawn", true);
+            bowAnimator.Play("Bow_ONLY_Draw_01");
             playerEffectsManager.currentRangedFX = loadedArrow;
+        }
+
+        public void FireArrowAction()
+        {
+            ArrowInstantiationLocation arrowInstantiationLocation;
+            arrowInstantiationLocation = playerWeaponSlotManager.rightHandSlot.GetComponentInChildren<ArrowInstantiationLocation>();
+
+            Animator bowAnimator = playerWeaponSlotManager.rightHandSlot.GetComponentInChildren<Animator>();
+            bowAnimator.SetBool("isDrawn", false);
+            bowAnimator.Play("Bow_ONLY_Fire_01");
+            Destroy(playerEffectsManager.currentRangedFX);
+
+            //resetovat hracov live arrow
+            playerAnimatorManager.PlayTargetAnimation("Bow_TH_Fire_01_R", true);
+            playerAnimatorManager.animator.SetBool("isHoldingArrow", false);
+
+            //vytvorit a vystrelit live arrow
+            GameObject liveArrow = Instantiate(playerInventoryManager.currentAmmo.liveAmmoModel, arrowInstantiationLocation.transform.position, cameraHandler.cameraPivotTransform.rotation);
+            Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
+            RangedProjectileDamageColider damageColider = liveArrow.GetComponentInChildren<RangedProjectileDamageColider>();
+
+            //dat naboju rychlost
+            if(cameraHandler.currentLockOnTarget != null)
+            {
+                Quaternion arrowRotation = Quaternion.LookRotation(transform.forward);
+                liveArrow.transform.rotation = arrowRotation;
+            }
+            else
+            {
+                liveArrow.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+            }
+
+            rigidbody.AddForce(liveArrow.transform.forward * playerInventoryManager.currentAmmo.forwardCelocity);
+            rigidbody.AddForce(liveArrow.transform.up * playerInventoryManager.currentAmmo.upwardVelocity);
+            rigidbody.useGravity = playerInventoryManager.currentAmmo.useGravity;
+            rigidbody.mass = playerInventoryManager.currentAmmo.ammoMass;
+            liveArrow.transform.parent = null;
+
+            //dat live arrowu damage
+            damageColider.characterManager = playerManager;
+            damageColider.ammoItem = playerInventoryManager.currentAmmo;
+            damageColider.currentWeaponDamage = playerInventoryManager.currentAmmo.physicalDamage;
+
         }
 
 
