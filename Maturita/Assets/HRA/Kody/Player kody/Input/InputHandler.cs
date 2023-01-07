@@ -54,7 +54,7 @@ namespace AH
         PlayerAnimatorManager playerAnimatorManager;
         PlayerManager playerManager;
         PlayerWeaponSlotManager playerWeaponSlotManager;
-        UIManager uIManager;
+        public UIManager uIManager;
         BlockingCollider blockingCollider;
 
         Vector2 movementInput;
@@ -219,16 +219,16 @@ namespace AH
             }
             else if(lb_Input == false)
             {
-                playerManager.isBlocking = false;
+                if(playerManager.isAiming)
+                {
+                    playerManager.isAiming = false;
+                    uIManager.crossHair.SetActive(false);
+                }
 
                 if (blockingCollider.blockingCollider.enabled)
                 {
+                    playerManager.isBlocking = false;
                     blockingCollider.DisableBlockingCollider();
-                }
-
-                if(playerManager.isHoldingArrow)
-                {
-                    //playerAnimatorManager.animator.SetBool("isAiming", false);
                 }
             }
         }

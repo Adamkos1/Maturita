@@ -280,16 +280,36 @@ namespace AH
             Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
             RangedProjectileDamageColider damageColider = liveArrow.GetComponentInChildren<RangedProjectileDamageColider>();
 
-            //dat naboju rychlost
-            if(cameraHandler.currentLockOnTarget != null)
+            if (playerManager.isAiming)
             {
-                Quaternion arrowRotation = Quaternion.LookRotation(transform.forward);
-                liveArrow.transform.rotation = arrowRotation;
+                Ray ray = cameraHandler.cameraObject.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                RaycastHit hitPoint;
+
+                if(Physics.Raycast(ray, out hitPoint, 100.0f))
+                {
+                    liveArrow.transform.LookAt(hitPoint.point);
+                    Debug.Log(hitPoint.transform.name);
+                }
+                else
+                {
+                    liveArrow.transform.rotation = Quaternion.Euler(cameraHandler.cameraTransform.localEulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+
+                }
             }
             else
             {
-                liveArrow.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+                //dat naboju rychlost
+                if (cameraHandler.currentLockOnTarget != null)
+                {
+                    Quaternion arrowRotation = Quaternion.LookRotation(cameraHandler.currentLockOnTarget.lockOnTransform.position - liveArrow.gameObject.transform.position);
+                    liveArrow.transform.rotation = arrowRotation;
+                }
+                else
+                {
+                    liveArrow.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+                }
             }
+
 
             rigidbody.AddForce(liveArrow.transform.forward * playerInventoryManager.currentAmmo.forwardCelocity);
             rigidbody.AddForce(liveArrow.transform.up * playerInventoryManager.currentAmmo.upwardVelocity);
@@ -460,9 +480,13 @@ namespace AH
         private void PerformLBAimingAction()
         {
             playerAnimatorManager.EraseHandIKForWeapon();
-            //playerAnimatorManager.animator.SetBool("isAiming", true);
-        }
 
+            if (playerManager.isAiming)
+                return;
+
+            inputHandler.uIManager.crossHair.SetActive(true);
+            playerManager.isAiming = true;
+        }
 
         private void SuccessfullyCastSpell()
         {
