@@ -97,12 +97,14 @@ namespace AH
 
         public void DrainStaminaLightAttack()
         {
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
+            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.lightAttackMultiplier));
         }
 
         public void DrainStaminaHeavyAttack()
         {
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
+            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.heavyAttackMultiplier));
         }
 
     }

@@ -10,6 +10,9 @@ namespace AH
         protected CharacterWeaponSlotManager characterWeaponSlotManager;
         protected QuickSlotsUI quickSlotsUI;
 
+        [Header("Current Item Being Used")]
+        public Item currentItemBeingUsed;
+
         [Header("Quick Slot Items")]
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;

@@ -17,6 +17,7 @@ namespace AH
         public PlayerStatsManager playerStatsManager;
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerInventoryManager playerInventoryManager;
+        public PlayerEquipmentManager playerEquipmentManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -35,6 +36,7 @@ namespace AH
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
@@ -45,8 +47,6 @@ namespace AH
 
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
-            isUsingRightHand = animator.GetBool("isUsingRightHand");
-            isUsingLeftHand = animator.GetBool("isUsingLeftHand");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             isHoldingArrow = animator.GetBool("isHoldingArrow");

@@ -12689,8 +12689,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565960043939e4f439f93923508eb5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
-  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
@@ -12764,6 +12765,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd56e6a3232675448077b37dd3cf342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oh_Light_Attack_01: Oh_Light_Attack_01
+  oh_Light_Attack_02: Oh_Light_Attack_02
+  oh_Heavy_Attack_01: Oh_Heavy_Attack_01
+  oh_Runing_Attack_01: Oh_Runing_Attack_01
+  oh_Jumping_Attack_01: Oh_Jumping_Attack_01
+  th_Runing_Attack_01: Th_Runing_Attack_01
+  th_Jumping_Attack_01: Th_Jumping_Attack_01
+  th_Light_Attack_01: Th_Light_Attack_01
+  th_Light_Attack_02: Th_Light_Attack_02
+  th_Heavy_Attack_01: Th_Heavy_Attack_01
+  weaponArt: Weapon Art
   lastAttack: 
 --- !u!114 &95977974435473197
 MonoBehaviour:
@@ -12777,14 +12789,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7755cec0077da41458e4b73845d342e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}
   backSlotForShield: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!114 &95977974435473198
@@ -12853,6 +12864,15 @@ MonoBehaviour:
   isGrounded: 1
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  playerWeaponSlotManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
+  playerEffectsManager: {fileID: 0}
+  inputHandler: {fileID: 0}
+  playerLocomotion: {fileID: 0}
+  playerStatsManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
+  playerInventoryManager: {fileID: 0}
+  playerEquipmentManager: {fileID: 0}
   interactableUIGameObject: {fileID: 1952557209571214497}
   itemInteractableUIGameObject: {fileID: 1952557209666062933}
 --- !u!114 &95977974435473200
@@ -16442,14 +16462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f87390c8432c3949a96c803ae971ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}
   backSlotForShield: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!114 &2814908500716102898
@@ -17850,6 +17869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4141276d62874b489df214ddbb91b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
@@ -22488,14 +22508,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f87390c8432c3949a96c803ae971ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}
   backSlotForShield: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  unarmedWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
-  attackingWeapon: {fileID: 0}
   rightHandIKTarget: {fileID: 0}
   leftHandIKTarget: {fileID: 0}
 --- !u!1 &7668757344782363232
@@ -24110,6 +24129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4141276d62874b489df214ddbb91b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
   leftWeapon: {fileID: 0}

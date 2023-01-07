@@ -83,6 +83,11 @@ namespace AH
                 totalPoiseDefence = armorPoiseBonus;
             }
         }
+
+        public void DrainStaminaBasedOnAttackType()
+        {
+
+        }
     }
 
 }

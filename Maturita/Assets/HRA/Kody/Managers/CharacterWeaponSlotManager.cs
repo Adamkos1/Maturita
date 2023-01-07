@@ -14,6 +14,9 @@ namespace AH
         protected CharacterEffectsManager characterEffectsManager;
         protected CharacterStatsManager characterStatsManager;
 
+        [Header("Unarmed Weapon")]
+        public WeaponItem unarmedWeapon;
+
         [Header("Weapon Slots")]
         public WeaponHolderSlot leftHandSlot;
         public WeaponHolderSlot rightHandSlot;
@@ -23,12 +26,6 @@ namespace AH
         [Header("Damage Colliders")]
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
-
-        [Header("Unarmed Weapon")]
-        public WeaponItem unarmedWeapon;
-
-        [Header("Attacking Weapon")]
-        public WeaponItem attackingWeapon;
 
         [Header("Hand IK Targets")]
         public RightHandIKTarget rightHandIKTarget;
@@ -216,7 +213,8 @@ namespace AH
 
         public virtual void GrantWeaponAttackPoiseBonus()
         {
-            characterStatsManager.totalPoiseDefence = characterStatsManager.totalPoiseDefence + attackingWeapon.offensivePoiseBonus;
+            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            characterStatsManager.totalPoiseDefence = characterStatsManager.totalPoiseDefence + currentWeaponBeingUsed.offensivePoiseBonus;
         }
 
         public virtual void ResetWeaponAttackingPoiseBonus()
