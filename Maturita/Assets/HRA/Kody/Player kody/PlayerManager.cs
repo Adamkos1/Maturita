@@ -7,13 +7,16 @@ namespace AH
 
     public class PlayerManager : CharacterManager
     {
-        InputHandler inputHandler;
         Animator animator;
         CameraHandler cameraHandler;
-        PlayerLocomotionManager playerLocomotion;
-        PlayerStatsManager playerStatsManager;
-        PlayerAnimatorManager playerAnimatorManager;
-        PlayerInventoryManager playerInventoryManager;
+        public PlayerWeaponSlotManager playerWeaponSlotManager;
+        public PlayerCombatManager playerCombatManager;
+        public PlayerEffectsManager playerEffectsManager;
+        public InputHandler inputHandler;
+        public PlayerLocomotionManager playerLocomotion;
+        public PlayerStatsManager playerStatsManager;
+        public PlayerAnimatorManager playerAnimatorManager;
+        public PlayerInventoryManager playerInventoryManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -30,6 +33,9 @@ namespace AH
             interactableUI = FindObjectOfType<InteractableUI>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 

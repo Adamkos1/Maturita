@@ -34,6 +34,15 @@ namespace AH
         public float lightAttackMultiplier;
         public float heavyAttackMultiplier;
 
+        [Header("Item Action")]
+        public ItemAction tap_RB_Action;
+        public ItemAction hold_RB_Action;
+        public ItemAction tap_LB_Action;
+        public ItemAction hold_LB_Action;
+        public ItemAction tap_RT_Action;
+        public ItemAction hold_RT_Action;
+        public ItemAction tap_LT_Action;
+        public ItemAction hold_LT_Action;
     }
 
 }
