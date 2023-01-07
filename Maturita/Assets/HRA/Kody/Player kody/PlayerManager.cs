@@ -8,7 +8,7 @@ namespace AH
     public class PlayerManager : CharacterManager
     {
         Animator animator;
-        CameraHandler cameraHandler;
+        public CameraHandler cameraHandler;
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerCombatManager playerCombatManager;
         public PlayerEffectsManager playerEffectsManager;
@@ -57,7 +57,7 @@ namespace AH
             playerAnimatorManager.canRotate = animator.GetBool("canRotate");     
 
             inputHandler.TickInput(delta);
-            playerLocomotion.HandleRolling();
+            playerLocomotion.HandleRollingAndSprinting();
             playerLocomotion.HandleJumping();
             playerStatsManager.RegenerateStamina();
             playerInventoryManager.ConsumableUI();
@@ -68,19 +68,15 @@ namespace AH
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            float delta = Time.fixedDeltaTime;
-            playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            playerLocomotion.HandleRotation(delta);
+            playerLocomotion.HandleMovement();
+            playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
+            playerLocomotion.HandleRotation();
         }
 
         private void LateUpdate()
         {
             inputHandler.rollFlag = false;
             isSprinting = inputHandler.b_Input;
-            inputHandler.rb_Input = false;
-            inputHandler.rt_Input = false;
-            inputHandler.lt_Input = false;
             inputHandler.jump_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
@@ -88,8 +84,6 @@ namespace AH
             inputHandler.d_Pad_Left = false;
             inputHandler.a_Input = false;
             inputHandler.inventory_Input = false;
-
-            float delta = Time.deltaTime;
 
             if (cameraHandler != null)
             {

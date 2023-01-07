@@ -13,6 +13,7 @@ namespace AH
         Axe,
         Dagger,
         Shield,
+        SmallShield,
         Unarmed,
         Bow,
     }

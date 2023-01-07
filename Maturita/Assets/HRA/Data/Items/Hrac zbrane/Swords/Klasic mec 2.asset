@@ -28,7 +28,7 @@ MonoBehaviour:
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
   tap_RB_Action: {fileID: 11400000, guid: a4e08d20090fe554a96a30b8e2911c35, type: 2}
-  hold_RB_Action: {fileID: 0}
+  hold_RB_Action: {fileID: 11400000, guid: e72f6eb74dc80e145a0eb7fe49a13dd7, type: 2}
   tap_LB_Action: {fileID: 0}
   hold_LB_Action: {fileID: 0}
   tap_RT_Action: {fileID: 11400000, guid: 5fae779d61627a342b9d91eeafbae0a5, type: 2}

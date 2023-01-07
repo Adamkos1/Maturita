@@ -213,12 +213,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RB"",
+                    ""name"": ""TapRB"",
                     ""type"": ""Button"",
                     ""id"": ""d5b4ef1c-7129-4214-849e-1278235748db"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -310,6 +310,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TapLB"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca8ce46e-1df3-42f6-8fb5-30a2b98c8949"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -342,7 +351,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RB"",
+                    ""action"": ""TapRB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -353,7 +362,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RB"",
+                    ""action"": ""TapRB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -576,6 +585,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Hold RB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e805f3d6-0b9b-46fb-a103-73a421cd98a0"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TapLB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f278ce83-1c12-47e9-9273-4d07fc13ffaf"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TapLB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -723,7 +754,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Roll = m_PlayerActions.FindAction("Roll", throwIfNotFound: true);
-        m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
+        m_PlayerActions_TapRB = m_PlayerActions.FindAction("TapRB", throwIfNotFound: true);
         m_PlayerActions_HoldRB = m_PlayerActions.FindAction("Hold RB", throwIfNotFound: true);
         m_PlayerActions_LB = m_PlayerActions.FindAction("LB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
@@ -734,6 +765,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("Lock On", throwIfNotFound: true);
         m_PlayerActions_Two_Handed = m_PlayerActions.FindAction("Two_Handed", throwIfNotFound: true);
         m_PlayerActions_Consume = m_PlayerActions.FindAction("Consume", throwIfNotFound: true);
+        m_PlayerActions_TapLB = m_PlayerActions.FindAction("TapLB", throwIfNotFound: true);
         // Player Quick Slots
         m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
@@ -857,7 +889,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Roll;
-    private readonly InputAction m_PlayerActions_RB;
+    private readonly InputAction m_PlayerActions_TapRB;
     private readonly InputAction m_PlayerActions_HoldRB;
     private readonly InputAction m_PlayerActions_LB;
     private readonly InputAction m_PlayerActions_RT;
@@ -868,12 +900,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_Two_Handed;
     private readonly InputAction m_PlayerActions_Consume;
+    private readonly InputAction m_PlayerActions_TapLB;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Roll => m_Wrapper.m_PlayerActions_Roll;
-        public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
+        public InputAction @TapRB => m_Wrapper.m_PlayerActions_TapRB;
         public InputAction @HoldRB => m_Wrapper.m_PlayerActions_HoldRB;
         public InputAction @LB => m_Wrapper.m_PlayerActions_LB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
@@ -884,6 +917,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @Two_Handed => m_Wrapper.m_PlayerActions_Two_Handed;
         public InputAction @Consume => m_Wrapper.m_PlayerActions_Consume;
+        public InputAction @TapLB => m_Wrapper.m_PlayerActions_TapLB;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -896,9 +930,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Roll.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRoll;
                 @Roll.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRoll;
                 @Roll.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRoll;
-                @RB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRB;
-                @RB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRB;
-                @RB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRB;
+                @TapRB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
+                @TapRB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
+                @TapRB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
                 @HoldRB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
                 @HoldRB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
                 @HoldRB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
@@ -929,6 +963,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Consume.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
                 @Consume.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
                 @Consume.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnConsume;
+                @TapLB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapLB;
+                @TapLB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapLB;
+                @TapLB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapLB;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -936,9 +973,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Roll.started += instance.OnRoll;
                 @Roll.performed += instance.OnRoll;
                 @Roll.canceled += instance.OnRoll;
-                @RB.started += instance.OnRB;
-                @RB.performed += instance.OnRB;
-                @RB.canceled += instance.OnRB;
+                @TapRB.started += instance.OnTapRB;
+                @TapRB.performed += instance.OnTapRB;
+                @TapRB.canceled += instance.OnTapRB;
                 @HoldRB.started += instance.OnHoldRB;
                 @HoldRB.performed += instance.OnHoldRB;
                 @HoldRB.canceled += instance.OnHoldRB;
@@ -969,6 +1006,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Consume.started += instance.OnConsume;
                 @Consume.performed += instance.OnConsume;
                 @Consume.canceled += instance.OnConsume;
+                @TapLB.started += instance.OnTapLB;
+                @TapLB.performed += instance.OnTapLB;
+                @TapLB.canceled += instance.OnTapLB;
             }
         }
     }
@@ -1040,7 +1080,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnRoll(InputAction.CallbackContext context);
-        void OnRB(InputAction.CallbackContext context);
+        void OnTapRB(InputAction.CallbackContext context);
         void OnHoldRB(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
@@ -1051,6 +1091,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLockOn(InputAction.CallbackContext context);
         void OnTwo_Handed(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
+        void OnTapLB(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {

@@ -191,12 +191,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RB",
+                    "name": "TapRB",
                     "type": "Button",
                     "id": "d5b4ef1c-7129-4214-849e-1278235748db",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 },
                 {
@@ -288,6 +288,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TapLB",
+                    "type": "Button",
+                    "id": "ca8ce46e-1df3-42f6-8fb5-30a2b98c8949",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -320,7 +329,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "TapRB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -331,7 +340,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "TapRB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -552,6 +561,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hold RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e805f3d6-0b9b-46fb-a103-73a421cd98a0",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TapLB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f278ce83-1c12-47e9-9273-4d07fc13ffaf",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TapLB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

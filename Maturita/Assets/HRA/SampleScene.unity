@@ -12690,9 +12690,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
-  currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
-  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
+  currentSpell: {fileID: 11400000, guid: 9ab9d108bb09a334493ac44a00dddce3, type: 2}
+  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
@@ -12814,7 +12814,7 @@ MonoBehaviour:
   healthlevel: 20
   maxHealth: 0
   currentHealth: 0
-  staminalevel: 20
+  staminalevel: 100
   maxStamina: 0
   currentStamina: 0
   manaLevel: 100
@@ -12864,6 +12864,7 @@ MonoBehaviour:
   isGrounded: 1
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  cameraHandler: {fileID: 0}
   playerWeaponSlotManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerEffectsManager: {fileID: 0}
@@ -12936,11 +12937,12 @@ MonoBehaviour:
   b_Input: 0
   x_Input: 0
   y_input: 0
-  rb_Input: 0
-  lb_Input: 0
-  rt_Input: 0
-  lt_Input: 0
-  hold_rb_Input: 0
+  tap_RB_Input: 0
+  hold_LB_Input: 0
+  tap_RT_Input: 0
+  tap_LT_Input: 0
+  tap_LB_Input: 0
+  hold_RB_Input: 0
   jump_Input: 0
   inventory_Input: 0
   lockOn_Input: 0
