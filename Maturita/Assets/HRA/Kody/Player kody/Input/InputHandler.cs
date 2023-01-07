@@ -190,7 +190,7 @@ namespace AH
                     if (playerManager.isInteracting)
                         return;
 
-                    playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
+                    playerCombatManager.HandleRTAction();
                 }
                 if(lt_Input)
                 {

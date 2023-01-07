@@ -16639,15 +16639,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
   rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
+  - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
-  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
-  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -16748,10 +16748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamIDNumber: 0
-  healthlevel: 10
+  healthlevel: 20
   maxHealth: 0
   currentHealth: 0
-  staminalevel: 30
+  staminalevel: 20
   maxStamina: 0
   currentStamina: 0
   manaLevel: 100
