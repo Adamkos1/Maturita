@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7090337672484197609}
+  - component: {fileID: 1712744932970390725}
   m_Layer: 0
   m_Name: Arrow_Penetrated_Model
   m_TagString: Untagged
@@ -115,6 +116,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712744932970390725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090337672483868319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a7647ba0a820d468c4937e226212ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilDestroyed: 20
 --- !u!1 &8177545195117226804
 GameObject:
   m_ObjectHideFlags: 0

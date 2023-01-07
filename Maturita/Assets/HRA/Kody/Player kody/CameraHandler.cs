@@ -171,6 +171,11 @@ namespace AH
             cameraTransform.localRotation = targetRotationX;
         }
 
+        public void ResetAimCameraRotations()
+        {
+            cameraTransform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+
         //handle kolizie
         private void HandleCameraCollsions()
         {

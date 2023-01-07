@@ -8,7 +8,7 @@ namespace AH
     public class RangedProjectileDamageColider : DamageCollider
     {
         public RangedAmmoItem ammoItem;
-        protected bool hasAlreadyPenetrated;
+        protected bool hasAlreadyPenetratedASurface;
         protected GameObject penetratedProjectile;
 
         protected override void OnTriggerEnter(Collider collision)
@@ -67,6 +67,19 @@ namespace AH
 
                 illusionaryWall.wallHasBeenHit = true;
             }
+
+            if(!hasAlreadyPenetratedASurface && penetratedProjectile == null)
+            {
+                hasAlreadyPenetratedASurface = true;
+                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                GameObject penetratedArrow = Instantiate(ammoItem.penetratedModel, contactPoint, Quaternion.Euler(0, 0, 0));
+
+                penetratedProjectile = penetratedArrow;
+                penetratedArrow.transform.parent = collision.transform;
+                penetratedArrow.transform.rotation = Quaternion.LookRotation(gameObject.transform.forward);
+            }
+
+            Destroy(transform.root.gameObject);
         }
     }
 
