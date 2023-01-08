@@ -33,7 +33,7 @@ namespace AH
 
                 if (soulCountBar != null)
                 {
-                    soulCountBar.SetSoulCountText(playerStats.soulCount);
+                    soulCountBar.SetSoulCountText(playerStats.currentSoulCount);
                 }
             }
 

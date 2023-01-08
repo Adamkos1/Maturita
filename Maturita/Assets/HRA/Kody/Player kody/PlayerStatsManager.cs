@@ -38,7 +38,7 @@ namespace AH
             currentStamina = maxStamina;
             staminaBar.SetMaxStamina(maxStamina);
 
-            maxMana = SetMaxManaFromHealthLevel();
+            maxMana = SetMaxManaFromManaLevel();
             currentMana = maxMana;
             manaBar.SetMaxMana(maxMana);
         }
@@ -53,24 +53,6 @@ namespace AH
             {
                 totalPoiseDefence = armorPoiseBonus;
             }
-        }
-
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHealth = healthlevel * 10;
-            return maxHealth;
-        }
-
-        private float SetMaxStaminaFromStaminaLevel()
-        {
-            maxStamina = staminalevel * 10;
-            return maxStamina;
-        }
-
-        private float SetMaxManaFromHealthLevel()
-        {
-            maxMana = manaLevel * 10;
-            return maxMana;
         }
 
         public override void TakeDamage(int damage, string damageAnimation)
@@ -167,7 +149,7 @@ namespace AH
 
         public void AddSouls(int souls)
         {
-            soulCount = soulCount + souls;
+            currentSoulCount = currentSoulCount + souls;
         }
 
         public void HandleDeath()

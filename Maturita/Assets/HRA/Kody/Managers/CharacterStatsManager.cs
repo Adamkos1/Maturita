@@ -12,22 +12,33 @@ namespace AH
         [Header("Team I.D")]
         public int teamIDNumber = 0;
 
-        public int healthlevel = 10;
         public int maxHealth;
         public int currentHealth;
         HealthBar healthBar;
 
-        public int staminalevel = 10;
         public float maxStamina;
         public float currentStamina;
         StaminaBar staminaBar;
 
-        public int manaLevel = 10;
         public float maxMana;
         public float currentMana;
 
-        public int soulCount = 0;
+        public int currentSoulCount = 0;
         public int soulsAwardedOnDeath = 50;
+
+        [Header("Characeter Level")]
+        public int playerLevel = 1;
+
+        [Header("STAT Levels")]
+        public int healthlevel = 10;
+        public int staminalevel = 10;
+        public int manaLevel = 10;
+        public int strenghtLevel = 10;
+        public int dexterityLevel = 10;
+        public int intelligenceLevel = 10;
+        public int faithLevel = 10;
+        public int poiseLevel = 10;
+
 
         [Header("Poise")]
         public float totalPoiseDefence;
@@ -87,6 +98,24 @@ namespace AH
         public void DrainStaminaBasedOnAttackType()
         {
 
+        }
+
+        public int SetMaxHealthFromHealthLevel()
+        {
+            maxHealth = healthlevel * 10;
+            return maxHealth;
+        }
+
+        public float SetMaxStaminaFromStaminaLevel()
+        {
+            maxStamina = staminalevel * 10;
+            return maxStamina;
+        }
+
+        public float SetMaxManaFromManaLevel()
+        {
+            maxMana = manaLevel * 10;
+            return maxMana;
         }
     }
 

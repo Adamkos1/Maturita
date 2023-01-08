@@ -8,6 +8,7 @@ namespace AH
     public class PlayerManager : CharacterManager
     {
         Animator animator;
+        public UIManager uIManager;
         public CameraHandler cameraHandler;
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerCombatManager playerCombatManager;
@@ -29,6 +30,7 @@ namespace AH
             cameraHandler = FindObjectOfType<CameraHandler>();
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
+            uIManager = FindObjectOfType<UIManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
