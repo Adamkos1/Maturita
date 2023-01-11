@@ -8,10 +8,9 @@ namespace AH
 
     public class PlayerStatsManager : CharacterStatsManager
     {
-        StaminaBar staminaBar;
-        HealthBar healthBar;
-        ManaBar manaBar;
-        PlayerAnimatorManager playerAnimatorHandler;
+        public StaminaBar staminaBar;
+        public HealthBar healthBar;
+        public ManaBar manaBar;
         PlayerManager playerManager;
 
         public float staminaRegenerationAmount = 30;
@@ -24,7 +23,6 @@ namespace AH
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
-            playerAnimatorHandler = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponent<PlayerManager>();
         }
 
@@ -60,14 +58,14 @@ namespace AH
             if (playerManager.isInvulnerable)
                 return;
 
-            if (isDead)
+            if (playerManager.isDead)
                 return;
 
             currentHealth = currentHealth - damage;
 
             healthBar.SetCurrentHealth(currentHealth);
 
-            playerAnimatorHandler.PlayTargetAnimation(damageAnimation , true);
+            playerManager.playerAnimatorManager.PlayTargetAnimation(damageAnimation , true);
 
             if (currentHealth <= 0)
             {
@@ -81,7 +79,7 @@ namespace AH
             if (playerManager.isInvulnerable)
                 return;
 
-            if (isDead)
+            if (playerManager.isDead)
                 return;
 
             base.TakeDamgeNoAnimation(damage);
@@ -155,8 +153,8 @@ namespace AH
         public void HandleDeath()
         {
             currentHealth = 0;
-            isDead = true;
-            playerAnimatorHandler.PlayTargetAnimation("Death_01", true);
+            playerManager.isDead = true;
+            playerManager.playerAnimatorManager.PlayTargetAnimation("Death_01", true);
         }
 
     }

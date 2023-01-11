@@ -72,7 +72,7 @@ namespace AH
 
         public void UpdateSpellIcon(SpellItem spell)
         {
-            if(spell.itemIcon != null)
+            if(spell != null && spell.itemIcon != null)
             {
                 spellIcon.sprite = spell.itemIcon;
                 spellIcon.enabled = true;

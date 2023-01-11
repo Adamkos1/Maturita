@@ -8,11 +8,12 @@ namespace AH
 
     public class EnemyManager : CharacterManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
-        EnemyAnimatorManager enemyAnimatorManager;
-        EnemyStatsManager enemyStatsManager;
-        EnemyBossManager enemyBossManager;
-        BossCombatStanceState bossCombatStanceState;
+        public EnemyLocomotionManager enemyLocomotionManager;
+        public EnemyAnimatorManager enemyAnimatorManager;
+        public EnemyStatsManager enemyStatsManager;
+        public EnemyBossManager enemyBossManager;
+        public EnemyEffectsManager enemyEffectsManager;
+        public BossCombatStanceState bossCombatStanceState;
 
         public NavMeshAgent navMeshAgent;
         public State currentState;
@@ -46,6 +47,7 @@ namespace AH
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
             enemyRigidBody = GetComponent<Rigidbody>();
@@ -63,15 +65,15 @@ namespace AH
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isRotatingWithRootMotion = enemyAnimatorManager.animator.GetBool("isRotatingWithRootMotion");
-            isInteracting = enemyAnimatorManager.animator.GetBool("isInteracting");
-            isPhaseShifting = enemyAnimatorManager.animator.GetBool("isPhaseShifting");
-            isInvulnerable = enemyAnimatorManager.animator.GetBool("isInvulnerable");
-            canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
-            canRotate = enemyAnimatorManager.animator.GetBool("canRotate");
-            enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+            isRotatingWithRootMotion = animator.GetBool("isRotatingWithRootMotion");
+            isInteracting = animator.GetBool("isInteracting");
+            isPhaseShifting = animator.GetBool("isPhaseShifting");
+            isInvulnerable = animator.GetBool("isInvulnerable");
+            canDoCombo = animator.GetBool("canDoCombo");
+            canRotate = animator.GetBool("canRotate");
+            animator.SetBool("isDead", isDead);
 
-            if (enemyStatsManager.isDead)
+            if (isDead)
             {
                 Destroy(backStabboxCollider);
                 Destroy(parryCollider);
@@ -92,7 +94,7 @@ namespace AH
 
         private void HandleStateMachine()
         {
-            if (enemyStatsManager.isDead)
+            if (isDead)
             {
                 SwitchToNextState(null);
                 currentTarget = null;
@@ -100,7 +102,7 @@ namespace AH
 
             else if (currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimatorManager);
+                State nextState = currentState.Tick(this);
 
                 if (nextState != null)
                 {

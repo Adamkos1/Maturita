@@ -15,7 +15,7 @@ namespace AH
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
@@ -28,12 +28,12 @@ namespace AH
 
             if(willDoComboOnNextAttack && enemyManager.canDoCombo)
             {
-                AttackTargetWithCombo(enemyAnimatorManager, enemyManager);
+                AttackTargetWithCombo(enemyManager);
             }
 
             if(!hasPerformedAttack)
             {
-                AttackTarget(enemyAnimatorManager, enemyManager);
+                AttackTarget(enemyManager);
                 RollForComboChance(enemyManager);
             }
 
@@ -47,23 +47,23 @@ namespace AH
 
         }
 
-        private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
+        private void AttackTarget(EnemyManager enemyManager)
         {
-            enemyAnimatorManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
-            enemyAnimatorManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
-            enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-            enemyAnimatorManager.PlayWeaponTrailFX();
+            enemyManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
+            enemyManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyManager.enemyAnimatorManager.PlayWeaponTrailFX();
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             hasPerformedAttack = true;
         }
 
-        private void AttackTargetWithCombo(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
+        private void AttackTargetWithCombo(EnemyManager enemyManager)
         {
-            enemyAnimatorManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
-            enemyAnimatorManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
+            enemyManager.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
+            enemyManager.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
             willDoComboOnNextAttack = false;
-            enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-            enemyAnimatorManager.PlayWeaponTrailFX();
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyManager.enemyAnimatorManager.PlayWeaponTrailFX();
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             currentAttack = null;
         }

@@ -7,17 +7,15 @@ namespace AH
 
     public class PlayerAnimatorManager : CharacterAnimatorManager
     {
-        InputHandler inputHandler;
-        PlayerLocomotionManager playerLocomotionManager;
+        PlayerManager playerManager;
+
         int vertical;
         int horizontal;
 
         protected override void Awake()
         {
             base.Awake();
-            animator = GetComponentInChildren<Animator>();
-            inputHandler = GetComponentInParent<InputHandler>();
-            playerLocomotionManager = GetComponentInParent<PlayerLocomotionManager>();
+            playerManager = GetComponent<PlayerManager>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
         }
@@ -80,20 +78,20 @@ namespace AH
                 h = horizontalMovement;
             }
 
-            animator.SetFloat(vertical, v, 0.1f, Time.deltaTime);
-            animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
+            playerManager.animator.SetFloat(vertical, v, 0.1f, Time.deltaTime);
+            playerManager.animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
         public void DissableCollision()
         {
-            playerLocomotionManager.characterCollider.enabled = false;
-            playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
+            playerManager.playerLocomotionManager.characterCollider.enabled = false;
+            playerManager.playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
         }
 
         public void EnableCollision()
         {
-            playerLocomotionManager.characterCollider.enabled = true;
-            playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
+            playerManager.playerLocomotionManager.characterCollider.enabled = true;
+            playerManager.playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
         }
 
         private void OnAnimatorMove()
@@ -102,11 +100,11 @@ namespace AH
                 return;
 
             float delta = Time.deltaTime;
-            playerLocomotionManager.rigidbody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
+            playerManager.playerLocomotionManager.rigidbody.drag = 0;
+            Vector3 deltaPosition = playerManager.animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            playerLocomotionManager.rigidbody.velocity = velocity;
+            playerManager.playerLocomotionManager.rigidbody.velocity = velocity;
 
         }
     }

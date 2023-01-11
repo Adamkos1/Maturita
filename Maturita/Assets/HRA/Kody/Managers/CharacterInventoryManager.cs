@@ -23,8 +23,8 @@ namespace AH
         public WeaponItem[] weaponInRightHandSlots = new WeaponItem[0];
         public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[0];
 
-        public int currentRightWeaponIndex = -1;
-        public int currentLeftWeaponIndex = -1;
+        public int currentRightWeaponIndex = 0;
+        public int currentLeftWeaponIndex = 0;
 
         private void Awake()
         {

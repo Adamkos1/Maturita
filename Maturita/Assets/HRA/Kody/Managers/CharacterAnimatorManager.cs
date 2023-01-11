@@ -9,9 +9,6 @@ namespace AH
     public class CharacterAnimatorManager : MonoBehaviour
     {
         protected CharacterManager characterManager;
-        protected CharacterStatsManager characterStatsManager;
-        public Animator animator;
-        public bool canRotate;
 
         protected RigBuilder rigBuilder;
         public TwoBoneIKConstraint leftHandConstraint;
@@ -23,62 +20,61 @@ namespace AH
         protected virtual void Awake()
         {
             characterManager = GetComponent<CharacterManager>();
-            characterStatsManager = GetComponent<CharacterStatsManager>();
             rigBuilder = GetComponent<RigBuilder>();
         }
 
         public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false, bool mirrorAnim = false)
         {
-            animator.applyRootMotion = isInteracting;
-            animator.SetBool("canRotate", canRotate);
-            animator.SetBool("isInteracting", isInteracting);
-            animator.SetBool("isMirrored", mirrorAnim);
-            animator.CrossFade(targetAnim, 0.2f);
+            characterManager.animator.applyRootMotion = isInteracting;
+            characterManager.animator.SetBool("canRotate", canRotate);
+            characterManager.animator.SetBool("isInteracting", isInteracting);
+            characterManager.animator.SetBool("isMirrored", mirrorAnim);
+            characterManager.animator.CrossFade(targetAnim, 0.2f);
 
         }
 
         public void PlayTargetAnimationWithRootRotation(string targetAnim, bool isInteracting)
         {
-            animator.applyRootMotion = isInteracting;
-            animator.SetBool("isRotatingWithRootMotion", true);
-            animator.SetBool("isInteracting", isInteracting);
-            animator.CrossFade(targetAnim, 0.2f);
+            characterManager.animator.applyRootMotion = isInteracting;
+            characterManager.animator.SetBool("isRotatingWithRootMotion", true);
+            characterManager.animator.SetBool("isInteracting", isInteracting);
+            characterManager.animator.CrossFade(targetAnim, 0.2f);
         }
 
         public virtual void TakeCriticalDamgeAnimationEvent()
         {
-            characterStatsManager.TakeDamgeNoAnimation(characterManager.pendingCriticalDamage);
+            characterManager.characterStatsManager.TakeDamgeNoAnimation(characterManager.pendingCriticalDamage);
             characterManager.pendingCriticalDamage = 0;
         }
 
         public virtual void CanRotate()
         {
-            animator.SetBool("canRotate", true);
+            characterManager.animator.SetBool("canRotate", true);
         }
 
         public virtual void StopRotation()
         {
-            animator.SetBool("canRotate", false);
+            characterManager.animator.SetBool("canRotate", false);
         }
 
         public virtual void EnableCombo()
         {
-            animator.SetBool("canDoCombo", true);
+            characterManager.animator.SetBool("canDoCombo", true);
         }
 
         public virtual void DisableCombo()
         {
-            animator.SetBool("canDoCombo", false);
+            characterManager.animator.SetBool("canDoCombo", false);
         }
 
         public virtual void EnableIsInvulnerable()
         {
-            animator.SetBool("isInvulnerable", true);
+            characterManager.animator.SetBool("isInvulnerable", true);
         }
 
         public virtual void DisableIsInvulnerable()
         {
-            animator.SetBool("isInvulnerable", false);
+            characterManager.animator.SetBool("isInvulnerable", false);
         }
 
         public virtual void EnableIsParrying()

@@ -7,8 +7,12 @@ namespace AH
 
     public class CharacterManager : MonoBehaviour
     {
-        CharacterAnimatorManager characterAnimatorManager;
-        CharacterWeaponSlotManager characterWeaponSlotManager;
+        public Animator animator;
+        public CharacterAnimatorManager characterAnimatorManager;
+        public CharacterWeaponSlotManager characterWeaponSlotManager;
+        public CharacterStatsManager characterStatsManager;
+        public CharacterInventoryManager characterInventoryManager;
+        public CharacterEffectsManager characterEffectsManager;
 
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
@@ -33,6 +37,9 @@ namespace AH
         [Header("Interacting")]
         public bool isInteracting;
 
+        [Header("Status")]
+        public bool isDead;
+
         [Header("Movement Flags")]
         public bool isRotatingWithRootMotion;
         public bool canRotate;
@@ -49,6 +56,10 @@ namespace AH
         {
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
             characterWeaponSlotManager = GetComponent<CharacterWeaponSlotManager>();
+            characterStatsManager = GetComponent<CharacterStatsManager>();
+            characterInventoryManager = GetComponent<CharacterInventoryManager>();
+            characterEffectsManager = GetComponent<CharacterEffectsManager>();
+            animator = GetComponent<Animator>();
 
         }
 

@@ -10,17 +10,13 @@ namespace AH
     {
         EnemyManager enemyManager;
         public UIEnemyHealthBar enemyHealthBar;
-        EnemyBossManager enemyBossManager;
-        EnemyAnimatorManager enemyAnimatorManager;
 
         public bool isBoss;
 
         protected override void Awake()
         {
             base.Awake();
-            enemyBossManager = GetComponent<EnemyBossManager>();
             enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
         }
@@ -57,7 +53,7 @@ namespace AH
 
             base.TakeDamage(damage, damageAnimation);
 
-            if (isDead)
+            if (enemyManager.isDead)
                 return;
 
             if (enemyManager.isInvulnerable)
@@ -69,20 +65,20 @@ namespace AH
                 currentHealth = currentHealth - damage;
                 enemyHealthBar.SetHealth(currentHealth);
             }
-            else if(isBoss && enemyBossManager != null)
+            else if(isBoss && enemyManager.enemyBossManager != null)
             {
                 currentHealth = currentHealth - damage;
-                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+                enemyManager.enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
 
                 if (currentHealth <= 0)
                 {
                     currentHealth = 0;
-                    isDead = true;
+                    enemyManager.isDead = true;
                     HandleDeath();
                 }
             }
 
-            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
@@ -95,7 +91,7 @@ namespace AH
             if (enemyManager.isInvulnerable)
                 return;
 
-            if (isDead)
+            if (enemyManager.isDead)
                 return;
 
             base.TakeDamgeNoAnimation(damage);
@@ -104,15 +100,15 @@ namespace AH
             {
                 enemyHealthBar.SetHealth(currentHealth);
             }
-            else if (isBoss && enemyBossManager != null)
+            else if (isBoss && enemyManager.enemyBossManager != null)
             {
                 currentHealth = currentHealth - damage;
-                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+                enemyManager.enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
 
                 if (currentHealth <= 0)
                 {
                     currentHealth = 0;
-                    isDead = true;
+                    enemyManager.isDead = true;
                     HandleDeath();
                 }
             }
@@ -126,13 +122,13 @@ namespace AH
         public void HandleDeath()
         {
             currentHealth = 0;
-            enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
-            isDead = true;
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+            enemyManager.isDead = true;
         }
 
         public void BreakGuard()
         {
-            enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
     }

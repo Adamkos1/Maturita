@@ -595,6 +595,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262545090}
   m_CullTransparentMesh: 1
+--- !u!1 &323873120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6212652873094128098, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &334296827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1120,6 +1125,17 @@ Transform:
   m_Father: {fileID: 225488197}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574540321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6212652873091689046, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9160ec707ba884640961466d6f88ee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &621870666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3476,11 @@ MonoBehaviour:
   wallCollider: {fileID: 1327851109}
   audioSource: {fileID: 1327851112}
   illusionaryWallSound: {fileID: 8300000, guid: 97a3c86c780e26843ac20b7f8d0412c8, type: 3}
+--- !u!1 &1342033611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6212652873922346573, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344457976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,6 +4900,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920028235}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1972011701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6212652873145055461, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9160ec707ba884640961466d6f88ee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1978716900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,6 +5128,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: {fileID: 0}
+--- !u!114 &2059402841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6212652872848210458, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9160ec707ba884640961466d6f88ee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2069703938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 177120, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
@@ -10258,6 +10301,17 @@ MonoBehaviour:
   isBackSlot: 0
   isShieldBackSlot: 1
   currentWeaponModel: {fileID: 0}
+--- !u!114 &2145423536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6212652873107727920, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+  m_PrefabInstance: {fileID: 6212652873682239513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9160ec707ba884640961466d6f88ee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1005120498549113
 GameObject:
   m_ObjectHideFlags: 0
@@ -11053,7 +11107,7 @@ GameObject:
   - component: {fileID: 95977974435473194}
   - component: {fileID: 95977974435473193}
   - component: {fileID: 95977974435473204}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Player
   m_TagString: Character
   m_Icon: {fileID: 0}
@@ -13021,16 +13075,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
-  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
-  - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
+  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   weaponInLeftHandSlots:
-  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
+  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -13065,7 +13119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c6b7524bf2a4543845997c99c7ab41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingCollider: {fileID: 1234727786}
 --- !u!114 &95977974435473195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13078,8 +13131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7762e15574a82b24c823a9e8af6bd40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  canRotate: 0
   leftHandConstraint: {fileID: 1813777755}
   rightHandConstraint: {fileID: 1442662948}
   handIKWeightsReset: 0
@@ -13150,9 +13201,9 @@ MonoBehaviour:
   currentSoulCount: 1600
   soulsAwardedOnDeath: 0
   playerLevel: 1
-  healthlevel: 10
-  staminalevel: 10
-  manaLevel: 10
+  healthlevel: 20
+  staminalevel: 50
+  manaLevel: 30
   strenghtLevel: 10
   dexterityLevel: 10
   intelligenceLevel: 10
@@ -13163,7 +13214,9 @@ MonoBehaviour:
   armorPoiseBonus: 0
   totalPoiseResetTime: 15
   poiseResetTimer: 0
-  isDead: 0
+  staminaBar: {fileID: 0}
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
   staminaRegenerationAmount: 30
   staminaRegenerationTimer: 0
 --- !u!114 &95977974435473199
@@ -13178,6 +13231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac647d675f69447439a9ed36eafd68ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 277547547316492406}
   backStabCollider: {fileID: 277547548271963644}
   riposteCollider: {fileID: 277547548466477568}
@@ -13193,6 +13252,7 @@ MonoBehaviour:
   isAiming: 0
   isHoldingArrow: 0
   isInteracting: 0
+  isDead: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
@@ -13202,11 +13262,12 @@ MonoBehaviour:
   pendingCriticalDamage: 0
   uIManager: {fileID: 0}
   cameraHandler: {fileID: 0}
+  inputHandler: {fileID: 0}
+  blockingCollider: {fileID: 0}
   playerWeaponSlotManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerEffectsManager: {fileID: 0}
-  inputHandler: {fileID: 0}
-  playerLocomotion: {fileID: 0}
+  playerLocomotionManager: {fileID: 0}
   playerStatsManager: {fileID: 0}
   playerAnimatorManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
@@ -13229,8 +13290,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  myTransform: {fileID: 0}
-  playerAnimatorHandler: {fileID: 0}
   rigidbody: {fileID: 0}
   normalCamera: {fileID: 0}
   groundDetectionRayStartPiont: 0.6
@@ -13290,7 +13349,6 @@ MonoBehaviour:
   d_Pad_Left: 0
   d_Pad_Right: 0
   criticalAttackRaycastStartPoint: {fileID: 277547548162330993}
-  uIManager: {fileID: 0}
 --- !u!54 &95977974435473202
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17892,7 +17950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &799373574542906632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21655,8 +21713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51e266c6c2ebbf438e9824315a63b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  canRotate: 0
   leftHandConstraint: {fileID: 901201705}
   rightHandConstraint: {fileID: 967955334}
   handIKWeightsReset: 0
@@ -22232,7 +22288,7 @@ MonoBehaviour:
   pursueTargetState: {fileID: 2814908501144704375}
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
 --- !u!4 &2814908502556704777
 Transform:
   m_ObjectHideFlags: 0
@@ -22315,7 +22371,7 @@ MonoBehaviour:
   wakeAnimation: Get_Up
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   pursueTargetState: {fileID: 2814908501144704375}
 --- !u!4 &2814908502572094900
 Transform:
@@ -22950,6 +23006,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254618d4b808bfa4f8e417c117c9d1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 2814908502572094900}
   backStabCollider: {fileID: 2814908500716102898}
   riposteCollider: {fileID: 2814908500920623296}
@@ -22965,6 +23027,7 @@ MonoBehaviour:
   isAiming: 0
   isHoldingArrow: 0
   isInteracting: 0
+  isDead: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
@@ -22972,6 +23035,12 @@ MonoBehaviour:
   isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  enemyLocomotionManager: {fileID: 0}
+  enemyAnimatorManager: {fileID: 0}
+  enemyStatsManager: {fileID: 0}
+  enemyBossManager: {fileID: 0}
+  enemyEffectsManager: {fileID: 0}
+  bossCombatStanceState: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 2814908502556704776}
   currentTarget: {fileID: 0}
@@ -22980,7 +23049,7 @@ MonoBehaviour:
   parryCollider: {fileID: 2814908500920623297}
   isPerformingAction: 0
   rotationSpeed: 44
-  maximumAggroRadius: 3.5
+  maximumAggroRadius: 2
   timeUntilDestroyed: 7
   detectionRadius: 20
   maximumDetectionAngle: 50
@@ -23054,7 +23123,6 @@ MonoBehaviour:
   armorPoiseBonus: 0
   totalPoiseResetTime: 15
   poiseResetTimer: 0
-  isDead: 0
   enemyHealthBar: {fileID: 1514201836}
   isBoss: 0
 --- !u!114 &2816251560902805492
@@ -25194,15 +25262,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944334, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_CellSize.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944334, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_CellSize.y
-      value: 100
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872259944334, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944334, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_Padding.m_Left
-      value: 39
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944335, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -25210,15 +25282,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944335, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -380.97
+      value: -408.31
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944335, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -344.75
+      value: -344.74994
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872259944335, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 57.019
+      value: 57.02
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872356020511, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -25306,20 +25378,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872739012107, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872739012107, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872739012107, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 89
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872739012107, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -59
+      value: -114
       objectReference: {fileID: 0}
+    - target: {fileID: 6212652872743832625, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: weaponEqiupmentSlotsUI.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872743832625, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: weaponEqiupmentSlotsUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 574540321}
+    - target: {fileID: 6212652872743832625, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: weaponEqiupmentSlotsUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 2145423536}
+    - target: {fileID: 6212652872743832625, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: weaponEqiupmentSlotsUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 1972011701}
+    - target: {fileID: 6212652872743832625, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: weaponEqiupmentSlotsUI.Array.data[3]
+      value: 
+      objectReference: {fileID: 2059402841}
     - target: {fileID: 6212652872748304077, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -25351,6 +25443,54 @@ PrefabInstance:
     - target: {fileID: 6212652872848210406, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -274.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 323873120}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1342033611}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2059402841}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SelectThisSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: AH.HandEquipmentSlotUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652872848210457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6212652872946872669, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -25416,6 +25556,54 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -104.548996
       objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 323873120}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1342033611}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 574540321}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SelectThisSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: AH.HandEquipmentSlotUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873091689045, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6212652873094128098, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25443,6 +25631,102 @@ PrefabInstance:
     - target: {fileID: 6212652873107727932, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -104.548996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 323873120}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1342033611}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2145423536}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SelectThisSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: AH.HandEquipmentSlotUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873107727935, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 323873120}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1342033611}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1972011701}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SelectThisSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: AH.HandEquipmentSlotUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212652873145055456, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6212652873145055457, guid: 680f88488214c6d4bb7f72ed61bf67d1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -28787,8 +29071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51e266c6c2ebbf438e9824315a63b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  canRotate: 0
   leftHandConstraint: {fileID: 1120520311}
   rightHandConstraint: {fileID: 924082576}
   handIKWeightsReset: 0
@@ -30291,7 +30573,6 @@ MonoBehaviour:
   armorPoiseBonus: 700
   totalPoiseResetTime: 10
   poiseResetTimer: 0
-  isDead: 0
   enemyHealthBar: {fileID: 0}
   isBoss: 1
 --- !u!114 &7727361346120289069
@@ -30306,7 +30587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89484fd21e5d94408f5dc9ef4b83720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossName: KOKOT
+  bossName: FErko
   particleFx: {fileID: 7773298333339980583, guid: 811eba2d0be7ced4f9c8f0ad7780839c, type: 3}
 --- !u!114 &7727361346120289070
 MonoBehaviour:
@@ -30334,6 +30615,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254618d4b808bfa4f8e417c117c9d1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterWeaponSlotManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  characterInventoryManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
   lockOnTransform: {fileID: 7668757346101484320}
   backStabCollider: {fileID: 7668757344782363238}
   riposteCollider: {fileID: 7668757344449949268}
@@ -30349,6 +30636,7 @@ MonoBehaviour:
   isAiming: 0
   isHoldingArrow: 0
   isInteracting: 0
+  isDead: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
@@ -30356,6 +30644,12 @@ MonoBehaviour:
   isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
+  enemyLocomotionManager: {fileID: 0}
+  enemyAnimatorManager: {fileID: 0}
+  enemyStatsManager: {fileID: 0}
+  enemyBossManager: {fileID: 0}
+  enemyEffectsManager: {fileID: 0}
+  bossCombatStanceState: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 7668757346085768860}
   currentTarget: {fileID: 0}

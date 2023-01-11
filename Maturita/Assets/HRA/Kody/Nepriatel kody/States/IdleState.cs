@@ -11,7 +11,7 @@ namespace AH
 
         public LayerMask detectionLayer;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager)
         {
             #region Handle Enemy Target Detection
             Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
@@ -22,7 +22,7 @@ namespace AH
 
                     if (characterStats != null)
                     {
-                        if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
+                        if (characterStats.teamIDNumber != enemyManager.enemyStatsManager.teamIDNumber)
                         {
                             Vector3 targetDirection = characterStats.transform.position - transform.position;
                             float viewableAngle = Vector3.Angle(targetDirection, transform.forward);

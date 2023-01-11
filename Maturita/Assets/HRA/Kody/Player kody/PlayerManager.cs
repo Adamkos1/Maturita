@@ -7,19 +7,30 @@ namespace AH
 
     public class PlayerManager : CharacterManager
     {
-        Animator animator;
+
+        [Header("UI")]
         public UIManager uIManager;
+
+        [Header("Camera")]
         public CameraHandler cameraHandler;
+
+        [Header("Input")]
+        public InputHandler inputHandler;
+
+        [Header("Colliders")]
+        public BlockingCollider blockingCollider;
+
+        [Header("Player")]
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerCombatManager playerCombatManager;
         public PlayerEffectsManager playerEffectsManager;
-        public InputHandler inputHandler;
-        public PlayerLocomotionManager playerLocomotion;
+        public PlayerLocomotionManager playerLocomotionManager;
         public PlayerStatsManager playerStatsManager;
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerInventoryManager playerInventoryManager;
         public PlayerEquipmentManager playerEquipmentManager;
 
+        [Header("Interactible")]
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableUIGameObject;
@@ -31,16 +42,19 @@ namespace AH
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
             uIManager = FindObjectOfType<UIManager>();
-            playerLocomotion = GetComponent<PlayerLocomotionManager>();
-            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
+
+            playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
         void Update()
@@ -49,18 +63,18 @@ namespace AH
 
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
+            canRotate = animator.GetBool("canRotate");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             isHoldingArrow = animator.GetBool("isHoldingArrow");
             animator.SetBool("isBlocking", isBlocking);
             animator.SetBool("isInAir", isInAir);
-            animator.SetBool("isDead", playerStatsManager.isDead);
+            animator.SetBool("isDead", isDead);
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
-            playerAnimatorManager.canRotate = animator.GetBool("canRotate");     
 
             inputHandler.TickInput(delta);
-            playerLocomotion.HandleRollingAndSprinting();
-            playerLocomotion.HandleJumping();
+            playerLocomotionManager.HandleRollingAndSprinting();
+            playerLocomotionManager.HandleJumping();
             playerStatsManager.RegenerateStamina();
             playerInventoryManager.ConsumableUI();
 
@@ -70,9 +84,9 @@ namespace AH
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            playerLocomotion.HandleMovement();
-            playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
-            playerLocomotion.HandleRotation();
+            playerLocomotionManager.HandleMovement();
+            playerLocomotionManager.HandleFalling(playerLocomotionManager.moveDirection);
+            playerLocomotionManager.HandleRotation();
         }
 
         private void LateUpdate()
@@ -95,7 +109,7 @@ namespace AH
 
             if (isInAir)
             {
-                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+                playerLocomotionManager.inAirTimer = playerLocomotionManager.inAirTimer + Time.deltaTime;
             }
         }
 
@@ -139,7 +153,7 @@ namespace AH
 
         public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
         {
-            playerLocomotion.rigidbody.velocity = Vector3.zero; //zastavi hraca aby sa neklzal
+            playerLocomotionManager.rigidbody.velocity = Vector3.zero; //zastavi hraca aby sa neklzal
             Vector3 rotationDirection = playerStandsHereWhenOpeningChest.transform.forward;
             Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
             transform.rotation = turnRotation;
@@ -149,7 +163,7 @@ namespace AH
 
         public void PassThroughFogWallInteraction(Transform fogWallEntrance)
         {
-            playerLocomotion.rigidbody.velocity = Vector3.zero;
+            playerLocomotionManager.rigidbody.velocity = Vector3.zero;
 
             Vector3 rotationDirection = fogWallEntrance.transform.forward;
             Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);

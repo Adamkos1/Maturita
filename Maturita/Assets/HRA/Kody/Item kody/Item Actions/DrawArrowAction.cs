@@ -21,7 +21,7 @@ namespace AH
                 {
                     //animuje hraca
                     player.playerAnimatorManager.EraseHandIKForWeapon();
-                    player.playerAnimatorManager.animator.SetBool("isHoldingArrow", true);
+                    player.animator.SetBool("isHoldingArrow", true);
                     player.playerAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01_R", true);
 
                     //vytvory sip

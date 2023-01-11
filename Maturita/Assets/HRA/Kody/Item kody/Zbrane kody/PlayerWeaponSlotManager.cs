@@ -8,23 +8,13 @@ namespace AH
     public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     {
         PlayerManager playerManager;
-        PlayerStatsManager playerStatsManager;
-        PlayerInventoryManager playerInventoryManager;
-        InputHandler inputHandler;
         QuickSlotsUI quickSlotsUI;
-        PlayerEffectsManager playerEffectsManager;
-        PlayerAnimatorManager playerAnimatorManager;
 
         protected override void Awake()
         {
             base.Awake();
             playerManager = GetComponent<PlayerManager>();
-            playerStatsManager = GetComponent<PlayerStatsManager>();
-            playerInventoryManager = GetComponent<PlayerInventoryManager>();
-            playerEffectsManager = GetComponent<PlayerEffectsManager>();
-            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
-            inputHandler = GetComponent<InputHandler>();
         }
 
         public override void LoadWeaponOnSlot (WeaponItem weaponItem, bool isLeft)
@@ -37,11 +27,11 @@ namespace AH
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
-                    playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    playerManager.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
-                    if (inputHandler.twoHandFlag)
+                    if (playerManager.inputHandler.twoHandFlag)
                     {
                         if (leftHandSlot.currentWeapon.weaponType == WeaponType.StraightSword)
                         {
@@ -53,7 +43,7 @@ namespace AH
                         }
 
                         leftHandSlot.UnloadWeaponAndDestroy();
-                        playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
+                        playerManager.playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
 
                     }
                     else
@@ -66,7 +56,7 @@ namespace AH
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(false, weaponItem);
-                    playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                    playerManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
             else
@@ -75,21 +65,21 @@ namespace AH
 
                 if(isLeft)
                 {
-                    playerInventoryManager.leftWeapon = unarmedWeapon;
+                    playerManager.playerInventoryManager.leftWeapon = unarmedWeapon;
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
-                    playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    playerManager.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
-                    playerInventoryManager.rightWeapon = unarmedWeapon;
+                    playerManager.playerInventoryManager.rightWeapon = unarmedWeapon;
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
                     quickSlotsUI.UpdateWeaponQuickSlotUI(false, weaponItem);
-                    playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                    playerManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
 
@@ -97,14 +87,14 @@ namespace AH
 
         public void DrainStaminaLightAttack()
         {
-            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.lightAttackMultiplier));
+            WeaponItem currentWeaponBeingUsed = playerManager.characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            playerManager.playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.lightAttackMultiplier));
         }
 
         public void DrainStaminaHeavyAttack()
         {
-            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.heavyAttackMultiplier));
+            WeaponItem currentWeaponBeingUsed = playerManager.characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            playerManager.playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.heavyAttackMultiplier));
         }
 
     }

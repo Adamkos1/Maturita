@@ -10,9 +10,9 @@ namespace AH
     {
         public string bossName;
         UIBossHealthBar bossHealthBar;
-        EnemyStatsManager enemyStats;
-        EnemyAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
+
+        EnemyManager enemyManager;
 
         [Header("Second Phase FX")]
         public GameObject particleFx;
@@ -20,15 +20,14 @@ namespace AH
         private void Awake()
         {
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
-            enemyStats = GetComponent<EnemyStatsManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+            enemyManager = GetComponent<EnemyManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 
         private void Start()
         {
             bossHealthBar.SetBossName(bossName);
-            bossHealthBar.SetBossMaxHealth(enemyStats.maxHealth);
+            bossHealthBar.SetBossMaxHealth(enemyManager.enemyStatsManager.maxHealth);
         }
 
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)
@@ -44,9 +43,9 @@ namespace AH
 
         public void ShiftToSecondPhase()
         {
-            enemyAnimatorManager.animator.SetBool("isInvulnerable", true);
-            enemyAnimatorManager.animator.SetBool("isPhaseShifting", true);
-            enemyAnimatorManager.PlayTargetAnimation("Phase Shift", true);
+            enemyManager.animator.SetBool("isInvulnerable", true);
+            enemyManager.animator.SetBool("isPhaseShifting", true);
+            enemyManager.enemyAnimatorManager.PlayTargetAnimation("Phase Shift", true);
             bossCombatStanceState.hasPhaseShifted = true;
         }
     }

@@ -8,17 +8,11 @@ namespace AH
     public class EnemyAnimatorManager : CharacterAnimatorManager
     {
         EnemyManager enemyManager;
-        EnemyEffectsManager enemyEffectsManager;
-        EnemyBossManager enemyBossManager;
-
 
         protected override void Awake()
         {
             base.Awake();
-            animator = GetComponent<Animator>();
             enemyManager = GetComponent<EnemyManager>();
-            enemyBossManager = GetComponent<EnemyBossManager>();
-            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         }
 
         public void AwardSoulsOnDeath()
@@ -28,7 +22,7 @@ namespace AH
 
             if (playerStats != null)
             {
-                playerStats.AddSouls(characterStatsManager.soulsAwardedOnDeath);
+                playerStats.AddSouls(enemyManager.characterStatsManager.soulsAwardedOnDeath);
 
 
                 if (soulCountBar != null)
@@ -43,31 +37,31 @@ namespace AH
         {
             BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
 
-            GameObject phaseFX = Instantiate(enemyBossManager.particleFx, bossFXTransform.transform);
+            GameObject phaseFX = Instantiate(enemyManager.enemyBossManager.particleFx, bossFXTransform.transform);
         }
 
         public void PlayWeaponTrailFX()
         {
-            enemyEffectsManager.PlayWeaponFX(false);
+            enemyManager.enemyEffectsManager.PlayWeaponFX(false);
         }
 
         public void StopWeaponTrailFX()
         {
-            enemyEffectsManager.StopWeaponFX(false);
+            enemyManager.enemyEffectsManager.StopWeaponFX(false);
         }
 
         private void OnAnimatorMove()
         {
             float delta = Time.deltaTime;
             enemyManager.enemyRigidBody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
+            Vector3 deltaPosition = enemyManager.animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
             enemyManager.enemyRigidBody.velocity = velocity;
 
             if(enemyManager.isRotatingWithRootMotion)
             {
-                enemyManager.transform.rotation *= animator.deltaRotation;
+                enemyManager.transform.rotation *= enemyManager.animator.deltaRotation;
             }
         }
 

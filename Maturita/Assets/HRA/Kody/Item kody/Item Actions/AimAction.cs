@@ -15,7 +15,10 @@ namespace AH
             if (player.isAiming)
                 return;
 
-            player.inputHandler.uIManager.crossHair.SetActive(true);
+            if (player.isUsingLeftHand)
+                return;
+
+            player.uIManager.crossHair.SetActive(true);
             player.isAiming = true;
         }
     }

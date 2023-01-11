@@ -25,10 +25,13 @@ namespace AH
 
         public void AddItem(WeaponItem newWeapon)
         {
-            weapon = newWeapon;
-            icon.sprite = weapon.itemIcon;
-            icon.enabled = true;
-            gameObject.SetActive(true);
+            if(newWeapon != null)
+            {
+                weapon = newWeapon;
+                icon.sprite = weapon.itemIcon;
+                icon.enabled = true;
+                gameObject.SetActive(true);
+            }
         }
 
         public void ClearItem()
@@ -36,7 +39,6 @@ namespace AH
             weapon = null;
             icon.sprite = null;
             icon.enabled = false;
-            gameObject.SetActive(false);
         }
 
         public void SelectThisSlot()

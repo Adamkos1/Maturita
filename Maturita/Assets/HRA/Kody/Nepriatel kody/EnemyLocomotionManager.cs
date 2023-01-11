@@ -8,7 +8,6 @@ namespace AH
     public class EnemyLocomotionManager : MonoBehaviour
     {
         EnemyManager enemyManager;
-        EnemyAnimatorManager enemyAnimatorManager;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -16,7 +15,6 @@ namespace AH
         private void Awake()
         {
             enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         }
 
         private void Start()

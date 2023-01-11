@@ -8,57 +8,33 @@ namespace AH
 
     public class EquipmentWindowUI : MonoBehaviour
     {
-        public bool rightHandSlot01Selected;
-        public bool rightHandSlot02Selected;
-        public bool leftHandSlot01Selected;
-        public bool leftHandSlot02Selected;
 
-        public HandEquipmentSlotUI[] handEquipmentSlotUI;
-
+        public HandEquipmentSlotUI[] weaponEqiupmentSlotsUI;
 
         public void LoadWeaponsEquipmentScreen(PlayerInventoryManager playerInventory)
         {
-            for(int i = 0; i < handEquipmentSlotUI.Length; i++)
+            for(int i = 0; i < weaponEqiupmentSlotsUI.Length; i++)
             {
-                if(handEquipmentSlotUI[i].rightHandSlot01)
+                if(weaponEqiupmentSlotsUI[i].rightHandSlot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponInRightHandSlots[0]);
+                    weaponEqiupmentSlotsUI[i].AddItem(playerInventory.weaponInRightHandSlots[0]);
                 }
-                else if (handEquipmentSlotUI[i].rightHandSlot02)
+                else if (weaponEqiupmentSlotsUI[i].rightHandSlot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponInRightHandSlots[1]);
+                    weaponEqiupmentSlotsUI[i].AddItem(playerInventory.weaponInRightHandSlots[1]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot01)
+                else if (weaponEqiupmentSlotsUI[i].leftHandSlot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponInLeftHandSlots[0]);
+                    weaponEqiupmentSlotsUI[i].AddItem(playerInventory.weaponInLeftHandSlots[0]);
                 }
                 else
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponInLeftHandSlots[1]);
+                    weaponEqiupmentSlotsUI[i].AddItem(playerInventory.weaponInLeftHandSlots[1]);
                 }
 
             }
         }
 
-        public void SelectRightHandSlot01()
-        {
-            rightHandSlot01Selected = true;
-        }
-
-        public void SelectRightHandSlot02()
-        {
-            rightHandSlot02Selected = true;
-        }
-
-        public void SelectLeftHandSlot01()
-        {
-            leftHandSlot01Selected = true;
-        }
-
-        public void SelectLeftHandSlot02()
-        {
-            leftHandSlot02Selected = true;
-        }
 
     }
 

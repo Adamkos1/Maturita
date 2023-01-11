@@ -7,6 +7,8 @@ namespace AH
 
     public class CharacterEffectsManager : MonoBehaviour
     {
+        CharacterManager characterManager;
+
         [Header("Current Ranged FX")]
         public GameObject currentRangedFX;
 
@@ -17,6 +19,10 @@ namespace AH
         public WeaponFX rightWeaponFX;
         public WeaponFX leftWeaponFX;
 
+        private void Awake()
+        {
+            characterManager = GetComponent<CharacterManager>();
+        }
 
         public virtual void PlayWeaponFX(bool isLeft)
         {

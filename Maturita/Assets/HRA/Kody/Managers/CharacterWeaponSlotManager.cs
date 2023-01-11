@@ -9,10 +9,6 @@ namespace AH
     public class CharacterWeaponSlotManager : MonoBehaviour
     {
         protected CharacterManager characterManager;
-        protected CharacterInventoryManager characterInventoryManager;
-        protected CharacterAnimatorManager characterAnimatorManager;
-        protected CharacterEffectsManager characterEffectsManager;
-        protected CharacterStatsManager characterStatsManager;
 
         [Header("Unarmed Weapon")]
         public WeaponItem unarmedWeapon;
@@ -34,10 +30,6 @@ namespace AH
         protected virtual void Awake()
         {
             characterManager = GetComponent<CharacterManager>();
-            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
-            characterInventoryManager = GetComponent<CharacterInventoryManager>();
-            characterStatsManager = GetComponent<CharacterStatsManager>();
-            characterEffectsManager = GetComponent<CharacterEffectsManager>();
             LoadWeaponHolderSlots();
         }
 
@@ -69,8 +61,8 @@ namespace AH
 
         public virtual void LoadBothWeaponsOnSlots()
         {
-            LoadWeaponOnSlot(characterInventoryManager.rightWeapon, false);
-            LoadWeaponOnSlot(characterInventoryManager.leftWeapon, true);
+            LoadWeaponOnSlot(characterManager.characterInventoryManager.rightWeapon, false);
+            LoadWeaponOnSlot(characterManager.characterInventoryManager.leftWeapon, true);
         }
 
         public virtual void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
@@ -82,7 +74,7 @@ namespace AH
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
-                    characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    characterManager.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
@@ -98,7 +90,7 @@ namespace AH
                         }
 
                         leftHandSlot.UnloadWeaponAndDestroy();
-                        characterAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
+                        characterManager.characterAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
 
                     }
                     else
@@ -111,7 +103,7 @@ namespace AH
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
                     LoadTwoHandIKTargets(characterManager.isTwoHandingWeapon);
-                    characterAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                    characterManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
             else
@@ -120,19 +112,19 @@ namespace AH
 
                 if (isLeft)
                 {
-                    characterInventoryManager.leftWeapon = unarmedWeapon;
+                    characterManager.characterInventoryManager.leftWeapon = unarmedWeapon;
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponModel(weaponItem);
                     LoadLeftWeaponDamgeCollider();
-                    characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    characterManager.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
-                    characterInventoryManager.rightWeapon = unarmedWeapon;
+                    characterManager.characterInventoryManager.rightWeapon = unarmedWeapon;
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponModel(weaponItem);
                     LoadRightWeaponDamgeCollider();
-                    characterAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                    characterManager.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
 
@@ -142,34 +134,34 @@ namespace AH
         {
             leftHandDamageCollider =leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
 
-            if (characterInventoryManager.leftWeapon.isUnarmed)
+            if (characterManager.characterInventoryManager.leftWeapon.isUnarmed)
                 return;
 
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = characterInventoryManager.leftWeapon.baseDamage;
+            leftHandDamageCollider.currentWeaponDamage = characterManager.characterInventoryManager.leftWeapon.baseDamage;
 
             leftHandDamageCollider.characterManager = characterManager;
-            leftHandDamageCollider.teamIDNumber = characterStatsManager.teamIDNumber;
+            leftHandDamageCollider.teamIDNumber = characterManager.characterStatsManager.teamIDNumber;
 
-            leftHandDamageCollider.poiseBreak = characterInventoryManager.leftWeapon.poiseBreak;
-            characterEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
+            leftHandDamageCollider.poiseBreak = characterManager.characterInventoryManager.leftWeapon.poiseBreak;
+            characterManager.characterEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
         }
 
         protected virtual void LoadRightWeaponDamgeCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
 
-            if (characterInventoryManager.rightWeapon.isUnarmed)
+            if (characterManager.characterInventoryManager.rightWeapon.isUnarmed)
                 return;
 
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = characterInventoryManager.rightWeapon.baseDamage;
+            rightHandDamageCollider.currentWeaponDamage = characterManager.characterInventoryManager.rightWeapon.baseDamage;
 
             rightHandDamageCollider.characterManager = characterManager;
-            rightHandDamageCollider.teamIDNumber = characterStatsManager.teamIDNumber;
+            rightHandDamageCollider.teamIDNumber = characterManager.characterStatsManager.teamIDNumber;
 
-            rightHandDamageCollider.poiseBreak = characterInventoryManager.rightWeapon.poiseBreak;
-            characterEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
+            rightHandDamageCollider.poiseBreak = characterManager.characterInventoryManager.rightWeapon.poiseBreak;
+            characterManager.characterEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
 
         }
 
@@ -178,7 +170,7 @@ namespace AH
             leftHandIKTarget = rightHandSlot.currentWeaponModel.GetComponentInChildren<LeftHandIKTarget>();
             rightHandIKTarget = rightHandSlot.currentWeaponModel.GetComponentInChildren<RightHandIKTarget>();
 
-            characterAnimatorManager.SetHandIKForWeapon(rightHandIKTarget, leftHandIKTarget, isTwoHandingWeapon);
+            characterManager.characterAnimatorManager.SetHandIKForWeapon(rightHandIKTarget, leftHandIKTarget, isTwoHandingWeapon);
         }
 
         public virtual void OpenDamageCollider()
@@ -186,12 +178,12 @@ namespace AH
             if (characterManager.isUsingRightHand)
             {
                 rightHandDamageCollider.EnableDamageCollider();
-                characterEffectsManager.PlayWeaponFX(false);
+                characterManager.characterEffectsManager.PlayWeaponFX(false);
             }
             else if(characterManager.isUsingLeftHand)
             {
                 leftHandDamageCollider.EnableDamageCollider();
-                characterEffectsManager.PlayWeaponFX(true);
+                characterManager.characterEffectsManager.PlayWeaponFX(true);
             }
         }
 
@@ -200,26 +192,26 @@ namespace AH
             if (rightHandDamageCollider != null)
             {
                 rightHandDamageCollider.DissableDamageCollider();
-                characterEffectsManager.StopWeaponFX(false);
+                characterManager.characterEffectsManager.StopWeaponFX(false);
             }
 
             if (leftHandDamageCollider != null)
             {
                 leftHandDamageCollider.DissableDamageCollider();
-                characterEffectsManager.StopWeaponFX(false);
+                characterManager.characterEffectsManager.StopWeaponFX(false);
 
             }
         }
 
         public virtual void GrantWeaponAttackPoiseBonus()
         {
-            WeaponItem currentWeaponBeingUsed = characterInventoryManager.currentItemBeingUsed as WeaponItem;
-            characterStatsManager.totalPoiseDefence = characterStatsManager.totalPoiseDefence + currentWeaponBeingUsed.offensivePoiseBonus;
+            WeaponItem currentWeaponBeingUsed = characterManager.characterInventoryManager.currentItemBeingUsed as WeaponItem;
+            characterManager.characterStatsManager.totalPoiseDefence = characterManager.characterStatsManager.totalPoiseDefence + currentWeaponBeingUsed.offensivePoiseBonus;
         }
 
         public virtual void ResetWeaponAttackingPoiseBonus()
         {
-            characterStatsManager.totalPoiseDefence = characterStatsManager.armorPoiseBonus;
+            characterManager.characterStatsManager.totalPoiseDefence = characterManager.characterStatsManager.armorPoiseBonus;
         }
     }
 

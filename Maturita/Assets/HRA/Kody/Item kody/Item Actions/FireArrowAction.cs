@@ -22,7 +22,7 @@ namespace AH
 
                 //resetovat hracov live arrow
                 player.playerAnimatorManager.PlayTargetAnimation("Bow_TH_Fire_01_R", true);
-                player.playerAnimatorManager.animator.SetBool("isHoldingArrow", false);
+                player.animator.SetBool("isHoldingArrow", false);
 
                 //vytvorit a vystrelit live arrow
                 GameObject liveArrow = Instantiate(player.playerInventoryManager.currentAmmo.liveAmmoModel, arrowInstantiationLocation.transform.position, player.cameraHandler.cameraPivotTransform.rotation);

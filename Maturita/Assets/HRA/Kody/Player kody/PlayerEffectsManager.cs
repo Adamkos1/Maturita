@@ -8,8 +8,7 @@ namespace AH
 
     public class PlayerEffectsManager : CharacterEffectsManager
     {
-        PlayerStatsManager playerStatsManager;
-        PlayerWeaponSlotManager playerWeaponSlotManager;
+        PlayerManager playerManger;
 
         public GameObject currentParticleFX;
         public GameObject instantiatedFXModel;
@@ -17,23 +16,22 @@ namespace AH
 
         private void Awake()
         {
-            playerStatsManager = GetComponent<PlayerStatsManager>();
-            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerManger = GetComponent<PlayerManager>();
         }
 
         public void HealPlayerFromEffect()
         {
-                playerStatsManager.HealPlayer(amountTobeHealed);
-                GameObject healEffect = Instantiate(currentParticleFX, playerStatsManager.transform);
+                playerManger.playerStatsManager.HealPlayer(amountTobeHealed);
+                GameObject healEffect = Instantiate(currentParticleFX, playerManger.playerStatsManager.transform);
                 Destroy(instantiatedFXModel.gameObject);
                 Destroy(healEffect.gameObject, 1);
-                playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+                playerManger.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
 
         public void DestroyWhenNone()
         {
             Destroy(instantiatedFXModel.gameObject);
-            playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+            playerManger.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
     }
 

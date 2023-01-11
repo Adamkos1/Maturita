@@ -17,11 +17,11 @@ namespace AH
 
         public PursueTargetState pursueTargetState;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager)
         {
             if(isSleeping && enemyManager.isInteracting == false)
             {
-                enemyAnimatorManager.PlayTargetAnimation(sleepAnimation, true);
+                enemyManager.enemyAnimatorManager.PlayTargetAnimation(sleepAnimation, true);
             }
 
             #region Handle Target Detection
@@ -37,11 +37,11 @@ namespace AH
                     Vector3 targetsDirection = characterStats.transform.position - enemyManager.transform.position;
                     float viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
 
-                    if(viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle || enemyStats.currentHealth < enemyStats.maxHealth)
+                    if(viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle || enemyManager.enemyStatsManager.currentHealth < enemyManager.enemyStatsManager.maxHealth)
                     {
                         enemyManager.currentTarget = characterStats;
                         isSleeping = false;
-                        enemyAnimatorManager.PlayTargetAnimation(wakeAnimation, true);
+                        enemyManager.enemyAnimatorManager.PlayTargetAnimation(wakeAnimation, true);
                     }
                 }
             }
