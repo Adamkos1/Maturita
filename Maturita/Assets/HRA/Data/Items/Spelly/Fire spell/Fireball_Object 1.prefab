@@ -9728,12 +9728,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
-  characterStats: {fileID: 0}
   enabledDamageColliderOnStartUp: 1
   teamIDNumber: 0
   poiseBreak: 0
   offfensivePoiseBonus: 0
-  currentWeaponDamage: 50
+  currentWeaponDamage: 35
   impactParticles: {fileID: 1105777178367904, guid: 20eab421cf33a364b8adde443cbf6f24, type: 3}
   projectileParticles: {fileID: 1418158253269514, guid: 3f29391a39a738c4b836d143ada6b1d0, type: 3}
   muzzleParticles: {fileID: 0}

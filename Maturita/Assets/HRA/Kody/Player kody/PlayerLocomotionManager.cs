@@ -259,7 +259,7 @@ namespace AH
 
                 if (playerManager.isInAir)
                 {
-                    if (inAirTimer > 0.3f)
+                    if (inAirTimer > 0.2f)
                     {
                         Debug.Log("You were in the air for " + inAirTimer);
                         playerManager.playerAnimatorManager.PlayTargetAnimation("Land", true);
@@ -267,7 +267,7 @@ namespace AH
                     }
                     else
                     {
-                        playerManager.playerAnimatorManager.PlayTargetAnimation("Empty", false);
+                        playerManager.playerAnimatorManager.PlayTargetAnimation("Land", true);
                         inAirTimer = 0;
                     }
 

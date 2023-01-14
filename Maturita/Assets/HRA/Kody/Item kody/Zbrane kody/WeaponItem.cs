@@ -19,7 +19,8 @@ namespace AH
         public WeaponType weaponType;
 
         [Header("Damage")]
-        public int baseDamage = 25;
+        public int physicalDamage = 25;
+        public int magicDamage = 35;
         public int criticalDamageMultiplier = 4;
 
         [Header("Poise")]
@@ -28,6 +29,8 @@ namespace AH
 
         [Header("Absorption")]
         public float physicalDamageAbsorption;
+        public float magicDamageAbsorption;
+
 
         [Header("Stamina Cost")]
         public int baseStamina = 0;

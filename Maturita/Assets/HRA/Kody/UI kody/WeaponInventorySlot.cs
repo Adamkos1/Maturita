@@ -75,6 +75,7 @@ namespace AH
             uIManager.equipmentWindowUI.LoadWeaponsEquipmentScreen(uIManager.playerManager.playerInventoryManager);
             uIManager.ResetAllSelectedSlots();
         }
+
     }
 
 }

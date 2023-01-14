@@ -9,6 +9,7 @@ namespace AH
     public class UIManager : MonoBehaviour
     {
         public PlayerManager playerManager;
+        public ItemStatsWindowUI itemStatsWindowUI;
         public EquipmentWindowUI equipmentWindowUI;
         private QuickSlotsUI quickSlotsUI;
 
@@ -22,6 +23,7 @@ namespace AH
         public GameObject weaponInventoryWindow;
         public GameObject equipmentScreenWindow;
         public GameObject levelUpWindow;
+        public GameObject itemStatsWindow;
 
 
         [Header("Equipment Window Slot Selected")]
@@ -40,6 +42,7 @@ namespace AH
         private void Awake()
         {
             playerManager = FindObjectOfType<PlayerManager>();
+
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
         }
 
@@ -63,7 +66,7 @@ namespace AH
                         Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(true);
                     }
-                    Debug.Log(i);
+
                     weaponInventorySlots[i].AddItem(playerManager.playerInventoryManager.weaponsInventory[i]);
                 }
                 else
@@ -90,6 +93,7 @@ namespace AH
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            itemStatsWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

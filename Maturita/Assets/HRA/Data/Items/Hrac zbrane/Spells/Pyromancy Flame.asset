@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: Pyromancy Flame
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: c4807741edd70804fad6e4644d4aca0e, type: 3}
-  itemName: 
+  itemName: "Kuzeln\xFD Ohe\u0148"
   modelPrefab: {fileID: 8796778509252867920, guid: b5ce9a8c05d30314cbe62ebdf2de6a37, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 30a0c2f8ec4ae7a40b36416fa67dce91, type: 2}
   offHandIdleAnimation: Left Arm Empty
   weaponType: 2
-  baseDamage: 25
+  physicalDamage: 0
+  magicDamage: 35
   criticalDamageMultiplier: 4
   poiseBreak: 0
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 0
+  magicDamageAbsorption: 0
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0

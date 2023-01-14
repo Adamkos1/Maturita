@@ -9,7 +9,7 @@ namespace AH
     public class EquipmentWindowUI : MonoBehaviour
     {
 
-        public HandEquipmentSlotUI[] weaponEqiupmentSlotsUI;
+        public WeaponEquipmentSlotUI[] weaponEqiupmentSlotsUI;
 
         public void LoadWeaponsEquipmentScreen(PlayerInventoryManager playerInventory)
         {

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace AH
 {
 
-    public class HandEquipmentSlotUI : MonoBehaviour
+    public class WeaponEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
         public Image icon;
@@ -43,6 +43,8 @@ namespace AH
 
         public void SelectThisSlot()
         {
+            uIManager.ResetAllSelectedSlots();
+
             if(rightHandSlot01)
             {
                 uIManager.rightHandSlot01Selected = true;
@@ -60,8 +62,9 @@ namespace AH
             else
             {
                 uIManager.leftHandSlot02Selected = true;
-
             }
+
+            uIManager.itemStatsWindowUI.UpdateWeaponItemStats(weapon);
         }
     }
 
