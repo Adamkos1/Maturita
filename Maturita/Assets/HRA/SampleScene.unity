@@ -16562,6 +16562,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304392c8f4fc14641b661c9cdb07bb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
+  poiseBreak: 0
+  offfensivePoiseBonus: 0
+  currentWeaponDamage: 25
   damage: 25
 --- !u!1 &2112197637
 GameObject:
@@ -26827,16 +26833,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   leftWeapon: {fileID: 0}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 05458dd104fbb294db5866a8ad3cd134, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -26903,11 +26909,13 @@ MonoBehaviour:
   oh_Heavy_Attack_01: Oh_Heavy_Attack_01
   oh_Runing_Attack_01: Oh_Runing_Attack_01
   oh_Jumping_Attack_01: Oh_Jumping_Attack_01
+  oh_Charge_Attack_01: Oh_Charging_Attack_Charge_01
   th_Runing_Attack_01: Th_Runing_Attack_01
   th_Jumping_Attack_01: Th_Jumping_Attack_01
   th_Light_Attack_01: Th_Light_Attack_01
   th_Light_Attack_02: Th_Light_Attack_02
   th_Heavy_Attack_01: Th_Heavy_Attack_01
+  th_Charge_Attack_01: Th_Charging_Attack_Charge_01
   weaponArt: Weapon Art
   lastAttack: 
 --- !u!114 &95977974435473197
@@ -27003,6 +27011,7 @@ MonoBehaviour:
   isTwoHandingWeapon: 0
   isAiming: 0
   isHoldingArrow: 0
+  isPerformingFullyChargedAttack: 0
   isInteracting: 0
   isDead: 0
   isRotatingWithRootMotion: 0
@@ -27088,6 +27097,7 @@ MonoBehaviour:
   tap_RB_Input: 0
   hold_LB_Input: 0
   tap_RT_Input: 0
+  hold_RT_Input: 0
   tap_LT_Input: 0
   tap_LB_Input: 0
   hold_RB_Input: 0
@@ -37633,6 +37643,7 @@ MonoBehaviour:
   isTwoHandingWeapon: 0
   isAiming: 0
   isHoldingArrow: 0
+  isPerformingFullyChargedAttack: 0
   isInteracting: 0
   isDead: 0
   isRotatingWithRootMotion: 0
@@ -37717,7 +37728,7 @@ MonoBehaviour:
   currentSoulCount: 0
   soulsAwardedOnDeath: 50
   playerLevel: 1
-  healthlevel: 10
+  healthlevel: 215
   staminalevel: 10
   manaLevel: 10
   strenghtLevel: 10
@@ -44436,6 +44447,7 @@ MonoBehaviour:
   isTwoHandingWeapon: 0
   isAiming: 0
   isHoldingArrow: 0
+  isPerformingFullyChargedAttack: 0
   isInteracting: 0
   isDead: 0
   isRotatingWithRootMotion: 0

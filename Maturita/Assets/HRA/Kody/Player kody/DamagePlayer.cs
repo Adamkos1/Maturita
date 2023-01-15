@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AH
 {
-    public class DamagePlayer : MonoBehaviour
+    public class DamagePlayer : DamageCollider
     {
         public int damage = 25;
         string damageAnimation = "Damage_01";
@@ -15,7 +15,7 @@ namespace AH
 
             if(characterStats != null)
             {
-                characterStats.TakeDamage(damage, damageAnimation);
+                characterStats.TakeDamage(damage, damageAnimation, characterManager);
             }
         }
     }

@@ -205,7 +205,7 @@
                     "id": "79f76d1b-b64b-448c-aead-e161a64706e6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.28,pressPoint=0.98)",
                     "initialStateCheck": false
                 },
                 {
@@ -223,7 +223,16 @@
                     "id": "66909c36-4409-496e-844b-a83340fbad93",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hold RT",
+                    "type": "PassThrough",
+                    "id": "376904b6-b101-4faa-8b4c-27d802fe13c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.28,pressPoint=0.98)",
                     "initialStateCheck": false
                 },
                 {
@@ -583,6 +592,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "TapLB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd21c644-38d3-41c1-a466-e7d0e7b083ab",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold RT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54f3a850-48d8-4bf6-aed6-659e15a3206c",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold RT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -56,7 +56,7 @@ namespace AH
                     }
                     else
                     {
-                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation);
+                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }

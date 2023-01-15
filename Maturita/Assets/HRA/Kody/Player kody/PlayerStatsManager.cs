@@ -53,7 +53,7 @@ namespace AH
             }
         }
 
-        public override void TakeDamage(int damage, string damageAnimation)
+        public override void TakeDamage(int damage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
             if (playerManager.isInvulnerable)
                 return;

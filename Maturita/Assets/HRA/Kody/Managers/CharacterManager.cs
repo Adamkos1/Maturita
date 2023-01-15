@@ -33,6 +33,7 @@ namespace AH
         public bool isTwoHandingWeapon;
         public bool isAiming;
         public bool isHoldingArrow;
+        public bool isPerformingFullyChargedAttack;
 
         [Header("Interacting")]
         public bool isInteracting;

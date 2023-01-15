@@ -89,7 +89,7 @@ namespace AH
                     }
                     else
                     {
-                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation);
+                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }
@@ -119,7 +119,7 @@ namespace AH
 
                 if (enemyStats != null)
                 {
-                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard");
+                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard", characterManager);
                     shieldHasBeenHit = true;
                 }
             }

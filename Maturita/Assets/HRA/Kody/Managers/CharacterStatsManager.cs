@@ -62,12 +62,18 @@ namespace AH
             totalPoiseDefence = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int damage, string damageAnimation)
+        public virtual void TakeDamage(int physicalDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
             if (characterManager.isDead)
                 return;
 
             characterManager.characterAnimatorManager.EraseHandIKForWeapon();
+
+
+            if(enemyCharacterDamagingMe.isPerformingFullyChargedAttack)
+            {
+                currentHealth = Mathf.RoundToInt(currentHealth - physicalDamage);
+            }
         }
 
         public virtual void TakeDamgeNoAnimation(int damage)

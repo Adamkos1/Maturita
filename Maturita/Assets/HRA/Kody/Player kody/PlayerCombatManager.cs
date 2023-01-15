@@ -15,12 +15,14 @@ namespace AH
         public string oh_Heavy_Attack_01 = "Oh_Heavy_Attack_01";
         public string oh_Runing_Attack_01 = "Oh_Runing_Attack_01";
         public string oh_Jumping_Attack_01 = "Oh_Jumping_Attack_01";
+        public string oh_Charge_Attack_01 = "Oh_Charging_Attack_Charge_01";
 
         public string th_Runing_Attack_01 = "Th_Runing_Attack_01";
         public string th_Jumping_Attack_01 = "Th_Jumping_Attack_01";
         public  string th_Light_Attack_01 = "Th_Light_Attack_01";
         public string th_Light_Attack_02 = "Th_Light_Attack_02";
         public string th_Heavy_Attack_01 = "Th_Heavy_Attack_01";
+        public string th_Charge_Attack_01 = "Th_Charging_Attack_Charge_01";
 
         public string weaponArt = "Weapon Art";
 
@@ -46,16 +48,16 @@ namespace AH
             if (playerManager.playerStatsManager.currentStamina <= 0)
                 return;
 
-            playerManager.playerAnimatorManager.EraseHandIKForWeapon();
-
+                
             RaycastHit hit;
 
-            if(Physics.Raycast(playerManager.inputHandler.criticalAttackRaycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f, backStabLayer))
+            if(Physics.Raycast(playerManager.inputHandler.criticalAttackRaycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.4f, backStabLayer))
             {
+                playerManager.playerAnimatorManager.EraseHandIKForWeapon();
                 CharacterManager enemyChracterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
                 DamageCollider rightWeapon = playerManager.playerWeaponSlotManager.rightHandDamageCollider;
 
-                if(enemyChracterManager != null)
+                if (enemyChracterManager != null)
                 {
                     playerManager.transform.position = enemyChracterManager.backStabCollider.criticalDamagerStandPosition.position;
 
@@ -77,11 +79,11 @@ namespace AH
 
             else if (Physics.Raycast(playerManager.inputHandler.criticalAttackRaycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f, riposteLayer))
             {
-
+                playerManager.playerAnimatorManager.EraseHandIKForWeapon();
                 CharacterManager enemyChracterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
                 DamageCollider rightWeapon = playerManager.playerWeaponSlotManager.rightHandDamageCollider;
 
-                if(enemyChracterManager != null && enemyChracterManager.canBeRiposted)
+                if (enemyChracterManager != null && enemyChracterManager.canBeRiposted)
                 {
                     playerManager.transform.position = enemyChracterManager.riposteCollider.criticalDamagerStandPosition.position;
 

@@ -48,10 +48,10 @@ namespace AH
             return maxHealth;
         }
 
-        public override void TakeDamage(int damage, string damageAnimation)
+        public override void TakeDamage(int damage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
 
-            base.TakeDamage(damage, damageAnimation);
+            base.TakeDamage(damage, damageAnimation, enemyCharacterDamagingMe);
 
             if (enemyManager.isDead)
                 return;
