@@ -74,17 +74,22 @@ namespace AH
             {
                 currentHealth = Mathf.RoundToInt(currentHealth - physicalDamage);
             }
+
+            characterManager.characterSoundFXManager.PlayRandomDamageSoundFX();
         }
 
         public virtual void TakeDamgeNoAnimation(int damage)
         {
             currentHealth = currentHealth - damage;
 
+            characterManager.characterSoundFXManager.PlayRandomDamageSoundFX();
+
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 characterManager.isDead = true;
             }
+
         }
 
         public virtual void HandlePoiseResetTimer()

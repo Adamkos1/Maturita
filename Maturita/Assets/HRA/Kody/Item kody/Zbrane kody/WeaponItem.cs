@@ -57,6 +57,9 @@ namespace AH
         public ItemAction th_tap_LT_Action;
         public ItemAction th_hold_LT_Action;
 
+        [Header("Sound FX")]
+        public AudioClip[] weaponWhooshes;
+
 
     }
 

@@ -67,6 +67,8 @@ namespace AH
 
             playerManager.playerAnimatorManager.PlayTargetAnimation(damageAnimation , true);
 
+            playerManager.characterSoundFXManager.PlayRandomDamageSoundFX();
+
             if (currentHealth <= 0)
             {
                 HandleDeath();
