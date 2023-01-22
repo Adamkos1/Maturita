@@ -25,25 +25,27 @@ namespace AH
         public GameObject levelUpWindow;
         public GameObject itemStatsWindow;
 
-
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
         public bool rightHandSlot02Selected;
         public bool leftHandSlot01Selected;
         public bool leftHandSlot02Selected;
 
-
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
 
+        [Header("Pop Ups")]
+        BonefirePopUPUI bonefirePopUPUI;
 
         private void Awake()
         {
             playerManager = FindObjectOfType<PlayerManager>();
 
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+
+            bonefirePopUPUI = GetComponentInChildren<BonefirePopUPUI>();
         }
 
         private void Start()
@@ -102,6 +104,11 @@ namespace AH
             rightHandSlot02Selected = false;
             leftHandSlot01Selected = false;
             leftHandSlot02Selected = false;
+        }
+
+        public void ActivateBonfirePopUp()
+        {
+            bonefirePopUPUI.DisplayBonfireLitPopUp();
         }
     }
 
