@@ -27,9 +27,9 @@ namespace AH
 
         [Header("Movement Stats")]
         [SerializeField]
-            float movementSpeed = 5;
+            public float movementSpeed = 5;
         [SerializeField]
-            float walkingSpeed = 2;
+           public float walkingSpeed = 2;
         [SerializeField]
             float sprintSpeed = 7;
         [SerializeField]

@@ -7,6 +7,7 @@ namespace AH
 
     public class CharacterSoundFXManager : MonoBehaviour
     {
+        PlayerManager playerManager;
         CharacterManager characterManager;
         AudioSource audioSource;
 
@@ -17,8 +18,16 @@ namespace AH
         [Header("Weapon Whooshes")]
         private int lastWeaponWhoosh;
 
+        [Header("Footstep")]
+        private float footStepTimer = 0;
+        public AudioClip[] grassClips;
+        public AudioClip[] woodClips;
+        public AudioClip[] stoneClips;
+
+
         protected virtual void Awake()
         {
+            playerManager = GetComponent<PlayerManager>();
             audioSource = GetComponent<AudioSource>();
             characterManager = GetComponent<CharacterManager>();
         }
@@ -39,7 +48,7 @@ namespace AH
 
         public virtual void PlayRadonmWeaponWhoosh()
         {
-            if(characterManager.isUsingRightHand)
+            if (characterManager.isUsingRightHand)
             {
                 int randomSound = Random.Range(0, characterManager.characterInventoryManager.rightWeapon.weaponWhooshes.Length);
                 if (randomSound == lastWeaponWhoosh)
@@ -67,6 +76,42 @@ namespace AH
             }
 
         }
-    }
 
+        public virtual void HandleFootSteps()
+        {
+            if (characterManager.isGrounded == false)
+                return;
+
+            Vector3 origin = playerManager.transform.position;
+
+            footStepTimer -= Time.deltaTime;
+
+            if (footStepTimer <= 0)
+            {
+                if (Physics.Raycast(playerManager.transform.forward, Vector3.down, out RaycastHit hit, 5))
+                {
+                    switch (hit.collider.tag)
+                    {
+                        case "FootSteps/Wood":
+                            audioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                            break;
+                        case "FootSteps/Stone":
+                            audioSource.PlayOneShot(stoneClips[Random.Range(0, stoneClips.Length)]);
+                            break;
+                        case "FootSteps/Grass":
+                            audioSource.PlayOneShot(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                            break;
+                        default:
+                            audioSource.PlayOneShot(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                            break;
+
+                    }
+                }
+
+                Debug.Log("kokot");
+                footStepTimer = playerManager.currentOfset;
+            }
+
+        }
+    }
 }

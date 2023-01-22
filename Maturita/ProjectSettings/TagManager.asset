@@ -8,6 +8,9 @@ TagManager:
   - Interactable
   - Illusionary Wall
   - Character
+  - FootSteps/Grass
+  - FootSteps/Stone
+  - FootSteps/Wood
   layers:
   - Default
   - TransparentFX

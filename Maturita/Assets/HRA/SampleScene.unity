@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 949926154}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: FootSteps/Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9137,7 +9137,7 @@ GameObject:
   - component: {fileID: 1636389331}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: FootSteps/Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10839,7 +10839,7 @@ GameObject:
   - component: {fileID: 1920028237}
   m_Layer: 0
   m_Name: floor (1)
-  m_TagString: Untagged
+  m_TagString: FootSteps/Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -27038,6 +27038,7 @@ MonoBehaviour:
   playerEquipmentManager: {fileID: 0}
   interactableUIGameObject: {fileID: 1952557209571214497}
   itemInteractableUIGameObject: {fileID: 1952557209666062933}
+  useFootSteps: 1
 --- !u!114 &95977974435473200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27176,6 +27177,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 90115a0fe3e8b4e098b1111cc014a9cc, type: 3}
   - {fileID: 8300000, guid: 28035043174d44f928d428fc44f59150, type: 3}
   - {fileID: 8300000, guid: e1c46311240d04071ad00f2e40cc164e, type: 3}
+  grassClips: []
+  woodClips: []
+  stoneClips: []
 --- !u!82 &95977974435473206
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37935,6 +37939,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e1c46311240d04071ad00f2e40cc164e, type: 3}
   - {fileID: 8300000, guid: f066f3ebedc79dc429b921d5076e5491, type: 3}
   - {fileID: 8300000, guid: 5f81bdff582c2fc4488e1129bc037245, type: 3}
+  grassClips: []
+  woodClips: []
+  stoneClips: []
 --- !u!82 &2816251560902805496
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44818,6 +44825,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e1c46311240d04071ad00f2e40cc164e, type: 3}
   - {fileID: 8300000, guid: f066f3ebedc79dc429b921d5076e5491, type: 3}
   - {fileID: 8300000, guid: 5f81bdff582c2fc4488e1129bc037245, type: 3}
+  grassClips: []
+  woodClips: []
+  stoneClips: []
 --- !u!82 &7727361346120289078
 AudioSource:
   m_ObjectHideFlags: 0

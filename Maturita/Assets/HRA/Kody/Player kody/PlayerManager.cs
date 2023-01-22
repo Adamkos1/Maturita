@@ -35,6 +35,12 @@ namespace AH
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableUIGameObject;
 
+        [Header("Footstep")]
+        private float baseStepSpeed = 0.5f;
+        private float sprintstepMultipler = 1.5f;
+        public bool useFootSteps;
+        public float currentOfset => isSprinting ? baseStepSpeed * sprintstepMultipler : baseStepSpeed;
+
         protected override void Awake()
         {
             base.Awake();
