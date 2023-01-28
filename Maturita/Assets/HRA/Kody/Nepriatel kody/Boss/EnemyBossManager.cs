@@ -11,8 +11,8 @@ namespace AH
         public string bossName;
         UIBossHealthBar bossHealthBar;
         BossCombatStanceState bossCombatStanceState;
-
         EnemyManager enemyManager;
+        WorldEventManager worldEventManager;
 
         [Header("Second Phase FX")]
         public GameObject particleFx;
@@ -22,12 +22,21 @@ namespace AH
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
             enemyManager = GetComponent<EnemyManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
+            worldEventManager = FindObjectOfType<WorldEventManager>();
         }
 
         private void Start()
         {
             bossHealthBar.SetBossName(bossName);
             bossHealthBar.SetBossMaxHealth(enemyManager.enemyStatsManager.maxHealth);
+        }
+
+        private void Update()
+        {
+            if(enemyManager.enemyStatsManager.currentHealth <= 0)
+            {
+                worldEventManager.BossHasBeenDefeated();
+            }
         }
 
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)

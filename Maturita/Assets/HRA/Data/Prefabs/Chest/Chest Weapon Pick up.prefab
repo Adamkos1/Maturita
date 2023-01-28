@@ -46,8 +46,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.22
-  m_Center: {x: 0.0017147063, y: 0.25, z: 0.0068755145}
+  m_Radius: 2.06
+  m_Center: {x: 0.22, y: 0.5, z: -0.28}
 --- !u!114 &5018513153400207444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,9 +60,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76e047e7e800149997e15328697ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.76
+  radius: 0.61
   interactableText: Pick Up Item
   weapon: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  rangedAmmo: {fileID: 0}
+  estusFlask: {fileID: 0}
+  isFlask: 0
+  isAmmo: 0
 --- !u!198 &-7933796462638576437
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -71,8 +75,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5018513153400097718}
   serializedVersion: 8
-  lengthInSec: 20
-  simulationSpeed: 1
+  lengthInSec: 0.05
+  simulationSpeed: 0.64
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -631,7 +635,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 500
+    maxNumParticles: 201
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

@@ -24,6 +24,12 @@ namespace AH
         Bolt
     }
 
+    public enum AttackType
+    {
+        Light,
+        Heavy
+    }
+
     public class Enums : MonoBehaviour
     {
 

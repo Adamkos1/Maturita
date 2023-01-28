@@ -37,7 +37,7 @@ namespace AH
         WeaponInventorySlot[] weaponInventorySlots;
 
         [Header("Pop Ups")]
-        BonefirePopUPUI bonefirePopUPUI;
+        BonefirePopUPUI bonfirePopUPUI;
 
         private void Awake()
         {
@@ -45,7 +45,7 @@ namespace AH
 
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
 
-            bonefirePopUPUI = GetComponentInChildren<BonefirePopUPUI>();
+            bonfirePopUPUI = GetComponentInChildren<BonefirePopUPUI>();
         }
 
         private void Start()
@@ -108,7 +108,7 @@ namespace AH
 
         public void ActivateBonfirePopUp()
         {
-            bonefirePopUPUI.DisplayBonfireLitPopUp();
+            bonfirePopUPUI.DisplayBonfireLitPopUp();
         }
     }
 

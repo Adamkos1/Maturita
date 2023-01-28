@@ -104,9 +104,9 @@ namespace AH
             }
         }
 
-        public void DrainStaminaBasedOnAttackType()
+        public virtual void DrainStamina(float staimnaToDrain)
         {
-
+            currentStamina = currentStamina - staimnaToDrain;
         }
 
         public int SetMaxHealthFromHealthLevel()

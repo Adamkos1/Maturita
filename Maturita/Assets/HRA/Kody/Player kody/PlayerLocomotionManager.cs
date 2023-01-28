@@ -156,7 +156,7 @@ namespace AH
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
-                playerManager.playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
+                playerManager.playerStatsManager.DrainStamina(sprintStaminaCost);
             }
             else
             {
@@ -210,7 +210,7 @@ namespace AH
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     playerManager.transform.rotation = rollRotation;
-                    playerManager.playerStatsManager.TakeStaminaDamage(rollStaminaCost);
+                    playerManager.playerStatsManager.DrainStamina(rollStaminaCost);
                 // }
 
                 // else
@@ -322,6 +322,8 @@ namespace AH
 
             if (playerManager.inputHandler.jump_Input)
             {
+                playerManager.inputHandler.jump_Input = false;
+
                 if(playerManager.inputHandler.moveAmount > 0)
                 {
                     moveDirection = playerManager.cameraHandler.cameraObject.transform.forward * playerManager.inputHandler.vertical;
@@ -331,7 +333,7 @@ namespace AH
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     //myTransform.rotation = jumpRotation;
-                    playerManager.playerStatsManager.TakeStaminaDamage(jumpStaminaCost);
+                    playerManager.playerStatsManager.DrainStamina(jumpStaminaCost);
                 }
             }
         }

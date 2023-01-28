@@ -37,6 +37,8 @@ namespace AH
                 HandleLightAttack(player);
 
             }
+
+            player.playerCombatManager.currentAttackType = AttackType.Light;
         }
 
         private void HandleLightAttack(PlayerManager player)

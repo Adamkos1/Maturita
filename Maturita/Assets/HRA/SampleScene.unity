@@ -725,6 +725,7 @@ Transform:
   - {fileID: 22514148}
   - {fileID: 1816412156}
   - {fileID: 2079581496}
+  - {fileID: 590064515}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1328,6 +1329,10 @@ PrefabInstance:
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InheritVelocityModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -2192,6 +2197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d57490fcb492947ae254359b540f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 1579760652}
 --- !u!225 &533503630
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2638,6 +2644,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 3.82
       objectReference: {fileID: 0}
@@ -2744,6 +2754,11 @@ Transform:
   m_Father: {fileID: 225488197}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &590064515 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+  m_PrefabInstance: {fileID: 734218476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604137239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,7 +2879,7 @@ MonoBehaviour:
   fogWalls:
   - {fileID: 2097597449}
   bossHealthBar: {fileID: 0}
-  enemyBossManager: {fileID: 0}
+  enemyBossManager: {fileID: 7727361346120289069}
   bossFightIsActive: 0
   bossHasBeenAwakened: 0
   bossHasBeenDefeated: 0
@@ -3170,6 +3185,10 @@ PrefabInstance:
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InheritVelocityModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -3733,6 +3752,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 488026, guid: a59701f4ac337494aba2dadcc87fb525, type: 3}
   m_PrefabInstance: {fileID: 1734491559}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &734218476
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 225488197}
+    m_Modifications:
+    - target: {fileID: 146600, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_Bench_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6818
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6818
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6818
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.2343187
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.934
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72074527
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6932001
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 87.768
+      objectReference: {fileID: 0}
+    - target: {fileID: 406158, guid: 061eadc372909d041918ffb638c23137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 061eadc372909d041918ffb638c23137, type: 3}
 --- !u!1 &749940062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,7 +7348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3816609856316101681, guid: 15eee7e8f008e7044bf21a99cd4f865d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3816609856316101681, guid: 15eee7e8f008e7044bf21a99cd4f865d, type: 3}
       propertyPath: m_LocalScale.x
@@ -8658,7 +8746,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579760650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9853,6 +9941,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 3.82
       objectReference: {fileID: 0}
@@ -10378,6 +10470,10 @@ PrefabInstance:
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InheritVelocityModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 19822084, guid: 8fddca1ea1c00ca4d8f50aa93f290fad, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -11033,6 +11129,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3816609856316101681, guid: 15eee7e8f008e7044bf21a99cd4f865d, type: 3}
   m_PrefabInstance: {fileID: 1326577224}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1912583629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912583619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.61, z: 0.54}
+  m_Center: {x: 0.000000029802326, y: 0.3, z: -0.01}
 --- !u!1 &1920028235
 GameObject:
   m_ObjectHideFlags: 0
@@ -11194,7 +11303,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8301887, g: 0, b: 0, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.3207547, g: 0.31621572, b: 0.31621572, a: 1}
     m_SelectedColor: {r: 0.5471698, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -11845,7 +11954,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15.28
+      scalar: 1.8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -12330,7 +12439,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 139
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -12398,7 +12507,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 5, y: 1, z: 0.31}
+    m_Scale: {x: 5, y: -2.21, z: 0.31}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -12596,7 +12705,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 58.29
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -12649,7 +12758,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.24
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -16775,7 +16884,7 @@ MonoBehaviour:
   teamIDNumber: 0
   poiseBreak: 0
   offfensivePoiseBonus: 0
-  currentWeaponDamage: 25
+  physicalDamage: 25
   damage: 25
 --- !u!1 &2112197637
 GameObject:
@@ -17415,7 +17524,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 88
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -31882,7 +31991,7 @@ MonoBehaviour:
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
-  - {fileID: 11400000, guid: 05458dd104fbb294db5866a8ad3cd134, type: 2}
+  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
@@ -31947,6 +32056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd56e6a3232675448077b37dd3cf342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentAttackType: 0
   oh_Light_Attack_01: Oh_Light_Attack_01
   oh_Light_Attack_02: Oh_Light_Attack_02
   oh_Heavy_Attack_01: Oh_Heavy_Attack_01
@@ -32022,6 +32132,8 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   staminaRegenerationAmount: 30
   staminaRegenerationTimer: 0
+  manaRegenerationAmount: 30
+  manaRegenerationTimer: 0
 --- !u!114 &95977974435473199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32041,6 +32153,7 @@ MonoBehaviour:
   characterInventoryManager: {fileID: 0}
   characterEffectsManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
+  characterCombatManager: {fileID: 0}
   lockOnTransform: {fileID: 277547547316492406}
   backStabCollider: {fileID: 277547548271963644}
   riposteCollider: {fileID: 277547548466477568}
@@ -33386,7 +33499,7 @@ Animator:
   m_GameObject: {fileID: 799373574542906631}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 9100000, guid: c33499bcf414f5b4db30c090db806178, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36c0d58e84d5f5f4ea6d0dd6875a2042, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -35336,7 +35449,7 @@ Transform:
   - {fileID: 793376267557260329}
   - {fileID: 793408956448760383}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 89.02, z: 0}
 --- !u!4 &793469606303798671
 Transform:
@@ -36880,7 +36993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &799373574542906632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36895,6 +37008,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.54
   interactableText: Level Up
+  player: {fileID: 4988522561172009}
+  playerManager: {fileID: 95977974435473199}
 --- !u!54 &799373574542906633
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36909,7 +37024,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &799373574542906634
 CapsuleCollider:
@@ -42792,6 +42907,7 @@ MonoBehaviour:
   characterInventoryManager: {fileID: 0}
   characterEffectsManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
+  characterCombatManager: {fileID: 0}
   lockOnTransform: {fileID: 2814908502572094900}
   backStabCollider: {fileID: 2814908500716102898}
   riposteCollider: {fileID: 2814908500920623296}
@@ -42901,8 +43017,8 @@ MonoBehaviour:
   poiseLevel: 10
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
-  armorPoiseBonus: 0
-  totalPoiseResetTime: 15
+  armorPoiseBonus: 75
+  totalPoiseResetTime: 3
   poiseResetTimer: 0
   enemyHealthBar: {fileID: 1514201836}
   isBoss: 0
@@ -46352,7 +46468,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 50
+    maxNumParticles: 40
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -54647,6 +54763,7 @@ MonoBehaviour:
   characterInventoryManager: {fileID: 0}
   characterEffectsManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
+  characterCombatManager: {fileID: 0}
   lockOnTransform: {fileID: 7668757346101484320}
   backStabCollider: {fileID: 7668757344782363238}
   riposteCollider: {fileID: 7668757344449949268}

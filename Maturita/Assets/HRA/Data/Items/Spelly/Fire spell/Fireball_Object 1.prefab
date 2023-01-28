@@ -601,7 +601,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5427,7 +5427,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -9732,7 +9732,7 @@ MonoBehaviour:
   teamIDNumber: 0
   poiseBreak: 0
   offfensivePoiseBonus: 0
-  currentWeaponDamage: 35
+  physicalDamage: 25
   impactParticles: {fileID: 1105777178367904, guid: 20eab421cf33a364b8adde443cbf6f24, type: 3}
   projectileParticles: {fileID: 1418158253269514, guid: 3f29391a39a738c4b836d143ada6b1d0, type: 3}
   muzzleParticles: {fileID: 0}
@@ -10350,7 +10350,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

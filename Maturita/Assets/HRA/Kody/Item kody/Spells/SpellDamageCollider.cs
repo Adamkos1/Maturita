@@ -36,6 +36,7 @@ namespace AH
         {
             if(!hasCollided)
             {
+                characterManager = collision.transform.GetComponent<CharacterManager>();
                 spellTarget = collision.transform.GetComponent<CharacterStatsManager>();
                 spelltargetwall = collision.transform.GetComponent<IllusionaryWall>();
 
@@ -47,7 +48,7 @@ namespace AH
 
                 if (spellTarget != null && spellTarget.teamIDNumber != teamIDNumber)
                 {
-                    spellTarget.TakeDamage(currentWeaponDamage, currentDamageAnimation, characterManager);
+                    spellTarget.TakeDamage(physicalDamage, currentDamageAnimation, characterManager);
                 }
 
                 hasCollided = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AH
 {
@@ -8,6 +9,7 @@ namespace AH
     public class BonefirePopUPUI : MonoBehaviour
     {
         CanvasGroup canvas;
+        public Image image;
 
         private void Awake()
         {
@@ -21,6 +23,7 @@ namespace AH
 
         IEnumerator FadeInPopUp()
         {
+            image.enabled = true;
             gameObject.SetActive(true);
 
             for(float fade = 0.05f; fade < 1; fade = fade + 0.05f)
@@ -47,6 +50,7 @@ namespace AH
 
                 if(fade <= 0.05f)
                 {
+                    image.enabled = false;
                     gameObject.SetActive(false);
                 }
 

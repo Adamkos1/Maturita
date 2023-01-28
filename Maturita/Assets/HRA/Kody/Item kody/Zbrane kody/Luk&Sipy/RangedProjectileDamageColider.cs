@@ -52,11 +52,11 @@ namespace AH
 
                     if (enemyStats.totalPoiseDefence > poiseBreak)
                     {
-                        enemyStats.TakeDamgeNoAnimation(currentWeaponDamage);
+                        enemyStats.TakeDamgeNoAnimation(physicalDamage);
                     }
                     else
                     {
-                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation, characterManager);
+                        enemyStats.TakeDamage(physicalDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }

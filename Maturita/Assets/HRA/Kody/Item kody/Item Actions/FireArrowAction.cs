@@ -69,7 +69,7 @@ namespace AH
                 //dat live arrowu damage
                 damageColider.characterManager = player;
                 damageColider.ammoItem = player.playerInventoryManager.currentAmmo;
-                damageColider.currentWeaponDamage = player.playerInventoryManager.currentAmmo.physicalDamage;
+                damageColider.physicalDamage = player.playerInventoryManager.currentAmmo.physicalDamage;
                 player.playerInventoryManager.currentAmmo.currentAmount = player.playerInventoryManager.currentAmmo.currentAmount - 1;
             }
         }

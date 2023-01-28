@@ -138,7 +138,7 @@ namespace AH
                 return;
 
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = characterManager.characterInventoryManager.leftWeapon.physicalDamage;
+            leftHandDamageCollider.physicalDamage = characterManager.characterInventoryManager.leftWeapon.physicalDamage;
 
             leftHandDamageCollider.characterManager = characterManager;
             leftHandDamageCollider.teamIDNumber = characterManager.characterStatsManager.teamIDNumber;
@@ -155,7 +155,7 @@ namespace AH
                 return;
 
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = characterManager.characterInventoryManager.rightWeapon.physicalDamage;
+            rightHandDamageCollider.physicalDamage = characterManager.characterInventoryManager.rightWeapon.physicalDamage;
 
             rightHandDamageCollider.characterManager = characterManager;
             rightHandDamageCollider.teamIDNumber = characterManager.characterStatsManager.teamIDNumber;

@@ -14,6 +14,7 @@ namespace AH
         public CharacterInventoryManager characterInventoryManager;
         public CharacterEffectsManager characterEffectsManager;
         public CharacterSoundFXManager characterSoundFXManager;
+        public CharacterCombatManager characterCombatManager;
 
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
@@ -62,6 +63,7 @@ namespace AH
             characterInventoryManager = GetComponent<CharacterInventoryManager>();
             characterEffectsManager = GetComponent<CharacterEffectsManager>();
             characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
+            characterCombatManager = GetComponent<CharacterCombatManager>();
             animator = GetComponent<Animator>();
 
         }

@@ -36,6 +36,9 @@ namespace AH
                 HandleHeavyAttack(player);
 
             }
+
+            player.playerCombatManager.currentAttackType = AttackType.Heavy;
+
         }
 
 

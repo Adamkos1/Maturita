@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PlayerCombatManager : MonoBehaviour
+    public class PlayerCombatManager : CharacterCombatManager
     {
         PlayerManager playerManager;
 
@@ -69,7 +69,7 @@ namespace AH
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerManager.playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerManager.playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.physicalDamage;
                     enemyChracterManager.pendingCriticalDamage = criticalDamage;
 
                     playerManager.playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
@@ -95,11 +95,37 @@ namespace AH
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerManager.playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerManager.playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.physicalDamage;
                     enemyChracterManager.pendingCriticalDamage = criticalDamage;
 
                     playerManager.playerAnimatorManager.PlayTargetAnimation("Riposte", true);
                     enemyChracterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Riposted", true);
+                }
+            }
+        }
+
+        public override void DrainStaminaBasedOnAttack()
+        {
+            if(playerManager.isUsingRightHand)
+            {
+                if(currentAttackType == AttackType.Light)
+                {
+                    playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.rightWeapon.baseStaminaCost * playerManager.playerInventoryManager.rightWeapon.lightAttackDamageModifier);
+                }
+                else if(currentAttackType == AttackType.Heavy)
+                {
+                    playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.rightWeapon.baseStaminaCost * playerManager.playerInventoryManager.rightWeapon.heavyAttackStaminaMultiplier);
+                }
+            }
+            else if (playerManager.isUsingLeftHand)
+            {
+                if (currentAttackType == AttackType.Light)
+                {
+                    playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.leftWeapon.baseStaminaCost * playerManager.playerInventoryManager.leftWeapon.lightAttackDamageModifier);
+                }
+                else if (currentAttackType == AttackType.Heavy)
+                {
+                    playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.leftWeapon.baseStaminaCost * playerManager.playerInventoryManager.leftWeapon.heavyAttackStaminaMultiplier);
                 }
             }
         }

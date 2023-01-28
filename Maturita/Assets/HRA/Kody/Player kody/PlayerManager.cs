@@ -83,6 +83,7 @@ namespace AH
             playerLocomotionManager.HandleRollingAndSprinting();
             playerLocomotionManager.HandleJumping();
             playerStatsManager.RegenerateStamina();
+            playerStatsManager.RegenerateMana();
             playerInventoryManager.ConsumableUI();
 
             CheckForInteractableObject();

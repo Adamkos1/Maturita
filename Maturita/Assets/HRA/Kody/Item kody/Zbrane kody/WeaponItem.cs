@@ -21,6 +21,10 @@ namespace AH
         [Header("Damage")]
         public int physicalDamage = 25;
         public int magicDamage = 35;
+
+        [Header("Modifiers")]
+        public float lightAttackDamageModifier;
+        public float heavtAttackDamageModifier;
         public int criticalDamageMultiplier = 4;
 
         [Header("Poise")]
@@ -33,9 +37,9 @@ namespace AH
 
 
         [Header("Stamina Cost")]
-        public int baseStamina = 0;
-        public float lightAttackMultiplier;
-        public float heavyAttackMultiplier;
+        public int baseStaminaCost = 25;
+        public float lightAttackStaminaMultiplier;
+        public float heavyAttackStaminaMultiplier;
 
         [Header("Item Action")]
         public ItemAction oh_tap_RB_Action;

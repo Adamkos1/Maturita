@@ -29,11 +29,20 @@ MonoBehaviour:
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
-  tap_RB_Action: {fileID: 11400000, guid: 60c595fc31918d84d8b8a7b3570f7e13, type: 2}
-  hold_RB_Action: {fileID: 11400000, guid: c561b9864e1df3649bec4f734c1a5904, type: 2}
-  tap_LB_Action: {fileID: 0}
-  hold_LB_Action: {fileID: 11400000, guid: d193c65a5c1cf95439cd0923b16e9cc8, type: 2}
-  tap_RT_Action: {fileID: 0}
-  hold_RT_Action: {fileID: 0}
-  tap_LT_Action: {fileID: 0}
-  hold_LT_Action: {fileID: 0}
+  oh_tap_RB_Action: {fileID: 11400000, guid: 60c595fc31918d84d8b8a7b3570f7e13, type: 2}
+  oh_hold_RB_Action: {fileID: 11400000, guid: c561b9864e1df3649bec4f734c1a5904, type: 2}
+  oh_tap_LB_Action: {fileID: 0}
+  oh_hold_LB_Action: {fileID: 11400000, guid: d193c65a5c1cf95439cd0923b16e9cc8, type: 2}
+  oh_tap_RT_Action: {fileID: 0}
+  oh_hold_RT_Action: {fileID: 0}
+  oh_tap_LT_Action: {fileID: 0}
+  oh_hold_LT_Action: {fileID: 0}
+  th_tap_RB_Action: {fileID: 11400000, guid: 60c595fc31918d84d8b8a7b3570f7e13, type: 2}
+  th_hold_RB_Action: {fileID: 11400000, guid: c561b9864e1df3649bec4f734c1a5904, type: 2}
+  th_tap_LB_Action: {fileID: 0}
+  th_hold_LB_Action: {fileID: 11400000, guid: d193c65a5c1cf95439cd0923b16e9cc8, type: 2}
+  th_tap_RT_Action: {fileID: 0}
+  th_hold_RT_Action: {fileID: 0}
+  th_tap_LT_Action: {fileID: 0}
+  th_hold_LT_Action: {fileID: 0}
+  weaponWhooshes: []

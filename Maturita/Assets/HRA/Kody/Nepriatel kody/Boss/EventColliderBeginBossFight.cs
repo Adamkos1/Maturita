@@ -17,7 +17,7 @@ namespace AH
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Character")
+            if(other.tag == "Character" && !worldEventManager.bossHasBeenDefeated)
             {
                 worldEventManager.ActiveBossFight();
             }

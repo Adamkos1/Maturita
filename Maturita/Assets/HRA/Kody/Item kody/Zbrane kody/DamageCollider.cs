@@ -19,7 +19,7 @@ namespace AH
         public float offfensivePoiseBonus;
 
         [Header("Damage")]
-        public int currentWeaponDamage = 25;
+        public int physicalDamage = 25;
 
         protected bool shieldHasBeenHit = false;
         protected bool hasBeenParried = false;
@@ -83,14 +83,7 @@ namespace AH
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
                     enemyEffects.PlayBloodSplatterFX(contactPoint);
 
-                    if (enemyStats.totalPoiseDefence > poiseBreak)
-                    {
-                        enemyStats.TakeDamgeNoAnimation(currentWeaponDamage);
-                    }
-                    else
-                    {
-                        enemyStats.TakeDamage(currentWeaponDamage, currentDamageAnimation, characterManager);
-                    }
+                    DealDamage(enemyStats);
                 }
             }
 
@@ -115,7 +108,7 @@ namespace AH
         {
             if (shield != null && enemyManager.isBlocking)
             {
-                float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorption) / 100;
+                float physicalDamageAfterBlock = physicalDamage - (physicalDamage * shield.blockingPhysicalDamageAbsorption) / 100;
 
                 if (enemyStats != null)
                 {
@@ -125,10 +118,47 @@ namespace AH
             }
         }
 
-        protected virtual void ChooseWichDirectionDamageCameFrom(float direction)
+        protected virtual void DealDamage(CharacterStatsManager enemyStats)
         {
-            Debug.Log(direction);
-            
+            float finalPhysicalDamage = physicalDamage;
+
+            //ak pozuivame pravu ruku a podla toho aky utok tak taky damage
+            if(characterManager.isUsingRightHand)
+            {
+                if (characterManager.characterCombatManager.currentAttackType == AttackType.Light)
+                {
+                    finalPhysicalDamage = finalPhysicalDamage * characterManager.characterInventoryManager.rightWeapon.lightAttackDamageModifier;
+                }
+                else if (characterManager.characterCombatManager.currentAttackType == AttackType.Heavy)
+                {
+                    finalPhysicalDamage = finalPhysicalDamage * characterManager.characterInventoryManager.rightWeapon.heavyAttackStaminaMultiplier;
+                }
+            }
+            else if(characterManager.isUsingLeftHand)
+            {
+                if (characterManager.characterCombatManager.currentAttackType == AttackType.Light)
+                {
+                    finalPhysicalDamage = finalPhysicalDamage * characterManager.characterInventoryManager.leftWeapon.lightAttackDamageModifier;
+                }
+                else if (characterManager.characterCombatManager.currentAttackType == AttackType.Heavy)
+                {
+                    finalPhysicalDamage = finalPhysicalDamage * characterManager.characterInventoryManager.leftWeapon.heavyAttackStaminaMultiplier;
+                }
+            }
+
+            //deal modified damgage
+            if (enemyStats.totalPoiseDefence > poiseBreak)
+            {
+                enemyStats.TakeDamgeNoAnimation(Mathf.RoundToInt(finalPhysicalDamage));
+            }
+            else
+            {
+                enemyStats.TakeDamage(Mathf.RoundToInt(finalPhysicalDamage), currentDamageAnimation, characterManager);
+            }
+        }
+
+        protected virtual void ChooseWichDirectionDamageCameFrom(float direction)
+        { 
             if(direction >= 145 && direction <= 180)
             {
                 currentDamageAnimation = "Damage_Back_01";

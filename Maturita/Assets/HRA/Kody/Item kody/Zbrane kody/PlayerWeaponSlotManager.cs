@@ -84,19 +84,6 @@ namespace AH
             }
 
         }
-
-        public void DrainStaminaLightAttack()
-        {
-            WeaponItem currentWeaponBeingUsed = playerManager.characterInventoryManager.currentItemBeingUsed as WeaponItem;
-            playerManager.playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.lightAttackMultiplier));
-        }
-
-        public void DrainStaminaHeavyAttack()
-        {
-            WeaponItem currentWeaponBeingUsed = playerManager.characterInventoryManager.currentItemBeingUsed as WeaponItem;
-            playerManager.playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(currentWeaponBeingUsed.baseStamina * currentWeaponBeingUsed.heavyAttackMultiplier));
-        }
-
     }
 
 }
