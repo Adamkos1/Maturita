@@ -12,10 +12,6 @@ namespace AH
 
         public override State Tick(EnemyManager enemyManager)
         {
-            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
-            float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-            float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
-
             HandleRotateTowardsTarget(enemyManager);
 
             if (enemyManager.isInteracting)
@@ -27,12 +23,12 @@ namespace AH
                 return this;
             }
 
-            if (distanceFromTarget > enemyManager.maximumAggroRadius)
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
             {
                 enemyManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
 
-            if (distanceFromTarget <= enemyManager.maximumAggroRadius)
+            if (enemyManager.distanceFromTarget <= enemyManager.maximumAggroRadius)
             {
                 return combatStanceState;
             }

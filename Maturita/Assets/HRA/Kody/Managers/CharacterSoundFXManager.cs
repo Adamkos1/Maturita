@@ -61,6 +61,10 @@ namespace AH
                     lastWeaponWhoosh = randomSound;
                 }
             }
+            else if (characterManager.isUsingLeftHand && characterManager.characterInventoryManager.leftWeapon.weaponType == WeaponType.Shield)
+            {
+
+            }
             else
             {
                 int randomSound = Random.Range(0, characterManager.characterInventoryManager.leftWeapon.weaponWhooshes.Length);

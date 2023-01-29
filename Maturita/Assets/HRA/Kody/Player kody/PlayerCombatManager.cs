@@ -32,8 +32,9 @@ namespace AH
         LayerMask riposteLayer = 1 << 12;
 
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerManager = GetComponent<PlayerManager>();
         }
 
@@ -127,7 +128,17 @@ namespace AH
                 {
                     playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.leftWeapon.baseStaminaCost * playerManager.playerInventoryManager.leftWeapon.heavyAttackStaminaMultiplier);
                 }
+                else if (currentAttackType == AttackType.Parry)
+                {
+                    playerManager.playerStatsManager.DrainStamina(playerManager.playerInventoryManager.leftWeapon.baseStaminaCost * playerManager.playerInventoryManager.leftWeapon.lightAttackDamageModifier);
+                }
             }
+        }
+
+        public override void AttemptBlock(DamageCollider attackingWeapon, float physicalDamage, string blockAnimation)
+        {
+            base.AttemptBlock(attackingWeapon, physicalDamage, blockAnimation);
+            playerManager.playerStatsManager.staminaBar.SetCurrentStamina(Mathf.RoundToInt(playerManager.playerStatsManager.currentStamina));
         }
     }
 

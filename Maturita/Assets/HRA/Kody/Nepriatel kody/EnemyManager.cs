@@ -38,7 +38,11 @@ namespace AH
         public bool allowAIToPerformCombos;
         public float comboLikelyHood;
         public bool isPhaseShifting;
-        
+
+        [Header("AI Target Settings")]
+        public float distanceFromTarget;
+        public Vector3 targetsDirection;
+        public float viewableAngle;
 
 
         protected override void Awake()
@@ -72,6 +76,13 @@ namespace AH
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             animator.SetBool("isDead", isDead);
+
+            if(currentTarget != null)
+            {
+                distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
+                targetsDirection = currentTarget.transform.position - transform.position;
+                viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
+            }
 
             if (isDead)
             {

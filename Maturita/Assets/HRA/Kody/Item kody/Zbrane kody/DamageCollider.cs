@@ -21,6 +21,8 @@ namespace AH
         [Header("Damage")]
         public int physicalDamage = 25;
 
+        public float guardBreakModifier = 1;
+
         protected bool shieldHasBeenHit = false;
         protected bool hasBeenParried = false;
         protected string currentDamageAnimation;
@@ -53,7 +55,6 @@ namespace AH
                 CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
                 CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
                 CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
-                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
                 if(enemyManager != null)
                 {
@@ -61,7 +62,7 @@ namespace AH
                         return;
 
                     CheckForParry(enemyManager);
-                    CheckForBlock(enemyManager, enemyStats, shield);
+                    CheckForBlock(enemyManager);
                 }
 
                 if(enemyStats != null)
@@ -104,17 +105,20 @@ namespace AH
             }
         }
 
-        protected virtual void CheckForBlock(CharacterManager enemyManager, CharacterStatsManager enemyStats, BlockingCollider shield)
+        protected virtual void CheckForBlock(CharacterManager enemyManager)
         {
-            if (shield != null && enemyManager.isBlocking)
-            {
-                float physicalDamageAfterBlock = physicalDamage - (physicalDamage * shield.blockingPhysicalDamageAbsorption) / 100;
+            CharacterStatsManager enemyShield = enemyManager.characterStatsManager;
+            Vector3 directionFromToEnemy = (characterManager.transform.position - enemyManager.transform.position);
+            float dotValueFromPlayerToEnemy = Vector3.Dot(directionFromToEnemy, enemyManager.transform.forward);
 
-                if (enemyStats != null)
-                {
-                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard", characterManager);
-                    shieldHasBeenHit = true;
-                }
+            if (enemyManager.isBlocking && dotValueFromPlayerToEnemy > 0.3f)
+            {
+                shieldHasBeenHit = true;
+                float physicalDamageAfterBlock = physicalDamage - (physicalDamage * enemyShield.blockingPhysicalDamageAbsorption) / 100;
+
+                enemyManager.characterCombatManager.AttemptBlock(this, physicalDamage, "Block_01");
+                enemyShield.TakeDamageAfterBlock(Mathf.RoundToInt(physicalDamageAfterBlock), characterManager);
+
             }
         }
 

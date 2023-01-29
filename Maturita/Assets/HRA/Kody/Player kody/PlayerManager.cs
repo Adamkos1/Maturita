@@ -17,9 +17,6 @@ namespace AH
         [Header("Input")]
         public InputHandler inputHandler;
 
-        [Header("Colliders")]
-        public BlockingCollider blockingCollider;
-
         [Header("Player")]
         public PlayerWeaponSlotManager playerWeaponSlotManager;
         public PlayerCombatManager playerCombatManager;
@@ -60,7 +57,6 @@ namespace AH
             playerCombatManager = GetComponent<PlayerCombatManager>();
 
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
-            blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
         void Update()

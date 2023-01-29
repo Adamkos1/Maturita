@@ -238,10 +238,10 @@ namespace AH
                     playerManager.cameraHandler.ResetAimCameraRotations();
                 }
 
-                if (playerManager.blockingCollider.blockingCollider.enabled)
+                if (playerManager.isBlocking)
                 {
                     playerManager.isBlocking = false;
-                    playerManager.blockingCollider.DisableBlockingCollider();
+                    playerManager.isUsingLeftHand = false;
                 }
             }
         }

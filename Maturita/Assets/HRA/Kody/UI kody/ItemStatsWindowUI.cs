@@ -48,7 +48,7 @@ namespace AH
                 }
 
                 physicalDamageText.text = weapon.physicalDamage.ToString();
-                physicalAbsorptionText.text = weapon.physicalDamageAbsorption.ToString();
+                physicalAbsorptionText.text = weapon.physicalBlockingDamageAbsorption.ToString();
 
                 magicDamageText.text = weapon.magicDamage.ToString();
                 magicAbsorptionText.text = weapon.magicDamageAbsorption.ToString();

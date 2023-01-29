@@ -39,6 +39,9 @@ namespace AH
         public int faithLevel = 10;
         public int poiseLevel = 10;
 
+        [Header("Blocking Absorptions")]
+        public float blockingPhysicalDamageAbsorption;
+        public float blockingStabilityRating;
 
         [Header("Poise")]
         public float totalPoiseDefence;
@@ -76,6 +79,20 @@ namespace AH
             }
 
             characterManager.characterSoundFXManager.PlayRandomDamageSoundFX();
+        }
+
+        public virtual void TakeDamageAfterBlock(int physicalDamage, CharacterManager enemyCharacterDamagingMe)
+        {
+            if (characterManager.isDead)
+                return;
+
+            characterManager.characterAnimatorManager.EraseHandIKForWeapon();
+
+
+            if (enemyCharacterDamagingMe.isPerformingFullyChargedAttack)
+            {
+                currentHealth = Mathf.RoundToInt(currentHealth - physicalDamage);
+            }
         }
 
         public virtual void TakeDamgeNoAnimation(int damage)

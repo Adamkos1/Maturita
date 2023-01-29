@@ -23,18 +23,21 @@ namespace AH
         public int magicDamage = 35;
 
         [Header("Modifiers")]
-        public float lightAttackDamageModifier;
-        public float heavtAttackDamageModifier;
+        public float lightAttackDamageModifier = 1;
+        public float heavtAttackDamageModifier = 2;
         public int criticalDamageMultiplier = 4;
+        public float guardBreakModifier = 1;
 
         [Header("Poise")]
         public float poiseBreak;
         public float offensivePoiseBonus;
 
         [Header("Absorption")]
-        public float physicalDamageAbsorption;
+        public float physicalBlockingDamageAbsorption;
         public float magicDamageAbsorption;
 
+        [Header("Stability")]
+        public int stability = 67;
 
         [Header("Stamina Cost")]
         public int baseStaminaCost = 25;

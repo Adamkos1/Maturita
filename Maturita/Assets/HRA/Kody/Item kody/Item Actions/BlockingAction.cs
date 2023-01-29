@@ -22,8 +22,9 @@ namespace AH
             if (player.isHoldingArrow)
                 return;
 
+            player.playerCombatManager.SetBlockingAbsorptionsFromBlockingWeapon();
+
             player.playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
-            player.playerEquipmentManager.OpenBlockingCollider();
             player.isBlocking = true;
         }
     }

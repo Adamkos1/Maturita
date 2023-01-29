@@ -13,7 +13,8 @@ namespace AH
         public ManaBar manaBar;
         PlayerManager playerManager;
 
-        public float staminaRegenerationAmount = 30;
+        public float staminaRegenerationAmount = 5;
+        public float staminaRegenerationAmountWhileBlocking = 0.5f;
         public float staminaRegenerationTimer = 0;
 
         public float manaRegenerationAmount = 30;
@@ -113,11 +114,20 @@ namespace AH
             {
                 staminaRegenerationTimer += Time.deltaTime;
 
-                if (currentStamina < maxStamina && staminaRegenerationTimer > 1f)
+                if(currentStamina < maxStamina && staminaRegenerationTimer > 1f)
                 {
-                    currentStamina += staminaRegenerationAmount * Time.deltaTime;
-                    staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    if (playerManager.isBlocking)
+                    {
+                        currentStamina += staminaRegenerationAmountWhileBlocking * Time.deltaTime;
+                        staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    }
+                    else
+                    {
+                        currentStamina += staminaRegenerationAmount * Time.deltaTime;
+                        staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    }
                 }
+
             }
         }
 

@@ -24,10 +24,12 @@ MonoBehaviour:
   lightAttackDamageModifier: 1
   heavtAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 5
   poiseBreak: 25
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalBlockingDamageAbsorption: 0
   magicDamageAbsorption: 0
+  stability: 67
   baseStaminaCost: 20
   lightAttackStaminaMultiplier: 1
   heavyAttackStaminaMultiplier: 2

@@ -20,6 +20,13 @@ namespace AH
                 return;
             }
 
+            if (player.isBlocking)
+            {
+                player.inputHandler.hold_LB_Input = false;
+                HandleHeavyAttack(player);
+                return;
+            }
+
             if (player.canDoCombo)
             {
                 player.inputHandler.comboFlag = true;

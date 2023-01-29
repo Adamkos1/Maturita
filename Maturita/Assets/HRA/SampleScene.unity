@@ -6604,66 +6604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1744261965}
---- !u!1 &1234727784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1234727785}
-  - component: {fileID: 1234727787}
-  - component: {fileID: 1234727786}
-  m_Layer: 7
-  m_Name: Blocking Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1234727785
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234727784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 277547548084022132}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1234727786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234727784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46af8e35757f53643842698ecc1f2e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockingCollider: {fileID: 0}
-  blockingPhysicalDamageAbsorption: 0
---- !u!65 &1234727787
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234727784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.58832645, y: 1.2179441, z: 0.10543847}
-  m_Center: {x: 0.0040426254, y: 0.88681555, z: 0.32357347}
 --- !u!1 &1266713516
 GameObject:
   m_ObjectHideFlags: 0
@@ -16885,6 +16825,7 @@ MonoBehaviour:
   poiseBreak: 0
   offfensivePoiseBonus: 0
   physicalDamage: 25
+  guardBreakModifier: 1
   damage: 25
 --- !u!1 &2112197637
 GameObject:
@@ -31994,7 +31935,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
-  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -32114,14 +32055,16 @@ MonoBehaviour:
   currentSoulCount: 1600
   soulsAwardedOnDeath: 0
   playerLevel: 1
-  healthlevel: 20
-  staminalevel: 50
-  manaLevel: 30
+  healthlevel: 10
+  staminalevel: 10
+  manaLevel: 10
   strenghtLevel: 10
   dexterityLevel: 10
   intelligenceLevel: 10
   faithLevel: 10
   poiseLevel: 10
+  blockingPhysicalDamageAbsorption: 0
+  blockingStabilityRating: 0
   totalPoiseDefence: 0
   offensivePoiseBonus: 100
   armorPoiseBonus: 0
@@ -32131,6 +32074,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   staminaRegenerationAmount: 30
+  staminaRegenerationAmountWhileBlocking: 1
   staminaRegenerationTimer: 0
   manaRegenerationAmount: 30
   manaRegenerationTimer: 0
@@ -32181,7 +32125,6 @@ MonoBehaviour:
   uIManager: {fileID: 0}
   cameraHandler: {fileID: 0}
   inputHandler: {fileID: 0}
-  blockingCollider: {fileID: 0}
   playerWeaponSlotManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerEffectsManager: {fileID: 0}
@@ -33122,7 +33065,6 @@ Transform:
   - {fileID: 277547547691562126}
   - {fileID: 277547548434448082}
   - {fileID: 277547548466477566}
-  - {fileID: 1234727785}
   m_Father: {fileID: 4988522561172009}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42863,6 +42805,7 @@ GameObject:
   - component: {fileID: 2816251560902805491}
   - component: {fileID: 2816251560902805486}
   - component: {fileID: 2816251560902805492}
+  - component: {fileID: 2816251560902805497}
   - component: {fileID: 2816251560902805493}
   - component: {fileID: 2816251560902805494}
   - component: {fileID: 2816251560902805496}
@@ -42946,7 +42889,7 @@ MonoBehaviour:
   parryCollider: {fileID: 2814908500920623297}
   isPerformingAction: 0
   rotationSpeed: 44
-  maximumAggroRadius: 2
+  maximumAggroRadius: 1.7
   timeUntilDestroyed: 7
   detectionRadius: 20
   maximumDetectionAngle: 50
@@ -42955,6 +42898,9 @@ MonoBehaviour:
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
   isPhaseShifting: 0
+  distanceFromTarget: 0
+  targetsDirection: {x: 0, y: 0, z: 0}
+  viewableAngle: 0
 --- !u!54 &2816251560902805489
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43015,6 +42961,8 @@ MonoBehaviour:
   intelligenceLevel: 10
   faithLevel: 10
   poiseLevel: 10
+  blockingPhysicalDamageAbsorption: 0
+  blockingStabilityRating: 0
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 75
@@ -43195,6 +43143,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2816251560902805497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816251560902805485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c0c0ecc75a5784cb395ff00aa421ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackType: 0
 --- !u!1 &2816262587299478005
 GameObject:
   m_ObjectHideFlags: 0
@@ -52226,6 +52187,7 @@ GameObject:
   - component: {fileID: 7727361346120289076}
   - component: {fileID: 7727361346120289078}
   - component: {fileID: 7727361346120289077}
+  - component: {fileID: 7727361346120289079}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Character
@@ -53680,7 +53642,7 @@ MonoBehaviour:
   wakeAnimation: Get_Up
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   pursueTargetState: {fileID: 7668757345210964963}
 --- !u!4 &7668757346101484320
 Transform:
@@ -54709,6 +54671,8 @@ MonoBehaviour:
   intelligenceLevel: 10
   faithLevel: 10
   poiseLevel: 10
+  blockingPhysicalDamageAbsorption: 0
+  blockingStabilityRating: 0
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 700
@@ -54811,6 +54775,9 @@ MonoBehaviour:
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
   isPhaseShifting: 0
+  distanceFromTarget: 0
+  targetsDirection: {x: 0, y: 0, z: 0}
+  viewableAngle: 0
 --- !u!136 &7727361346120289072
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -55013,6 +54980,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7727361346120289079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667699066742163833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c0c0ecc75a5784cb395ff00aa421ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackType: 0
 --- !u!137 &7747358149611923297
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

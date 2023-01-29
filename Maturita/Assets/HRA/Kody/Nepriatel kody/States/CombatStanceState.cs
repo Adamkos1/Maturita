@@ -18,7 +18,6 @@ namespace AH
 
         public override State Tick(EnemyManager enemyManager)
         {
-            float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
             enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
             attackState.hasPerformedAttack = false;
@@ -31,7 +30,7 @@ namespace AH
                 return this;
             }
 
-            if (distanceFromTarget > enemyManager.maximumAggroRadius)
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
             {
                 return pursueTargetState;
             }
@@ -109,18 +108,14 @@ namespace AH
 
         protected virtual void GetNewAttack(EnemyManager enemyManager)
         {
-            Vector3 targetsDirection = enemyManager.currentTarget.transform.position - transform.position;
-            float viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
-            float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
-
             int maxScore = 0;
             for (int i = 0; i < enemyAttacks.Length; i++)
             {
                 EnemyAttackAction enemyAttackAction = enemyAttacks[i];
 
-                if (distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
+                if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
                 {
-                    if (viewableAngle <= enemyAttackAction.maximumAttackAngle && viewableAngle >= enemyAttackAction.minimumAttackAngle)
+                    if (enemyManager.viewableAngle <= enemyAttackAction.maximumAttackAngle && enemyManager.viewableAngle >= enemyAttackAction.minimumAttackAngle)
                     {
                         maxScore += enemyAttackAction.attackScore;
                     }
@@ -134,9 +129,9 @@ namespace AH
             {
                 EnemyAttackAction enemyAttackAction = enemyAttacks[i];
 
-                if (distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
+                if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
                 {
-                    if (viewableAngle <= enemyAttackAction.maximumAttackAngle && viewableAngle >= enemyAttackAction.minimumAttackAngle)
+                    if (enemyManager.viewableAngle <= enemyAttackAction.maximumAttackAngle && enemyManager.viewableAngle >= enemyAttackAction.minimumAttackAngle)
                     {
                         if (attackState.currentAttack != null)
                             return;

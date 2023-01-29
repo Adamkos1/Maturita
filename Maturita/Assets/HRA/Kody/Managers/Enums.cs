@@ -27,7 +27,8 @@ namespace AH
     public enum AttackType
     {
         Light,
-        Heavy
+        Heavy,
+        Parry
     }
 
     public class Enums : MonoBehaviour

@@ -10,6 +10,9 @@ namespace AH
     {
         public override void PerformAction(PlayerManager player)
         {
+            if (player.playerStatsManager.currentStamina <= 25)
+                return;
+
             if (player.isInteracting)
                 return;
 
@@ -25,6 +28,8 @@ namespace AH
             {
                 player.playerAnimatorManager.PlayTargetAnimation("Parry_01", true);
             }
+
+            player.playerCombatManager.currentAttackType = AttackType.Parry;
         }
     }
 

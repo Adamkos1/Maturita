@@ -20,7 +20,6 @@ namespace AH
                 CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
                 CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
                 CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
-                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
                 if (enemyManager != null)
                 {
@@ -28,7 +27,7 @@ namespace AH
                         return;
 
                     CheckForParry(enemyManager);
-                    CheckForBlock(enemyManager, enemyStats, shield);
+                    CheckForBlock(enemyManager);
                 }
 
                 if (enemyStats != null)
