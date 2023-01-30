@@ -17,7 +17,7 @@ namespace AH
 
         public NavMeshAgent navMeshAgent;
         public State currentState;
-        public CharacterStatsManager currentTarget;
+        public CharacterManager currentTarget;
         public Rigidbody enemyRigidBody;
         public Collider backStabboxCollider;
         public Collider parryCollider;
@@ -38,6 +38,7 @@ namespace AH
         public bool allowAIToPerformCombos;
         public float comboLikelyHood;
         public bool isPhaseShifting;
+        public AICombatStyle combatStyle;
 
         [Header("AI Target Settings")]
         public float distanceFromTarget;

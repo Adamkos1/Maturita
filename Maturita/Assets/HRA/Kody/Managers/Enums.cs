@@ -31,6 +31,12 @@ namespace AH
         Parry
     }
 
+    public enum AICombatStyle
+    {
+        swordAndShield,
+        archer
+    }
+
     public class Enums : MonoBehaviour
     {
 

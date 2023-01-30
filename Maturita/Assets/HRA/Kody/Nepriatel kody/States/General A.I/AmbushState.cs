@@ -30,16 +30,16 @@ namespace AH
 
             for (int i = 0; i < colliders.Length; i++)
             {
-                CharacterStatsManager characterStats = colliders[i].transform.GetComponent<CharacterStatsManager>();
+                CharacterManager potentialTarget = colliders[i].transform.GetComponent<CharacterManager>();
 
-                if(characterStats != null)
+                if(potentialTarget != null)
                 {
-                    Vector3 targetsDirection = characterStats.transform.position - enemyManager.transform.position;
+                    Vector3 targetsDirection = potentialTarget.transform.position - enemyManager.transform.position;
                     float viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
 
                     if(viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle || enemyManager.enemyStatsManager.currentHealth < enemyManager.enemyStatsManager.maxHealth)
                     {
-                        enemyManager.currentTarget = characterStats;
+                        enemyManager.currentTarget = potentialTarget;
                         isSleeping = false;
                         enemyManager.enemyAnimatorManager.PlayTargetAnimation(wakeAnimation, true);
                     }

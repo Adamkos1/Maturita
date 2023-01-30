@@ -5972,7 +5972,7 @@ GameObject:
   - component: {fileID: 1093623826}
   - component: {fileID: 1093623825}
   - component: {fileID: 1093623824}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5986,14 +5986,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093623822}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.61, y: -5.154319, z: -7.97}
+  m_LocalRotation: {x: -0, y: -0.93597543, z: -0, w: 0.35206556}
+  m_LocalPosition: {x: 11.87, y: -5.154319, z: -4.14}
   m_LocalScale: {x: 0.43453896, y: 3.8985074, z: 3.616113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 225488197}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -138.773, z: 0}
 --- !u!65 &1093623824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41395,8 +41395,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2816251560902805485}
-  m_LocalRotation: {x: -0, y: 0.998328, z: -0, w: -0.057804015}
-  m_LocalPosition: {x: 3.0021203, y: -0.04100001, z: -1.5879226}
+  m_LocalRotation: {x: -0, y: 0.033171833, z: -0, w: 0.99944973}
+  m_LocalPosition: {x: 7.44, y: -0.04100001, z: 0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41411,7 +41411,7 @@ Transform:
   - {fileID: 902346285}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -356.198, z: 0}
 --- !u!4 &2810695843767461717
 Transform:
   m_ObjectHideFlags: 0
@@ -41868,7 +41868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 2814908502643695639}
-  rotateTowardsTargetState: {fileID: 2101364889}
 --- !u!114 &2814908501291526851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42123,6 +42122,9 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
+  layersThatBlockLineOfSight:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!4 &2814908502556704777
 Transform:
   m_ObjectHideFlags: 0
@@ -42215,7 +42217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2814908502572094903}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008999894, y: 1.417, z: 0}
+  m_LocalPosition: {x: 0.008999894, y: 1.463, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42898,6 +42900,7 @@ MonoBehaviour:
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
   isPhaseShifting: 0
+  combatStyle: 0
   distanceFromTarget: 0
   targetsDirection: {x: 0, y: 0, z: 0}
   viewableAngle: 0
@@ -53367,7 +53370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 7668757346173021838}
-  rotateTowardsTargetState: {fileID: 1860175217}
 --- !u!114 &7668757345357784151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53560,6 +53562,9 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
+  layersThatBlockLineOfSight:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &7668757346085768861
 Transform:
   m_ObjectHideFlags: 0
@@ -54775,6 +54780,7 @@ MonoBehaviour:
   allowAIToPerformCombos: 1
   comboLikelyHood: 50
   isPhaseShifting: 0
+  combatStyle: 0
   distanceFromTarget: 0
   targetsDirection: {x: 0, y: 0, z: 0}
   viewableAngle: 0
@@ -56719,7 +56725,7 @@ GameObject:
   - component: {fileID: 8974249664260782374}
   - component: {fileID: 8974249664260782372}
   m_Layer: 0
-  m_Name: SM_Prop_Bonfire_01
+  m_Name: Bonfire
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

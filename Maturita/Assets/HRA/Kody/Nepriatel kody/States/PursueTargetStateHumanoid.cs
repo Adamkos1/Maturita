@@ -5,10 +5,9 @@ using UnityEngine;
 namespace AH
 {
 
-    public class PursueTargetState : State
+    public class PursueTargetStateHumanoid : State
     {
-        public CombatStanceState combatStanceState;
-        public RotateTowardsTargetState rotateTowardsTargetState;
+        public CombatStanceStateHumanoid combatStanceStateHumanoid;
 
         public override State Tick(EnemyManager enemyManager)
         {
@@ -30,7 +29,7 @@ namespace AH
 
             if (enemyManager.distanceFromTarget <= enemyManager.maximumAggroRadius)
             {
-                return combatStanceState;
+                return combatStanceStateHumanoid;
             }
             else
             {
