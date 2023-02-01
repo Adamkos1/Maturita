@@ -50,8 +50,6 @@ namespace AH
         public bool d_Pad_Left;
         public bool d_Pad_Right;
 
-        public Transform criticalAttackRaycastStartPoint;
-
         Vector2 movementInput;
         Vector2 cameraInput;
 

@@ -8,24 +8,24 @@ namespace AH
 
     public class BlockingAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            if (player.isInteracting)
+            if (character.isInteracting)
                 return;
 
-            if (player.isBlocking)
+            if (character.isBlocking)
                 return;
 
-            if (player.isTwoHandingWeapon)
+            if (character.isTwoHandingWeapon)
                 return;
 
-            if (player.isHoldingArrow)
+            if (character.isHoldingArrow)
                 return;
 
-            player.playerCombatManager.SetBlockingAbsorptionsFromBlockingWeapon();
+            character.characterCombatManager.SetBlockingAbsorptionsFromBlockingWeapon();
 
-            player.playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
-            player.isBlocking = true;
+            character.characterAnimatorManager.PlayTargetAnimation("Block Start", false, true);
+            character.isBlocking = true;
         }
     }
 

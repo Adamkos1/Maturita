@@ -37,6 +37,13 @@ namespace AH
         archer
     }
 
+    public enum AIAttackActionType
+    {
+        melleeAttackAction,
+        magicAttackAction,
+        rangedAttackAattack
+    }
+
     public class Enums : MonoBehaviour
     {
 

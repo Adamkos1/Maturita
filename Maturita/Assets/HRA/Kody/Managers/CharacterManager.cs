@@ -19,6 +19,9 @@ namespace AH
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
 
+        [Header("RayCast")]
+        public Transform criticalAttackRaycastStartPoint;
+
         [Header("Combat Colliders")]
         public CriticalDamageCollider backStabCollider;
         public CriticalDamageCollider riposteCollider;

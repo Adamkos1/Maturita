@@ -143,6 +143,16 @@ namespace AH
             maxMana = manaLevel * 10;
             return maxMana;
         }
+
+        public virtual void HealCharacter(int healAmount)
+        {
+            currentHealth = currentHealth + healAmount;
+
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+        }
     }
 
 }

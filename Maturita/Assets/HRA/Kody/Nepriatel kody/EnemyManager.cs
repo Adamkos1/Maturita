@@ -40,6 +40,15 @@ namespace AH
         public bool isPhaseShifting;
         public AICombatStyle combatStyle;
 
+        [Header("Advanced AI Settings")]
+        public bool allowAIToPerformBlock;
+        public bool allowAIToPerformDodge;
+        public bool allowAIToPerformParry;
+        public int blockLikelyHood = 50;        //percento na blokonutie
+        public int dodgeLikelyHood = 50;
+        public int parryLikelyHood = 50;
+
+
         [Header("AI Target Settings")]
         public float distanceFromTarget;
         public Vector3 targetsDirection;

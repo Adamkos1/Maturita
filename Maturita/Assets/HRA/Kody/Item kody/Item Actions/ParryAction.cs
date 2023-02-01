@@ -8,28 +8,28 @@ namespace AH
 
     public class ParryAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            if (player.playerStatsManager.currentStamina <= 25)
+            if (character.characterStatsManager.currentStamina <= 25)
                 return;
 
-            if (player.isInteracting)
+            if (character.isInteracting)
                 return;
 
-            player.playerAnimatorManager.EraseHandIKForWeapon();
+            character.characterAnimatorManager.EraseHandIKForWeapon();
 
-            WeaponItem parryingWeapon = player.playerInventoryManager.currentItemBeingUsed as WeaponItem;
+            WeaponItem parryingWeapon = character.characterInventoryManager.currentItemBeingUsed as WeaponItem;
 
             if(parryingWeapon.weaponType == WeaponType.SmallShield)
             {
-                player.playerAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                character.characterAnimatorManager.PlayTargetAnimation("Parry_01", true);
             }
             else if (parryingWeapon.weaponType == WeaponType.Shield)
             {
-                player.playerAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                character.characterAnimatorManager.PlayTargetAnimation("Parry_01", true);
             }
 
-            player.playerCombatManager.currentAttackType = AttackType.Parry;
+            character.characterCombatManager.currentAttackType = AttackType.Parry;
         }
     }
 

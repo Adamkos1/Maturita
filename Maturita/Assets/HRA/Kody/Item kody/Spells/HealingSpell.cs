@@ -11,20 +11,20 @@ namespace AH
     {
         public int healAmount;
 
-        public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager, bool isLeftHanded)
+        public override void AttemptToCastSpell(CharacterManager character)
         {
-            base.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager, isLeftHanded);
-            GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
-            animatorHandler.PlayTargetAnimation(spellAnimation, true, false, isLeftHanded);
+            base.AttemptToCastSpell(character);
+            GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, character.transform);
+            character.characterAnimatorManager.PlayTargetAnimation(spellAnimation, true, false, character.isUsingLeftHand);
             Debug.Log("skusil si spell");
             Destroy(instantiatedWarmUpSpellFX, 5f);
         }
 
-        public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager, CameraHandler cameraHandler, bool isLeftHanded)
+        public override void SuccessfullyCastSpell(CharacterManager character)
         {
-            base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler, isLeftHanded);
-            GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
-            playerStats.HealPlayer(healAmount);
+            base.SuccessfullyCastSpell(character);
+            GameObject instantiatedSpellFX = Instantiate(spellCastFX, character.transform);
+            character.characterStatsManager.HealCharacter(healAmount);
             Debug.Log("dal si spell");
             Destroy(instantiatedSpellFX, 1.5f);
         }

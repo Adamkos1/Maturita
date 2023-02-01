@@ -21,7 +21,7 @@ namespace AH
 
         public void HealPlayerFromEffect()
         {
-                playerManger.playerStatsManager.HealPlayer(amountTobeHealed);
+                playerManger.playerStatsManager.HealCharacter(amountTobeHealed);
                 GameObject healEffect = Instantiate(currentParticleFX, playerManger.playerStatsManager.transform);
                 Destroy(instantiatedFXModel.gameObject);
                 Destroy(healEffect.gameObject, 1);

@@ -8,21 +8,21 @@ namespace AH
 
     public class MagicSpellAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            if (player.isInteracting)
+            if (character.isInteracting)
                 return;
 
-            if (player.playerInventoryManager.currentSpell != null && player.playerInventoryManager.currentSpell.isMagicSpell)
+            if (character.characterInventoryManager.currentSpell != null && character.characterInventoryManager.currentSpell.isMagicSpell)
             {
-                if (player.playerStatsManager.currentMana >= player.playerInventoryManager.currentSpell.manaCost)
+                if (character.characterStatsManager.currentMana >= character.characterInventoryManager.currentSpell.manaCost)
                 {
-                    player.playerInventoryManager.currentSpell.AttemptToCastSpell(player.playerAnimatorManager, player.playerStatsManager, player.playerWeaponSlotManager, player.isUsingLeftHand);
+                    character.characterInventoryManager.currentSpell.AttemptToCastSpell(character);
                 }
                 else
                 {
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
-                    player.playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                    character.characterAnimatorManager.EraseHandIKForWeapon();
+                    character.characterAnimatorManager.PlayTargetAnimation("Shrug", true);
                 }
             }
         }

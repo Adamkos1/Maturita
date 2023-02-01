@@ -24,17 +24,21 @@ namespace AH
         [TextArea]
         public string spellDescription;
 
-        public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats,
-                                                PlayerWeaponSlotManager weaponSlotManager, bool isLeftHanded)
+        public virtual void AttemptToCastSpell(CharacterManager character)
         {
             Debug.Log("skusil si spell");
         }
 
-        public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, 
-                                                    PlayerWeaponSlotManager weaponSlotManager, CameraHandler cameraHandler, bool isLeftHanded)
+        public virtual void SuccessfullyCastSpell(CharacterManager character)
         {
             Debug.Log("dal si spell");
-            playerStats.SpendMana(manaCost);
+
+            PlayerManager player = character as PlayerManager;
+
+            if(player != null)
+            {
+                player.playerStatsManager.SpendMana(manaCost);
+            }
         }
 
 

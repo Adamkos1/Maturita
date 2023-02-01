@@ -7,14 +7,19 @@ namespace AH
 
     public class CombatStanceStateHumanoid : State
     {
-        public AttackState attackState;
-        public PursueTargetState pursueTargetState;
-        public EnemyAttackAction[] enemyAttacks;
+        public AttackStateHumanoid attackState;
+        public PursueTargetStateHumanoid pursueTargetState;
+        public ItemBasedAttackAction[] enemyAttacks;
 
         protected bool randomDestinationSet = false;
         protected float verticalMovementValue = 0;
+
         protected float horizontalMovementValue = 0;
 
+        [Header("State Flags")]
+        bool willPerformBlock = false;
+        bool willPerformDodge = false;
+        bool willPerformParry = false;
 
         public override State Tick(EnemyManager enemyManager)
         {
@@ -36,25 +41,59 @@ namespace AH
         {
             enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
             enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-            attackState.hasPerformedAttack = false;
 
-
-            if (enemyManager.isInteracting)
+            //ak ai pada alebo nieco roby zastavi kazdy pohyb
+            if (!enemyManager.isGrounded || enemyManager.isInteracting)
             {
                 enemyManager.animator.SetFloat("Vertical", 0);
                 enemyManager.animator.SetFloat("Horizontal", 0);
                 return this;
             }
 
+            //ak je AI daleko od hraca tak sa vrati do pursue tafget state
             if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
             {
                 return pursueTargetState;
             }
 
+            //kruzenie okolo hraca je randomizovane
             if (!randomDestinationSet)
             {
                 randomDestinationSet = true;
                 DecideCirclingAction(enemyManager.enemyAnimatorManager);
+            }
+
+            if(enemyManager.allowAIToPerformBlock)
+            {
+                RollForBlockChance(enemyManager);
+            }
+
+            if (enemyManager.allowAIToPerformDodge)
+            {
+                RollForBlockChance(enemyManager);
+            }
+
+            if (enemyManager.allowAIToPerformParry)
+            {
+                RollForBlockChance(enemyManager);
+            }
+
+
+            if (willPerformBlock)
+            {
+
+            }
+
+
+            if (willPerformDodge)
+            {
+
+            }
+
+
+            if (willPerformParry)
+            {
+
             }
 
             HandleRotateTowardsTarget(enemyManager);
@@ -131,7 +170,7 @@ namespace AH
             int maxScore = 0;
             for (int i = 0; i < enemyAttacks.Length; i++)
             {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+                ItemBasedAttackAction enemyAttackAction = enemyAttacks[i];
 
                 if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
                 {
@@ -147,7 +186,7 @@ namespace AH
 
             for (int i = 0; i < enemyAttacks.Length; i++)
             {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+                ItemBasedAttackAction enemyAttackAction = enemyAttacks[i];
 
                 if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
                 {
@@ -165,6 +204,57 @@ namespace AH
                     }
                 }
             }
+        }
+
+        private void RollForBlockChance(EnemyManager enemyManager)
+        {
+            int blockChance = Random.Range(0, 100);
+
+            if(blockChance <= enemyManager.blockLikelyHood)
+            {
+                willPerformBlock = true;
+            }
+            else
+            {
+                willPerformBlock = false;
+            }
+        }
+
+        private void RollForBlockDodge(EnemyManager enemyManager)
+        {
+            int blockChance = Random.Range(0, 100);
+
+            if (blockChance <= enemyManager.dodgeLikelyHood)
+            {
+                willPerformDodge = true;
+            }
+            else
+            {
+                willPerformDodge = false;
+            }
+        }
+
+
+        private void RollForBlockParry(EnemyManager enemyManager)
+        {
+            int blockChance = Random.Range(0, 100);
+
+            if (blockChance <= enemyManager.parryLikelyHood)
+            {
+                willPerformParry = true;
+            }
+            else
+            {
+                willPerformParry = false;
+            }
+        }
+
+
+        private void ResetStateFlags()
+        {
+            willPerformBlock = false;
+            willPerformDodge = false;
+            willPerformParry = false;
         }
     }
 

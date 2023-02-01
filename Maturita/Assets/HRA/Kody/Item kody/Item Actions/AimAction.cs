@@ -8,9 +8,9 @@ namespace AH
 
     public class AimAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            player.playerAnimatorManager.EraseHandIKForWeapon();
+            PlayerManager player = character as PlayerManager;
 
             if (player.isAiming)
                 return;
@@ -18,8 +18,14 @@ namespace AH
             if (player.isUsingLeftHand)
                 return;
 
-            player.uIManager.crossHair.SetActive(true);
+            if(player != null)
+            {
+                player.playerAnimatorManager.EraseHandIKForWeapon();
+                player.uIManager.crossHair.SetActive(true);
+            }
+
             player.isAiming = true;
+
         }
     }
 
