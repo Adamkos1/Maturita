@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0788984322433a54f9e5b8d19fc4b985, type: 3}
+  m_Script: {fileID: 11500000, guid: e7518e09ddbfb7e4fa2f9c4e4adc411d, type: 3}
   m_Name: Attack 03
   m_EditorClassIdentifier: 
   actionAnimation: Oh_Light_Attack_03
+  isRightHandedAction: 1
   canCombo: 0
   comoboAction: {fileID: 0}
   attackScore: 3
   recoveryTime: 3
-  maximumAttackAngle: 100
-  minimumAttackAngle: -100
-  minimumDistanceNeededToAttack: 0
+  maximumAttackAngle: 80
+  minimumAttackAngle: -80
+  minimumDistanceNeededToAttack: -5
   maximumDistanceNeededToAttack: 5

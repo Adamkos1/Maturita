@@ -21,6 +21,12 @@ namespace AH
         bool willPerformDodge = false;
         bool willPerformParry = false;
 
+        bool hasPerformedDodge = false;
+        bool hasRandomDodgeDirection = false;
+
+        Quaternion targetDodgeDirection;
+
+
         public override State Tick(EnemyManager enemyManager)
         {
             if(enemyManager.combatStyle == AICombatStyle.swordAndShield)
@@ -63,31 +69,31 @@ namespace AH
                 DecideCirclingAction(enemyManager.enemyAnimatorManager);
             }
 
-            if(enemyManager.allowAIToPerformBlock)
-            {
-                RollForBlockChance(enemyManager);
-            }
+           // if(enemyManager.allowAIToPerformBlock)
+           // {
+            //    RollForBlockChance(enemyManager);
+           // }
 
             if (enemyManager.allowAIToPerformDodge)
             {
-                RollForBlockChance(enemyManager);
+                RollForBlockDodge(enemyManager);
             }
 
             if (enemyManager.allowAIToPerformParry)
             {
-                RollForBlockChance(enemyManager);
+                RollForBlockParry(enemyManager);
             }
 
 
-            if (willPerformBlock)
+           // if (willPerformBlock)
+          //  {
+           //     BlockUsingOffHand(enemyManager);
+           // }
+
+
+            if (willPerformDodge && enemyManager.currentTarget.isAttacking)
             {
-
-            }
-
-
-            if (willPerformDodge)
-            {
-
+                Dodge(enemyManager);
             }
 
 
@@ -100,7 +106,7 @@ namespace AH
 
             if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
             {
-                randomDestinationSet = false;
+                ResetStateFlags();
                 return attackState;
             }
             else
@@ -234,7 +240,6 @@ namespace AH
             }
         }
 
-
         private void RollForBlockParry(EnemyManager enemyManager)
         {
             int blockChance = Random.Range(0, 100);
@@ -249,13 +254,62 @@ namespace AH
             }
         }
 
-
         private void ResetStateFlags()
         {
+            hasRandomDodgeDirection = false;
+            hasPerformedDodge = false;
+            randomDestinationSet = false;
             willPerformBlock = false;
             willPerformDodge = false;
             willPerformParry = false;
         }
+
+        private void BlockUsingOffHand(EnemyManager enemyManager)
+        {
+            if(enemyManager.isBlocking == false)
+            {
+                if(enemyManager.allowAIToPerformBlock)
+                {
+                    enemyManager.isBlocking = true;
+                    enemyManager.characterInventoryManager.currentItemBeingUsed = enemyManager.characterInventoryManager.leftWeapon;
+                    enemyManager.characterCombatManager.SetBlockingAbsorptionsFromBlockingWeapon();
+                }
+            }
+        }
+
+        private void Dodge(EnemyManager enemyManager)
+        {
+            if(!hasPerformedDodge)
+            {
+                if(!hasRandomDodgeDirection)
+                {
+                    float randomDodgeDirection;
+
+                    hasRandomDodgeDirection = true;
+                    randomDodgeDirection = Random.Range(0, 360);
+                    targetDodgeDirection = Quaternion.Euler(enemyManager.transform.eulerAngles.x, randomDodgeDirection, enemyManager.transform.eulerAngles.z);
+                }
+
+                if(enemyManager.transform.rotation != targetDodgeDirection)
+                {
+                    Quaternion targetRotation = Quaternion.Slerp(enemyManager.transform.rotation, targetDodgeDirection, 1f);
+                    enemyManager.transform.rotation = targetRotation;
+
+                    float targetYRotation = targetDodgeDirection.eulerAngles.y;
+                    float currentYRotation = enemyManager.transform.eulerAngles.y;
+                    float rotationDiffrence = Mathf.Abs(targetYRotation - currentYRotation);
+
+                    if(rotationDiffrence <= 5)
+                    {
+                        hasPerformedDodge = true;
+                        enemyManager.transform.rotation = targetDodgeDirection;
+                        enemyManager.enemyAnimatorManager.PlayTargetAnimation("Rolling", true);
+                    }
+
+                }
+            }
+        }
+
     }
 
 }

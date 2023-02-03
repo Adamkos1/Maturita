@@ -5,8 +5,9 @@ using UnityEngine;
 
 namespace AH
 {
+    [CreateAssetMenu(menuName ="A.I/Humanoid/ Item Based Attack Actions")]
 
-    public class ItemBasedAttackAction : MonoBehaviour
+    public class ItemBasedAttackAction : ScriptableObject
     {
         [Header("Attack Typer")]
         public AIAttackActionType aIAttackActionType = AIAttackActionType.melleeAttackAction;

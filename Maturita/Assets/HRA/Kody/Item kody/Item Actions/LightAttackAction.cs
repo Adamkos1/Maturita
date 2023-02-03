@@ -13,9 +13,14 @@ namespace AH
         {
             PlayerManager player = character as PlayerManager;
 
+            character.isAttacking = true;
             //player.playerAnimatorManager.EraseHandIKForWeapon();
-            if (character.characterStatsManager.currentStamina <= 0)
-                return;
+
+            if (player != null)
+            {
+                if (player.characterStatsManager.currentStamina <= 0)
+                    return;
+            }
 
             if (character.isSprinting)
             {

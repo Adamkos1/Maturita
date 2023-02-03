@@ -86,8 +86,9 @@ namespace AH
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             animator.SetBool("isDead", isDead);
+            animator.SetBool("isBlocking", isBlocking);
 
-            if(currentTarget != null)
+            if (currentTarget != null)
             {
                 distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
                 targetsDirection = currentTarget.transform.position - transform.position;

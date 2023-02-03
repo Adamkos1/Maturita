@@ -9,10 +9,13 @@ namespace AH
     {
         public Transform player;
         public PlayerManager playerManager;
+        public AudioSource audioSource;
+        public AudioClip helouthere;
 
         public override void Interact(PlayerManager playerManager)
         {
             playerManager.uIManager.levelUpWindow.SetActive(true);
+            audioSource.PlayOneShot(helouthere);
         }
 
         private void LateUpdate()

@@ -7,10 +7,10 @@ namespace AH
 
     public class AttackStateHumanoid : State
     {
-        public RotateTowardsTargetState rotateTowardsTargetState;
-        public CombatStanceState combatStanceState;
+        public RotateTowardsTargetStateHumanoid rotateTowardsTargetState;
+        public CombatStanceStateHumanoid combatStanceState;
         public ItemBasedAttackAction currentAttack;
-        public PursueTargetState pursueTargetState;
+        public PursueTargetStateHumanoid pursueTargetState;
 
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
@@ -39,9 +39,11 @@ namespace AH
 
             if (willDoComboOnNextAttack && hasPerformedAttack)
             {
+                ResetStateFlags(); // TOTO tu asi zmenit
                 return this;
             }
 
+            ResetStateFlags();
             return rotateTowardsTargetState;
 
 
@@ -97,6 +99,12 @@ namespace AH
                 }
             }
         }
+
+        private void ResetStateFlags()
+        {
+            willDoComboOnNextAttack = false;
+            hasPerformedAttack = false;
+    }
     }
 
 }
