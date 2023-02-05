@@ -22,10 +22,6 @@ namespace AH
         [Header("RayCast")]
         public Transform criticalAttackRaycastStartPoint;
 
-        [Header("Combat Colliders")]
-        public CriticalDamageCollider backStabCollider;
-        public CriticalDamageCollider riposteCollider;
-
         [Header("Combat Flags")]
         public bool canBeRiposted;
         public bool canBeParried;
@@ -40,6 +36,10 @@ namespace AH
         public bool isHoldingArrow;
         public bool isPerformingFullyChargedAttack;
         public bool isAttacking;
+        public bool isBeingBackStebbed;
+        public bool isBeingRiposted;
+        public bool isPerformingRiposte;
+        public bool isPerformingBackSteb;
 
         [Header("Interacting")]
         public bool isInteracting;

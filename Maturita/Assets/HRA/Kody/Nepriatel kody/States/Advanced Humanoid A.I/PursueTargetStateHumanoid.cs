@@ -9,6 +9,11 @@ namespace AH
     {
         public CombatStanceStateHumanoid combatStanceStateHumanoid;
 
+        private void Awake()
+        {
+            combatStanceStateHumanoid = GetComponent<CombatStanceStateHumanoid>();
+        }
+
         public override State Tick(EnemyManager enemyManager)
         {
             HandleRotateTowardsTarget(enemyManager);

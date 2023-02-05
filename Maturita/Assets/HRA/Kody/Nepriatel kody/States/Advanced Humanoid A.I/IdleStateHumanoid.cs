@@ -12,6 +12,11 @@ namespace AH
         public LayerMask detectionLayer;
         public LayerMask layersThatBlockLineOfSight;
 
+        private void Awake()
+        {
+            pursueTargetStateHumanoid = GetComponent<PursueTargetStateHumanoid>();
+        }
+
         public override State Tick(EnemyManager enemyManager)
         {
             #region Handle Enemy Target Detection

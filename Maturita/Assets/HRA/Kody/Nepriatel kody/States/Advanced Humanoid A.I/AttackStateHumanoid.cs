@@ -15,13 +15,34 @@ namespace AH
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
 
+        private void Awake()
+        {
+            rotateTowardsTargetState = GetComponent<RotateTowardsTargetStateHumanoid>();
+            combatStanceState = GetComponent<CombatStanceStateHumanoid>();
+            pursueTargetState = GetComponent<PursueTargetStateHumanoid>();
+        }
+
         public override State Tick(EnemyManager enemyManager)
         {
-            float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+            if(enemyManager.combatStyle == AICombatStyle.swordAndShield)
+            {
+                return ProcessSwordAndShieldCombatStyle(enemyManager);
+            }
+            else if(enemyManager.combatStyle == AICombatStyle.archer)
+            {
+                return ProcessArcherCombatStyle(enemyManager);
+            }
+            else
+            {
+                return this;
+            }
+        }
 
+        private State ProcessSwordAndShieldCombatStyle(EnemyManager enemyManager)
+        {
             RotateTowardsTargetWhilistAttacking(enemyManager);
 
-            if (distanceFromTarget > enemyManager.maximumAggroRadius)
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
             {
                 return pursueTargetState;
             }
@@ -47,6 +68,41 @@ namespace AH
             return rotateTowardsTargetState;
 
 
+        }
+
+        private State ProcessArcherCombatStyle(EnemyManager enemyManager)
+        {
+            RotateTowardsTargetWhilistAttacking(enemyManager);
+
+            if (enemyManager.isInteracting)
+                return this;
+
+            if(!enemyManager.isHoldingArrow)
+            {
+                ResetStateFlags();
+                return combatStanceState;
+            }
+
+            if (enemyManager.currentTarget.isDead)
+            {
+                //enemyManager.currentTarget = null;
+                ResetStateFlags();
+                return pursueTargetState;
+            }
+
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
+            {
+                ResetStateFlags();
+                return pursueTargetState;
+            }
+
+            if (!hasPerformedAttack)
+            {
+                FireAmmo(enemyManager);
+            }
+
+            ResetStateFlags();
+            return rotateTowardsTargetState; ;
         }
 
         private void AttackTarget(EnemyManager enemyManager)
@@ -105,6 +161,16 @@ namespace AH
             willDoComboOnNextAttack = false;
             hasPerformedAttack = false;
     }
+
+        private void FireAmmo(EnemyManager enemyManager)
+        {
+            if(enemyManager.isHoldingArrow)
+            {
+                hasPerformedAttack = true;
+                enemyManager.characterInventoryManager.currentItemBeingUsed = enemyManager.characterInventoryManager.rightWeapon;
+                enemyManager.characterInventoryManager.rightWeapon.th_tap_RB_Action.PerformAction(enemyManager);
+            }
+        }
     }
 
 }

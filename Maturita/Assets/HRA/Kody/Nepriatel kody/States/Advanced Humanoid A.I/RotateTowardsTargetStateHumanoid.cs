@@ -9,6 +9,11 @@ namespace AH
     {
         public CombatStanceStateHumanoid combatStanceState;
 
+        private void Awake()
+        {
+            combatStanceState = GetComponent<CombatStanceStateHumanoid>();
+        }
+
         public override State Tick(EnemyManager enemyManager)
         {
             enemyManager.animator.SetFloat("Vertical", 0);

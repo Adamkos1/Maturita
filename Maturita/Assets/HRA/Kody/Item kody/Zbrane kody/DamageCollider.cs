@@ -79,11 +79,14 @@ namespace AH
                     enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                     enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
 
+                    //detekuje kde na colajderi sa dotkne nassa zbran
                     Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);//toto detekuje kde sa kolajderi stretnu
                     float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
                     enemyEffects.PlayBloodSplatterFX(contactPoint);
+                    enemyEffects.InterruptEffect();
 
+                    //da damage
                     DealDamage(enemyStats);
                 }
             }

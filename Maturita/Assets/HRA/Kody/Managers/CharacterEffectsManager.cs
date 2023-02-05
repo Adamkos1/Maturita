@@ -9,8 +9,8 @@ namespace AH
     {
         CharacterManager characterManager;
 
-        [Header("Current Ranged FX")]
-        public GameObject currentRangedFX;
+        [Header("Current FX")]
+        public GameObject instantiatedFXModel;
 
         [Header("Damage FX")]
         public GameObject bloodSplatterFX;
@@ -63,6 +63,37 @@ namespace AH
         public virtual void PlayBloodSplatterFX(Vector3 bloodSplaterLocation)
         {
             GameObject blood = Instantiate(bloodSplatterFX, bloodSplaterLocation, Quaternion.identity);
+        }
+
+        public virtual void InterruptEffect()
+        {
+            if(instantiatedFXModel != null)
+            {
+                Destroy(instantiatedFXModel);
+            }
+            else
+            {
+                return;
+            }
+
+            //vystreli sip a odstraniho z ruky ak ho drzia
+            if(characterManager.isHoldingArrow)
+            {
+                characterManager.animator.SetBool("isHoldingArrow", false);
+                Animator rangedWeaponAnimator = characterManager.characterWeaponSlotManager.rightHandSlot.currentWeaponModel.GetComponentInChildren<Animator>();
+
+                if(rangedWeaponAnimator != null)
+                {
+                    rangedWeaponAnimator.SetBool("isDrawn", false);
+                    rangedWeaponAnimator.Play("Bow_ONLY_Fire_01");
+                }
+            }
+
+            //prestanes mierit ak mieris
+            if(characterManager.isAiming)
+            {
+                characterManager.animator.SetBool("isAiming", false);
+            }
         }
     }
 

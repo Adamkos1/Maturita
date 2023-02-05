@@ -11,7 +11,8 @@ namespace AH
         PlayerManager playerManger;
 
         public GameObject currentParticleFX;
-        public GameObject instantiatedFXModel;
+        public GameObject activatedFXModel;
+
         public int amountTobeHealed;
 
         private void Awake()
@@ -23,14 +24,14 @@ namespace AH
         {
                 playerManger.playerStatsManager.HealCharacter(amountTobeHealed);
                 GameObject healEffect = Instantiate(currentParticleFX, playerManger.playerStatsManager.transform);
-                Destroy(instantiatedFXModel.gameObject);
+                Destroy(activatedFXModel.gameObject);
                 Destroy(healEffect.gameObject, 1);
                 playerManger.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
 
         public void DestroyWhenNone()
         {
-            Destroy(instantiatedFXModel.gameObject);
+            Destroy(activatedFXModel.gameObject);
             playerManger.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
     }

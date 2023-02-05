@@ -38,6 +38,12 @@ namespace AH
             character.isUsingLeftHand = false;
             character.isUsingRightHand = false;
             character.isAttacking = false;
+            character.isBeingBackStebbed = false;
+            character.isBeingRiposted = false;
+            character.isPerformingBackSteb = false;
+            character.isPerformingRiposte = false;
+            character.canBeParried = false;
+            character.canBeRiposted = false;
 
             animator.SetBool(isInteractingBool, isInteractingStatus);
             animator.SetBool(isFiringSpellBool, isFiringSpellStatus);

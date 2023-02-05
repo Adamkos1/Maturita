@@ -21,11 +21,18 @@ namespace AH
         bool willPerformDodge = false;
         bool willPerformParry = false;
 
+        public bool hasPerformedParry = false;
         bool hasPerformedDodge = false;
         bool hasRandomDodgeDirection = false;
+        public bool hasAmmoLoaded = false;
 
         Quaternion targetDodgeDirection;
 
+        private void Awake()
+        {
+            attackState = GetComponent<AttackStateHumanoid>();
+            pursueTargetState = GetComponent<PursueTargetStateHumanoid>();
+        }
 
         public override State Tick(EnemyManager enemyManager)
         {
@@ -69,6 +76,17 @@ namespace AH
                 DecideCirclingAction(enemyManager.enemyAnimatorManager);
             }
 
+            if(enemyManager.allowAIToPerformParry)
+            {
+                if(enemyManager.currentTarget.canBeRiposted)
+                {
+                    CheckForRiposte(enemyManager);
+                    return this;
+                }
+            }
+
+
+
            // if(enemyManager.allowAIToPerformBlock)
            // {
             //    RollForBlockChance(enemyManager);
@@ -85,10 +103,22 @@ namespace AH
             }
 
 
-           // if (willPerformBlock)
-          //  {
-           //     BlockUsingOffHand(enemyManager);
-           // }
+
+
+
+            if (enemyManager.currentTarget.isAttacking)
+            {
+                if (willPerformParry && !hasPerformedParry)
+                {
+                    ParryCurentTarget(enemyManager);
+                    return this;
+                }
+            }
+
+            // if (willPerformBlock)
+            //  {
+            //     BlockUsingOffHand(enemyManager);
+            // }
 
 
             if (willPerformDodge && enemyManager.currentTarget.isAttacking)
@@ -97,10 +127,8 @@ namespace AH
             }
 
 
-            if (willPerformParry)
-            {
 
-            }
+
 
             HandleRotateTowardsTarget(enemyManager);
 
@@ -119,6 +147,55 @@ namespace AH
 
         private State ProcessArcherCombatStyle(EnemyManager enemyManager)
         {
+            enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
+            enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
+
+            //ak ai pada alebo nieco roby zastavi kazdy pohyb
+            if (!enemyManager.isGrounded || enemyManager.isInteracting)
+            {
+                enemyManager.animator.SetFloat("Vertical", 0);
+                enemyManager.animator.SetFloat("Horizontal", 0);
+                return this;
+            }
+
+            //ak je AI daleko od hraca tak sa vrati do pursue tafget state
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
+            {
+                ResetStateFlags();
+                return pursueTargetState;
+            }
+
+            //kruzenie okolo hraca je randomizovane
+            if (!randomDestinationSet)
+            {
+                randomDestinationSet = true;
+                DecideCirclingAction(enemyManager.enemyAnimatorManager);
+            }
+
+            if (enemyManager.allowAIToPerformDodge)
+            {
+                RollForBlockDodge(enemyManager);
+            }
+
+            if (willPerformDodge && enemyManager.currentTarget.isAttacking)
+            {
+                Dodge(enemyManager);
+            }
+
+            HandleRotateTowardsTarget(enemyManager);
+
+            if(!hasAmmoLoaded)
+            {
+                DrawArrow(enemyManager);
+                AimAtTargetBeforeFiring(enemyManager);
+            }
+
+            if (enemyManager.currentRecoveryTime <= 0 && hasAmmoLoaded)
+            {
+                ResetStateFlags();
+                return attackState;
+            }
+
             return this;
         }
 
@@ -258,10 +335,12 @@ namespace AH
         {
             hasRandomDodgeDirection = false;
             hasPerformedDodge = false;
+            hasPerformedParry = false;
             randomDestinationSet = false;
             willPerformBlock = false;
             willPerformDodge = false;
             willPerformParry = false;
+            hasAmmoLoaded = false;
         }
 
         private void BlockUsingOffHand(EnemyManager enemyManager)
@@ -306,6 +385,69 @@ namespace AH
                         enemyManager.enemyAnimatorManager.PlayTargetAnimation("Rolling", true);
                     }
 
+                }
+            }
+        }
+
+        private void DrawArrow(EnemyManager enemyManager)
+        {
+            if(!enemyManager.isTwoHandingWeapon)
+            {
+                enemyManager.isTwoHandingWeapon = true;
+                enemyManager.characterWeaponSlotManager.LoadBothWeaponsOnSlots();
+            }
+            else
+            {
+                hasAmmoLoaded = true;
+                enemyManager.characterInventoryManager.currentItemBeingUsed = enemyManager.characterInventoryManager.rightWeapon;
+                enemyManager.characterInventoryManager.rightWeapon.th_hold_RB_Action.PerformAction(enemyManager);
+            }
+        }
+
+        private void AimAtTargetBeforeFiring(EnemyManager enemyManager)
+        {
+            float timeUntilAmmoIsShotAtTarget = Random.Range(enemyManager.minimumTimeToAimAtTarget, enemyManager.maximumTimeToAimAtTarget);
+            enemyManager.currentRecoveryTime = timeUntilAmmoIsShotAtTarget;
+        }
+
+        private void ParryCurentTarget(EnemyManager enemyManager)
+        {
+            if(enemyManager.currentTarget.canBeParried)
+            {
+                if(enemyManager.distanceFromTarget <= 2)
+                {
+                    hasPerformedParry = true;
+                    enemyManager.isParrying = true;
+                    enemyManager.enemyAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                }
+            }
+        }
+
+        private void CheckForRiposte(EnemyManager enemyManager)
+        {
+            if(enemyManager.isInteracting)
+            {
+                enemyManager.animator.SetFloat("Horizontal", 0, 0.2f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                return;
+
+            }
+
+            if(enemyManager.distanceFromTarget >= 1.5)
+            {
+                enemyManager.animator.SetFloat("Horizontal", 0, 0.2f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                HandleRotateTowardsTarget(enemyManager);
+            }
+            else
+            {
+                enemyManager.isBlocking = false;
+
+                if(!enemyManager.isInteracting && !enemyManager.currentTarget.isBeingRiposted && !enemyManager.currentTarget.isBeingBackStebbed)
+                {
+                    enemyManager.enemyRigidBody.velocity = Vector3.zero;
+                    enemyManager.animator.SetFloat("Vertical", 0);
+                    enemyManager.characterCombatManager.AttemptBackStabOrRiposte();
                 }
             }
         }

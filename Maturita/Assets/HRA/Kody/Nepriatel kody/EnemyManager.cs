@@ -48,6 +48,10 @@ namespace AH
         public int dodgeLikelyHood = 50;
         public int parryLikelyHood = 50;
 
+        [Header("AI Archery Settings")]
+        public float minimumTimeToAimAtTarget = 1;
+        public float maximumTimeToAimAtTarget = 3;
+
 
         [Header("AI Target Settings")]
         public float distanceFromTarget;
@@ -83,10 +87,12 @@ namespace AH
             isInteracting = animator.GetBool("isInteracting");
             isPhaseShifting = animator.GetBool("isPhaseShifting");
             isInvulnerable = animator.GetBool("isInvulnerable");
+            isHoldingArrow = animator.GetBool("isHoldingArrow");
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             animator.SetBool("isDead", isDead);
             animator.SetBool("isBlocking", isBlocking);
+            animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
 
             if (currentTarget != null)
             {

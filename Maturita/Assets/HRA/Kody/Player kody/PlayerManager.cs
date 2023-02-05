@@ -55,8 +55,6 @@ namespace AH
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
-
-            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         }
 
         void Update()
