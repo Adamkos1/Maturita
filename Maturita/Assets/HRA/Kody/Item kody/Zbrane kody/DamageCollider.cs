@@ -48,26 +48,25 @@ namespace AH
 
         protected virtual void OnTriggerEnter(Collider collision)
         {
-            if(collision.tag == "Character")
+            if(collision.gameObject.layer == LayerMask.NameToLayer("Damageable Character"))
             {
                 shieldHasBeenHit = false;
                 hasBeenParried = false;
-                CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
-                CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
-                CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
+
+                CharacterManager enemyManager = collision.GetComponentInParent<CharacterManager>();
 
                 if(enemyManager != null)
                 {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    if (enemyManager.characterStatsManager.teamIDNumber == teamIDNumber)
                         return;
 
                     CheckForParry(enemyManager);
                     CheckForBlock(enemyManager);
                 }
 
-                if(enemyStats != null)
+                if(enemyManager.characterStatsManager != null)
                 {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    if (enemyManager.characterStatsManager.teamIDNumber == teamIDNumber)
                         return;
 
                     if (hasBeenParried)
@@ -76,18 +75,18 @@ namespace AH
                     if (shieldHasBeenHit)
                         return;
 
-                    enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
-                    enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
+                    enemyManager.characterStatsManager.poiseResetTimer = enemyManager.characterStatsManager.totalPoiseResetTime;
+                    enemyManager.characterStatsManager.totalPoiseDefence = enemyManager.characterStatsManager.totalPoiseDefence - poiseBreak;
 
                     //detekuje kde na colajderi sa dotkne nassa zbran
                     Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);//toto detekuje kde sa kolajderi stretnu
                     float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
-                    enemyEffects.PlayBloodSplatterFX(contactPoint);
-                    enemyEffects.InterruptEffect();
+                    enemyManager.characterEffectsManager.PlayBloodSplatterFX(contactPoint);
+                    enemyManager.characterEffectsManager.InterruptEffect();
 
                     //da damage
-                    DealDamage(enemyStats);
+                    DealDamage(enemyManager.characterStatsManager);
                 }
             }
 

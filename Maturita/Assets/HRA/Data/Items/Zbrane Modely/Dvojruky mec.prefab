@@ -5083,6 +5083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Crystal_Ornate_Straightsword_01
       objectReference: {fileID: 0}
+    - target: {fileID: 102960, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 458314, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5169,3 +5173,4 @@ MonoBehaviour:
   poiseBreak: 0
   offfensivePoiseBonus: 0
   physicalDamage: 25
+  guardBreakModifier: 1

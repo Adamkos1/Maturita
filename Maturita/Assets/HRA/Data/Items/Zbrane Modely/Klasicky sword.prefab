@@ -4928,7 +4928,7 @@ GameObject:
   - component: {fileID: 3839457107160121434}
   - component: {fileID: 3867692442346676528}
   - component: {fileID: 3965926296509532585}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Wep_Broadsword_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5032,6 +5032,7 @@ MonoBehaviour:
   poiseBreak: 0
   offfensivePoiseBonus: 0
   physicalDamage: 25
+  guardBreakModifier: 1
 --- !u!1 &5573019686314302821
 GameObject:
   m_ObjectHideFlags: 0

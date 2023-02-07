@@ -5083,6 +5083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Ornate_Sword_01
       objectReference: {fileID: 0}
+    - target: {fileID: 119060, guid: c17b117a7e676e148b2ee325c1e6041d, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 473066, guid: c17b117a7e676e148b2ee325c1e6041d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5173,3 +5177,4 @@ MonoBehaviour:
   poiseBreak: 0
   offfensivePoiseBonus: 0
   physicalDamage: 25
+  guardBreakModifier: 1

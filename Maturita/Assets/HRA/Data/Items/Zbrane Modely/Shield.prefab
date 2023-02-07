@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Shield_04
       objectReference: {fileID: 0}
+    - target: {fileID: 161448, guid: f0c4e90df1d6a824ebcb721e170afd4d, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 422738, guid: f0c4e90df1d6a824ebcb721e170afd4d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -142,7 +146,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5374be0dbfc2e7941986dd630b2a3eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponDamage: 25
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
+  poiseBreak: 0
+  offfensivePoiseBonus: 0
+  physicalDamage: 25
+  guardBreakModifier: 1
 --- !u!4 &7458375601243372004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422738, guid: f0c4e90df1d6a824ebcb721e170afd4d, type: 3}
