@@ -27,12 +27,11 @@ namespace AH
         protected bool hasBeenParried = false;
         protected string currentDamageAnimation;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             damgeCollider = GetComponent<Collider>();
             damgeCollider.gameObject.SetActive(true);
             damgeCollider.isTrigger = true;
-            damgeCollider.enabled = false;
             damgeCollider.enabled = enabledDamageColliderOnStartUp;
         }
 
@@ -48,7 +47,7 @@ namespace AH
 
         protected virtual void OnTriggerEnter(Collider collision)
         {
-            if(collision.gameObject.layer == LayerMask.NameToLayer("Damageable Character"))
+            if(collision.tag == ("Character"))
             {
                 shieldHasBeenHit = false;
                 hasBeenParried = false;

@@ -13,11 +13,11 @@ namespace AH
             if (character.isInteracting)
                 return;
 
-            if (character.characterInventoryManager.currentSpell != null && character.characterInventoryManager.currentSpell.isPyroSpell)
+            if (character.characterInventoryManager.pyroSpell != null && character.characterInventoryManager.pyroSpell.isPyroSpell)
             {
-                if (character.characterStatsManager.currentMana >= character.characterInventoryManager.currentSpell.manaCost)
+                if (character.characterStatsManager.currentMana >= character.characterInventoryManager.pyroSpell.manaCost)
                 {
-                    character.characterInventoryManager.currentSpell.AttemptToCastSpell(character);
+                    character.characterInventoryManager.pyroSpell.AttemptToCastSpell(character);
                 }
                 else
                 {

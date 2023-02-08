@@ -19,7 +19,9 @@ namespace AH
             if (player != null)
             {
                 if (player.characterStatsManager.currentStamina <= 0)
+                {
                     return;
+                }
             }
 
             if (character.isSprinting)

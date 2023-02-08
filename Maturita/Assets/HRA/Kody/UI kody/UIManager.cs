@@ -52,7 +52,7 @@ namespace AH
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             equipmentWindowUI.LoadWeaponsEquipmentScreen(playerManager.playerInventoryManager);
-            quickSlotsUI.UpdateSpellIcon(playerManager.playerInventoryManager.currentSpell);
+            //quickSlotsUI.UpdateSpellIcon(playerManager.playerInventoryManager.currentSpell);
             soulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
         }
 

@@ -41,6 +41,7 @@ namespace AH
                     else
                     {
                         character.characterAnimatorManager.PlayTargetAnimation("Shrug", true);
+                        character.characterSoundFXManager.audioSource.PlayOneShot(character.characterSoundFXManager.noAmmo);
                     }
                 }
 

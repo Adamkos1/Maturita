@@ -34,8 +34,8 @@ namespace AH
 
                         //vytvorit a vystrelit live arrow
                         GameObject liveArrow = Instantiate(character.characterInventoryManager.currentAmmo.liveAmmoModel, arrowInstantiationLocation.transform.position, player.cameraHandler.cameraPivotTransform.rotation);
-                        Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
-                        RangedProjectileDamageColider damageColider = liveArrow.GetComponentInChildren<RangedProjectileDamageColider>();
+                        Rigidbody rigidbody = liveArrow.GetComponent<Rigidbody>();
+                        RangedProjectileDamageColider damageColider = liveArrow.GetComponent<RangedProjectileDamageColider>();
 
                         if (character.isAiming)
                         {
@@ -100,8 +100,8 @@ namespace AH
 
                     //vytvorit a vystrelit live arrow
                     GameObject liveArrow = Instantiate(character.characterInventoryManager.currentAmmo.liveAmmoModel, arrowInstantiationLocation.transform.position, Quaternion.identity);
-                    Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
-                    RangedProjectileDamageColider damageColider = liveArrow.GetComponentInChildren<RangedProjectileDamageColider>();
+                    Rigidbody rigidbody = liveArrow.GetComponent<Rigidbody>();
+                    RangedProjectileDamageColider damageColider = liveArrow.GetComponent<RangedProjectileDamageColider>();
 
                     //dat naboju rychlost
                     if (enemyManager.currentTarget != null)

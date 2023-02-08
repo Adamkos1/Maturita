@@ -16,6 +16,53 @@ namespace AH
 
         public override State Tick(EnemyManager enemyManager)
         {
+            if (enemyManager.combatStyle == AICombatStyle.swordAndShield)
+            {
+                return ProcessSwordAndShieldCombatStyle(enemyManager);
+            }
+            else if (enemyManager.combatStyle == AICombatStyle.archer)
+            {
+                return ProcessArcherCombatStyle(enemyManager);
+            }
+            else
+            {
+                return this;
+            }
+        }
+
+        private State ProcessArcherCombatStyle(EnemyManager enemyManager)
+        {
+            HandleRotateTowardsTarget(enemyManager);
+
+            if (enemyManager.isInteracting)
+                return this;
+
+            if (enemyManager.isPerformingAction)
+            {
+                enemyManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                return this;
+            }
+
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAggroRadius)
+            {
+                if(!enemyManager.isStationaryArcher)
+                {
+                    enemyManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                }
+            }
+
+            if (enemyManager.distanceFromTarget <= enemyManager.maximumAggroRadius)
+            {
+                return combatStanceStateHumanoid;
+            }
+            else
+            {
+                return this;
+            }
+        }
+
+        private State ProcessSwordAndShieldCombatStyle(EnemyManager enemyManager)
+        {
             HandleRotateTowardsTarget(enemyManager);
 
             if (enemyManager.isInteracting)

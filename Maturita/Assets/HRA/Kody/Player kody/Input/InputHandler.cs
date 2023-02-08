@@ -50,6 +50,11 @@ namespace AH
         public bool d_Pad_Left;
         public bool d_Pad_Right;
 
+        public bool input_Has_Been_Qued;
+        public float current_Qued_Input_Timer;
+        public float default_Qued_Input_Time;
+        public bool qued_RB_Input;
+
         Vector2 movementInput;
         Vector2 cameraInput;
 
@@ -474,6 +479,16 @@ namespace AH
             {
                 x_Input = false;
                 playerManager.playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerManager.playerAnimatorManager, playerManager.playerWeaponSlotManager, playerManager.playerEffectsManager);
+            }
+        }
+
+        private void QueInput(ref bool quedInput)
+        {
+            if(playerManager.isInteracting)
+            {
+                quedInput = true;
+                current_Qued_Input_Timer = default_Qued_Input_Time;
+                input_Has_Been_Qued = true;
             }
         }
 

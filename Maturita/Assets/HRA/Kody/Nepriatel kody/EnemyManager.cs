@@ -19,8 +19,6 @@ namespace AH
         public State currentState;
         public CharacterManager currentTarget;
         public Rigidbody enemyRigidBody;
-        public Collider backStabboxCollider;
-        public Collider parryCollider;
 
         public bool isPerformingAction;
         public float rotationSpeed = 15;
@@ -33,6 +31,7 @@ namespace AH
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
         public float currentRecoveryTime = 0;
+        public float stoppingDistance = 1.2f; //ako blizsko sa moze nepriatel priblizit ku hracovi
 
         [Header("AI Combat Settings")]
         public bool allowAIToPerformCombos;
@@ -51,6 +50,7 @@ namespace AH
         [Header("AI Archery Settings")]
         public float minimumTimeToAimAtTarget = 1;
         public float maximumTimeToAimAtTarget = 3;
+        public bool isStationaryArcher;
 
 
         [Header("AI Target Settings")]
@@ -103,8 +103,6 @@ namespace AH
 
             if (isDead)
             {
-                Destroy(backStabboxCollider);
-                Destroy(parryCollider);
                 Destroy(gameObject, timeUntilDestroyed);
             }
         }

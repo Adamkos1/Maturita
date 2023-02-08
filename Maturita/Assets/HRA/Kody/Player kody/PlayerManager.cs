@@ -81,6 +81,15 @@ namespace AH
             playerInventoryManager.ConsumableUI();
 
             CheckForInteractableObject();
+
+            if(isInvulnerable)
+            {
+                playerLocomotionManager.characterCollider.enabled = false;
+            }
+            else
+            {
+                playerLocomotionManager.characterCollider.enabled = true;
+            }
         }
 
         protected override void FixedUpdate()

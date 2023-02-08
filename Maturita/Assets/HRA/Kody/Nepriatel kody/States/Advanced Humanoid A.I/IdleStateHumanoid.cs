@@ -54,6 +54,20 @@ namespace AH
 
             #endregion
 
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                PlayerManager potentialTarget = colliders[i].transform.GetComponent<PlayerManager>();
+
+                if (potentialTarget != null)
+                {
+                    if (enemyManager.enemyStatsManager.currentHealth < enemyManager.enemyStatsManager.maxHealth)
+                    {
+                        enemyManager.currentTarget = potentialTarget;
+                    }
+                }
+            }
+
+
             #region Handle Switching To Next State
             if (enemyManager.currentTarget != null)
             {

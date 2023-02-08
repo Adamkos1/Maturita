@@ -9,7 +9,7 @@ namespace AH
     {
         PlayerManager playerManager;
         CharacterManager characterManager;
-        AudioSource audioSource;
+        public AudioSource audioSource;
 
         [Header("Taking Damage Sounds")]
         public AudioClip[] takingDamageSounds;
@@ -24,6 +24,8 @@ namespace AH
         public AudioClip[] woodClips;
         public AudioClip[] stoneClips;
 
+        [Header("No daco")]
+        public AudioClip noAmmo;
 
         protected virtual void Awake()
         {

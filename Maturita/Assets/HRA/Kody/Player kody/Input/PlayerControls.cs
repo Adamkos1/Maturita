@@ -222,6 +222,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Qued RB"",
+                    ""type"": ""Button"",
+                    ""id"": ""b1f2b4f1-a3b3-4f25-8d24-5551f823acf5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Hold RB"",
                     ""type"": ""PassThrough"",
                     ""id"": ""79f76d1b-b64b-448c-aead-e161a64706e6"",
@@ -638,6 +647,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Hold RT"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a1d2071-6dba-4cc4-93bf-ad386ddc1e25"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Qued RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58fb187c-29e1-4533-ad39-a55ab7e14aac"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Qued RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -786,6 +817,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Roll = m_PlayerActions.FindAction("Roll", throwIfNotFound: true);
         m_PlayerActions_TapRB = m_PlayerActions.FindAction("TapRB", throwIfNotFound: true);
+        m_PlayerActions_QuedRB = m_PlayerActions.FindAction("Qued RB", throwIfNotFound: true);
         m_PlayerActions_HoldRB = m_PlayerActions.FindAction("Hold RB", throwIfNotFound: true);
         m_PlayerActions_LB = m_PlayerActions.FindAction("LB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
@@ -922,6 +954,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Roll;
     private readonly InputAction m_PlayerActions_TapRB;
+    private readonly InputAction m_PlayerActions_QuedRB;
     private readonly InputAction m_PlayerActions_HoldRB;
     private readonly InputAction m_PlayerActions_LB;
     private readonly InputAction m_PlayerActions_RT;
@@ -940,6 +973,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Roll => m_Wrapper.m_PlayerActions_Roll;
         public InputAction @TapRB => m_Wrapper.m_PlayerActions_TapRB;
+        public InputAction @QuedRB => m_Wrapper.m_PlayerActions_QuedRB;
         public InputAction @HoldRB => m_Wrapper.m_PlayerActions_HoldRB;
         public InputAction @LB => m_Wrapper.m_PlayerActions_LB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
@@ -967,6 +1001,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TapRB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
                 @TapRB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
                 @TapRB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTapRB;
+                @QuedRB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuedRB;
+                @QuedRB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuedRB;
+                @QuedRB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnQuedRB;
                 @HoldRB.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
                 @HoldRB.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
                 @HoldRB.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHoldRB;
@@ -1013,6 +1050,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TapRB.started += instance.OnTapRB;
                 @TapRB.performed += instance.OnTapRB;
                 @TapRB.canceled += instance.OnTapRB;
+                @QuedRB.started += instance.OnQuedRB;
+                @QuedRB.performed += instance.OnQuedRB;
+                @QuedRB.canceled += instance.OnQuedRB;
                 @HoldRB.started += instance.OnHoldRB;
                 @HoldRB.performed += instance.OnHoldRB;
                 @HoldRB.canceled += instance.OnHoldRB;
@@ -1121,6 +1161,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnRoll(InputAction.CallbackContext context);
         void OnTapRB(InputAction.CallbackContext context);
+        void OnQuedRB(InputAction.CallbackContext context);
         void OnHoldRB(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);

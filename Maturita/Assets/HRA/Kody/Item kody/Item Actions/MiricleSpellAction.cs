@@ -13,11 +13,11 @@ namespace AH
             if (character.isInteracting)
                 return;
 
-            if (character.characterInventoryManager.currentSpell != null && character.characterInventoryManager.currentSpell.isFaithSpell)
+            if (character.characterInventoryManager.healSpell != null && character.characterInventoryManager.healSpell.isFaithSpell)
             {
-                if (character.characterStatsManager.currentMana >= character.characterInventoryManager.currentSpell.manaCost)
+                if (character.characterStatsManager.currentMana >= character.characterInventoryManager.healSpell.manaCost)
                 {
-                    character.characterInventoryManager.currentSpell.AttemptToCastSpell(character);
+                    character.characterInventoryManager.healSpell.AttemptToCastSpell(character);
                 }
                 else
                 {

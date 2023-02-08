@@ -85,8 +85,17 @@ namespace AH
 
         private void SuccessfullyCastSpell()
         {
-            character.characterInventoryManager.currentSpell.SuccessfullyCastSpell(character);
-            character.animator.SetBool("isFiringSpell", true);
+            if(character.characterInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
+            {
+                character.characterInventoryManager.pyroSpell.SuccessfullyCastSpell(character);
+                character.animator.SetBool("isFiringSpell", true);
+            }
+            else if (character.characterInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster)
+                {
+                    character.characterInventoryManager.healSpell.SuccessfullyCastSpell(character);
+                    character.animator.SetBool("isFiringSpell", true);
+                }
+
         }
 
         IEnumerator ForceMoveCharacterToEnemyBackStabPosition(CharacterManager characterPerforimgBackStab)
@@ -149,7 +158,14 @@ namespace AH
                 Vector3 directionFromCharacterToEnemy = transform.position - enemyCharacter.transform.position;
                 float dotValue = Vector3.Dot(directionFromCharacterToEnemy, enemyCharacter.transform.forward);
 
-                if(enemyCharacter.canBeRiposted)
+
+                if (enemyCharacter.isBeingBackStebbed)
+                    return;
+
+                if (enemyCharacter.isBeingRiposted)
+                    return;
+
+                if (enemyCharacter.canBeRiposted)
                 {
                     if (dotValue <= 1.7f && dotValue >= 0.2f)
                     {
@@ -195,7 +211,7 @@ namespace AH
 
             if (enemyCharacter != null)
             {
-                if (enemyCharacter.isBeingBackStebbed || !enemyCharacter.isBeingRiposted)
+                if (!enemyCharacter.isBeingBackStebbed || !enemyCharacter.isBeingRiposted)
                 {
                     //ked nas backstabnu aby nas ine debiliny neublizili
                     EnableIsInvulnerable();

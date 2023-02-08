@@ -9,31 +9,35 @@ namespace AH
     {
         public RangedAmmoItem ammoItem;
         protected bool hasAlreadyPenetratedASurface;
-        protected GameObject penetratedProjectile;
 
-        protected override void OnTriggerEnter(Collider collision)
+        Rigidbody arrowRigidBody;
+        CapsuleCollider arrowCapsuleCollider;
+
+        protected override void Awake()
         {
-            if (collision.tag == "Character")
+            damgeCollider = GetComponent<Collider>();
+            damgeCollider.gameObject.SetActive(true);
+            damgeCollider.enabled = true;
+            arrowCapsuleCollider = GetComponent<CapsuleCollider>();
+            arrowRigidBody = GetComponent<Rigidbody>();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Character")
             {
                 shieldHasBeenHit = false;
                 hasBeenParried = false;
-                CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
-                CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
-                CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
+
+                CharacterManager enemyManager = collision.gameObject.GetComponent<CharacterManager>();
 
                 if (enemyManager != null)
                 {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
+                    if (enemyManager.characterStatsManager.teamIDNumber == teamIDNumber)
                         return;
 
                     CheckForParry(enemyManager);
                     CheckForBlock(enemyManager);
-                }
-
-                if (enemyStats != null)
-                {
-                    if (enemyStats.teamIDNumber == teamIDNumber)
-                        return;
 
                     if (hasBeenParried)
                         return;
@@ -41,44 +45,50 @@ namespace AH
                     if (shieldHasBeenHit)
                         return;
 
-                    enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
-                    enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
+                    enemyManager.characterStatsManager.poiseResetTimer = enemyManager.characterStatsManager.totalPoiseResetTime;
+                    enemyManager.characterStatsManager.totalPoiseDefence = enemyManager.characterStatsManager.totalPoiseDefence - poiseBreak;
 
                     Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);//toto detekuje kde sa kolajderi stretnu
                     float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
                     ChooseWichDirectionDamageCameFrom(directionHitFrom);
-                    enemyEffects.PlayBloodSplatterFX(contactPoint);
+                    enemyManager.characterEffectsManager.PlayBloodSplatterFX(contactPoint);
 
-                    if (enemyStats.totalPoiseDefence > poiseBreak)
+                    if (enemyManager.characterStatsManager.totalPoiseDefence > poiseBreak)
                     {
-                        enemyStats.TakeDamgeNoAnimation(physicalDamage);
+                        enemyManager.characterStatsManager.TakeDamgeNoAnimation(physicalDamage);
                     }
                     else
                     {
-                        enemyStats.TakeDamage(physicalDamage, currentDamageAnimation, characterManager);
+                        enemyManager.characterStatsManager.TakeDamage(physicalDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }
 
-            if (collision.tag == "Illusionary Wall")
+            if (collision.gameObject.tag == "Illusionary Wall")
             {
-                IllusionaryWall illusionaryWall = collision.GetComponent<IllusionaryWall>();
+                IllusionaryWall illusionaryWall = collision.gameObject.GetComponent<IllusionaryWall>();
 
                 illusionaryWall.wallHasBeenHit = true;
             }
 
-            if(!hasAlreadyPenetratedASurface && penetratedProjectile == null)
+            if(!hasAlreadyPenetratedASurface)
             {
                 hasAlreadyPenetratedASurface = true;
-                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-                GameObject penetratedArrow = Instantiate(ammoItem.penetratedModel, contactPoint, Quaternion.Euler(0, 0, 0));
+                arrowRigidBody.isKinematic = true;
+                arrowCapsuleCollider.enabled = false;
 
-                penetratedProjectile = penetratedArrow;
-                penetratedArrow.transform.parent = collision.transform;
-                penetratedArrow.transform.rotation = Quaternion.LookRotation(gameObject.transform.forward);
+                gameObject.transform.position = collision.GetContact(0).point;
+                gameObject.transform.rotation = Quaternion.LookRotation(transform.forward);
+                gameObject.transform.parent = collision.collider.transform;
             }
+        }
 
-            Destroy(transform.root.gameObject);
+        private void FixedUpdate()
+        {
+            if(arrowRigidBody.velocity != Vector3.zero)
+            {
+                arrowRigidBody.rotation = Quaternion.LookRotation(arrowRigidBody.velocity);
+            }
         }
     }
 

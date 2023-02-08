@@ -52,9 +52,6 @@ namespace AH
 
         private State ProcessSwordAndShieldCombatStyle(EnemyManager enemyManager)
         {
-            enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
-            enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-
             //ak ai pada alebo nieco roby zastavi kazdy pohyb
             if (!enemyManager.isGrounded || enemyManager.isInteracting)
             {
@@ -142,14 +139,13 @@ namespace AH
                 GetNewAttack(enemyManager);
             }
 
+            HandleMovement(enemyManager);
+
             return this;
         }
 
         private State ProcessArcherCombatStyle(EnemyManager enemyManager)
         {
-            enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
-            enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-
             //ak ai pada alebo nieco roby zastavi kazdy pohyb
             if (!enemyManager.isGrounded || enemyManager.isInteracting)
             {
@@ -194,6 +190,16 @@ namespace AH
             {
                 ResetStateFlags();
                 return attackState;
+            }
+
+            if(enemyManager.isStationaryArcher)
+            {
+                enemyManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Horizontal", 0, 0.2f, Time.deltaTime);
+            }
+            else
+            {
+                HandleMovement(enemyManager);
             }
 
             return this;
@@ -452,6 +458,20 @@ namespace AH
             }
         }
 
+        private void HandleMovement(EnemyManager enemyManager)
+        {
+            if (enemyManager.distanceFromTarget <= enemyManager.stoppingDistance)
+            {
+                enemyManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
+            }
+            else
+            {
+                enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
+            }
+
+        }
     }
 
 }
