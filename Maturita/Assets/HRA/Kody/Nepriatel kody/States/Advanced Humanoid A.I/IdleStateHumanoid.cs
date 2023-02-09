@@ -19,7 +19,6 @@ namespace AH
 
         public override State Tick(EnemyManager enemyManager)
         {
-            #region Handle Enemy Target Detection
             //hlada target v urcitom radiuse
             Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
 
@@ -52,8 +51,6 @@ namespace AH
                 }
             }
 
-            #endregion
-
             for (int i = 0; i < colliders.Length; i++)
             {
                 PlayerManager potentialTarget = colliders[i].transform.GetComponent<PlayerManager>();
@@ -68,7 +65,6 @@ namespace AH
             }
 
 
-            #region Handle Switching To Next State
             if (enemyManager.currentTarget != null)
             {
                 return pursueTargetStateHumanoid;
@@ -78,7 +74,6 @@ namespace AH
                 return this;
             }
 
-            #endregion
         }
     }
 

@@ -97,6 +97,8 @@ namespace AH
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
                 inputActions.PlayerActions.Two_Handed.performed += i => y_input = true;
+
+                inputActions.PlayerActions.QuedRB.performed += i => QueInput(ref qued_RB_Input);
             }
             inputActions.Enable();
         }
@@ -129,6 +131,7 @@ namespace AH
             HandleLockOnInput();
             HandleTwoHandInput();
             HandleUseConsumableInput();
+            HandleQuedInput();
         }
 
 
@@ -489,6 +492,31 @@ namespace AH
                 quedInput = true;
                 current_Qued_Input_Timer = default_Qued_Input_Time;
                 input_Has_Been_Qued = true;
+            }
+        }
+
+        private void HandleQuedInput()
+        {
+            if(input_Has_Been_Qued)
+            {
+                if(current_Qued_Input_Timer > 0)
+                {
+                    current_Qued_Input_Timer = current_Qued_Input_Timer - Time.deltaTime;
+                    ProcessQuedInput();
+                }
+                else
+                {
+                    input_Has_Been_Qued = false;
+                    current_Qued_Input_Timer = 0;
+                }
+            }
+        }
+
+        private void ProcessQuedInput()
+        {
+            if(qued_RB_Input)
+            {
+                tap_RB_Input = true;
             }
         }
 
