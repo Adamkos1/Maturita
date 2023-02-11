@@ -196,6 +196,7 @@ namespace AH
             {
                 enemyManager.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
                 enemyManager.animator.SetFloat("Horizontal", 0, 0.2f, Time.deltaTime);
+                HandleRotateTowardsTarget(enemyManager);
             }
             else
             {

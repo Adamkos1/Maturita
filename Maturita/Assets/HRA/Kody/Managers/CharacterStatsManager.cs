@@ -11,6 +11,7 @@ namespace AH
 
         [Header("Team I.D")]
         public int teamIDNumber = 0;
+        public string chracterName;
 
         public int maxHealth;
         public int currentHealth;

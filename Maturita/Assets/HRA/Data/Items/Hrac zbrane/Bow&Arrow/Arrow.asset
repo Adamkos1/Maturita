@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Arrow
   ammoType: 0
   forwardCelocity: 1000
-  upwardVelocity: 200
+  upwardVelocity: 150
   ammoMass: 200
   useGravity: 1
   carryLimit: 99
