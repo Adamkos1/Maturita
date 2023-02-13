@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 namespace AH
 {
@@ -9,7 +11,8 @@ namespace AH
     {
         public static WorldSaveGameManager instance;
 
-        [SerializeField] PlayerManager player;
+        public PlayerManager player;
+        SaveGameUI saveGameUI;
 
         [Header("Save Data Writer")]
         SaveGameDataWriter saveGameDataWriter;
@@ -20,11 +23,13 @@ namespace AH
         [SerializeField] private string fileName;
 
         [Header("Save/Load")]
-        [SerializeField] bool saveGame;
-        [SerializeField] bool loadGame;
+        [SerializeField] public bool saveGame;
+        [SerializeField] public bool loadGame;
 
         private void Awake()
         {
+            saveGameUI = FindObjectOfType<SaveGameUI>();
+
             if (instance == null)
             {
                 instance = this;
@@ -50,6 +55,7 @@ namespace AH
             else if(loadGame)
             {
                 loadGame = false;
+                LoadGame();
             }
         }
 
@@ -72,7 +78,34 @@ namespace AH
         }
 
         //Load game
+        public void LoadGame()
+        {
+            saveGameDataWriter = new SaveGameDataWriter();
+            saveGameDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveGameDataWriter.dataSaveFileName = fileName;
+            currentCharacterSaveData = saveGameDataWriter.LoadCharacterDataFromJson();
 
+            StartCoroutine(LoadWorldSceneAsynchronously());
+        }
+
+        private IEnumerator LoadWorldSceneAsynchronously()
+        {
+            if(player == null)
+            {
+                player = FindObjectOfType<PlayerManager>();
+            }
+
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync(player.currentScene);
+
+            while(!loadOperation.isDone)
+            {
+                float loadingProgress = Mathf.Clamp01(loadOperation.progress / 0.9f);
+                yield return null;
+            }
+
+            player.LoadCharacterDataFromCurrentSavaData(ref currentCharacterSaveData);
+
+        }
     }
 
 }

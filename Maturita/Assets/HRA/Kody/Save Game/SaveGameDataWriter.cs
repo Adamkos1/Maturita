@@ -30,6 +30,8 @@ namespace AH
                             saveDataToLoad = reader.ReadToEnd();
                         }
                     }
+
+                    loadedSaveData = JsonUtility.FromJson<CharacterSaveData>(saveDataToLoad);
                 }
                 catch(Exception ex)
                 {

@@ -32,6 +32,8 @@ namespace AH
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableUIGameObject;
 
+        public int currentScene;
+
         [Header("Footstep")]
         private float baseStepSpeed = 0.5f;
         private float sprintstepMultipler = 1.5f;
@@ -55,6 +57,8 @@ namespace AH
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+
+            WorldSaveGameManager.instance.player = this;
         }
 
         void Update()
@@ -195,6 +199,14 @@ namespace AH
             currentCharacterSaveData.xPosition = transform.position.x;
             currentCharacterSaveData.yPosition = transform.position.y;
             currentCharacterSaveData.zPosition = transform.position.z;
+        }
+
+        public void LoadCharacterDataFromCurrentSavaData(ref CharacterSaveData currentCharacterSaveData)
+        {
+            playerStatsManager.chracterName = currentCharacterSaveData.characterName;
+            playerStatsManager.playerLevel = currentCharacterSaveData.characterLevel;
+
+            transform.position = new Vector3(currentCharacterSaveData.xPosition, currentCharacterSaveData.yPosition, currentCharacterSaveData.zPosition);
         }
     }
 }
