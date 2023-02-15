@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: d979bd7f52a1d1045839ae571280b21e, type: 3}
   itemName: Kralovsky mec
+  itemID: 1002
   modelPrefab: {fileID: 7090337672483868319, guid: 3abc6ba6a392e32438f6ae7ace2b5786, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 6746dcf28587fec41b2c396eef959c65, type: 2}
@@ -24,10 +25,12 @@ MonoBehaviour:
   lightAttackDamageModifier: 1
   heavtAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 1
   poiseBreak: 25
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalBlockingDamageAbsorption: 0
   magicDamageAbsorption: 0
+  stability: 67
   baseStaminaCost: 20
   lightAttackStaminaMultiplier: 1
   heavyAttackStaminaMultiplier: 2

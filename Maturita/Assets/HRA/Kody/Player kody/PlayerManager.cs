@@ -199,6 +199,18 @@ namespace AH
             currentCharacterSaveData.xPosition = transform.position.x;
             currentCharacterSaveData.yPosition = transform.position.y;
             currentCharacterSaveData.zPosition = transform.position.z;
+
+            //zbrane
+            currentCharacterSaveData.currentRightHandWeaponID = playerInventoryManager.rightWeapon.itemID;
+            currentCharacterSaveData.currentLeftHandWeaponID = playerInventoryManager.leftWeapon.itemID;
+
+            //naboje
+            currentCharacterSaveData.currentAmmo = playerInventoryManager.currentAmmo.itemID;
+            currentCharacterSaveData.currentAmmoAmount = playerInventoryManager.currentAmmo.currentAmount;
+
+            //lektvary
+            currentCharacterSaveData.currentConsumable = playerInventoryManager.currentConsumableItem.itemID;
+            currentCharacterSaveData.currentConsumableAmount = playerInventoryManager.currentConsumableItem.currentItemAmount;
         }
 
         public void LoadCharacterDataFromCurrentSavaData(ref CharacterSaveData currentCharacterSaveData)
@@ -207,6 +219,19 @@ namespace AH
             playerStatsManager.playerLevel = currentCharacterSaveData.characterLevel;
 
             transform.position = new Vector3(currentCharacterSaveData.xPosition, currentCharacterSaveData.yPosition, currentCharacterSaveData.zPosition);
+
+            //zbrane
+            playerInventoryManager.rightWeapon = WorldItemDataBase.Instance.GetWeaponItemByID(currentCharacterSaveData.currentRightHandWeaponID);
+            playerInventoryManager.leftWeapon = WorldItemDataBase.Instance.GetWeaponItemByID(currentCharacterSaveData.currentLeftHandWeaponID);
+            playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+
+            //naboje
+            playerInventoryManager.currentAmmo = WorldItemDataBase.Instance.GetAmmoItemByID(currentCharacterSaveData.currentAmmo);
+            playerInventoryManager.currentAmmo.currentAmount = currentCharacterSaveData.currentAmmoAmount;
+
+            //lektvary
+            playerInventoryManager.currentConsumableItem = WorldItemDataBase.Instance.GetConsumableItemByID(currentCharacterSaveData.currentConsumable);
+            playerInventoryManager.currentConsumableItem.currentItemAmount = currentCharacterSaveData.currentConsumableAmount;
         }
     }
 }

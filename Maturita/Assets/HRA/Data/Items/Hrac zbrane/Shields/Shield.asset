@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 687e395721e4ecf48b7d889fe99a7169, type: 3}
   itemName: Shield
+  itemID: 1007
   modelPrefab: {fileID: 7090337672483868319, guid: a4775bfeff66da64f9902c2b66fd302d, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 6746dcf28587fec41b2c396eef959c65, type: 2}

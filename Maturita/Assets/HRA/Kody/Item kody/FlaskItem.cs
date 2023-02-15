@@ -22,16 +22,16 @@ namespace AH
 
         public Sprite emptyImage;
 
-        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public override void AttemptToConsumeItem(CharacterManager character)
         {
             if(currentItemAmount > 0)
             {
-                base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
-                GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
-                playerEffectsManager.currentParticleFX = recoveryFX;
-                playerEffectsManager.amountTobeHealed = healthRecoverAmount;
-                playerEffectsManager.activatedFXModel = flask;
-                weaponSlotManager.rightHandSlot.UnloadWeapon();
+                base.AttemptToConsumeItem(character);
+                GameObject flask = Instantiate(itemModel, character.characterWeaponSlotManager.rightHandSlot.transform);
+                character.characterEffectsManager.currentParticleFX = recoveryFX;
+                character.characterEffectsManager.amountToBeHealed = healthRecoverAmount;
+                character.characterEffectsManager.activatedFXModel = flask;
+                character.characterWeaponSlotManager.rightHandSlot.UnloadWeapon();
             }
         }
     }

@@ -20,19 +20,19 @@ namespace AH
         public bool isInteracting;
 
 
-        public virtual void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public virtual void AttemptToConsumeItem(CharacterManager character)
         {
             if(currentItemAmount > 0)
             {
                 if(!isInteracting)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
+                    character.characterAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
                     currentItemAmount -= 1;
                 }
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                character.characterAnimatorManager.PlayTargetAnimation("Shrug", true);
             }
         }
     }

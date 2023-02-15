@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1057472193961607335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43144131172766653}
+  - component: {fileID: 5762738749633276993}
+  m_Layer: 0
+  m_Name: World Item Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &43144131172766653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057472193961607335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.12, y: 9.105, z: -6.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5762738749633276993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057472193961607335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fd5a0c52ad8f1479cc1234da89b1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponItems:
+  - {fileID: 11400000, guid: 94f3f3ceeca828a4da14da6449271e25, type: 2}
+  - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
+  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
+  - {fileID: 11400000, guid: 05458dd104fbb294db5866a8ad3cd134, type: 2}
+  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  - {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
+  - {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
+  rangedAmmoItems:
+  - {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
+  consumableItems:
+  - {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}

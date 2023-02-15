@@ -19,6 +19,12 @@ namespace AH
         public WeaponFX rightWeaponFX;
         public WeaponFX leftWeaponFX;
 
+        [Header("Consumable FX")]
+        public GameObject currentParticleFX;
+        public GameObject activatedFXModel;
+        public int amountToBeHealed;
+
+
         private void Awake()
         {
             characterManager = GetComponent<CharacterManager>();
@@ -94,6 +100,15 @@ namespace AH
             {
                 characterManager.animator.SetBool("isAiming", false);
             }
+        }
+
+        public void HealCharacterFromEffect()
+        {
+            characterManager.characterStatsManager.HealCharacter(amountToBeHealed);
+            GameObject healEffect = Instantiate(currentParticleFX, characterManager.characterStatsManager.transform);
+            Destroy(activatedFXModel.gameObject);
+            Destroy(healEffect.gameObject, 1);
+            characterManager.characterWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
     }
 

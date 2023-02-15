@@ -481,7 +481,7 @@ namespace AH
             if(x_Input)
             {
                 x_Input = false;
-                playerManager.playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerManager.playerAnimatorManager, playerManager.playerWeaponSlotManager, playerManager.playerEffectsManager);
+                playerManager.playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerManager);
             }
         }
 

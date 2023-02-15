@@ -11,7 +11,7 @@ namespace AH
         [Header("Item Info")]
         public Sprite itemIcon;
         public string itemName;
-
+        public int itemID;
 
     }
 

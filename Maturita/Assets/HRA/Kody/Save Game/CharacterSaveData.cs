@@ -13,6 +13,14 @@ namespace AH
 
         public int characterLevel;
 
+        [Header("Equipment")]
+        public int currentRightHandWeaponID;
+        public int currentLeftHandWeaponID;
+        public int currentAmmo;
+        public int currentAmmoAmount;
+        public int currentConsumable;
+        public int currentConsumableAmount;
+
         [Header("World Coordinates")]
         public float xPosition;
         public float yPosition;

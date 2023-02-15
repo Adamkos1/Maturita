@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 6dd045c8edf60b0478e23cb40e72ed59, type: 3}
   itemName: Ruky
+  itemID: 1000
   modelPrefab: {fileID: 6887460158461779603, guid: 593c485c19855584fa84836b93b9dec1, type: 3}
   isUnarmed: 1
   weaponController: {fileID: 22100000, guid: 30a0c2f8ec4ae7a40b36416fa67dce91, type: 2}
@@ -21,14 +22,18 @@ MonoBehaviour:
   weaponType: 1
   physicalDamage: 0
   magicDamage: 0
+  lightAttackDamageModifier: 1
+  heavtAttackDamageModifier: 2
   criticalDamageMultiplier: 0
+  guardBreakModifier: 1
   poiseBreak: 0
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalBlockingDamageAbsorption: 0
   magicDamageAbsorption: 0
-  baseStamina: 0
-  lightAttackMultiplier: 0
-  heavyAttackMultiplier: 0
+  stability: 67
+  baseStaminaCost: 25
+  lightAttackStaminaMultiplier: 0
+  heavyAttackStaminaMultiplier: 0
   oh_tap_RB_Action: {fileID: 11400000, guid: 8f2cab1185f94be41a3696fb7786d112, type: 2}
   oh_hold_RB_Action: {fileID: 0}
   oh_tap_LB_Action: {fileID: 11400000, guid: 8f2cab1185f94be41a3696fb7786d112, type: 2}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 6ec3768e200ce654cacccddfeaa0f2bb, type: 3}
   itemName: Luk
+  itemID: 1008
   modelPrefab: {fileID: 7090337672483868319, guid: adc4090c897e10f4b95ceb176d8f21b0, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 3d2717b230b30fb479422445d9275b31, type: 2}
@@ -21,14 +22,18 @@ MonoBehaviour:
   weaponType: 8
   physicalDamage: 25
   magicDamage: 0
+  lightAttackDamageModifier: 1
+  heavtAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 1
   poiseBreak: 100
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalBlockingDamageAbsorption: 0
   magicDamageAbsorption: 0
-  baseStamina: 20
-  lightAttackMultiplier: 1
-  heavyAttackMultiplier: 2
+  stability: 67
+  baseStaminaCost: 25
+  lightAttackStaminaMultiplier: 0
+  heavyAttackStaminaMultiplier: 0
   oh_tap_RB_Action: {fileID: 11400000, guid: 60c595fc31918d84d8b8a7b3570f7e13, type: 2}
   oh_hold_RB_Action: {fileID: 11400000, guid: c561b9864e1df3649bec4f734c1a5904, type: 2}
   oh_tap_LB_Action: {fileID: 0}

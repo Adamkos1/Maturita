@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: b82c60686cea0c141a1c020e428c75f7, type: 3}
   itemName: Dvojruky mec
+  itemID: 1005
   modelPrefab: {fileID: 7090337672483868319, guid: fb434e3d6fbc88c48beee52511a451df, type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 6746dcf28587fec41b2c396eef959c65, type: 2}
@@ -24,10 +25,12 @@ MonoBehaviour:
   lightAttackDamageModifier: 1
   heavtAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 1
   poiseBreak: 25
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalBlockingDamageAbsorption: 0
   magicDamageAbsorption: 0
+  stability: 67
   baseStaminaCost: 20
   lightAttackStaminaMultiplier: 1
   heavyAttackStaminaMultiplier: 2
