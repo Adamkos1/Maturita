@@ -10,6 +10,12 @@ namespace AH
         public float radius = 0.6f;
         public string interactableText;
 
+        protected virtual void Start()
+        {
+            
+        }
+
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;

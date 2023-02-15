@@ -9,7 +9,7 @@ namespace AH
         public int damage = 25;
         string damageAnimation = "Damage_01";
 
-        private void OnTriggerEnter(Collider other)
+         private void OnTriggerEnter(Collider other)
         {
             CharacterStatsManager characterStats = other.GetComponent<CharacterStatsManager>();
 

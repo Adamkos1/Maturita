@@ -211,6 +211,18 @@ namespace AH
             //lektvary
             currentCharacterSaveData.currentConsumable = playerInventoryManager.currentConsumableItem.itemID;
             currentCharacterSaveData.currentConsumableAmount = playerInventoryManager.currentConsumableItem.currentItemAmount;
+
+            //staty
+            currentCharacterSaveData.healthlevel = playerStatsManager.healthlevel;
+            currentCharacterSaveData.staminalevel = playerStatsManager.staminalevel;
+            currentCharacterSaveData.manaLevel = playerStatsManager.manaLevel;
+            currentCharacterSaveData.strenghtLevel = playerStatsManager.strenghtLevel;
+            currentCharacterSaveData.dexterityLevel = playerStatsManager.dexterityLevel;
+            currentCharacterSaveData.intelligenceLevel = playerStatsManager.intelligenceLevel;
+            currentCharacterSaveData.faithLevel = playerStatsManager.faithLevel;
+            currentCharacterSaveData.poiseLevel = playerStatsManager.poiseLevel;
+            currentCharacterSaveData.currentSoulCount = playerStatsManager.currentSoulCount;
+            currentCharacterSaveData.currentHealth = playerStatsManager.currentHealth;
         }
 
         public void LoadCharacterDataFromCurrentSavaData(ref CharacterSaveData currentCharacterSaveData)
@@ -232,6 +244,18 @@ namespace AH
             //lektvary
             playerInventoryManager.currentConsumableItem = WorldItemDataBase.Instance.GetConsumableItemByID(currentCharacterSaveData.currentConsumable);
             playerInventoryManager.currentConsumableItem.currentItemAmount = currentCharacterSaveData.currentConsumableAmount;
+
+            //staty
+            playerStatsManager.healthlevel = currentCharacterSaveData.healthlevel;
+            playerStatsManager.staminalevel = currentCharacterSaveData.staminalevel;
+            playerStatsManager.manaLevel = currentCharacterSaveData.manaLevel;
+            playerStatsManager.strenghtLevel = currentCharacterSaveData.strenghtLevel;
+            playerStatsManager.dexterityLevel = currentCharacterSaveData.dexterityLevel;
+            playerStatsManager.intelligenceLevel = currentCharacterSaveData.intelligenceLevel;
+            playerStatsManager.faithLevel = currentCharacterSaveData.faithLevel;
+            playerStatsManager.poiseLevel = currentCharacterSaveData.poiseLevel;
+            playerStatsManager.currentSoulCount = currentCharacterSaveData.currentSoulCount;
+            playerStatsManager.currentHealth = currentCharacterSaveData.currentHealth;
         }
     }
 }

@@ -15,11 +15,11 @@ namespace AH
 
         public int maxHealth;
         public int currentHealth;
-        HealthBar healthBar;
+        public HealthBar healthBar;
 
         public float maxStamina;
         public float currentStamina;
-        StaminaBar staminaBar;
+        public StaminaBar staminaBar;
 
         public float maxMana;
         public float currentMana;

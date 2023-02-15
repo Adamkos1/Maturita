@@ -40,7 +40,6 @@ namespace AH
         [Header("Stamina Costs")]
         [SerializeField]
         int rollStaminaCost = 15;
-        int backtepStaminaCost = 12;
         int sprintStaminaCost = 1;
         int jumpStaminaCost = 15;
 

@@ -9,21 +9,53 @@ namespace AH
 
     public class WeaponPickUp : Interactable
     {
+        //unikatne IDcko pre tuto vec vo svete kazde potrebujemat svoje vlastne id
+        [Header("World Item ID")]
+        [SerializeField] int itemPickUpID;
+        [SerializeField] bool hasBeenLooted;
+
+        [Header("Item")]
         public WeaponItem weapon;
-
         public RangedAmmoItem rangedAmmo;
-
         public ConsumableItem estusFlask;
 
         public bool isFlask;
-
         public bool isAmmo;
+
+        protected override void Start()
+        {
+            base.Start();
+
+            //ak save data neobsahuje tento item tak este nemohol byt vylooteny
+            if (!WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.ContainsKey(itemPickUpID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Add(itemPickUpID, false);
+            }
+
+            hasBeenLooted = WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld[itemPickUpID];
+
+            if(hasBeenLooted)
+            {
+                gameObject.SetActive(false);
+            }
+        }
 
         public override void Interact(PlayerManager playerManager)
         {
             base.Interact(playerManager);
 
-            if(isFlask)
+            //upozornis character data ze tento item bool vylooteny zo sveta, tak aby sa znova nespawnol
+            if (WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.ContainsKey(itemPickUpID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Remove(itemPickUpID);
+            }
+
+            //ulozi the pick up do nasich save data takze sa to znova nespawne ked loadneme
+            WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Add(itemPickUpID, true);
+
+            hasBeenLooted = true;
+
+            if (isFlask)
             {
                 PickUpEstusFlask(playerManager);
             }
@@ -35,7 +67,6 @@ namespace AH
             {
                 PickUpItem(playerManager);
             }
-
         }
 
         private void PickUpItem(PlayerManager playerManager)

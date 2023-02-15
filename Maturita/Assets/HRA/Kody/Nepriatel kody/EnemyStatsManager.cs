@@ -42,12 +42,6 @@ namespace AH
             }
         }
 
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHealth = healthlevel * 10;
-            return maxHealth;
-        }
-
         public override void TakeDamage(int damage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
 

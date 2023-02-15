@@ -41,6 +41,7 @@ namespace AH
             foreach (var fogWall in fogWalls)
             {
                 fogWall.DeactivateFogWall();
+                bossHealthBar.SetHealthBarToInactive();
             }
         }
     }

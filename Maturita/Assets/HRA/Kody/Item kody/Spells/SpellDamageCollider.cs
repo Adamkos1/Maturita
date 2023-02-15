@@ -16,12 +16,12 @@ namespace AH
 
         CharacterStatsManager spellTarget;
         IllusionaryWall spelltargetwall;
-        Rigidbody rigidbody;
+        Rigidbody spellRigidbody;
         Vector3 impactNormal;
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            spellRigidbody = GetComponent<Rigidbody>();
         }
 
         private void Start()

@@ -33,6 +33,11 @@ namespace AH
 
         private void Update()
         {
+            if(enemyManager.currentTarget != null)
+            {
+                worldEventManager.ActiveBossFight();
+            }
+
             if(enemyManager.enemyStatsManager.currentHealth <= 0)
             {
                 worldEventManager.BossHasBeenDefeated();

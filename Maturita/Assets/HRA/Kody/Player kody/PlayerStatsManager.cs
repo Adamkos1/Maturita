@@ -8,8 +8,6 @@ namespace AH
 
     public class PlayerStatsManager : CharacterStatsManager
     {
-        public StaminaBar staminaBar;
-        public HealthBar healthBar;
         public ManaBar manaBar;
         PlayerManager playerManager;
 
@@ -20,7 +18,7 @@ namespace AH
         public float manaRegenerationAmount = 30;
         public float manaRegenerationTimer = 0;
 
-
+        
 
         protected override void Awake()
         {
