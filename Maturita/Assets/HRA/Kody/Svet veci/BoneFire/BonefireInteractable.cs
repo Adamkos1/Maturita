@@ -19,6 +19,7 @@ namespace AH
         public AudioClip bonfireActivationSoundFX;
 
         AudioSource audioSource;
+        WorldSaveGameManager worldSaveGameManager;
 
         private void Awake()
         {
@@ -34,6 +35,7 @@ namespace AH
             }
 
             audioSource = GetComponent<AudioSource>();
+            worldSaveGameManager = FindObjectOfType<WorldSaveGameManager>();
         }
 
         public override void Interact(PlayerManager playerManager)
@@ -55,6 +57,7 @@ namespace AH
                 fireFX.gameObject.SetActive(true);
                 fireFX.Play();
                 audioSource.PlayOneShot(bonfireActivationSoundFX);
+                worldSaveGameManager.saveGame = true;
             }
         }
     }

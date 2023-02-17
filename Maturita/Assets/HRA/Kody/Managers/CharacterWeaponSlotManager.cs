@@ -175,7 +175,7 @@ namespace AH
 
         public virtual void OpenDamageCollider()
         {
-            characterManager.characterSoundFXManager.PlayRadonmWeaponWhoosh();
+            characterManager.characterSoundFXManager.PlayRandomWeaponWhoosh();
 
             if (characterManager.isUsingRightHand)
             {

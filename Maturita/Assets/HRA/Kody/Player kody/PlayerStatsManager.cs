@@ -23,7 +23,7 @@ namespace AH
         protected override void Awake()
         {
             base.Awake();
-            healthBar = FindObjectOfType<HealthBar>();
+            healthBar = FindObjectOfType<PlayerHealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
             playerManager = GetComponent<PlayerManager>();

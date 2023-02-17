@@ -48,14 +48,14 @@ namespace AH
             }
         }
 
-        public virtual void PlayRadonmWeaponWhoosh()
+        public virtual void PlayRandomWeaponWhoosh()
         {
             if (characterManager.isUsingRightHand)
             {
                 int randomSound = Random.Range(0, characterManager.characterInventoryManager.rightWeapon.weaponWhooshes.Length);
                 if (randomSound == lastWeaponWhoosh)
                 {
-                    PlayRadonmWeaponWhoosh();
+                    PlayRandomWeaponWhoosh();
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace AH
                 int randomSound = Random.Range(0, characterManager.characterInventoryManager.leftWeapon.weaponWhooshes.Length);
                 if (randomSound == lastWeaponWhoosh)
                 {
-                    PlayRadonmWeaponWhoosh();
+                    PlayRandomWeaponWhoosh();
                 }
                 else
                 {
