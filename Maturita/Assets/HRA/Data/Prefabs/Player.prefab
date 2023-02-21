@@ -2800,7 +2800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6417167438305516801}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.12, y: 8.105, z: -6.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2942,6 +2942,8 @@ MonoBehaviour:
   sprintSpeed: 7
   rotationSpeed: 10
   rollStaminaCost: 15
+  gravityIntensity: 3.5
+  jumpHeight: -7
   characterCollider: {fileID: 6367224095575061443}
   characterCollisionBlockerCollider: {fileID: 6544323890865004641}
 --- !u!114 &6367224095575061471
@@ -2984,12 +2986,14 @@ MonoBehaviour:
   isPerformingRiposte: 0
   isPerformingBackSteb: 0
   isInteracting: 0
+  isDrinking: 0
   isDead: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
   isInAir: 0
   isGrounded: 1
+  isJumping: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   uIManager: {fileID: 0}
@@ -3059,7 +3063,7 @@ MonoBehaviour:
   currentMana: 0
   currentSoulCount: 1600
   soulsAwardedOnDeath: 0
-  playerLevel: 12
+  playerLevel: 1
   healthlevel: 10
   staminalevel: 10
   manaLevel: 10
@@ -3076,8 +3080,9 @@ MonoBehaviour:
   totalPoiseResetTime: 15
   poiseResetTimer: 0
   manaBar: {fileID: 0}
+  Udiedclip: {fileID: 8300000, guid: 27dae91757d40bd48bcbc5c93175a91d, type: 3}
   staminaRegenerationAmount: 30
-  staminaRegenerationAmountWhileBlocking: 1
+  staminaRegenerationAmountWhileBlocking: 2
   staminaRegenerationTimer: 0
   manaRegenerationAmount: 30
   manaRegenerationTimer: 0
@@ -3181,7 +3186,7 @@ MonoBehaviour:
   leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 1171190231128718, guid: 3c9c7a2f30daeb749bf8a617d9914e7c, type: 3}
   activatedFXModel: {fileID: 0}
-  amountToBeHealed: 25
+  amountToBeHealed: 0
 --- !u!114 &6367224095575061444
 MonoBehaviour:
   m_ObjectHideFlags: 0

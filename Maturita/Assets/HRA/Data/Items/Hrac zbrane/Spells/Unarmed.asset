@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 6dd045c8edf60b0478e23cb40e72ed59, type: 3}
-  itemName: Ruky
+  itemIcon: {fileID: 21300000, guid: 30fc19bb5b44ea54ea3899ee4a8e678a, type: 3}
+  itemName: "K\xFAzelna Ruka"
   itemID: 1000
   modelPrefab: {fileID: 6887460158461779603, guid: 593c485c19855584fa84836b93b9dec1, type: 3}
   isUnarmed: 1

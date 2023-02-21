@@ -54,6 +54,7 @@ MonoBehaviour:
     currentAmmoAmount: 0
     currentConsumable: 0
     currentConsumableAmount: 0
+    weaponsInventory: 
     healthlevel: 0
     staminalevel: 0
     manaLevel: 0
@@ -68,6 +69,18 @@ MonoBehaviour:
     yPosition: 0
     zPosition: 0
     itemsInWorld:
+      keys: 
+      values: 
+    bonefiresInWorld:
+      keys: 
+      values: 
+    enemiesInWorld:
+      keys: 
+      values: 
+    bossHasBeenKilled:
+      keys: 
+      values: 
+    bossFightStarted:
       keys: 
       values: 
   fileName: savegamefile
