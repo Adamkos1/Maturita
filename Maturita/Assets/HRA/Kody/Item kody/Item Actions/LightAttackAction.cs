@@ -26,6 +26,9 @@ namespace AH
 
             if (character.isSprinting)
             {
+                if (character.isInteracting)
+                    return;
+
                 HandleRuningAttack(character);
                 return;
             }

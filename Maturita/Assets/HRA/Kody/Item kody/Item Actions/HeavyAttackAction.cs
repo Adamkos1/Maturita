@@ -20,6 +20,9 @@ namespace AH
 
             if (character.isSprinting)
             {
+                if (character.isInteracting)
+                    return;
+
                 HandleJumpingAttack(character);
                 return;
             }

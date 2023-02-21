@@ -21,7 +21,7 @@ MonoBehaviour:
   ammoMass: 200
   useGravity: 1
   carryLimit: 99
-  currentAmount: 64
+  currentAmount: 0
   physicalDamage: 25
   loadedItemModel: {fileID: 7090337672483868319, guid: 3ead2f02598e53d40a3d36796f60de0b, type: 3}
   liveAmmoModel: {fileID: 7090337672483868319, guid: d7732d2c93f5b444e86174ba27e6ff12, type: 3}

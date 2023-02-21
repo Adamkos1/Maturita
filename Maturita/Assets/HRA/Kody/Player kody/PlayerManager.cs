@@ -66,6 +66,7 @@ namespace AH
             float delta = Time.deltaTime;
 
             isInteracting = animator.GetBool("isInteracting");
+            isJumping = animator.GetBool("isJumping");
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             isInvulnerable = animator.GetBool("isInvulnerable");
@@ -76,6 +77,7 @@ namespace AH
             animator.SetBool("isInAir", isInAir);
             animator.SetBool("isDead", isDead);
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
+            animator.SetBool("isGrounded", isGrounded);
 
             inputHandler.TickInput();
             playerLocomotionManager.HandleRollingAndSprinting();
@@ -222,7 +224,7 @@ namespace AH
             currentCharacterSaveData.faithLevel = playerStatsManager.faithLevel;
             currentCharacterSaveData.poiseLevel = playerStatsManager.poiseLevel;
             currentCharacterSaveData.currentSoulCount = playerStatsManager.currentSoulCount;
-            currentCharacterSaveData.currentHealth = playerStatsManager.currentHealth;
+            currentCharacterSaveData.currentHealth = playerStatsManager.currentHealth;    
         }
 
         public void LoadCharacterDataFromCurrentSavaData(ref CharacterSaveData currentCharacterSaveData)

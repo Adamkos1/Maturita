@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HRA/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/HRA/Levely/Level 1.unity
+    guid: 3b3c7d3e4b463884a9b11cfe9dd0cc3f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ccf409a796ff0434697532878a973608, type: 2}

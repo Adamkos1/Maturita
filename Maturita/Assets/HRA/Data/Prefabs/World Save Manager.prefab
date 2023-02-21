@@ -48,8 +48,28 @@ MonoBehaviour:
   currentCharacterSaveData:
     characterName: 
     characterLevel: 0
+    currentRightHandWeaponID: 0
+    currentLeftHandWeaponID: 0
+    currentAmmo: 0
+    currentAmmoAmount: 0
+    currentConsumable: 0
+    currentConsumableAmount: 0
+    healthlevel: 0
+    staminalevel: 0
+    manaLevel: 0
+    strenghtLevel: 0
+    dexterityLevel: 0
+    intelligenceLevel: 0
+    faithLevel: 0
+    poiseLevel: 0
+    currentSoulCount: 0
+    currentHealth: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    itemsInWorld:
+      keys: 
+      values: 
+  fileName: savegamefile
   saveGame: 0
   loadGame: 0

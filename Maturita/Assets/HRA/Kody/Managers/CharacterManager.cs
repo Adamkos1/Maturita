@@ -53,6 +53,7 @@ namespace AH
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
+        public bool isJumping;
 
         [Header("Spells")]
         public bool isFiringSpell;

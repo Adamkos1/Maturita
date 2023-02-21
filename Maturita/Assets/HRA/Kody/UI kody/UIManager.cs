@@ -24,6 +24,7 @@ namespace AH
         public GameObject equipmentScreenWindow;
         public GameObject levelUpWindow;
         public GameObject itemStatsWindow;
+        public GameObject gameSettings;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -96,6 +97,7 @@ namespace AH
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
             itemStatsWindow.SetActive(false);
+            gameSettings.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

@@ -43,6 +43,11 @@ namespace AH
         int sprintStaminaCost = 1;
         int jumpStaminaCost = 15;
 
+        [Header("Stamina Costs")]
+        [SerializeField]
+        public float gravityIntensity = 3;
+        public float jumpHeight = -15;
+
         Vector3 normalVector;
         Vector3 targetPosition;
 
@@ -143,6 +148,9 @@ namespace AH
             if (playerManager.isInteracting)
                 return;
 
+            if (playerManager.isJumping)
+                return;
+
             moveDirection = playerManager.cameraHandler.cameraObject.transform.forward * playerManager.inputHandler.vertical;
             moveDirection += playerManager.cameraHandler.cameraObject.transform.right * playerManager.inputHandler.horizontal;
             moveDirection.Normalize();
@@ -172,10 +180,10 @@ namespace AH
                 }
             }
 
-            Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
-            rigidbody.velocity = projectedVelocity;
+            Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector); 
+            rigidbody.velocity = new Vector3(projectedVelocity.x, rigidbody.velocity.y, projectedVelocity.z);
 
-            if(playerManager.inputHandler.lockOnFlag && playerManager.inputHandler.sprintFlag == false)
+            if (playerManager.inputHandler.lockOnFlag && playerManager.inputHandler.sprintFlag == false)
             {
                 playerManager.playerAnimatorManager.UpdateAnimatorValues(playerManager.inputHandler.vertical, playerManager.inputHandler.horizontal, playerManager.isSprinting);
 
@@ -281,7 +289,7 @@ namespace AH
                     playerManager.isGrounded = false;
                 }
 
-                if(playerManager.isInAir == false)
+                if(playerManager.isInAir == false && !playerManager.isJumping)
                 {
                     if (playerManager.isInteracting == false)
                     {
@@ -323,16 +331,20 @@ namespace AH
             {
                 playerManager.inputHandler.jump_Input = false;
 
-                if(playerManager.inputHandler.moveAmount > 0)
+                if(playerManager.isGrounded)
                 {
-                    moveDirection = playerManager.cameraHandler.cameraObject.transform.forward * playerManager.inputHandler.vertical;
-                    moveDirection += playerManager.cameraHandler.cameraObject.transform.right * playerManager.inputHandler.horizontal;
-                    playerManager.playerAnimatorManager.PlayTargetAnimation("Jump", true);
-                    playerManager.playerAnimatorManager.EraseHandIKForWeapon();
-                    moveDirection.y = 0;
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    //myTransform.rotation = jumpRotation;
-                    playerManager.playerStatsManager.DrainStamina(jumpStaminaCost);
+                    if (playerManager.inputHandler.moveAmount > 0)
+                    {
+                        playerManager.animator.SetBool("isJumping", true);
+                        playerManager.playerAnimatorManager.PlayTargetAnimation("Jump", false);
+                        playerManager.playerAnimatorManager.EraseHandIKForWeapon();
+
+                        float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
+                        Vector3 playerVelocity = moveDirection;
+                        playerVelocity.y = jumpingVelocity;
+                        rigidbody.velocity = playerVelocity;
+                        playerManager.playerStatsManager.DrainStamina(jumpStaminaCost);
+                    }
                 }
             }
         }

@@ -20,6 +20,10 @@ namespace AH
         public int currentConsumable;
         public int currentConsumableAmount;
 
+        [Header("Player Inventory")]
+        public List<int> weaponsInventory;
+
+
         [Header("Player Stats")]
         public int healthlevel;
         public int staminalevel;
@@ -39,11 +43,20 @@ namespace AH
         public float zPosition;
 
         [Header("Items Looted From World")]
-        public SerializbleDictionary<int, bool> itemsInWorld;
+        public SerializbleDictionary<int, bool> itemsInWorld; //int je worltd item ID a bool je ze ci bool vyluteni
+
+        [Header("Enemies killed")]
+        public SerializbleDictionary<int, bool> enemiesInWorld;
+        public SerializbleDictionary<int, bool> bossHasBeenKilled;
+        public SerializbleDictionary<int, bool> bossFightStarted;
+
 
         public CharacterSaveData()
         {
             itemsInWorld = new SerializbleDictionary<int, bool>();
+            enemiesInWorld = new SerializbleDictionary<int, bool>();
+            bossHasBeenKilled = new SerializbleDictionary<int, bool>();
+            bossFightStarted = new SerializbleDictionary<int, bool>();
         }
 
 

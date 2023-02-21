@@ -25,6 +25,10 @@ namespace AH
         public float maximumAggroRadius = 2.5f;
         public float timeUntilDestroyed = 3;
 
+        [Header("A.I information")]
+        [SerializeField] int enemyID;
+        [SerializeField] bool hasBeenKilled;
+
         [Header("A.I Settings")]
         public float detectionRadius = 20;
         //proste cim vysi rozsah tym viac vidia a opacne
@@ -75,6 +79,18 @@ namespace AH
 
         private void Start()
         {
+            if (!WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld.ContainsKey(enemyID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld.Add(enemyID, false);
+            }
+
+            hasBeenKilled = WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld[enemyID];
+
+            if (hasBeenKilled)
+            {
+                gameObject.SetActive(false);
+            }
+
             enemyRigidBody.isKinematic = false;
         }
 
@@ -101,9 +117,12 @@ namespace AH
                 viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
             }
 
-            if (isDead)
+            if (isDead && WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld.ContainsKey(enemyID))
             {
+                WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld.Remove(enemyID);
                 Destroy(gameObject, timeUntilDestroyed);
+                WorldSaveGameManager.instance.currentCharacterSaveData.enemiesInWorld.Add(enemyID, true);
+                hasBeenKilled = true;
             }
         }
 

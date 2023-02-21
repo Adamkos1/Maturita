@@ -104,7 +104,6 @@ namespace AH
             }
 
             player.LoadCharacterDataFromCurrentSavaData(ref currentCharacterSaveData);
-
         }
     }
 
