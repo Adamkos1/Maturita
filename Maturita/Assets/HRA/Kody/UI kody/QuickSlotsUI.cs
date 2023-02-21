@@ -11,7 +11,7 @@ namespace AH
         public Image leftWeaponIcon;
         public Image rightWeaponIcon;
         public Image consumableIcon;
-        public Image spellIcon;
+        public Image arrowIcon;
 
         public void UpdateWeaponQuickSlotUI(bool isLeft, WeaponItem weapon)
         {
@@ -45,7 +45,9 @@ namespace AH
 
         public void UpdateConsumableSlotUI(ConsumableItem consumableItem)
         {
-            if(consumableItem != null && consumableItem.itemIcon != null)
+            ItemToNumber itemToNumber = FindObjectOfType<ItemToNumber>();
+
+            if (consumableItem != null && consumableItem.itemIcon != null && itemToNumber != null)
             {
                 FlaskItem flask = consumableItem as FlaskItem;
 
@@ -55,11 +57,13 @@ namespace AH
                     {
                         consumableIcon.sprite = consumableItem.itemIcon;
                         consumableIcon.enabled = true;
+                        itemToNumber.SetItemCountText(flask.currentItemAmount);
                     }
                     else
                     {
                         consumableIcon.sprite = flask.emptyImage;
                         consumableIcon.enabled = true;
+                        itemToNumber.SetItemCountText(flask.currentItemAmount);
                     }
                 }
                 else
@@ -70,17 +74,20 @@ namespace AH
             }
         }
 
-        public void UpdateSpellIcon(SpellItem spell)
+        public void UpdateArrowIcon(RangedAmmoItem currentAmmo)
         {
-            if(spell != null && spell.itemIcon != null)
+            AmmoToNumber ammoToNumber = FindObjectOfType<AmmoToNumber>();
+
+            if (currentAmmo != null && currentAmmo.itemIcon != null && ammoToNumber != null)
             {
-                spellIcon.sprite = spell.itemIcon;
-                spellIcon.enabled = true;
+                arrowIcon.sprite = currentAmmo.itemIcon;
+                arrowIcon.enabled = true;
+                ammoToNumber.SetItemCountText(currentAmmo.currentAmount);
             }
             else
             {
-                spellIcon.sprite = null;
-                spellIcon.enabled = false;
+                arrowIcon.sprite = null;
+                arrowIcon.enabled = false;
             }
         }
     }

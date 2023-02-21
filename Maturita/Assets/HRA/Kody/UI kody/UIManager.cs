@@ -20,6 +20,7 @@ namespace AH
         [Header("UI Windows")]
         public GameObject hudWindow;
         public GameObject selectWindow;
+        public GameObject UIWindows;
         public GameObject weaponInventoryWindow;
         public GameObject equipmentScreenWindow;
         public GameObject levelUpWindow;
@@ -39,6 +40,7 @@ namespace AH
 
         [Header("Pop Ups")]
         BonefirePopUPUI bonfirePopUPUI;
+        UdiedPopUpUI udiedPopUpUI;
 
         private void Awake()
         {
@@ -47,6 +49,7 @@ namespace AH
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
 
             bonfirePopUPUI = GetComponentInChildren<BonefirePopUPUI>();
+            udiedPopUpUI = GetComponentInChildren<UdiedPopUpUI>();
         }
 
         private void Start()
@@ -100,6 +103,14 @@ namespace AH
             gameSettings.SetActive(false);
         }
 
+        public void CloseAllWindows()
+        {
+            UIWindows.SetActive(false);
+            hudWindow.SetActive(false);
+            levelUpWindow.SetActive(false);
+        }
+
+
         public void ResetAllSelectedSlots()
         {
             rightHandSlot01Selected = false;
@@ -111,6 +122,21 @@ namespace AH
         public void ActivateBonfirePopUp()
         {
             bonfirePopUPUI.DisplayBonfireLitPopUp();
+        }
+
+        public void ActivateUDiedPopUp()
+        {
+            udiedPopUpUI.DisplayUdiedPopUp();
+        }
+
+        public void UpdatePlayerLevel(PlayerStatsManager playerStatsManager)
+        {
+            LevelToNumber levelToNumber = FindObjectOfType<LevelToNumber>();
+
+            if (levelToNumber != null)
+            {
+                levelToNumber.SetLevelCountText(playerStatsManager.playerLevel);
+            }
         }
     }
 

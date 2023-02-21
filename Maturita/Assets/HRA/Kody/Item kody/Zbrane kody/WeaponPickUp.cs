@@ -34,10 +34,10 @@ namespace AH
 
             hasBeenLooted = WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld[itemPickUpID];
 
-            if(hasBeenLooted)
-            {
-                gameObject.SetActive(false);
-            }
+            //if(hasBeenLooted)
+            //{
+            //    gameObject.SetActive(false);
+            //}
         }
 
         public override void Interact(PlayerManager playerManager)

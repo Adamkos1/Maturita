@@ -24,7 +24,7 @@ namespace AH
         {
             if(currentItemAmount > 0)
             {
-                if(!isInteracting)
+                if(!character.isInteracting)
                 {
                     character.characterAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
                     currentItemAmount -= 1;

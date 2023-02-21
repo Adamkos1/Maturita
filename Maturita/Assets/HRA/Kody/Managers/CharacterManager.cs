@@ -43,6 +43,7 @@ namespace AH
 
         [Header("Interacting")]
         public bool isInteracting;
+        public bool isDrinking;
 
         [Header("Status")]
         public bool isDead;

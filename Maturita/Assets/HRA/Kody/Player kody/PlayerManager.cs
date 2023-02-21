@@ -66,6 +66,7 @@ namespace AH
             float delta = Time.deltaTime;
 
             isInteracting = animator.GetBool("isInteracting");
+            isDrinking = animator.GetBool("isDrinking");
             isJumping = animator.GetBool("isJumping");
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
@@ -87,6 +88,7 @@ namespace AH
             playerInventoryManager.ConsumableUI();
 
             CheckForInteractableObject();
+            uIManager.UpdatePlayerLevel(playerStatsManager);
 
             if(isInvulnerable)
             {

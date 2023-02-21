@@ -76,6 +76,7 @@ namespace AH
         public void ConsumableUI()
         {
             quickSlotsUI.UpdateConsumableSlotUI(currentConsumableItem);
+            quickSlotsUI.UpdateArrowIcon(currentAmmo);
         }
     }
 

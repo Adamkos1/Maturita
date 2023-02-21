@@ -481,7 +481,11 @@ namespace AH
             if(x_Input)
             {
                 x_Input = false;
-                playerManager.playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerManager);
+
+                if(!playerManager.isDrinking && !playerManager.isInteracting)
+                {
+                    playerManager.playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerManager);
+                }
             }
         }
 

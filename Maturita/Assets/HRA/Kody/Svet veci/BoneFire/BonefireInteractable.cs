@@ -11,6 +11,7 @@ namespace AH
         public Transform bonfireTeleportTransform;
 
         [Header("Activation Status")]
+        public int bonefireID;
         public bool bonfireHasBeenActivated;
 
         [Header("Bonfire FX")]
@@ -23,7 +24,20 @@ namespace AH
 
         private void Awake()
         {
-            if(bonfireHasBeenActivated)
+            audioSource = GetComponent<AudioSource>();
+            worldSaveGameManager = FindObjectOfType<WorldSaveGameManager>();
+        }
+
+        protected override void Start()
+        {
+            if (!WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld.ContainsKey(bonefireID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld.Add(bonefireID, false);
+            }
+
+            bonfireHasBeenActivated = WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld[bonefireID];
+
+            if (bonfireHasBeenActivated)
             {
                 fireFX.gameObject.SetActive(true);
                 fireFX.Play();
@@ -33,21 +47,23 @@ namespace AH
             {
                 interactableText = "Zapalit ohnisko";
             }
-
-            audioSource = GetComponent<AudioSource>();
-            worldSaveGameManager = FindObjectOfType<WorldSaveGameManager>();
         }
 
         public override void Interact(PlayerManager playerManager)
         {
-            Debug.Log("Bonfire interagoval si");
-
-            if(bonfireHasBeenActivated)
+            if (bonfireHasBeenActivated)
             {
                 playerManager.playerAnimatorManager.PlayTargetAnimation("Bonfire_Start", true);
             }
             else
             {
+                if (WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld.ContainsKey(bonefireID))
+                {
+                    WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld.Remove(bonefireID);
+                }
+
+                WorldSaveGameManager.instance.currentCharacterSaveData.bonefiresInWorld.Add(bonefireID, true);
+
                 playerManager.playerAnimatorManager.PlayTargetAnimation("Bonfire_Activate", true);
                 playerManager.uIManager.ActivateBonfirePopUp();
                 bonfireHasBeenActivated = true;

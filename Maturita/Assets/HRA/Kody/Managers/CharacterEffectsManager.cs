@@ -102,14 +102,6 @@ namespace AH
             }
         }
 
-        public void HealCharacterFromEffect()
-        {
-            characterManager.characterStatsManager.HealCharacter(amountToBeHealed);
-            GameObject healEffect = Instantiate(currentParticleFX, characterManager.characterStatsManager.transform);
-            Destroy(activatedFXModel.gameObject);
-            Destroy(healEffect.gameObject, 1);
-            characterManager.characterWeaponSlotManager.LoadBothWeaponsOnSlots();
-        }
     }
 
 }

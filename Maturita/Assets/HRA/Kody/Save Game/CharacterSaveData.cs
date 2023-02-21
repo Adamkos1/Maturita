@@ -44,6 +44,7 @@ namespace AH
 
         [Header("Items Looted From World")]
         public SerializbleDictionary<int, bool> itemsInWorld; //int je worltd item ID a bool je ze ci bool vyluteni
+        public SerializbleDictionary<int, bool> bonefiresInWorld;
 
         [Header("Enemies killed")]
         public SerializbleDictionary<int, bool> enemiesInWorld;
@@ -54,6 +55,8 @@ namespace AH
         public CharacterSaveData()
         {
             itemsInWorld = new SerializbleDictionary<int, bool>();
+            bonefiresInWorld = new SerializbleDictionary<int, bool>();
+
             enemiesInWorld = new SerializbleDictionary<int, bool>();
             bossHasBeenKilled = new SerializbleDictionary<int, bool>();
             bossFightStarted = new SerializbleDictionary<int, bool>();

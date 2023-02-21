@@ -30,7 +30,7 @@ namespace AH
                 GameObject flask = Instantiate(itemModel, character.characterWeaponSlotManager.rightHandSlot.transform);
                 character.characterEffectsManager.currentParticleFX = recoveryFX;
                 character.characterEffectsManager.amountToBeHealed = healthRecoverAmount;
-                character.characterEffectsManager.activatedFXModel = flask;
+                character.characterEffectsManager.instantiatedFXModel = flask;
                 character.characterWeaponSlotManager.rightHandSlot.UnloadWeapon();
             }
         }

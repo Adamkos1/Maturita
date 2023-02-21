@@ -11,6 +11,9 @@ namespace AH
         public ManaBar manaBar;
         PlayerManager playerManager;
 
+        AudioSource audioSource;
+        public AudioClip Udiedclip;
+
         public float staminaRegenerationAmount = 5;
         public float staminaRegenerationAmountWhileBlocking = 0.5f;
         public float staminaRegenerationTimer = 0;
@@ -27,6 +30,7 @@ namespace AH
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
             playerManager = GetComponent<PlayerManager>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -176,6 +180,9 @@ namespace AH
             currentHealth = 0;
             playerManager.isDead = true;
             playerManager.playerAnimatorManager.PlayTargetAnimation("Death_01", true);
+            playerManager.uIManager.CloseAllWindows();
+            playerManager.uIManager.ActivateUDiedPopUp();
+            audioSource.PlayOneShot(Udiedclip);
         }
 
     }
