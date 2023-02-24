@@ -4930,7 +4930,7 @@ MonoBehaviour:
   totalPoiseResetTime: 3
   poiseResetTimer: 0
   enemyHealthBar: {fileID: 8645198526998866010}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 4b0cd17eca803fe43ab3330a0dc6e37e, type: 3}
   isBoss: 0
 --- !u!114 &4124150569604060187
 MonoBehaviour:

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
+  m_Name: "Kr\xE1lov Me\u010D buff"
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 76d06483078202c49b1cab2c34e78dae, type: 3}
+  itemName: "Kr\xE1lov Me\u010D"
+  itemID: 1005
+  modelPrefab: {fileID: 7090337672483868319, guid: fb434e3d6fbc88c48beee52511a451df, type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 6746dcf28587fec41b2c396eef959c65, type: 2}
+  offHandIdleAnimation: Left_Arm_Idle_01
+  weaponType: 3
+  physicalDamage: 50
+  magicDamage: 0
+  lightAttackDamageModifier: 1
+  heavtAttackDamageModifier: 2
+  criticalDamageMultiplier: 4
+  guardBreakModifier: 1
+  poiseBreak: 25
+  offensivePoiseBonus: 0
+  physicalBlockingDamageAbsorption: 0
+  magicDamageAbsorption: 0
+  stability: 67
+  baseStaminaCost: 20
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 2
+  oh_tap_RB_Action: {fileID: 11400000, guid: a4e08d20090fe554a96a30b8e2911c35, type: 2}
+  oh_hold_RB_Action: {fileID: 11400000, guid: e72f6eb74dc80e145a0eb7fe49a13dd7, type: 2}
+  oh_tap_LB_Action: {fileID: 0}
+  oh_hold_LB_Action: {fileID: 0}
+  oh_tap_RT_Action: {fileID: 11400000, guid: 5fae779d61627a342b9d91eeafbae0a5, type: 2}
+  oh_hold_RT_Action: {fileID: 11400000, guid: e6192afab3b10eb4f89bb9a702081cae, type: 2}
+  oh_tap_LT_Action: {fileID: 0}
+  oh_hold_LT_Action: {fileID: 0}
+  th_tap_RB_Action: {fileID: 11400000, guid: a4e08d20090fe554a96a30b8e2911c35, type: 2}
+  th_hold_RB_Action: {fileID: 0}
+  th_tap_LB_Action: {fileID: 0}
+  th_hold_LB_Action: {fileID: 0}
+  th_tap_RT_Action: {fileID: 11400000, guid: 5fae779d61627a342b9d91eeafbae0a5, type: 2}
+  th_hold_RT_Action: {fileID: 11400000, guid: e6192afab3b10eb4f89bb9a702081cae, type: 2}
+  th_tap_LT_Action: {fileID: 0}
+  th_hold_LT_Action: {fileID: 0}
+  weaponWhooshes:
+  - {fileID: 8300000, guid: 13182107f288fdc47a11f9216c8f062b, type: 3}
+  - {fileID: 8300000, guid: 7053294e066eb1945baa4d9cc9194f15, type: 3}
+  - {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}

@@ -19,6 +19,9 @@ namespace AH
         public RangedAmmoItem rangedAmmo;
         public ConsumableItem estusFlask;
 
+        public int kolkotoho;
+
+        public bool isItem;
         public bool isFlask;
         public bool isAmmo;
 
@@ -34,10 +37,10 @@ namespace AH
 
             hasBeenLooted = WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld[itemPickUpID];
 
-            //if(hasBeenLooted)
-            //{
-            //    gameObject.SetActive(false);
-            //}
+            if(hasBeenLooted && !isItem)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public override void Interact(PlayerManager playerManager)
@@ -101,7 +104,7 @@ namespace AH
 
             playerLocomotion.rigidbody.velocity = Vector3.zero;
             animatorHandler.PlayTargetAnimation("Pick Up Item", true);
-            playerInventory.currentConsumableItem.currentItemAmount = playerInventory.currentConsumableItem.currentItemAmount + 5;
+            playerInventory.currentConsumableItem.currentItemAmount = playerInventory.currentConsumableItem.currentItemAmount + kolkotoho;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<TextMeshProUGUI>().text = estusFlask.itemName;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<RawImage>().texture = estusFlask.itemIcon.texture;
             playerManager.itemInteractableUIGameObject.SetActive(true);
@@ -121,7 +124,7 @@ namespace AH
 
             playerLocomotion.rigidbody.velocity = Vector3.zero;
             animatorHandler.PlayTargetAnimation("Pick Up Item", true);
-            playerInventory.currentAmmo.currentAmount = playerInventory.currentAmmo.currentAmount + 5;
+            playerInventory.currentAmmo.currentAmount = playerInventory.currentAmmo.currentAmount + kolkotoho;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<TextMeshProUGUI>().text = rangedAmmo.itemName;
             playerManager.itemInteractableUIGameObject.GetComponentInChildren<RawImage>().texture = rangedAmmo.itemIcon.texture;
             playerManager.itemInteractableUIGameObject.SetActive(true);

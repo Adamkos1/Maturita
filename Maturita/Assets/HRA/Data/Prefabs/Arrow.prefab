@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3536957367919986169}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.994, y: -8.9586935, z: 6.53}
-  m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
+  m_LocalScale: {x: 0.33709, y: 0.33709, z: 0.33709}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4762,11 +4762,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.83
-  interactableText: Sipy
-  itemPickUpID: 105
+  interactableText: "\u0160\xEDpy"
+  itemPickUpID: 101
   hasBeenLooted: 0
   weapon: {fileID: 0}
   rangedAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   estusFlask: {fileID: 0}
+  kolkotoho: 10
+  isItem: 0
   isFlask: 0
   isAmmo: 1

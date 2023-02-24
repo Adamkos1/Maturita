@@ -187,7 +187,7 @@ namespace AH
 
             if(enemyCharacter != null)
             {
-                if(enemyCharacter.isBeingBackStebbed || !enemyCharacter.isBeingRiposted)
+                if(!enemyCharacter.isBeingBackStebbed || !enemyCharacter.isBeingRiposted)
                 {
                     //ked nas backstabnu aby nas ine debiliny neublizili
                     EnableIsInvulnerable();
