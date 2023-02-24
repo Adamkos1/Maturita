@@ -10,6 +10,7 @@ namespace AH
     {
         EnemyManager enemyManager;
         public UIEnemyHealthBar enemyHealthBar;
+        public AudioClip deathSound;
 
         public bool isBoss;
 
@@ -118,6 +119,10 @@ namespace AH
             currentHealth = 0;
             enemyManager.enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
             enemyManager.isDead = true;
+            if(!isBoss)
+            {
+                enemyManager.audioSource.PlayOneShot(deathSound);
+            }
         }
 
         public void BreakGuard()

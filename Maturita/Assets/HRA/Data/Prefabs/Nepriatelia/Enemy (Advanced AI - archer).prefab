@@ -3704,6 +3704,7 @@ MonoBehaviour:
   enemyBossManager: {fileID: 0}
   enemyEffectsManager: {fileID: 0}
   bossCombatStanceState: {fileID: 0}
+  audioSource: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 4697927753526030214}
   currentTarget: {fileID: 0}
@@ -3776,6 +3777,7 @@ MonoBehaviour:
   totalPoiseResetTime: 3
   poiseResetTimer: 0
   enemyHealthBar: {fileID: 2946821932777744824}
+  ahh: {fileID: 8300000, guid: 4b0cd17eca803fe43ab3330a0dc6e37e, type: 3}
   isBoss: 0
 --- !u!114 &4697927753833316329
 MonoBehaviour:

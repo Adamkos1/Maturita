@@ -11,8 +11,10 @@ namespace AH
         public string bossName;
         UIBossHealthBar bossHealthBar;
         BossCombatStanceState bossCombatStanceState;
-        EnemyManager enemyManager;
+        public EnemyManager enemyManager;
         WorldEventManager worldEventManager;
+
+        bool hasbeenKilled = false;
 
         [Header("Second Phase FX")]
         public GameObject particleFx;
@@ -38,8 +40,9 @@ namespace AH
                 worldEventManager.ActiveBossFight();
             }
 
-            if(enemyManager.enemyStatsManager.currentHealth <= 0)
+            if(enemyManager.enemyStatsManager.currentHealth <= 0 && !hasbeenKilled)
             {
+                hasbeenKilled = true;
                 worldEventManager.BossHasBeenDefeated();
             }
         }

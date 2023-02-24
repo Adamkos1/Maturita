@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cddbf67a6c43d408a77db5132b8851, type: 3}
   m_Name: "Kr\xE1lov Me\u010D"
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: b82c60686cea0c141a1c020e428c75f7, type: 3}
+  itemIcon: {fileID: 21300000, guid: 76d06483078202c49b1cab2c34e78dae, type: 3}
   itemName: "Kr\xE1lov Me\u010D"
   itemID: 1005
   modelPrefab: {fileID: 7090337672483868319, guid: fb434e3d6fbc88c48beee52511a451df, type: 3}

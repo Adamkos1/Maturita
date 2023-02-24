@@ -46,7 +46,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.06
+  m_Radius: 2.43
   m_Center: {x: 0.22, y: 0.5, z: -0.28}
 --- !u!114 &5018513153400207444
 MonoBehaviour:
@@ -60,9 +60,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76e047e7e800149997e15328697ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.61
-  interactableText: Pick Up Item
-  weapon: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  radius: 0.89
+  interactableText: "Zodvihn\xFA\u0165 Zbra\u0148"
+  itemPickUpID: 0
+  hasBeenLooted: 0
+  weapon: {fileID: 11400000, guid: 4e261631e9117af49b217a783a7be292, type: 2}
   rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 0}
   isFlask: 0

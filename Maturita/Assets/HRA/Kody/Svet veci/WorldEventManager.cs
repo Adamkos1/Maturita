@@ -11,16 +11,21 @@ namespace AH
         public List<FogWall> fogWalls;
         public UIBossHealthBar bossHealthBar;
         public EnemyBossManager enemyBoss;
+        BossDefeatedPopUP bossDefeatedPopUP;
 
         public int bossID;
         public bool bossFightIsActive;
         public bool bossHasBeenAwakened;
         public bool bossHasBeenDefeated;
 
+        public AudioClip deathSound;
+
+
         private void Awake()
         {
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
             enemyBoss = FindObjectOfType<EnemyBossManager>();
+            bossDefeatedPopUP = FindObjectOfType<BossDefeatedPopUP>();
         }
 
         private void Start()
@@ -69,6 +74,9 @@ namespace AH
 
             bossHasBeenDefeated = true;
             bossFightIsActive = false;
+
+            bossDefeatedPopUP.DisplayBonfireLitPopUp();
+            enemyBoss.enemyManager.audioSource.PlayOneShot(deathSound);
 
             foreach (var fogWall in fogWalls)
             {

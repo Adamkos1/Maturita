@@ -14,6 +14,7 @@ namespace AH
         public EnemyBossManager enemyBossManager;
         public EnemyEffectsManager enemyEffectsManager;
         public BossCombatStanceState bossCombatStanceState;
+        public AudioSource audioSource;
 
         public NavMeshAgent navMeshAgent;
         public State currentState;
@@ -75,6 +76,7 @@ namespace AH
             enemyRigidBody = GetComponent<Rigidbody>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Start()

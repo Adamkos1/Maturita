@@ -1269,7 +1269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8453415642455350805
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,9 +1281,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8453415643962430399}
-  m_RootOrder: 12
+  m_Children:
+  - {fileID: 8453415643962430399}
+  m_Father: {fileID: 8453415643712498826}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8453415642455350890
 SkinnedMeshRenderer:
@@ -1582,7 +1583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8453415643962430399}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8453415642464503716
 SkinnedMeshRenderer:
@@ -4964,7 +4965,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8453415643962430399}
+  - {fileID: 8453415642455350805}
   - {fileID: 8453415643242402392}
   - {fileID: 8453415642462605684}
   - {fileID: 8453415643701118437}
@@ -5119,6 +5120,7 @@ MonoBehaviour:
   enemyBossManager: {fileID: 0}
   enemyEffectsManager: {fileID: 0}
   bossCombatStanceState: {fileID: 0}
+  audioSource: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 8453415643673103095}
   currentTarget: {fileID: 0}
@@ -5191,6 +5193,7 @@ MonoBehaviour:
   totalPoiseResetTime: 3
   poiseResetTimer: 0
   enemyHealthBar: {fileID: 8453415643637679174}
+  deathSound: {fileID: 0}
   isBoss: 0
 --- !u!114 &8453415643712498829
 MonoBehaviour:
@@ -5520,7 +5523,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8453415643962430399}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8453415643755047734
 SkinnedMeshRenderer:
@@ -5923,7 +5926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8453415643962430399
 Transform:
   m_ObjectHideFlags: 0
@@ -5931,8 +5934,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8453415643962430398}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5948,10 +5951,9 @@ Transform:
   - {fileID: 8453415642288150331}
   - {fileID: 8453415643487071573}
   - {fileID: 8453415642052843590}
-  - {fileID: 8453415642455350805}
   - {fileID: 8453415643755047729}
   - {fileID: 8453415642464503719}
-  m_Father: {fileID: 8453415643712498826}
+  m_Father: {fileID: 8453415642455350805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8453415643962430396

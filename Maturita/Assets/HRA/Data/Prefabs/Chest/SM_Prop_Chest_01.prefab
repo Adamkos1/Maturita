@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1620115857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620115858}
+  m_Layer: 0
+  m_Name: Player Standing Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620115858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620115857}
+  m_LocalRotation: {x: -0.0036712878, y: -0.9999513, z: -0.00012226669, w: 0.009164452}
+  m_LocalPosition: {x: -0.022, y: 0, z: 0.493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3816609856316101681}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.018, y: -178.95, z: 0.421}
 --- !u!1 &3816609856316345845
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,9 +43,12 @@ GameObject:
   - component: {fileID: 3816609856313140847}
   - component: {fileID: 3816609856314206457}
   - component: {fileID: 3751810867485324215}
+  - component: {fileID: 1912583629}
+  - component: {fileID: 1912583620}
+  - component: {fileID: 1912583621}
   m_Layer: 0
   m_Name: SM_Prop_Chest_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,10 +62,11 @@ Transform:
   m_GameObject: {fileID: 3816609856316345845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.43341, y: 6.2376565e-18, z: -2.576486}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2294068, y: 1.2294068, z: 1.2294068}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3816609856316087295}
+  - {fileID: 1620115858}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,9 +131,61 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43133926653982510, guid: 64b8ea99aa15bd34686a3f26836321e8, type: 2}
+--- !u!65 &1912583629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816609856316345845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.61, z: 0.54}
+  m_Center: {x: 0.000000029802326, y: 0.3, z: -0.01}
+--- !u!95 &1912583620
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816609856316345845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3cc2f89d9258b948a2dfde2d98b2cf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1912583621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816609856316345845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d63a1799c87bd4c9612f5fde84bd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.8
+  interactableText: "Otvori\u0165 Truhlu"
+  playerStandingPosition: {fileID: 1620115858}
+  itemSpawner: {fileID: 5018513153400097718, guid: 5876a66a70df78b49a5d7150dac6a54a, type: 3}
+  itemInchest: {fileID: 11400000, guid: bd306f5cb40d0aa4b90734c92e965742, type: 2}
+  itemPickUpID: 106
+  hasBeenLooted: 0
 --- !u!1 &3816609856316396697
 GameObject:
   m_ObjectHideFlags: 0
