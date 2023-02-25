@@ -3116,6 +3116,7 @@ MonoBehaviour:
   totalPoiseResetTime: 10
   poiseResetTimer: 0
   enemyHealthBar: {fileID: 0}
+  deathSound: {fileID: 0}
   isBoss: 1
 --- !u!114 &8166822693548613251
 MonoBehaviour:
@@ -3173,6 +3174,7 @@ MonoBehaviour:
   enemyBossManager: {fileID: 0}
   enemyEffectsManager: {fileID: 0}
   bossCombatStanceState: {fileID: 0}
+  audioSource: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 8072594473690454832}
   currentTarget: {fileID: 0}
@@ -3231,6 +3233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: FErko
+  enemyManager: {fileID: 0}
   particleFx: {fileID: 7773298333339980583, guid: 811eba2d0be7ced4f9c8f0ad7780839c, type: 3}
 --- !u!114 &8166822693548613278
 MonoBehaviour:
@@ -3245,7 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiatedFXModel: {fileID: 0}
-  bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
+  bloodSplatterFX: {fileID: 1120835270511274, guid: 6e71db40b7e22f247a03bb0bba6e0b63, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 0}
@@ -3410,6 +3413,7 @@ MonoBehaviour:
   woodClips: []
   stoneClips: []
   noAmmo: {fileID: 0}
+  stabsound: {fileID: 0}
 --- !u!114 &8166822693548613275
 MonoBehaviour:
   m_ObjectHideFlags: 0

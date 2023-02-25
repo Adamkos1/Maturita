@@ -100,7 +100,10 @@ namespace AH
         {
             currentHealth = currentHealth - damage;
 
-            characterManager.characterSoundFXManager.PlayRandomDamageSoundFX();
+            if(!characterManager.isBeingBackStebbed || !characterManager.isBeingRiposted)
+            {
+                characterManager.characterSoundFXManager.PlayRandomDamageSoundFX();
+            }
 
             if (currentHealth <= 0)
             {

@@ -4675,7 +4675,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.58, y: 0.14, z: 3.38}
+  m_Size: {x: 0.68, y: 0.47, z: 0.77}
   m_Center: {x: -0.0025901792, y: -0.34, z: 0.019166945}
 --- !u!199 &3536957367937696745
 ParticleSystemRenderer:

@@ -3806,7 +3806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiatedFXModel: {fileID: 0}
-  bloodSplatterFX: {fileID: 1120835270511274, guid: d325153abe6396e4fa8d52c5b7a9269c, type: 3}
+  bloodSplatterFX: {fileID: 1120835270511274, guid: 6e71db40b7e22f247a03bb0bba6e0b63, type: 3}
   rightWeaponFX: {fileID: 0}
   leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 0}
@@ -4005,6 +4005,7 @@ MonoBehaviour:
   woodClips: []
   stoneClips: []
   noAmmo: {fileID: 0}
+  stabsound: {fileID: 0}
 --- !u!1 &4697927753868765326
 GameObject:
   m_ObjectHideFlags: 0

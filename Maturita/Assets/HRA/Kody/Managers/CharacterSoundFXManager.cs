@@ -27,6 +27,9 @@ namespace AH
         [Header("No daco")]
         public AudioClip noAmmo;
 
+        [Header("Parry/backstab")]
+        public AudioClip stabsound;
+
         protected virtual void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
@@ -118,6 +121,11 @@ namespace AH
                 footStepTimer = playerManager.currentOfset;
             }
 
+        }
+
+        public virtual void PlayStabSound()
+        {
+            audioSource.PlayOneShot(stabsound);
         }
     }
 }

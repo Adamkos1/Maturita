@@ -20,7 +20,7 @@ MonoBehaviour:
   upwardVelocity: 150
   ammoMass: 200
   useGravity: 1
-  carryLimit: 99
+  carryLimit: 100
   currentAmount: 20
   physicalDamage: 25
   loadedItemModel: {fileID: 7090337672483868319, guid: 3ead2f02598e53d40a3d36796f60de0b, type: 3}

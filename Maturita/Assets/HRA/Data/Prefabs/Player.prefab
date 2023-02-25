@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6416369184874567049}
   m_LocalRotation: {x: 0.42204976, y: -0.45536882, z: -0.51044834, w: 0.5949418}
-  m_LocalPosition: {x: 0.0018799305, y: 0.88691044, z: -0.019745737}
+  m_LocalPosition: {x: 0.0018798113, y: 0.8869103, z: -0.019744873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3024,18 +3024,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
-  leftWeapon: {fileID: 0}
+  rightWeapon: {fileID: 11400000, guid: 66a2061ebe292234bad4f558ebe3890f, type: 2}
+  leftWeapon: {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
   currentAmmo: {fileID: 11400000, guid: a6e9e159085566c4c80913024f6d26d1, type: 2}
   pyroSpell: {fileID: 11400000, guid: 69f8f61099a2fd04eadbd708708645bb, type: 2}
   healSpell: {fileID: 11400000, guid: 9ab9d108bb09a334493ac44a00dddce3, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
-  - {fileID: 11400000, guid: 70c7ff5e077c7c348bc072a11078f06b, type: 2}
+  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  - {fileID: 11400000, guid: cf2943babede02c4796d36f78a4865ec, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: f4c4b5ff554681f4db95c03aac77007d, type: 2}
-  - {fileID: 11400000, guid: 2f0a7687be00480429e437228f5559fe, type: 2}
+  - {fileID: 11400000, guid: 354387f2e77791a459690b9339206206, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -3061,7 +3061,7 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   maxMana: 0
   currentMana: 0
-  currentSoulCount: 1600
+  currentSoulCount: 0
   soulsAwardedOnDeath: 0
   playerLevel: 1
   healthlevel: 10
@@ -3319,7 +3319,8 @@ MonoBehaviour:
   grassClips: []
   woodClips: []
   stoneClips: []
-  noAmmo: {fileID: 8300000, guid: 92d000c5130b9ca4486951a9acd7db57, type: 3}
+  noAmmo: {fileID: 8300000, guid: 50a9e4a44b5262c43b96d39254072e8d, type: 3}
+  stabsound: {fileID: 8300000, guid: 29188fdf3cb07eb409b12dc2b2eaa033, type: 3}
 --- !u!1 &6417174388105272611
 GameObject:
   m_ObjectHideFlags: 0
