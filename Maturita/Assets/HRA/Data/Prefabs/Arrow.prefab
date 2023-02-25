@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3536957367920343663}
   - component: {fileID: 3536957367939661853}
+  - component: {fileID: 4421717824011667028}
   - component: {fileID: 3536957367937696745}
-  - component: {fileID: 3536957369197407520}
   - component: {fileID: 3536957369197407521}
   m_Layer: 0
   m_Name: Arrow
@@ -4664,6 +4664,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!65 &4421717824011667028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536957367919986169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.58, y: 0.14, z: 3.38}
+  m_Center: {x: -0.0025901792, y: -0.34, z: 0.019166945}
 --- !u!199 &3536957367937696745
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4736,19 +4749,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!135 &3536957369197407520
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3536957367919986169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.58
-  m_Center: {x: 0.0017147063, y: 0.11, z: 0.0068755145}
 --- !u!114 &3536957369197407521
 MonoBehaviour:
   m_ObjectHideFlags: 0

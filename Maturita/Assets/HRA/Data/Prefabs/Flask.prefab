@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1312876228809295993}
   - component: {fileID: 1312876228823396875}
+  - component: {fileID: 5445533270308434195}
   - component: {fileID: 1312876228823003647}
-  - component: {fileID: 1312876228252168920}
   - component: {fileID: 1312876228252168923}
   m_Layer: 0
   m_Name: Flask
@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312876228809488367}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.74, y: -8.9586935, z: 6.53}
-  m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.63, y: -1.03, z: -28.61}
+  m_LocalScale: {x: 0.33709, y: 0.33709, z: 0.33709}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4664,6 +4664,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!65 &5445533270308434195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312876228809488367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.58, y: 0.14, z: 3.38}
+  m_Center: {x: -0.0025901792, y: -0.34, z: 0.019166945}
 --- !u!199 &1312876228823003647
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4736,19 +4749,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!135 &1312876228252168920
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312876228809488367}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.58
-  m_Center: {x: 0.0017147063, y: 0.11, z: 0.0068755145}
 --- !u!114 &1312876228252168923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4763,10 +4763,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.83
   interactableText: "Elix\xEDr \u017Divota"
-  itemPickUpID: 104
+  itemPickUpID: 107
   hasBeenLooted: 0
   weapon: {fileID: 0}
   rangedAmmo: {fileID: 0}
   estusFlask: {fileID: 11400000, guid: 38a112d25e181f143be8a49c20e96e76, type: 2}
+  kolkotoho: 1
+  isItem: 0
   isFlask: 1
   isAmmo: 0
