@@ -26,6 +26,7 @@ namespace AH
         public GameObject levelUpWindow;
         public GameObject itemStatsWindow;
         public GameObject gameSettings;
+        public GameObject keyBidind;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -101,6 +102,7 @@ namespace AH
             equipmentScreenWindow.SetActive(false);
             itemStatsWindow.SetActive(false);
             gameSettings.SetActive(false);
+            keyBidind.SetActive(false);
         }
 
         public void CloseAllWindows()

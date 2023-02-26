@@ -8,9 +8,19 @@ namespace AH
 
     public class LevelSelector : MonoBehaviour
     {
+        public bool isSelectMenu;
+        public bool isLevel1;
+
         public void OpenScene()
         {
-            SceneManager.LoadScene("Level 1");
+            if(isSelectMenu)
+            {
+                SceneManager.LoadScene("Level 1");
+            }
+            else if(isLevel1)
+            {
+                SceneManager.LoadScene("Level Select");
+            }
         }
 
     }
