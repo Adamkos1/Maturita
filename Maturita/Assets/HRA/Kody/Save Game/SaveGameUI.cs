@@ -22,5 +22,10 @@ namespace AH
         {
             worldSaveGameManager.loadGame = true;
         }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }
