@@ -59,7 +59,7 @@ namespace AH
 
                 StartCoroutine(SpawnItemChest());
 
-                WeaponPickUp weaponPickUp = itemSpawner.GetComponent<WeaponPickUp>();
+                ItemPickUp weaponPickUp = itemSpawner.GetComponent<ItemPickUp>();
 
                 if (weaponPickUp != null)
                 {

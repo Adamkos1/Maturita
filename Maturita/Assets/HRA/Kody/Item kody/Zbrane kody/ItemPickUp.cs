@@ -7,7 +7,7 @@ using TMPro;
 namespace AH
 {
 
-    public class WeaponPickUp : Interactable
+    public class ItemPickUp : Interactable
     {
         //unikatne IDcko pre tuto vec vo svete kazde potrebujemat svoje vlastne id
         [Header("World Item ID")]
