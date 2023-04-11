@@ -10,16 +10,21 @@ namespace AH
     {
         public bool isSelectMenu;
         public bool isLevel1;
+        public bool isLevelspecialny;
 
         public void OpenScene()
         {
-            if(isSelectMenu)
+            if(isLevel1)
             {
                 SceneManager.LoadScene("Level 1");
             }
-            else if(isLevel1)
+            else if(isSelectMenu)
             {
                 SceneManager.LoadScene("Level Select");
+            }
+            else if (isLevelspecialny)
+            {
+                SceneManager.LoadScene("Level 2");
             }
         }
 
